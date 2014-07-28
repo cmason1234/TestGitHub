@@ -1,0 +1,5924 @@
+/*
+   This file contains the text of the functions and Stored Procedures discovered
+   Under the Master Database, which don't appear to belong there.
+
+   DO NOT RUN THIS FILE AS IS.  If you need one of the Stored Procedures, find it
+   Copy the text out to a file and run that file only.
+*/
+
+
+USE [master]
+GO
+/****** Object:  StoredProcedure [dbo].[DeleteCNTemplate]    Script Date: 02/01/2012 11:31:42 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER OFF
+GO
+
+/* ------------------------------------------------------------
+   PROCEDURE:    DeleteCNTemplate
+   
+   Description:  Deletes a record from table 'CNTemplate'
+   
+   AUTHOR:       Rheem Manufacturing, Mike Harvey - 1/4/2011 10:28:22 AM
+   ------------------------------------------------------------ */
+
+ALTER PROCEDURE [dbo].[DeleteCNTemplate]
+(
+	@CNTemplateID uniqueidentifier
+
+)
+As
+SET NOCOUNT ON
+SET XACT_ABORT ON
+
+BEGIN
+	DECLARE @Err Int
+
+	DELETE FROM [CNTemplate] 
+	WHERE [CNTemplateID] = @CNTemplateID
+		
+
+	Set @Err = @@Error
+
+	RETURN @Err
+End
+
+USE [master]
+GO
+
+/****** Object:  StoredProcedure [dbo].[DeleteContactCategories]    Script Date: 02/01/2012 11:33:21 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+/* ------------------------------------------------------------
+   PROCEDURE:    DeleteContactCategories
+   
+   Description:  Deletes a record from table 'ContactCategories'
+   
+   AUTHOR:       Rheem, Brian White - 9/13/2010 11:29:29 AM
+   ------------------------------------------------------------ */
+
+ALTER PROCEDURE [dbo].[DeleteContactCategories]
+(
+	@CategoryID int
+
+)
+As
+SET NOCOUNT ON
+
+BEGIN
+	DECLARE @Err Int
+
+	DELETE FROM [ContactCategories] 
+	WHERE [CategoryID] = @CategoryID
+		
+
+	Set @Err = @@Error
+
+	RETURN @Err
+End
+
+GO
+
+USE [master]
+GO
+
+/****** Object:  StoredProcedure [dbo].[DeleteContactEmails]    Script Date: 02/01/2012 11:33:34 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+/* ------------------------------------------------------------
+   PROCEDURE:    DeleteContactEmails
+   
+   Description:  Deletes a record from table 'ContactEmails'
+   
+   AUTHOR:       Rheem, Brian White - 9/13/2010 11:29:29 AM
+   ------------------------------------------------------------ */
+
+ALTER PROCEDURE [dbo].[DeleteContactEmails]
+(
+	@EntryID int
+
+)
+As
+SET NOCOUNT ON
+
+BEGIN
+	DECLARE @Err Int
+
+	DELETE FROM [ContactEmails] 
+	WHERE [EntryID] = @EntryID
+		
+
+	Set @Err = @@Error
+
+	RETURN @Err
+End
+
+GO
+
+USE [master]
+GO
+
+/****** Object:  StoredProcedure [dbo].[DeleteContactFAQs]    Script Date: 02/01/2012 11:33:43 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER OFF
+GO
+
+
+/* ------------------------------------------------------------
+   PROCEDURE:    DeleteContactFAQs
+   
+   Description:  Deletes a record from table 'ContactFAQs'
+   
+   AUTHOR:       Rheem Manufacturing, Brian White - 12/20/2010 2:16:27 PM
+   ------------------------------------------------------------ */
+
+ALTER PROCEDURE [dbo].[DeleteContactFAQs]
+(
+	@ID uniqueidentifier
+
+)
+As
+SET NOCOUNT ON
+SET XACT_ABORT ON
+
+BEGIN
+	DECLARE @Err Int
+
+	DELETE FROM [ContactFAQs] 
+	WHERE [ID] = @ID
+		
+
+	Set @Err = @@Error
+
+	RETURN @Err
+End
+
+GO
+
+USE [master]
+GO
+
+/****** Object:  StoredProcedure [dbo].[DeleteContactLists]    Script Date: 02/01/2012 11:33:53 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+/* ------------------------------------------------------------
+   PROCEDURE:    DeleteContactLists
+   
+   Description:  Deletes a record from table 'ContactLists'
+   
+   AUTHOR:       Rheem, Brian White - 9/13/2010 12:52:25 PM
+   ------------------------------------------------------------ */
+
+ALTER PROCEDURE [dbo].[DeleteContactLists]
+(
+	@ID int
+
+)
+As
+SET NOCOUNT ON
+
+BEGIN
+	DECLARE @Err Int
+
+	DELETE FROM [ContactLists] 
+	WHERE [ID] = @ID
+		
+
+	Set @Err = @@Error
+
+	RETURN @Err
+End
+
+GO
+
+USE [master]
+GO
+
+/****** Object:  StoredProcedure [dbo].[DeleteEnv]    Script Date: 02/01/2012 11:34:01 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER OFF
+GO
+
+
+/* ------------------------------------------------------------
+   PROCEDURE:    DeleteEnv
+   
+   Description:  Deletes a record from table 'Env'
+   
+   AUTHOR:       Rheem Manufacturing, Mike Harvey - 1/20/2011 12:05:43 PM
+   ------------------------------------------------------------ */
+
+ALTER PROCEDURE [dbo].[DeleteEnv]
+(
+	@EnvID uniqueidentifier
+
+)
+As
+SET NOCOUNT ON
+SET XACT_ABORT ON
+
+BEGIN
+	DECLARE @Err Int
+
+	DELETE FROM [Env] 
+	WHERE [EnvID] = @EnvID
+		
+
+	Set @Err = @@Error
+
+	RETURN @Err
+End
+
+GO
+
+USE [master]
+GO
+
+/****** Object:  StoredProcedure [dbo].[DeleteProduct]    Script Date: 02/01/2012 11:34:09 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER OFF
+GO
+
+
+/* ------------------------------------------------------------
+   PROCEDURE:    DeleteProduct
+   
+   Description:  Deletes a record from table 'Product'
+   
+   AUTHOR:       Rheem Manufacturing, Mike Harvey - 12/27/2010 12:30:56 PM
+   ------------------------------------------------------------ */
+
+ALTER PROCEDURE [dbo].[DeleteProduct]
+(
+	@ProductID uniqueidentifier
+
+)
+As
+SET NOCOUNT ON
+SET XACT_ABORT ON
+
+BEGIN
+	DECLARE @Err Int
+
+	DELETE FROM [Product] 
+	WHERE [ProductID] = @ProductID
+		
+
+	Set @Err = @@Error
+
+	RETURN @Err
+End
+
+GO
+
+USE [master]
+GO
+
+/****** Object:  StoredProcedure [dbo].[DeleteProductCategoryDocument]    Script Date: 02/01/2012 11:34:16 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER OFF
+GO
+
+
+/* ------------------------------------------------------------
+   PROCEDURE:    DeleteProductCategoryDocument
+   
+   Description:  Deletes a record from table 'ProductCategoryDocument'
+   
+   AUTHOR:       Rheem Manufacturing, Mike Harvey - 12/27/2010 12:30:57 PM
+   ------------------------------------------------------------ */
+
+ALTER PROCEDURE [dbo].[DeleteProductCategoryDocument]
+(
+	@ProductCategoryDocumentID uniqueidentifier
+
+)
+As
+SET NOCOUNT ON
+SET XACT_ABORT ON
+
+BEGIN
+	DECLARE @Err Int
+
+	DELETE FROM [ProductCategoryDocument] 
+	WHERE [ProductCategoryDocumentID] = @ProductCategoryDocumentID
+		
+
+	Set @Err = @@Error
+
+	RETURN @Err
+End
+
+GO
+
+USE [master]
+GO
+
+/****** Object:  StoredProcedure [dbo].[DeleteProductDocument]    Script Date: 02/01/2012 11:34:24 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER OFF
+GO
+
+
+/* ------------------------------------------------------------
+   PROCEDURE:    DeleteProductDocument
+   
+   Description:  Deletes a record from table 'ProductDocument'
+   
+   AUTHOR:       Rheem Manufacturing, Mike Harvey - 12/27/2010 12:30:57 PM
+   ------------------------------------------------------------ */
+
+ALTER PROCEDURE [dbo].[DeleteProductDocument]
+(
+	@ProductDocumentID uniqueidentifier
+
+)
+As
+SET NOCOUNT ON
+SET XACT_ABORT ON
+
+BEGIN
+	DECLARE @Err Int
+
+	DELETE FROM [ProductDocument] 
+	WHERE [ProductDocumentID] = @ProductDocumentID
+		
+
+	Set @Err = @@Error
+
+	RETURN @Err
+End
+
+GO
+
+USE [master]
+GO
+
+/****** Object:  StoredProcedure [dbo].[DeleteProductLog]    Script Date: 02/01/2012 11:34:33 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER OFF
+GO
+
+
+/* ------------------------------------------------------------
+   PROCEDURE:    DeleteProductLog
+   
+   Description:  Deletes a record from table 'ProductLog'
+   
+   AUTHOR:       Rheem Manufacturing, Mike Harvey - 12/27/2010 12:30:57 PM
+   ------------------------------------------------------------ */
+
+ALTER PROCEDURE [dbo].[DeleteProductLog]
+(
+	@ProductLogID uniqueidentifier
+
+)
+As
+SET NOCOUNT ON
+SET XACT_ABORT ON
+
+BEGIN
+	DECLARE @Err Int
+
+	DELETE FROM [ProductLog] 
+	WHERE [ProductLogID] = @ProductLogID
+		
+
+	Set @Err = @@Error
+
+	RETURN @Err
+End
+
+GO
+
+USE [master]
+GO
+
+/****** Object:  StoredProcedure [dbo].[DeleteProductNotes]    Script Date: 02/01/2012 11:34:42 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER OFF
+GO
+
+
+/* ------------------------------------------------------------
+   PROCEDURE:    DeleteProductNotes
+   
+   Description:  Deletes a record from table 'ProductNotes'
+   
+   AUTHOR:       Rheem Manufacturing, Mike Harvey - 12/27/2010 12:30:57 PM
+   ------------------------------------------------------------ */
+
+ALTER PROCEDURE [dbo].[DeleteProductNotes]
+(
+	@ProductNoteID uniqueidentifier
+
+)
+As
+SET NOCOUNT ON
+SET XACT_ABORT ON
+
+BEGIN
+	DECLARE @Err Int
+
+	DELETE FROM [ProductNotes] 
+	WHERE [ProductNoteID] = @ProductNoteID
+		
+
+	Set @Err = @@Error
+
+	RETURN @Err
+End
+
+GO
+
+USE [master]
+GO
+
+/****** Object:  StoredProcedure [dbo].[DeleteProductProductGroup]    Script Date: 02/01/2012 11:34:51 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER OFF
+GO
+
+
+/* ------------------------------------------------------------
+   PROCEDURE:    DeleteProductProductGroup
+   
+   Description:  Deletes a record from table 'ProductProductGroup'
+   
+   AUTHOR:       Rheem Manufacturing, Mike Harvey - 3/3/2011 12:42:27 PM
+   ------------------------------------------------------------ */
+
+ALTER PROCEDURE [dbo].[DeleteProductProductGroup]
+(
+	@ProductProductGroupID uniqueidentifier
+
+)
+As
+SET NOCOUNT ON
+SET XACT_ABORT ON
+
+BEGIN
+	DECLARE @Err Int
+
+	DELETE FROM [ProductProductGroup] 
+	WHERE [ProductProductGroupID] = @ProductProductGroupID
+		
+
+	Set @Err = @@Error
+
+	RETURN @Err
+End
+
+GO
+
+USE [master]
+GO
+
+/****** Object:  StoredProcedure [dbo].[DeleteracingGuests2011]    Script Date: 02/01/2012 11:35:00 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER OFF
+GO
+
+
+/* ------------------------------------------------------------
+   PROCEDURE:    DeleteracingGuests2011
+   
+   Description:  Deletes a record from table 'racingGuests2011'
+   
+   AUTHOR:       Rheem Manufacturing, Brian White - 2/9/2011 10:39:53 AM
+   ------------------------------------------------------------ */
+
+ALTER PROCEDURE [dbo].[DeleteracingGuests2011]
+(
+	@racingGuestID int
+
+)
+As
+SET NOCOUNT ON
+SET XACT_ABORT ON
+
+BEGIN
+	DECLARE @Err Int
+
+	DELETE FROM [racingGuests2011] 
+	WHERE [racingGuestID] = @racingGuestID
+		
+
+	Set @Err = @@Error
+
+	RETURN @Err
+End
+
+GO
+
+USE [master]
+GO
+
+/****** Object:  StoredProcedure [dbo].[DeleteRheemTeamServiceRequest]    Script Date: 02/01/2012 11:35:09 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER OFF
+GO
+
+
+/* ------------------------------------------------------------
+   PROCEDURE:    DeleteRheemTeamServiceRequest
+   
+   Description:  Deletes a record from table 'RheemTeamServiceRequest'
+   
+   AUTHOR:       Rheem Manufacturing, Mike Harvey - 1/19/2011 1:37:32 PM
+   ------------------------------------------------------------ */
+
+ALTER PROCEDURE [dbo].[DeleteRheemTeamServiceRequest]
+(
+	@RheemTeamServiceRequestID uniqueidentifier
+
+)
+As
+SET NOCOUNT ON
+SET XACT_ABORT ON
+
+BEGIN
+	DECLARE @Err Int
+
+	DELETE FROM [RheemTeamServiceRequest] 
+	WHERE [RheemTeamServiceRequestID] = @RheemTeamServiceRequestID
+		
+
+	Set @Err = @@Error
+
+	RETURN @Err
+End
+
+GO
+
+USE [master]
+GO
+
+/****** Object:  StoredProcedure [dbo].[DeleteSEER]    Script Date: 02/01/2012 11:35:17 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER OFF
+GO
+
+
+/* ------------------------------------------------------------
+   PROCEDURE:    DeleteSEER
+   
+   Description:  Deletes a record from table 'SEER'
+   
+   AUTHOR:       Rheem Manufacturing, Mike Harvey - 12/27/2010 12:30:57 PM
+   ------------------------------------------------------------ */
+
+ALTER PROCEDURE [dbo].[DeleteSEER]
+(
+	@SeerID uniqueidentifier
+
+)
+As
+SET NOCOUNT ON
+SET XACT_ABORT ON
+
+BEGIN
+	DECLARE @Err Int
+
+	DELETE FROM [SEER] 
+	WHERE [SeerID] = @SeerID
+		
+
+	Set @Err = @@Error
+
+	RETURN @Err
+End
+
+GO
+
+USE [master]
+GO
+
+/****** Object:  StoredProcedure [dbo].[DeleteSeries]    Script Date: 02/01/2012 11:35:24 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER OFF
+GO
+
+
+/* ------------------------------------------------------------
+   PROCEDURE:    DeleteSeries
+   
+   Description:  Deletes a record from table 'Series'
+   
+   AUTHOR:       Rheem Manufacturing, Mike Harvey - 12/27/2010 12:30:57 PM
+   ------------------------------------------------------------ */
+
+ALTER PROCEDURE [dbo].[DeleteSeries]
+(
+	@SeriesID uniqueidentifier
+
+)
+As
+SET NOCOUNT ON
+SET XACT_ABORT ON
+
+BEGIN
+	DECLARE @Err Int
+
+	DELETE FROM [Series] 
+	WHERE [SeriesID] = @SeriesID
+		
+
+	Set @Err = @@Error
+
+	RETURN @Err
+End
+
+GO
+
+USE [master]
+GO
+
+/****** Object:  StoredProcedure [dbo].[DeleteSeriesDocument]    Script Date: 02/01/2012 11:35:32 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER OFF
+GO
+
+
+/* ------------------------------------------------------------
+   PROCEDURE:    DeleteSeriesDocument
+   
+   Description:  Deletes a record from table 'SeriesDocument'
+   
+   AUTHOR:       Rheem Manufacturing, Mike Harvey - 12/27/2010 12:30:57 PM
+   ------------------------------------------------------------ */
+
+ALTER PROCEDURE [dbo].[DeleteSeriesDocument]
+(
+	@SeriesDocumentID uniqueidentifier
+
+)
+As
+SET NOCOUNT ON
+SET XACT_ABORT ON
+
+BEGIN
+	DECLARE @Err Int
+
+	DELETE FROM [SeriesDocument] 
+	WHERE [SeriesDocumentID] = @SeriesDocumentID
+		
+
+	Set @Err = @@Error
+
+	RETURN @Err
+End
+
+GO
+
+USE [master]
+GO
+
+/****** Object:  StoredProcedure [dbo].[Deletetraining_class_registrations]    Script Date: 02/01/2012 11:35:41 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER OFF
+GO
+
+
+/* ------------------------------------------------------------
+   PROCEDURE:    Deletetraining_class_registrations
+   
+   Description:  Deletes a record from table 'training_class_registrations'
+   
+   AUTHOR:       Rheem Manufacturing, Mike Harvey - 1/10/2011 4:20:35 PM
+   ------------------------------------------------------------ */
+
+ALTER PROCEDURE [dbo].[Deletetraining_class_registrations]
+(
+	@RegistrationID bigint
+
+)
+As
+SET NOCOUNT ON
+SET XACT_ABORT ON
+
+BEGIN
+	DECLARE @Err Int
+
+	DELETE FROM [training_class_registrations] 
+	WHERE [RegistrationID] = @RegistrationID
+		
+
+	Set @Err = @@Error
+
+	RETURN @Err
+End
+
+GO
+
+USE [master]
+GO
+
+/****** Object:  StoredProcedure [dbo].[Deletetraining_classes]    Script Date: 02/01/2012 11:35:49 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER OFF
+GO
+
+
+/* ------------------------------------------------------------
+   PROCEDURE:    Deletetraining_classes
+   
+   Description:  Deletes a record from table 'training_classes'
+   
+   AUTHOR:       Rheem Manufacturing, Mike Harvey - 1/10/2011 4:20:35 PM
+   ------------------------------------------------------------ */
+
+ALTER PROCEDURE [dbo].[Deletetraining_classes]
+(
+	@ClassID int
+
+)
+As
+SET NOCOUNT ON
+SET XACT_ABORT ON
+
+BEGIN
+	DECLARE @Err Int
+
+	DELETE FROM [training_classes] 
+	WHERE [ClassID] = @ClassID
+		
+
+	Set @Err = @@Error
+
+	RETURN @Err
+End
+
+GO
+
+USE [master]
+GO
+
+/****** Object:  StoredProcedure [dbo].[GetClassContacts]    Script Date: 02/01/2012 11:35:57 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+ALTER PROCEDURE [dbo].[GetClassContacts]
+As
+BEGIN
+	SET NOCOUNT ON
+	SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+	
+	DECLARE @Err Int
+	select personID, LastName +', ' + FirstName FullName  from rheemusers..person where personID in 
+	(select distinct ContactID  from TheTrainingNetwork ..training_classes )
+order by LastName 
+
+End
+
+GO
+
+USE [master]
+GO
+
+/****** Object:  StoredProcedure [dbo].[GetClassInstructors]    Script Date: 02/01/2012 11:36:06 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+ALTER PROCEDURE [dbo].[GetClassInstructors]
+As
+BEGIN
+	SET NOCOUNT ON
+	SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+	
+	DECLARE @Err Int
+		select personID, LastName +', ' + FirstName FullName  from rheemusers..person where personID in 
+		(select distinct InstructorID  from TheTrainingNetwork ..training_classes )
+order by LastName 
+
+End
+
+GO
+
+USE [master]
+GO
+
+/****** Object:  StoredProcedure [dbo].[GetClassReport]    Script Date: 02/01/2012 11:36:15 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+ALTER PROCEDURE [dbo].[GetClassReport]
+
+As
+BEGIN
+	SET NOCOUNT ON
+	SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+	
+	DECLARE @Err Int
+	
+	SELECT c.ClassID, c.Status, ct.ClassTypeStr,  convert(varchar(24),c.ClassDate,  101)  ClassDate, c.ClassLength, 
+	c.LocationName, c.LocationStreet, c.LocationStreet2, c.LocationCity, c.LocationState, c.LocationZip, 
+	sponsor, oSpon .OrganizationName Sponsor, c.contactPhone, c.ContactEMail , 
+	c.ClassAddlInfo, 
+	pIns.PersonID InstructorPersonID, pCon.PersonID  ContactPersonID, pSche.PersonID SchedulerPersonID, 
+	pIns .FirstName + ' ' + pIns.LastName Instructor,
+	pCon .FirstName + ' ' + pCon.LastName Contact,
+	pCon .FirstName + ' ' + pCon.LastName Scheduler,  SchedulerName 
+	FROM TheTrainingNetwork..Training_Classes c, rheemusers..person pIns,  rheemusers..person pCon, 
+	rheemusers..Organization oSpon , rheemusers..Person pSche, TheTrainingNetwork..training_classtypes ct 
+	WHERE c.ClassType    = ct.ClassType AND 
+	c.InstructorID = pIns.PersonID AND 
+	c.ContactID    = pCon.PersonID AND 
+	c.SponsorID    = oSpon.OrganizationID AND 
+	c.SchedulerID  = pSche.PersonID
+	ORDER BY c.ClassDate DESC
+
+
+End
+
+GO
+
+USE [master]
+GO
+
+/****** Object:  StoredProcedure [dbo].[GetClassSchedulers]    Script Date: 02/01/2012 11:36:23 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+ALTER PROCEDURE [dbo].[GetClassSchedulers]
+As
+BEGIN
+	SET NOCOUNT ON
+	SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+	
+	DECLARE @Err Int
+		select personID, LastName +', ' + FirstName FullName  from rheemusers..person where personID in 
+		(select distinct SchedulerID  from TheTrainingNetwork ..training_classes )
+order by LastName 
+
+End
+
+GO
+
+USE [master]
+GO
+
+/****** Object:  StoredProcedure [dbo].[GetClassSponsors]    Script Date: 02/01/2012 11:36:30 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+ALTER PROCEDURE [dbo].[GetClassSponsors]
+As
+BEGIN
+	SET NOCOUNT ON
+	SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+	
+	DECLARE @Err Int
+	select OrganizationID, OrganizationName from rheemusers..Organization where OrganizationID in 
+	(select distinct SponsorID  from TheTrainingNetwork ..training_classes )
+order by OrganizationName 
+
+
+End
+
+GO
+
+USE [master]
+GO
+
+/****** Object:  StoredProcedure [dbo].[GetClassTypes]    Script Date: 02/01/2012 11:36:38 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+ALTER PROCEDURE [dbo].[GetClassTypes]
+
+As
+BEGIN
+	SET NOCOUNT ON
+	SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+	
+	DECLARE @Err Int
+	
+	select * from TheTrainingNetwork..Training_ClassTypes order by ClassTypeStr 
+
+
+End
+
+GO
+
+USE [master]
+GO
+
+/****** Object:  StoredProcedure [dbo].[GetCNTemplateByID]    Script Date: 02/01/2012 11:36:47 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER OFF
+GO
+
+
+/* ------------------------------------------------------------
+   PROCEDURE:    GetCNTemplateByID
+   
+   Description:  Selects record(s) from table 'CNTemplate'
+   
+   AUTHOR:       Rheem Manufacturing, Mike Harvey - 1/4/2011 10:28:22 AM
+   ------------------------------------------------------------ */
+
+ALTER PROCEDURE [dbo].[GetCNTemplateByID]
+(
+	@CNTemplateID uniqueidentifier
+
+)
+As
+BEGIN
+	SET NOCOUNT ON
+	SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+	
+	DECLARE @Err Int
+
+	Select 	[CNTemplateID], [CNCategoryID], [BrandID], [TemplateHTML]
+	FROM [CNTemplate]
+	WHERE [CNTemplateID] = @CNTemplateID
+
+	Set @Err = @@Error
+
+	RETURN @Err
+End
+
+GO
+
+USE [master]
+GO
+
+/****** Object:  StoredProcedure [dbo].[GetContactCategoriesByID]    Script Date: 02/01/2012 11:36:54 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+/* ------------------------------------------------------------
+   PROCEDURE:    GetContactCategoriesByID
+   
+   Description:  Selects record(s) from table 'ContactCategories'
+   
+   AUTHOR:       Rheem, Brian White - 9/13/2010 11:29:29 AM
+   ------------------------------------------------------------ */
+
+ALTER PROCEDURE [dbo].[GetContactCategoriesByID]
+(
+	@CategoryID int
+
+)
+As
+BEGIN
+	DECLARE @Err Int
+
+	Select 	[CategoryID], [Category]
+	FROM [ContactCategories]
+	WHERE [CategoryID] = @CategoryID
+
+	Set @Err = @@Error
+
+	RETURN @Err
+End
+
+GO
+
+USE [master]
+GO
+
+/****** Object:  StoredProcedure [dbo].[GetContactEmailsByID]    Script Date: 02/01/2012 11:37:01 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+/* ------------------------------------------------------------
+   PROCEDURE:    GetContactEmailsByID
+   
+   Description:  Selects record(s) from table 'ContactEmails'
+   
+   AUTHOR:       Rheem, Brian White - 9/13/2010 11:29:29 AM
+   ------------------------------------------------------------ */
+
+ALTER PROCEDURE [dbo].[GetContactEmailsByID]
+(
+	@EntryID int
+
+)
+As
+BEGIN
+	DECLARE @Err Int
+
+	Select 	[EntryID], [Topic], [Subtopic], [ToEmail], [PhoneNumber], [PostalCode], [Message], [TimeStamp], [FromEmail], [FromName], [ModelNumber], [SerialNumber], [Country], [PlumberContractorName], [PlumberContractorPhoneNumber]
+	FROM [ContactEmails]
+	WHERE [EntryID] = @EntryID
+
+	Set @Err = @@Error
+
+	RETURN @Err
+End
+
+GO
+
+USE [master]
+GO
+
+/****** Object:  StoredProcedure [dbo].[GetContactFAQsByID]    Script Date: 02/01/2012 11:37:09 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER OFF
+GO
+
+
+/* ------------------------------------------------------------
+   PROCEDURE:    GetContactFAQsByID
+   
+   Description:  Selects record(s) from table 'ContactFAQs'
+   
+   AUTHOR:       Rheem Manufacturing, Brian White - 12/20/2010 2:16:27 PM
+   ------------------------------------------------------------ */
+
+ALTER PROCEDURE [dbo].[GetContactFAQsByID]
+(
+	@ID uniqueidentifier
+
+)
+As
+BEGIN
+	SET NOCOUNT ON
+	SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+	
+	DECLARE @Err Int
+
+	Select 	[ID], [SubtopicID], [Title], [Content], [Rank]
+	FROM [ContactFAQs]
+	WHERE [ID] = @ID
+
+	Set @Err = @@Error
+
+	RETURN @Err
+End
+
+GO
+
+USE [master]
+GO
+
+/****** Object:  StoredProcedure [dbo].[GetContactListsByID]    Script Date: 02/01/2012 11:37:18 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+/* ------------------------------------------------------------
+   PROCEDURE:    GetContactListsByID
+   
+   Description:  Selects record(s) from table 'ContactLists'
+   
+   AUTHOR:       Rheem, Brian White - 9/13/2010 12:52:25 PM
+   ------------------------------------------------------------ */
+
+ALTER PROCEDURE [dbo].[GetContactListsByID]
+(
+	@ID int
+
+)
+As
+BEGIN
+	DECLARE @Err Int
+
+	Select 	[ID], [Category], [Contact], [Email]
+	FROM [ContactLists]
+	WHERE [ID] = @ID
+
+	Set @Err = @@Error
+
+	RETURN @Err
+End
+
+GO
+
+USE [master]
+GO
+
+/****** Object:  StoredProcedure [dbo].[GetEnvByID]    Script Date: 02/01/2012 11:37:25 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER OFF
+GO
+
+
+/* ------------------------------------------------------------
+   PROCEDURE:    GetEnvByID
+   
+   Description:  Selects record(s) from table 'Env'
+   
+   AUTHOR:       Rheem Manufacturing, Mike Harvey - 1/20/2011 12:05:43 PM
+   ------------------------------------------------------------ */
+
+ALTER PROCEDURE [dbo].[GetEnvByID]
+(
+	@EnvID uniqueidentifier
+
+)
+As
+BEGIN
+	SET NOCOUNT ON
+	SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+	
+	DECLARE @Err Int
+
+	Select 	[EnvID], [EnvName], [EnvValue], [TimeStamp]
+	FROM [Env]
+	WHERE [EnvID] = @EnvID
+
+	Set @Err = @@Error
+
+	RETURN @Err
+End
+
+GO
+
+USE [master]
+GO
+
+/****** Object:  StoredProcedure [dbo].[GetProductByID]    Script Date: 02/01/2012 11:37:33 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER OFF
+GO
+
+
+/* ------------------------------------------------------------
+   PROCEDURE:    GetProductByID
+   
+   Description:  Selects record(s) from table 'Product'
+   
+   AUTHOR:       Rheem Manufacturing, Mike Harvey - 12/27/2010 12:30:56 PM
+   ------------------------------------------------------------ */
+
+ALTER PROCEDURE [dbo].[GetProductByID]
+(
+	@ProductID uniqueidentifier
+
+)
+As
+BEGIN
+	SET NOCOUNT ON
+	SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+	
+	DECLARE @Err Int
+
+	Select 	[ProductID], [ProductCategoryID], [DivisionID], [Model], [MarketCommercial], [MarketResidential], [MarketManufacturedHome], [ProductLaunch], [Historical], [BrandID], [SeriesID], [Description], [TankWarranty], [PartsWarranty], [LaborWarranty], [HeatExchangeWarranty], [CompressorWarranty], [ExtendedWarranty], [WarrantyText], [EnergyStar], [EnergyGuide], [EnergyMiser], [DRHorton], [DisplayOnBHPG], [SeerID], [ACTonnageID], [Ton18], [Ton24], [Ton30], [Ton36], [Ton42], [Ton48], [Ton60], [Ton90], [Ton102], [Ton120], [Ton150], [Ton180], [Ton181], [Ton240], [Ton300], [Gallon2Point5], [Gallon6], [Gallon10], [Gallon15], [Gallon20], [Gallon30], [Gallon38], [Gallon40], [Gallon47], [Gallon50], [Gallon65], [Gallon80], [HLW], [SCAQMD], [ProductCopy], [VirtualTourText], [GasEfficiency], [HSPF], [ComfortControl], [ComfortControl2], [Gamma], [CabinetSize], [ARI210240], [UL], [R410A], [CSA], [SACC], [EIL], [NSF], [TaxCredit], [TaxCreditText], [Gas], [Electric], [Tankless], [Solar], [Gallon12], [Gallon29], [Gallon37], [Gallon45], [Gallon48], [Gallon60], [Gallon75], [Gallon90], [Gallon85], [Gallon100], [Gallon105], [Gallon110], [Gallon119], [Gallon120], [Gallon150], [Gallon2500], [OutdoorOnlyWarranty], [SortOrder], [PriceRange], [ShowInRegistration], [OutdoorUnitOnly], [OutdoorUnitGas], [OutdoorUnitAir], [IndoorUnitOnly], [PackageUnit], [OutdoorUnitWithCoil], [PointValue], [SRCC], [EfficiencyRange], [ContractorFAB]
+	FROM [Product]
+	WHERE [ProductID] = @ProductID
+
+	Set @Err = @@Error
+
+	RETURN @Err
+End
+
+GO
+
+USE [master]
+GO
+
+/****** Object:  StoredProcedure [dbo].[GetProductCategoryDocumentByID]    Script Date: 02/01/2012 11:37:42 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER OFF
+GO
+
+
+/* ------------------------------------------------------------
+   PROCEDURE:    GetProductCategoryDocumentByID
+   
+   Description:  Selects record(s) from table 'ProductCategoryDocument'
+   
+   AUTHOR:       Rheem Manufacturing, Mike Harvey - 12/27/2010 12:30:57 PM
+   ------------------------------------------------------------ */
+
+ALTER PROCEDURE [dbo].[GetProductCategoryDocumentByID]
+(
+	@ProductCategoryDocumentID uniqueidentifier
+
+)
+As
+BEGIN
+	SET NOCOUNT ON
+	SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+	
+	DECLARE @Err Int
+
+	Select 	[ProductCategoryDocumentID], [ProductCategoryID], [DocumentID], [PairingType]
+	FROM [ProductCategoryDocument]
+	WHERE [ProductCategoryDocumentID] = @ProductCategoryDocumentID
+
+	Set @Err = @@Error
+
+	RETURN @Err
+End
+
+GO
+
+USE [master]
+GO
+
+/****** Object:  StoredProcedure [dbo].[GetProductDocumentByID]    Script Date: 02/01/2012 11:37:52 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER OFF
+GO
+
+
+/* ------------------------------------------------------------
+   PROCEDURE:    GetProductDocumentByID
+   
+   Description:  Selects record(s) from table 'ProductDocument'
+   
+   AUTHOR:       Rheem Manufacturing, Mike Harvey - 12/27/2010 12:30:57 PM
+   ------------------------------------------------------------ */
+
+ALTER PROCEDURE [dbo].[GetProductDocumentByID]
+(
+	@ProductDocumentID uniqueidentifier
+
+)
+As
+BEGIN
+	SET NOCOUNT ON
+	SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+	
+	DECLARE @Err Int
+
+	Select 	[ProductDocumentID], [ProductID], [DocumentID], [PairingType], [MimeType], [DocumentTitle], [PublicationDate]
+	FROM [ProductDocument]
+	WHERE [ProductDocumentID] = @ProductDocumentID
+
+	Set @Err = @@Error
+
+	RETURN @Err
+End
+
+GO
+
+USE [master]
+GO
+
+/****** Object:  StoredProcedure [dbo].[GetProductLogByID]    Script Date: 02/01/2012 11:38:01 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER OFF
+GO
+
+
+/* ------------------------------------------------------------
+   PROCEDURE:    GetProductLogByID
+   
+   Description:  Selects record(s) from table 'ProductLog'
+   
+   AUTHOR:       Rheem Manufacturing, Mike Harvey - 12/27/2010 12:30:57 PM
+   ------------------------------------------------------------ */
+
+ALTER PROCEDURE [dbo].[GetProductLogByID]
+(
+	@ProductLogID uniqueidentifier
+
+)
+As
+BEGIN
+	SET NOCOUNT ON
+	SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+	
+	DECLARE @Err Int
+
+	Select 	[ProductLogID], [ProductID], [SeqID], [LogText]
+	FROM [ProductLog]
+	WHERE [ProductLogID] = @ProductLogID
+
+	Set @Err = @@Error
+
+	RETURN @Err
+End
+
+GO
+
+USE [master]
+GO
+
+/****** Object:  StoredProcedure [dbo].[GetProductNotesByID]    Script Date: 02/01/2012 11:38:08 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER OFF
+GO
+
+
+/* ------------------------------------------------------------
+   PROCEDURE:    GetProductNotesByID
+   
+   Description:  Selects record(s) from table 'ProductNotes'
+   
+   AUTHOR:       Rheem Manufacturing, Mike Harvey - 12/27/2010 12:30:57 PM
+   ------------------------------------------------------------ */
+
+ALTER PROCEDURE [dbo].[GetProductNotesByID]
+(
+	@ProductNoteID uniqueidentifier
+
+)
+As
+BEGIN
+	SET NOCOUNT ON
+	SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+	
+	DECLARE @Err Int
+
+	Select 	[ProductNoteID], [ProductID], [NoteType], [Note], [DateAdded]
+	FROM [ProductNotes]
+	WHERE [ProductNoteID] = @ProductNoteID
+
+	Set @Err = @@Error
+
+	RETURN @Err
+End
+
+GO
+
+USE [master]
+GO
+
+/****** Object:  StoredProcedure [dbo].[GetProductProductGroupByID]    Script Date: 02/01/2012 11:38:19 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER OFF
+GO
+
+
+/* ------------------------------------------------------------
+   PROCEDURE:    GetProductProductGroupByID
+   
+   Description:  Selects record(s) from table 'ProductProductGroup'
+   
+   AUTHOR:       Rheem Manufacturing, Mike Harvey - 3/3/2011 12:42:27 PM
+   ------------------------------------------------------------ */
+
+ALTER PROCEDURE [dbo].[GetProductProductGroupByID]
+(
+	@ProductProductGroupID uniqueidentifier
+
+)
+As
+BEGIN
+	SET NOCOUNT ON
+	SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+	
+	DECLARE @Err Int
+
+	Select 	[ProductProductGroupID], [ProductID], [ProductGroupID]
+	FROM [ProductProductGroup]
+	WHERE [ProductProductGroupID] = @ProductProductGroupID
+
+	Set @Err = @@Error
+
+	RETURN @Err
+End
+
+GO
+
+USE [master]
+GO
+
+/****** Object:  StoredProcedure [dbo].[GetracingGuests2011ByID]    Script Date: 02/01/2012 11:38:29 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER OFF
+GO
+
+
+/* ------------------------------------------------------------
+   PROCEDURE:    GetracingGuests2011ByID
+   
+   Description:  Selects record(s) from table 'racingGuests2011'
+   
+   AUTHOR:       Rheem Manufacturing, Brian White - 2/9/2011 10:39:53 AM
+   ------------------------------------------------------------ */
+
+ALTER PROCEDURE [dbo].[GetracingGuests2011ByID]
+(
+	@racingGuestID int
+
+)
+As
+BEGIN
+	SET NOCOUNT ON
+	SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+	
+	DECLARE @Err Int
+
+	Select 	[racingGuestID], [racingHostPersonID], [raceNumber], [firstName], [lastName], [GuestName], [CompanyName], [Address1], [Address2], [City], [State], [PostalCode], [DealerBuilderETC], [gender], [shirtSize], [email], [affiliation], [division], [emergencyNumber], [phoneNumber], [title], [brandOther], [brand], [mainBusiness], [businessSector], [annualPurchase], [replaced], [CheckedIn], [HasRadio]
+	FROM [racingGuests2011]
+	WHERE [racingGuestID] = @racingGuestID
+
+	Set @Err = @@Error
+
+	RETURN @Err
+End
+
+GO
+
+USE [master]
+GO
+
+/****** Object:  StoredProcedure [dbo].[GetRheemTeamServiceRequestByID]    Script Date: 02/01/2012 11:38:37 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER OFF
+GO
+
+
+/* ------------------------------------------------------------
+   PROCEDURE:    GetRheemTeamServiceRequestByID
+   
+   Description:  Selects record(s) from table 'RheemTeamServiceRequest'
+   
+   AUTHOR:       Rheem Manufacturing, Mike Harvey - 1/19/2011 1:37:32 PM
+   ------------------------------------------------------------ */
+
+ALTER PROCEDURE [dbo].[GetRheemTeamServiceRequestByID]
+(
+	@RheemTeamServiceRequestID uniqueidentifier
+
+)
+As
+BEGIN
+	SET NOCOUNT ON
+	SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+	
+	DECLARE @Err Int
+
+	Select 	[RheemTeamServiceRequestID], [DealerID], [RequestDate], [CustomerName], [Email], [Address], [City], [State], [PostalCode], [Phone], [CellPhone], [Media], [BestContactTime], [ServiceRequested], [Information], [OtherText], [Status], [OrganizationID]
+	FROM [RheemTeamServiceRequest]
+	WHERE [RheemTeamServiceRequestID] = @RheemTeamServiceRequestID
+
+	Set @Err = @@Error
+
+	RETURN @Err
+End
+
+GO
+
+USE [master]
+GO
+
+/****** Object:  StoredProcedure [dbo].[GetSEERByID]    Script Date: 02/01/2012 11:38:44 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER OFF
+GO
+
+
+/* ------------------------------------------------------------
+   PROCEDURE:    GetSEERByID
+   
+   Description:  Selects record(s) from table 'SEER'
+   
+   AUTHOR:       Rheem Manufacturing, Mike Harvey - 12/27/2010 12:30:57 PM
+   ------------------------------------------------------------ */
+
+ALTER PROCEDURE [dbo].[GetSEERByID]
+(
+	@SeerID uniqueidentifier
+
+)
+As
+BEGIN
+	SET NOCOUNT ON
+	SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+	
+	DECLARE @Err Int
+
+	Select 	[SeerID], [Seer]
+	FROM [SEER]
+	WHERE [SeerID] = @SeerID
+
+	Set @Err = @@Error
+
+	RETURN @Err
+End
+
+GO
+
+USE [master]
+GO
+
+/****** Object:  StoredProcedure [dbo].[GetSeriesByID]    Script Date: 02/01/2012 11:38:56 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER OFF
+GO
+
+
+/* ------------------------------------------------------------
+   PROCEDURE:    GetSeriesByID
+   
+   Description:  Selects record(s) from table 'Series'
+   
+   AUTHOR:       Rheem Manufacturing, Mike Harvey - 12/27/2010 12:30:57 PM
+   ------------------------------------------------------------ */
+
+ALTER PROCEDURE [dbo].[GetSeriesByID]
+(
+	@SeriesID uniqueidentifier
+
+)
+As
+BEGIN
+	SET NOCOUNT ON
+	SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+	
+	DECLARE @Err Int
+
+	Select 	[SeriesID], [SeriesName], [DivisionID], [Description]
+	FROM [Series]
+	WHERE [SeriesID] = @SeriesID
+
+	Set @Err = @@Error
+
+	RETURN @Err
+End
+
+GO
+
+USE [master]
+GO
+
+/****** Object:  StoredProcedure [dbo].[GetSeriesDocumentByID]    Script Date: 02/01/2012 11:39:04 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER OFF
+GO
+
+
+/* ------------------------------------------------------------
+   PROCEDURE:    GetSeriesDocumentByID
+   
+   Description:  Selects record(s) from table 'SeriesDocument'
+   
+   AUTHOR:       Rheem Manufacturing, Mike Harvey - 12/27/2010 12:30:57 PM
+   ------------------------------------------------------------ */
+
+ALTER PROCEDURE [dbo].[GetSeriesDocumentByID]
+(
+	@SeriesDocumentID uniqueidentifier
+
+)
+As
+BEGIN
+	SET NOCOUNT ON
+	SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+	
+	DECLARE @Err Int
+
+	Select 	[SeriesDocumentID], [SeriesID], [DocumentID], [PairingType]
+	FROM [SeriesDocument]
+	WHERE [SeriesDocumentID] = @SeriesDocumentID
+
+	Set @Err = @@Error
+
+	RETURN @Err
+End
+
+GO
+
+USE [master]
+GO
+
+/****** Object:  StoredProcedure [dbo].[Gettraining_class_registrationsByID]    Script Date: 02/01/2012 11:40:27 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER OFF
+GO
+
+
+/* ------------------------------------------------------------
+   PROCEDURE:    Gettraining_class_registrationsByID
+   
+   Description:  Selects record(s) from table 'training_class_registrations'
+   
+   AUTHOR:       Rheem Manufacturing, Mike Harvey - 1/10/2011 4:20:35 PM
+   ------------------------------------------------------------ */
+
+ALTER PROCEDURE [dbo].[Gettraining_class_registrationsByID]
+(
+	@RegistrationID bigint
+
+)
+As
+BEGIN
+	SET NOCOUNT ON
+	SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+	
+	DECLARE @Err Int
+
+	Select 	[RegistrationID], [ClassID], [Attended], [AttendedLicenseNum], [AttendName], [AttendCompany], [AttendPhone], [AttendEMail], [AttendPosition], [AttendedLicenseType], [CertPrinted]
+	FROM [training_class_registrations]
+	WHERE [RegistrationID] = @RegistrationID
+
+	Set @Err = @@Error
+
+	RETURN @Err
+End
+
+GO
+
+USE [master]
+GO
+
+/****** Object:  StoredProcedure [dbo].[Gettraining_classesByID]    Script Date: 02/01/2012 11:40:35 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER OFF
+GO
+
+
+/* ------------------------------------------------------------
+   PROCEDURE:    Gettraining_classesByID
+   
+   Description:  Selects record(s) from table 'training_classes'
+   
+   AUTHOR:       Rheem Manufacturing, Mike Harvey - 1/10/2011 4:20:35 PM
+   ------------------------------------------------------------ */
+
+ALTER PROCEDURE [dbo].[Gettraining_classesByID]
+(
+	@ClassID int
+
+)
+As
+BEGIN
+	SET NOCOUNT ON
+	SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+	
+	DECLARE @Err Int
+
+	Select 	[ClassID], [Status], [InstructorID], [ContactID], [ClassType], [ClassDate], [ClassLength], [LocationName], [LocationStreet], [LocationStreet2], [LocationCity], [LocationState], [LocationZip], [Sponsor], [SponsorID], [ContactPhone], [ContactEMail], [ClassAddlInfo], [SchedulerID], [SchedulerName], [ReminderSent], [Brand], [AttendanceFinalized]
+	FROM [training_classes]
+	WHERE [ClassID] = @ClassID
+
+	Set @Err = @@Error
+
+	RETURN @Err
+End
+
+GO
+
+USE [master]
+GO
+
+/****** Object:  StoredProcedure [dbo].[InsertCNTemplate]    Script Date: 02/01/2012 11:40:42 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER OFF
+GO
+
+
+/* ------------------------------------------------------------
+   PROCEDURE:    InsertCNTemplate
+   
+   Description:  Inserts a record into table 'CNTemplate'
+   
+   AUTHOR:       Rheem Manufacturing, Mike Harvey - 1/4/2011 10:28:22 AM
+   ------------------------------------------------------------ */
+
+ALTER PROCEDURE [dbo].[InsertCNTemplate]
+(
+	@CNTemplateID uniqueidentifier = null output,
+	@CNCategoryID uniqueidentifier, 
+	@BrandID uniqueidentifier, 
+	@TemplateHTML text = null
+)
+
+AS
+SET NOCOUNT ON
+SET XACT_ABORT ON
+
+BEGIN
+	DECLARE @Err Int
+	
+	SET @CNTemplateID = NewID()
+	
+
+	INSERT
+	INTO [CNTemplate]
+	(
+		[CNTemplateID], 
+		[CNCategoryID], 
+		[BrandID], 
+		[TemplateHTML]
+	)
+	VALUES
+	(
+		@CNTemplateID, 
+		@CNCategoryID, 
+		@BrandID, 
+		@TemplateHTML
+
+	)
+
+	SET @Err = @@Error
+
+
+	RETURN @Err
+End
+
+GO
+
+USE [master]
+GO
+
+/****** Object:  StoredProcedure [dbo].[InsertContactCategories]    Script Date: 02/01/2012 11:40:50 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+/* ------------------------------------------------------------
+   PROCEDURE:    InsertContactCategories
+   
+   Description:  Inserts a record into table 'ContactCategories'
+   
+   AUTHOR:       Rheem, Brian White - 9/13/2010 11:29:28 AM
+   ------------------------------------------------------------ */
+
+ALTER PROCEDURE [dbo].[InsertContactCategories]
+(
+	@CategoryID int = null output,
+	@Category varchar(250) = null
+)
+
+AS
+SET NOCOUNT ON
+
+BEGIN
+	DECLARE @Err Int
+
+	INSERT
+	INTO [ContactCategories]
+	(
+			[Category]
+	)
+	VALUES
+	(
+			@Category
+
+	)
+
+	SET @Err = @@Error
+	SET @CategoryID = @@identity
+
+
+	RETURN @Err
+End
+
+GO
+
+USE [master]
+GO
+
+/****** Object:  StoredProcedure [dbo].[InsertContactEmails]    Script Date: 02/01/2012 11:40:58 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+/* ------------------------------------------------------------
+   PROCEDURE:    InsertContactEmails
+   
+   Description:  Inserts a record into table 'ContactEmails'
+   
+   AUTHOR:       Rheem, Brian White - 9/13/2010 11:29:29 AM
+   ------------------------------------------------------------ */
+
+ALTER PROCEDURE [dbo].[InsertContactEmails]
+(
+	@EntryID int = null output,
+	@Topic nvarchar(250) = null, 
+	@Subtopic nvarchar(250) = null, 
+	@ToEmail nvarchar(100) = null, 
+	@PhoneNumber nvarchar(100) = null, 
+	@PostalCode nvarchar(20) = null, 
+	@Message nvarchar(max) = null, 
+	@TimeStamp datetime, 
+	@FromEmail nvarchar(100) = null, 
+	@FromName nvarchar(100) = null, 
+	@ModelNumber nvarchar(100) = null, 
+	@SerialNumber nvarchar(100) = null, 
+	@Country nvarchar(100) = null, 
+	@PlumberContractorName nvarchar(200) = null, 
+	@PlumberContractorPhoneNumber nvarchar(50) = null
+)
+
+AS
+SET NOCOUNT ON
+
+BEGIN
+	DECLARE @Err Int
+
+	INSERT
+	INTO [ContactEmails]
+	(
+		[Topic], 
+		[Subtopic], 
+		[ToEmail], 
+		[PhoneNumber], 
+		[PostalCode], 
+		[Message], 
+		[TimeStamp], 
+		[FromEmail], 
+		[FromName], 
+		[ModelNumber], 
+		[SerialNumber], 
+		[Country], 
+		[PlumberContractorName], 
+		[PlumberContractorPhoneNumber]
+	)
+	VALUES
+	(
+		@Topic, 
+		@Subtopic, 
+		@ToEmail, 
+		@PhoneNumber, 
+		@PostalCode, 
+		@Message, 
+		@TimeStamp, 
+		@FromEmail, 
+		@FromName, 
+		@ModelNumber, 
+		@SerialNumber, 
+		@Country, 
+		@PlumberContractorName, 
+		@PlumberContractorPhoneNumber
+
+	)
+
+	SET @Err = @@Error
+	SET @EntryID = @@identity
+
+
+	RETURN @Err
+End
+
+GO
+
+USE [master]
+GO
+
+/****** Object:  StoredProcedure [dbo].[InsertContactFAQs]    Script Date: 02/01/2012 11:41:07 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER OFF
+GO
+
+
+/* ------------------------------------------------------------
+   PROCEDURE:    InsertContactFAQs
+   
+   Description:  Inserts a record into table 'ContactFAQs'
+   
+   AUTHOR:       Rheem Manufacturing, Brian White - 12/20/2010 2:16:27 PM
+   ------------------------------------------------------------ */
+
+ALTER PROCEDURE [dbo].[InsertContactFAQs]
+(
+	@ID uniqueidentifier = null output,
+	@SubtopicID int, 
+	@Title varchar(200) = null, 
+	@Content varchar(max) = null, 
+	@Rank int
+)
+
+AS
+SET NOCOUNT ON
+SET XACT_ABORT ON
+
+BEGIN
+	DECLARE @Err Int
+	
+	SET @ID = NewID()
+	
+
+	INSERT
+	INTO [ContactFAQs]
+	(
+		[ID], 
+		[SubtopicID], 
+		[Title], 
+		[Content], 
+		[Rank]
+	)
+	VALUES
+	(
+		@ID, 
+		@SubtopicID, 
+		@Title, 
+		@Content, 
+		@Rank
+
+	)
+
+	SET @Err = @@Error
+
+
+	RETURN @Err
+End
+
+GO
+
+USE [master]
+GO
+
+/****** Object:  StoredProcedure [dbo].[InsertContactLists]    Script Date: 02/01/2012 11:41:14 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+/* ------------------------------------------------------------
+   PROCEDURE:    InsertContactLists
+   
+   Description:  Inserts a record into table 'ContactLists'
+   
+   AUTHOR:       Rheem, Brian White - 9/13/2010 12:52:25 PM
+   ------------------------------------------------------------ */
+
+ALTER PROCEDURE [dbo].[InsertContactLists]
+(
+	@ID int = null output,
+	@Category varchar(250) = null, 
+	@Contact varchar(250) = null, 
+	@Email varchar(250) = null
+)
+
+AS
+SET NOCOUNT ON
+
+BEGIN
+	DECLARE @Err Int
+
+	INSERT
+	INTO [ContactLists]
+	(
+		[Category], 
+		[Contact], 
+		[Email]
+	)
+	VALUES
+	(
+		@Category, 
+		@Contact, 
+		@Email
+
+	)
+
+	SET @Err = @@Error
+	SET @ID = @@identity
+
+
+	RETURN @Err
+End
+
+GO
+
+USE [master]
+GO
+
+/****** Object:  StoredProcedure [dbo].[InsertEnv]    Script Date: 02/01/2012 11:41:22 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER OFF
+GO
+
+
+/* ------------------------------------------------------------
+   PROCEDURE:    InsertEnv
+   
+   Description:  Inserts a record into table 'Env'
+   
+   AUTHOR:       Rheem Manufacturing, Mike Harvey - 1/20/2011 12:05:43 PM
+   ------------------------------------------------------------ */
+
+ALTER PROCEDURE [dbo].[InsertEnv]
+(
+	@EnvID uniqueidentifier = null output,
+	@EnvName varchar(50) = null, 
+	@EnvValue text = null, 
+	@TimeStamp datetime
+)
+
+AS
+SET NOCOUNT ON
+SET XACT_ABORT ON
+
+BEGIN
+	DECLARE @Err Int
+	
+	SET @EnvID = NewID()
+	
+
+	INSERT
+	INTO [Env]
+	(
+		[EnvID], 
+		[EnvName], 
+		[EnvValue], 
+		[TimeStamp]
+	)
+	VALUES
+	(
+		@EnvID, 
+		@EnvName, 
+		@EnvValue, 
+		@TimeStamp
+
+	)
+
+	SET @Err = @@Error
+
+
+	RETURN @Err
+End
+
+GO
+
+USE [master]
+GO
+
+/****** Object:  StoredProcedure [dbo].[InsertProduct]    Script Date: 02/01/2012 11:41:29 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER OFF
+GO
+
+
+/* ------------------------------------------------------------
+   PROCEDURE:    InsertProduct
+   
+   Description:  Inserts a record into table 'Product'
+   
+   AUTHOR:       Rheem Manufacturing, Mike Harvey - 12/27/2010 12:30:56 PM
+   ------------------------------------------------------------ */
+
+ALTER PROCEDURE [dbo].[InsertProduct]
+(
+	@ProductID uniqueidentifier = null output,
+	@ProductCategoryID uniqueidentifier, 
+	@DivisionID uniqueidentifier, 
+	@Model varchar(50) = null, 
+	@MarketCommercial bit, 
+	@MarketResidential bit, 
+	@MarketManufacturedHome bit, 
+	@ProductLaunch bit, 
+	@Historical bit, 
+	@BrandID uniqueidentifier, 
+	@SeriesID uniqueidentifier, 
+	@Description text = null, 
+	@TankWarranty int, 
+	@PartsWarranty int, 
+	@LaborWarranty int, 
+	@HeatExchangeWarranty int, 
+	@CompressorWarranty int, 
+	@ExtendedWarranty int, 
+	@WarrantyText text = null, 
+	@EnergyStar bit, 
+	@EnergyGuide bit, 
+	@EnergyMiser bit, 
+	@DRHorton bit, 
+	@DisplayOnBHPG bit, 
+	@SeerID uniqueidentifier, 
+	@ACTonnageID uniqueidentifier, 
+	@Ton18 bit, 
+	@Ton24 bit, 
+	@Ton30 bit, 
+	@Ton36 bit, 
+	@Ton42 bit, 
+	@Ton48 bit, 
+	@Ton60 bit, 
+	@Ton90 bit, 
+	@Ton102 bit, 
+	@Ton120 bit, 
+	@Ton150 bit, 
+	@Ton180 bit, 
+	@Ton181 bit, 
+	@Ton240 bit, 
+	@Ton300 bit, 
+	@Gallon2Point5 bit, 
+	@Gallon6 bit, 
+	@Gallon10 bit, 
+	@Gallon15 bit, 
+	@Gallon20 bit, 
+	@Gallon30 bit, 
+	@Gallon38 bit, 
+	@Gallon40 bit, 
+	@Gallon47 bit, 
+	@Gallon50 bit, 
+	@Gallon65 bit, 
+	@Gallon80 bit, 
+	@HLW bit, 
+	@SCAQMD bit, 
+	@ProductCopy text = null, 
+	@VirtualTourText text = null, 
+	@GasEfficiency float, 
+	@HSPF float, 
+	@ComfortControl bit, 
+	@ComfortControl2 bit, 
+	@Gamma bit, 
+	@CabinetSize varchar(50) = null, 
+	@ARI210240 bit, 
+	@UL bit, 
+	@R410A bit, 
+	@CSA bit, 
+	@SACC bit, 
+	@EIL bit, 
+	@NSF bit, 
+	@TaxCredit int, 
+	@TaxCreditText text = null, 
+	@Gas bit, 
+	@Electric bit, 
+	@Tankless bit, 
+	@Solar bit, 
+	@Gallon12 bit, 
+	@Gallon29 bit, 
+	@Gallon37 bit, 
+	@Gallon45 bit, 
+	@Gallon48 bit, 
+	@Gallon60 bit, 
+	@Gallon75 bit, 
+	@Gallon90 bit, 
+	@Gallon85 bit, 
+	@Gallon100 bit, 
+	@Gallon105 bit, 
+	@Gallon110 bit, 
+	@Gallon119 bit, 
+	@Gallon120 bit, 
+	@Gallon150 bit, 
+	@Gallon2500 bit, 
+	@OutdoorOnlyWarranty bit, 
+	@SortOrder int, 
+	@PriceRange int, 
+	@ShowInRegistration bit, 
+	@OutdoorUnitOnly bit, 
+	@OutdoorUnitGas bit, 
+	@OutdoorUnitAir bit, 
+	@IndoorUnitOnly bit, 
+	@PackageUnit bit, 
+	@OutdoorUnitWithCoil bit, 
+	@PointValue int, 
+	@SRCC bit, 
+	@EfficiencyRange varchar(50) = null, 
+	@ContractorFAB text = null
+)
+
+AS
+SET NOCOUNT ON
+SET XACT_ABORT ON
+
+BEGIN
+	DECLARE @Err Int
+	
+	SET @ProductID = NewID()
+	
+
+	INSERT
+	INTO [Product]
+	(
+		[ProductID], 
+		[ProductCategoryID], 
+		[DivisionID], 
+		[Model], 
+		[MarketCommercial], 
+		[MarketResidential], 
+		[MarketManufacturedHome], 
+		[ProductLaunch], 
+		[Historical], 
+		[BrandID], 
+		[SeriesID], 
+		[Description], 
+		[TankWarranty], 
+		[PartsWarranty], 
+		[LaborWarranty], 
+		[HeatExchangeWarranty], 
+		[CompressorWarranty], 
+		[ExtendedWarranty], 
+		[WarrantyText], 
+		[EnergyStar], 
+		[EnergyGuide], 
+		[EnergyMiser], 
+		[DRHorton], 
+		[DisplayOnBHPG], 
+		[SeerID], 
+		[ACTonnageID], 
+		[Ton18], 
+		[Ton24], 
+		[Ton30], 
+		[Ton36], 
+		[Ton42], 
+		[Ton48], 
+		[Ton60], 
+		[Ton90], 
+		[Ton102], 
+		[Ton120], 
+		[Ton150], 
+		[Ton180], 
+		[Ton181], 
+		[Ton240], 
+		[Ton300], 
+		[Gallon2Point5], 
+		[Gallon6], 
+		[Gallon10], 
+		[Gallon15], 
+		[Gallon20], 
+		[Gallon30], 
+		[Gallon38], 
+		[Gallon40], 
+		[Gallon47], 
+		[Gallon50], 
+		[Gallon65], 
+		[Gallon80], 
+		[HLW], 
+		[SCAQMD], 
+		[ProductCopy], 
+		[VirtualTourText], 
+		[GasEfficiency], 
+		[HSPF], 
+		[ComfortControl], 
+		[ComfortControl2], 
+		[Gamma], 
+		[CabinetSize], 
+		[ARI210240], 
+		[UL], 
+		[R410A], 
+		[CSA], 
+		[SACC], 
+		[EIL], 
+		[NSF], 
+		[TaxCredit], 
+		[TaxCreditText], 
+		[Gas], 
+		[Electric], 
+		[Tankless], 
+		[Solar], 
+		[Gallon12], 
+		[Gallon29], 
+		[Gallon37], 
+		[Gallon45], 
+		[Gallon48], 
+		[Gallon60], 
+		[Gallon75], 
+		[Gallon90], 
+		[Gallon85], 
+		[Gallon100], 
+		[Gallon105], 
+		[Gallon110], 
+		[Gallon119], 
+		[Gallon120], 
+		[Gallon150], 
+		[Gallon2500], 
+		[OutdoorOnlyWarranty], 
+		[SortOrder], 
+		[PriceRange], 
+		[ShowInRegistration], 
+		[OutdoorUnitOnly], 
+		[OutdoorUnitGas], 
+		[OutdoorUnitAir], 
+		[IndoorUnitOnly], 
+		[PackageUnit], 
+		[OutdoorUnitWithCoil], 
+		[PointValue], 
+		[SRCC], 
+		[EfficiencyRange], 
+		[ContractorFAB]
+	)
+	VALUES
+	(
+		@ProductID, 
+		@ProductCategoryID, 
+		@DivisionID, 
+		@Model, 
+		@MarketCommercial, 
+		@MarketResidential, 
+		@MarketManufacturedHome, 
+		@ProductLaunch, 
+		@Historical, 
+		@BrandID, 
+		@SeriesID, 
+		@Description, 
+		@TankWarranty, 
+		@PartsWarranty, 
+		@LaborWarranty, 
+		@HeatExchangeWarranty, 
+		@CompressorWarranty, 
+		@ExtendedWarranty, 
+		@WarrantyText, 
+		@EnergyStar, 
+		@EnergyGuide, 
+		@EnergyMiser, 
+		@DRHorton, 
+		@DisplayOnBHPG, 
+		@SeerID, 
+		@ACTonnageID, 
+		@Ton18, 
+		@Ton24, 
+		@Ton30, 
+		@Ton36, 
+		@Ton42, 
+		@Ton48, 
+		@Ton60, 
+		@Ton90, 
+		@Ton102, 
+		@Ton120, 
+		@Ton150, 
+		@Ton180, 
+		@Ton181, 
+		@Ton240, 
+		@Ton300, 
+		@Gallon2Point5, 
+		@Gallon6, 
+		@Gallon10, 
+		@Gallon15, 
+		@Gallon20, 
+		@Gallon30, 
+		@Gallon38, 
+		@Gallon40, 
+		@Gallon47, 
+		@Gallon50, 
+		@Gallon65, 
+		@Gallon80, 
+		@HLW, 
+		@SCAQMD, 
+		@ProductCopy, 
+		@VirtualTourText, 
+		@GasEfficiency, 
+		@HSPF, 
+		@ComfortControl, 
+		@ComfortControl2, 
+		@Gamma, 
+		@CabinetSize, 
+		@ARI210240, 
+		@UL, 
+		@R410A, 
+		@CSA, 
+		@SACC, 
+		@EIL, 
+		@NSF, 
+		@TaxCredit, 
+		@TaxCreditText, 
+		@Gas, 
+		@Electric, 
+		@Tankless, 
+		@Solar, 
+		@Gallon12, 
+		@Gallon29, 
+		@Gallon37, 
+		@Gallon45, 
+		@Gallon48, 
+		@Gallon60, 
+		@Gallon75, 
+		@Gallon90, 
+		@Gallon85, 
+		@Gallon100, 
+		@Gallon105, 
+		@Gallon110, 
+		@Gallon119, 
+		@Gallon120, 
+		@Gallon150, 
+		@Gallon2500, 
+		@OutdoorOnlyWarranty, 
+		@SortOrder, 
+		@PriceRange, 
+		@ShowInRegistration, 
+		@OutdoorUnitOnly, 
+		@OutdoorUnitGas, 
+		@OutdoorUnitAir, 
+		@IndoorUnitOnly, 
+		@PackageUnit, 
+		@OutdoorUnitWithCoil, 
+		@PointValue, 
+		@SRCC, 
+		@EfficiencyRange, 
+		@ContractorFAB
+
+	)
+
+	SET @Err = @@Error
+
+
+	RETURN @Err
+End
+
+GO
+
+USE [master]
+GO
+
+/****** Object:  StoredProcedure [dbo].[InsertProductCategoryDocument]    Script Date: 02/01/2012 11:41:37 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER OFF
+GO
+
+
+/* ------------------------------------------------------------
+   PROCEDURE:    InsertProductCategoryDocument
+   
+   Description:  Inserts a record into table 'ProductCategoryDocument'
+   
+   AUTHOR:       Rheem Manufacturing, Mike Harvey - 12/27/2010 12:30:57 PM
+   ------------------------------------------------------------ */
+
+ALTER PROCEDURE [dbo].[InsertProductCategoryDocument]
+(
+	@ProductCategoryDocumentID uniqueidentifier = null output,
+	@ProductCategoryID uniqueidentifier, 
+	@DocumentID uniqueidentifier, 
+	@PairingType nvarchar(50) = null
+)
+
+AS
+SET NOCOUNT ON
+SET XACT_ABORT ON
+
+BEGIN
+	DECLARE @Err Int
+	
+	SET @ProductCategoryDocumentID = NewID()
+	
+
+	INSERT
+	INTO [ProductCategoryDocument]
+	(
+		[ProductCategoryDocumentID], 
+		[ProductCategoryID], 
+		[DocumentID], 
+		[PairingType]
+	)
+	VALUES
+	(
+		@ProductCategoryDocumentID, 
+		@ProductCategoryID, 
+		@DocumentID, 
+		@PairingType
+
+	)
+
+	SET @Err = @@Error
+
+
+	RETURN @Err
+End
+
+GO
+
+USE [master]
+GO
+
+/****** Object:  StoredProcedure [dbo].[InsertProductDocument]    Script Date: 02/01/2012 11:41:46 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER OFF
+GO
+
+
+/* ------------------------------------------------------------
+   PROCEDURE:    InsertProductDocument
+   
+   Description:  Inserts a record into table 'ProductDocument'
+   
+   AUTHOR:       Rheem Manufacturing, Mike Harvey - 12/27/2010 12:30:57 PM
+   ------------------------------------------------------------ */
+
+ALTER PROCEDURE [dbo].[InsertProductDocument]
+(
+	@ProductDocumentID uniqueidentifier = null output,
+	@ProductID uniqueidentifier, 
+	@DocumentID uniqueidentifier, 
+	@PairingType nvarchar(100) = null, 
+	@MimeType varchar(50) = null, 
+	@DocumentTitle varchar(256) = null, 
+	@PublicationDate datetime
+)
+
+AS
+SET NOCOUNT ON
+SET XACT_ABORT ON
+
+BEGIN
+	DECLARE @Err Int
+	
+	SET @ProductDocumentID = NewID()
+	
+
+	INSERT
+	INTO [ProductDocument]
+	(
+		[ProductDocumentID], 
+		[ProductID], 
+		[DocumentID], 
+		[PairingType], 
+		[MimeType], 
+		[DocumentTitle], 
+		[PublicationDate]
+	)
+	VALUES
+	(
+		@ProductDocumentID, 
+		@ProductID, 
+		@DocumentID, 
+		@PairingType, 
+		@MimeType, 
+		@DocumentTitle, 
+		@PublicationDate
+
+	)
+
+	SET @Err = @@Error
+
+
+	RETURN @Err
+End
+
+GO
+
+USE [master]
+GO
+
+/****** Object:  StoredProcedure [dbo].[InsertProductLog]    Script Date: 02/01/2012 11:41:53 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER OFF
+GO
+
+
+/* ------------------------------------------------------------
+   PROCEDURE:    InsertProductLog
+   
+   Description:  Inserts a record into table 'ProductLog'
+   
+   AUTHOR:       Rheem Manufacturing, Mike Harvey - 12/27/2010 12:30:57 PM
+   ------------------------------------------------------------ */
+
+ALTER PROCEDURE [dbo].[InsertProductLog]
+(
+	@ProductLogID uniqueidentifier = null output,
+	@ProductID uniqueidentifier, 
+	@SeqID int, 
+	@LogText varchar(1024) = null
+)
+
+AS
+SET NOCOUNT ON
+SET XACT_ABORT ON
+
+BEGIN
+	DECLARE @Err Int
+	
+	SET @ProductLogID = NewID()
+	
+
+	INSERT
+	INTO [ProductLog]
+	(
+		[ProductLogID], 
+		[ProductID], 
+		[SeqID], 
+		[LogText]
+	)
+	VALUES
+	(
+		@ProductLogID, 
+		@ProductID, 
+		@SeqID, 
+		@LogText
+
+	)
+
+	SET @Err = @@Error
+
+
+	RETURN @Err
+End
+
+GO
+
+USE [master]
+GO
+
+/****** Object:  StoredProcedure [dbo].[InsertProductNotes]    Script Date: 02/01/2012 11:42:01 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER OFF
+GO
+
+
+/* ------------------------------------------------------------
+   PROCEDURE:    InsertProductNotes
+   
+   Description:  Inserts a record into table 'ProductNotes'
+   
+   AUTHOR:       Rheem Manufacturing, Mike Harvey - 12/27/2010 12:30:57 PM
+   ------------------------------------------------------------ */
+
+ALTER PROCEDURE [dbo].[InsertProductNotes]
+(
+	@ProductNoteID uniqueidentifier = null output,
+	@ProductID uniqueidentifier, 
+	@NoteType varchar(50) = null, 
+	@Note text = null, 
+	@DateAdded datetime
+)
+
+AS
+SET NOCOUNT ON
+SET XACT_ABORT ON
+
+BEGIN
+	DECLARE @Err Int
+	
+	SET @ProductNoteID = NewID()
+	
+
+	INSERT
+	INTO [ProductNotes]
+	(
+		[ProductNoteID], 
+		[ProductID], 
+		[NoteType], 
+		[Note], 
+		[DateAdded]
+	)
+	VALUES
+	(
+		@ProductNoteID, 
+		@ProductID, 
+		@NoteType, 
+		@Note, 
+		@DateAdded
+
+	)
+
+	SET @Err = @@Error
+
+
+	RETURN @Err
+End
+
+GO
+
+USE [master]
+GO
+
+/****** Object:  StoredProcedure [dbo].[InsertProductProductGroup]    Script Date: 02/01/2012 11:42:15 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER OFF
+GO
+
+
+/* ------------------------------------------------------------
+   PROCEDURE:    InsertProductProductGroup
+   
+   Description:  Inserts a record into table 'ProductProductGroup'
+   
+   AUTHOR:       Rheem Manufacturing, Mike Harvey - 3/3/2011 12:42:27 PM
+   ------------------------------------------------------------ */
+
+ALTER PROCEDURE [dbo].[InsertProductProductGroup]
+(
+	@ProductProductGroupID uniqueidentifier = null output,
+	@ProductID uniqueidentifier, 
+	@ProductGroupID uniqueidentifier
+)
+
+AS
+SET NOCOUNT ON
+SET XACT_ABORT ON
+
+BEGIN
+	DECLARE @Err Int
+	
+	SET @ProductProductGroupID = NewID()
+	
+
+	INSERT
+	INTO [ProductProductGroup]
+	(
+		[ProductProductGroupID], 
+		[ProductID], 
+		[ProductGroupID]
+	)
+	VALUES
+	(
+		@ProductProductGroupID, 
+		@ProductID, 
+		@ProductGroupID
+
+	)
+
+	SET @Err = @@Error
+
+
+	RETURN @Err
+End
+
+GO
+
+USE [master]
+GO
+
+/****** Object:  StoredProcedure [dbo].[InsertracingGuests2011]    Script Date: 02/01/2012 11:42:21 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER OFF
+GO
+
+
+/* ------------------------------------------------------------
+   PROCEDURE:    InsertracingGuests2011
+   
+   Description:  Inserts a record into table 'racingGuests2011'
+   
+   AUTHOR:       Rheem Manufacturing, Brian White - 2/9/2011 10:39:52 AM
+   ------------------------------------------------------------ */
+
+ALTER PROCEDURE [dbo].[InsertracingGuests2011]
+(
+	@racingGuestID int = null output,
+	@racingHostPersonID uniqueidentifier, 
+	@raceNumber int, 
+	@firstName varchar(50) = null, 
+	@lastName varchar(50) = null, 
+	@GuestName varchar(250) = null, 
+	@CompanyName varchar(250) = null, 
+	@Address1 varchar(250) = null, 
+	@Address2 varchar(250) = null, 
+	@City varchar(250) = null, 
+	@State varchar(50) = null, 
+	@PostalCode varchar(250) = null, 
+	@DealerBuilderETC varchar(250) = null, 
+	@gender varchar(50) = null, 
+	@shirtSize varchar(50) = null, 
+	@email varchar(250) = null, 
+	@affiliation varchar(250) = null, 
+	@division varchar(250) = null, 
+	@emergencyNumber varchar(50) = null, 
+	@phoneNumber varchar(50) = null, 
+	@title varchar(50) = null, 
+	@brandOther varchar(50) = null, 
+	@brand varchar(50) = null, 
+	@mainBusiness varchar(50) = null, 
+	@businessSector varchar(50) = null, 
+	@annualPurchase bigint, 
+	@replaced bit, 
+	@CheckedIn int, 
+	@HasRadio varchar(50) = null
+)
+
+AS
+SET NOCOUNT ON
+SET XACT_ABORT ON
+
+BEGIN
+	DECLARE @Err Int
+	
+
+	INSERT
+	INTO [racingGuests2011]
+	(
+		[racingHostPersonID], 
+		[raceNumber], 
+		[firstName], 
+		[lastName], 
+		[GuestName], 
+		[CompanyName], 
+		[Address1], 
+		[Address2], 
+		[City], 
+		[State], 
+		[PostalCode], 
+		[DealerBuilderETC], 
+		[gender], 
+		[shirtSize], 
+		[email], 
+		[affiliation], 
+		[division], 
+		[emergencyNumber], 
+		[phoneNumber], 
+		[title], 
+		[brandOther], 
+		[brand], 
+		[mainBusiness], 
+		[businessSector], 
+		[annualPurchase], 
+		[replaced], 
+		[CheckedIn], 
+		[HasRadio]
+	)
+	VALUES
+	(
+		@racingHostPersonID, 
+		@raceNumber, 
+		@firstName, 
+		@lastName, 
+		@GuestName, 
+		@CompanyName, 
+		@Address1, 
+		@Address2, 
+		@City, 
+		@State, 
+		@PostalCode, 
+		@DealerBuilderETC, 
+		@gender, 
+		@shirtSize, 
+		@email, 
+		@affiliation, 
+		@division, 
+		@emergencyNumber, 
+		@phoneNumber, 
+		@title, 
+		@brandOther, 
+		@brand, 
+		@mainBusiness, 
+		@businessSector, 
+		@annualPurchase, 
+		@replaced, 
+		@CheckedIn, 
+		@HasRadio
+
+	)
+
+	SET @Err = @@Error
+	SET @racingGuestID = @@identity
+
+
+	RETURN @Err
+End
+
+GO
+
+USE [master]
+GO
+
+/****** Object:  StoredProcedure [dbo].[InsertRheemTeamServiceRequest]    Script Date: 02/01/2012 11:42:30 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER OFF
+GO
+
+
+/* ------------------------------------------------------------
+   PROCEDURE:    InsertRheemTeamServiceRequest
+   
+   Description:  Inserts a record into table 'RheemTeamServiceRequest'
+   
+   AUTHOR:       Rheem Manufacturing, Mike Harvey - 1/19/2011 1:37:32 PM
+   ------------------------------------------------------------ */
+
+ALTER PROCEDURE [dbo].[InsertRheemTeamServiceRequest]
+(
+	@RheemTeamServiceRequestID uniqueidentifier = null output,
+	@DealerID uniqueidentifier, 
+	@RequestDate datetime, 
+	@CustomerName varchar(80) = null, 
+	@Email varchar(256) = null, 
+	@Address varchar(80) = null, 
+	@City varchar(80) = null, 
+	@State char(2) = null, 
+	@PostalCode char(10) = null, 
+	@Phone char(14) = null, 
+	@CellPhone char(14) = null, 
+	@Media char(20) = null, 
+	@BestContactTime varchar(50) = null, 
+	@ServiceRequested varchar(50) = null, 
+	@Information varchar(2048) = null, 
+	@OtherText varchar(256) = null, 
+	@Status varchar(50) = null, 
+	@OrganizationID uniqueidentifier
+)
+
+AS
+SET NOCOUNT ON
+SET XACT_ABORT ON
+
+BEGIN
+	DECLARE @Err Int
+	
+	SET @RheemTeamServiceRequestID = NewID()
+	
+
+	INSERT
+	INTO [RheemTeamServiceRequest]
+	(
+		[RheemTeamServiceRequestID], 
+		[DealerID], 
+		[RequestDate], 
+		[CustomerName], 
+		[Email], 
+		[Address], 
+		[City], 
+		[State], 
+		[PostalCode], 
+		[Phone], 
+		[CellPhone], 
+		[Media], 
+		[BestContactTime], 
+		[ServiceRequested], 
+		[Information], 
+		[OtherText], 
+		[Status], 
+		[OrganizationID]
+	)
+	VALUES
+	(
+		@RheemTeamServiceRequestID, 
+		@DealerID, 
+		@RequestDate, 
+		@CustomerName, 
+		@Email, 
+		@Address, 
+		@City, 
+		@State, 
+		@PostalCode, 
+		@Phone, 
+		@CellPhone, 
+		@Media, 
+		@BestContactTime, 
+		@ServiceRequested, 
+		@Information, 
+		@OtherText, 
+		@Status, 
+		@OrganizationID
+
+	)
+
+	SET @Err = @@Error
+
+
+	RETURN @Err
+End
+
+GO
+
+USE [master]
+GO
+
+/****** Object:  StoredProcedure [dbo].[InsertSEER]    Script Date: 02/01/2012 11:42:38 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER OFF
+GO
+
+
+/* ------------------------------------------------------------
+   PROCEDURE:    InsertSEER
+   
+   Description:  Inserts a record into table 'SEER'
+   
+   AUTHOR:       Rheem Manufacturing, Mike Harvey - 12/27/2010 12:30:57 PM
+   ------------------------------------------------------------ */
+
+ALTER PROCEDURE [dbo].[InsertSEER]
+(
+	@SeerID uniqueidentifier = null output,
+	@Seer int
+)
+
+AS
+SET NOCOUNT ON
+SET XACT_ABORT ON
+
+BEGIN
+	DECLARE @Err Int
+	
+	SET @SeerID = NewID()
+	
+
+	INSERT
+	INTO [SEER]
+	(
+		[SeerID], 
+		[Seer]
+	)
+	VALUES
+	(
+		@SeerID, 
+		@Seer
+
+	)
+
+	SET @Err = @@Error
+
+
+	RETURN @Err
+End
+
+GO
+
+USE [master]
+GO
+
+/****** Object:  StoredProcedure [dbo].[InsertSeries]    Script Date: 02/01/2012 11:42:46 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER OFF
+GO
+
+
+/* ------------------------------------------------------------
+   PROCEDURE:    InsertSeries
+   
+   Description:  Inserts a record into table 'Series'
+   
+   AUTHOR:       Rheem Manufacturing, Mike Harvey - 12/27/2010 12:30:57 PM
+   ------------------------------------------------------------ */
+
+ALTER PROCEDURE [dbo].[InsertSeries]
+(
+	@SeriesID uniqueidentifier = null output,
+	@SeriesName varchar(50) = null, 
+	@DivisionID uniqueidentifier, 
+	@Description varchar(256) = null
+)
+
+AS
+SET NOCOUNT ON
+SET XACT_ABORT ON
+
+BEGIN
+	DECLARE @Err Int
+	
+	SET @SeriesID = NewID()
+	
+
+	INSERT
+	INTO [Series]
+	(
+		[SeriesID], 
+		[SeriesName], 
+		[DivisionID], 
+		[Description]
+	)
+	VALUES
+	(
+		@SeriesID, 
+		@SeriesName, 
+		@DivisionID, 
+		@Description
+
+	)
+
+	SET @Err = @@Error
+
+
+	RETURN @Err
+End
+
+GO
+
+USE [master]
+GO
+
+/****** Object:  StoredProcedure [dbo].[InsertSeriesDocument]    Script Date: 02/01/2012 11:42:55 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER OFF
+GO
+
+
+/* ------------------------------------------------------------
+   PROCEDURE:    InsertSeriesDocument
+   
+   Description:  Inserts a record into table 'SeriesDocument'
+   
+   AUTHOR:       Rheem Manufacturing, Mike Harvey - 12/27/2010 12:30:57 PM
+   ------------------------------------------------------------ */
+
+ALTER PROCEDURE [dbo].[InsertSeriesDocument]
+(
+	@SeriesDocumentID uniqueidentifier = null output,
+	@SeriesID uniqueidentifier, 
+	@DocumentID uniqueidentifier, 
+	@PairingType nvarchar(50) = null
+)
+
+AS
+SET NOCOUNT ON
+SET XACT_ABORT ON
+
+BEGIN
+	DECLARE @Err Int
+	
+	SET @SeriesDocumentID = NewID()
+	
+
+	INSERT
+	INTO [SeriesDocument]
+	(
+		[SeriesDocumentID], 
+		[SeriesID], 
+		[DocumentID], 
+		[PairingType]
+	)
+	VALUES
+	(
+		@SeriesDocumentID, 
+		@SeriesID, 
+		@DocumentID, 
+		@PairingType
+
+	)
+
+	SET @Err = @@Error
+
+
+	RETURN @Err
+End
+
+GO
+
+USE [master]
+GO
+
+/****** Object:  StoredProcedure [dbo].[Inserttraining_class_registrations]    Script Date: 02/01/2012 11:43:01 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER OFF
+GO
+
+
+/* ------------------------------------------------------------
+   PROCEDURE:    Inserttraining_class_registrations
+   
+   Description:  Inserts a record into table 'training_class_registrations'
+   
+   AUTHOR:       Rheem Manufacturing, Mike Harvey - 1/10/2011 4:20:35 PM
+   ------------------------------------------------------------ */
+
+ALTER PROCEDURE [dbo].[Inserttraining_class_registrations]
+(
+	@RegistrationID bigint = null output,
+	@ClassID int, 
+	@Attended int, 
+	@AttendedLicenseNum varchar(16) = null, 
+	@AttendName varchar(50) = null, 
+	@AttendCompany varchar(50) = null, 
+	@AttendPhone varchar(20) = null, 
+	@AttendEMail varchar(70) = null, 
+	@AttendPosition varchar(50) = null, 
+	@AttendedLicenseType varchar(50) = null, 
+	@CertPrinted bit
+)
+
+AS
+SET NOCOUNT ON
+SET XACT_ABORT ON
+
+BEGIN
+	DECLARE @Err Int
+	
+
+	INSERT
+	INTO [training_class_registrations]
+	(
+		[ClassID], 
+		[Attended], 
+		[AttendedLicenseNum], 
+		[AttendName], 
+		[AttendCompany], 
+		[AttendPhone], 
+		[AttendEMail], 
+		[AttendPosition], 
+		[AttendedLicenseType], 
+		[CertPrinted]
+	)
+	VALUES
+	(
+		@ClassID, 
+		@Attended, 
+		@AttendedLicenseNum, 
+		@AttendName, 
+		@AttendCompany, 
+		@AttendPhone, 
+		@AttendEMail, 
+		@AttendPosition, 
+		@AttendedLicenseType, 
+		@CertPrinted
+
+	)
+
+	SET @Err = @@Error
+	SET @RegistrationID = @@identity
+
+
+	RETURN @Err
+End
+
+GO
+
+USE [master]
+GO
+
+/****** Object:  StoredProcedure [dbo].[Inserttraining_classes]    Script Date: 02/01/2012 11:43:09 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER OFF
+GO
+
+
+/* ------------------------------------------------------------
+   PROCEDURE:    Inserttraining_classes
+   
+   Description:  Inserts a record into table 'training_classes'
+   
+   AUTHOR:       Rheem Manufacturing, Mike Harvey - 1/10/2011 4:20:35 PM
+   ------------------------------------------------------------ */
+
+ALTER PROCEDURE [dbo].[Inserttraining_classes]
+(
+	@ClassID int = null output,
+	@Status tinyint, 
+	@InstructorID uniqueidentifier, 
+	@ContactID uniqueidentifier, 
+	@ClassType smallint, 
+	@ClassDate datetime, 
+	@ClassLength decimal, 
+	@LocationName varchar(50) = null, 
+	@LocationStreet varchar(50) = null, 
+	@LocationStreet2 varchar(30) = null, 
+	@LocationCity varchar(50) = null, 
+	@LocationState char(2) = null, 
+	@LocationZip varchar(10) = null, 
+	@Sponsor varchar(50) = null, 
+	@SponsorID uniqueidentifier, 
+	@ContactPhone varchar(20) = null, 
+	@ContactEMail varchar(70) = null, 
+	@ClassAddlInfo varchar(255) = null, 
+	@SchedulerID uniqueidentifier, 
+	@SchedulerName varchar(50) = null, 
+	@ReminderSent bit, 
+	@Brand int, 
+	@AttendanceFinalized bit
+)
+
+AS
+SET NOCOUNT ON
+SET XACT_ABORT ON
+
+BEGIN
+	DECLARE @Err Int
+	
+
+	INSERT
+	INTO [training_classes]
+	(
+		[Status], 
+		[InstructorID], 
+		[ContactID], 
+		[ClassType], 
+		[ClassDate], 
+		[ClassLength], 
+		[LocationName], 
+		[LocationStreet], 
+		[LocationStreet2], 
+		[LocationCity], 
+		[LocationState], 
+		[LocationZip], 
+		[Sponsor], 
+		[SponsorID], 
+		[ContactPhone], 
+		[ContactEMail], 
+		[ClassAddlInfo], 
+		[SchedulerID], 
+		[SchedulerName], 
+		[ReminderSent], 
+		[Brand], 
+		[AttendanceFinalized]
+	)
+	VALUES
+	(
+		@Status, 
+		@InstructorID, 
+		@ContactID, 
+		@ClassType, 
+		@ClassDate, 
+		@ClassLength, 
+		@LocationName, 
+		@LocationStreet, 
+		@LocationStreet2, 
+		@LocationCity, 
+		@LocationState, 
+		@LocationZip, 
+		@Sponsor, 
+		@SponsorID, 
+		@ContactPhone, 
+		@ContactEMail, 
+		@ClassAddlInfo, 
+		@SchedulerID, 
+		@SchedulerName, 
+		@ReminderSent, 
+		@Brand, 
+		@AttendanceFinalized
+
+	)
+
+	SET @Err = @@Error
+	SET @ClassID = @@identity
+
+
+	RETURN @Err
+End
+
+GO
+
+USE [master]
+GO
+
+/****** Object:  StoredProcedure [dbo].[ReportGetWebContacts]    Script Date: 02/01/2012 11:43:17 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+ALTER PROCEDURE [dbo].[ReportGetWebContacts]
+(
+	@BeginDate datetime,
+	@EndDate datetime,
+	@Topic varchar(50),
+	@DayWeekMonth varchar(50)
+)
+As
+BEGIN
+	DECLARE @Err Int
+	
+	If @DayWeekMonth = 'Days'
+	Begin
+	
+		If @Topic = '0' 
+		Begin
+			SELECT DISTINCT Topic, CONVERT(varchar, TimeStamp, 101) AS ThisDate, dbo.CountDays(CONVERT(varchar, TimeStamp, 101), CONVERT(varchar, TimeStamp, 101), Topic) AS thisCount
+			FROM ContactEmails
+			WHERE (TimeStamp BETWEEN @BeginDate AND @EndDate) 
+			
+		End
+		Else
+		Begin
+			SELECT DISTINCT Topic, CONVERT(varchar, TimeStamp, 101) AS ThisDate, dbo.CountDays(CONVERT(varchar, TimeStamp, 101), CONVERT(varchar, TimeStamp, 101), Topic) AS thisCount
+			FROM ContactEmails
+			WHERE (TimeStamp BETWEEN @BeginDate AND @EndDate) 		
+			AND Topic = @Topic	
+		End
+		
+	End
+	
+	If @DayWeekMonth = 'Weeks'
+	Begin
+	
+		If @Topic = '0' 
+		Begin
+			SELECT DISTINCT Topic, DATEPART(wk, TimeStamp) AS ThisDate, dbo.CountDaysByWeeks(DATEPART(wk, TimeStamp), DATEPART(year, TimeStamp), Topic) AS thisCount
+			FROM ContactEmails
+			WHERE (TimeStamp BETWEEN @BeginDate AND @EndDate) 			
+			and (DATEPART(wk, TimeStamp) >= DATEPART(wk, @BeginDate)
+			and DATEPART(wk, TimeStamp) <= DATEPART(wk, @EndDate))
+		End
+		Else
+		Begin
+			SELECT DISTINCT Topic, DATEPART(wk, TimeStamp) AS ThisDate, dbo.CountDaysByWeeks(DATEPART(wk, TimeStamp), DATEPART(year, TimeStamp), Topic) AS thisCount
+			FROM ContactEmails
+			WHERE (TimeStamp BETWEEN @BeginDate AND @EndDate) 
+			AND Topic = @Topic
+			and (DATEPART(wk, TimeStamp) >= DATEPART(wk, @BeginDate)
+			and DATEPART(wk, TimeStamp) <= DATEPART(wk, @EndDate))
+		End
+			
+	End
+	
+	If @DayWeekMonth = 'Months'
+	Begin
+	
+		If @Topic = '0' 
+		Begin
+			SELECT DISTINCT Topic, DATEPART(m, TimeStamp) AS ThisDate, dbo.CountDaysByMonths(DATEPART(m, TimeStamp), DATEPART(year, TimeStamp), Topic) AS thisCount
+			FROM ContactEmails
+			WHERE (TimeStamp BETWEEN @BeginDate AND @EndDate) 
+			and (DATEPART(m, TimeStamp) >= DATEPART(m, @BeginDate)
+			and DATEPART(m, TimeStamp) <= DATEPART(m, @EndDate))
+		End 
+		Else
+		Begin
+			SELECT DISTINCT Topic, DATEPART(m, TimeStamp) AS ThisDate, dbo.CountDaysByMonths(DATEPART(m, TimeStamp), DATEPART(year, TimeStamp), Topic) AS thisCount
+			FROM ContactEmails
+			WHERE (TimeStamp BETWEEN @BeginDate AND @EndDate) 
+			AND Topic = @Topic
+			and (DATEPART(m, TimeStamp) >= DATEPART(m, @BeginDate)
+			and DATEPART(m, TimeStamp) <= DATEPART(m, @EndDate))
+		End
+	
+	End
+	
+End
+
+GO
+
+USE [master]
+GO
+
+/****** Object:  StoredProcedure [dbo].[SearchCNTemplateByString]    Script Date: 02/01/2012 11:43:24 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER OFF
+GO
+
+
+/* ------------------------------------------------------------
+   PROCEDURE:    SearchCNTemplateByString
+   
+   Description:  Selects a record from table 'CNTemplate'
+   				 And puts values into parameters
+   
+   AUTHOR:       Rheem Manufacturing, Mike Harvey - 1/4/2011 10:28:22 AM
+   ------------------------------------------------------------ */
+
+ALTER PROCEDURE [dbo].[SearchCNTemplateByString]
+(
+	@searchParam varchar(500)
+)
+As
+BEGIN
+	SET NOCOUNT ON
+	SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+	
+	DECLARE @Err Int
+	DECLARE @strSql varchar(4000)
+	
+	SET @strSql = '	Select 	[CNTemplateID], [CNCategoryID], [BrandID], [TemplateHTML]
+	FROM [CNTemplate]
+	WHERE ' +  @searchParam
+
+	EXEC(@strSql)
+	
+	--//We should NOT be using exec above.
+	--//If params are NOT known, then be sure to clean sql
+	--//If params are known, format like example below
+	
+	--IF @prodname IS NOT NULL
+	--SELECT @sql = @sql + ' ProductName LIKE @prodname'
+	--EXEC sp_executesql @sql, N'@prodname varchar(400)',@prodname
+End
+
+GO
+
+USE [master]
+GO
+
+/****** Object:  StoredProcedure [dbo].[SearchContactCategoriesByString]    Script Date: 02/01/2012 11:43:32 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+/* ------------------------------------------------------------
+   PROCEDURE:    SearchContactCategoriesByString
+   
+   Description:  Selects a record from table 'ContactCategories'
+   				 And puts values into parameters
+   
+   AUTHOR:       Rheem, Brian White - 9/13/2010 11:29:29 AM
+   ------------------------------------------------------------ */
+
+ALTER PROCEDURE [dbo].[SearchContactCategoriesByString]
+(
+	@searchParam varchar(500)
+)
+As
+BEGIN
+	DECLARE @Err Int
+	DECLARE @strSql nvarchar(4000)
+	
+	--//If you don't need all fields, change Select string below
+	--//Only get the data you need
+	SET @strSql = '	Select 	[CategoryID], [Category]
+	FROM [ContactCategories]
+	WHERE ' +  @searchParam
+	
+	EXEC sp_executesql @strSql
+	
+	--//Example (If Fields are known, format like below)
+	--IF @prodname IS NOT NULL
+	--SELECT @strSql = @strSql + ' ProductName LIKE @prodname'
+	
+	--EXEC sp_executesql @strSql, N'@prodname varchar(400)',@prodname
+
+	--//do not use exec()
+	--EXEC(@strSql)
+End
+
+GO
+
+USE [master]
+GO
+
+/****** Object:  StoredProcedure [dbo].[SearchContactEmailsByString]    Script Date: 02/01/2012 11:43:40 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+/* ------------------------------------------------------------
+   PROCEDURE:    SearchContactEmailsByString
+   
+   Description:  Selects a record from table 'ContactEmails'
+   				 And puts values into parameters
+   
+   AUTHOR:       Rheem, Brian White - 9/13/2010 11:29:29 AM
+   ------------------------------------------------------------ */
+
+ALTER PROCEDURE [dbo].[SearchContactEmailsByString]
+(
+	@searchParam varchar(500)
+)
+As
+BEGIN
+	DECLARE @Err Int
+	DECLARE @strSql nvarchar(4000)
+	
+	--//If you don't need all fields, change Select string below
+	--//Only get the data you need
+	SET @strSql = '	Select 	[EntryID], [Topic], [Subtopic], [ToEmail], 
+	[PhoneNumber], [PostalCode], [Message], [TimeStamp], [FromEmail], 
+	[FromName], [ModelNumber], [SerialNumber], [Country], 
+	[PlumberContractorName], [PlumberContractorPhoneNumber],
+	CONVERT(varchar, TimeStamp, 101) as thistime
+	FROM [ContactEmails]
+	WHERE ' +  @searchParam
+	
+	EXEC sp_executesql @strSql
+	
+	--//Example (If Fields are known, format like below)
+	--IF @prodname IS NOT NULL
+	--SELECT @strSql = @strSql + ' ProductName LIKE @prodname'
+	
+	--EXEC sp_executesql @strSql, N'@prodname varchar(400)',@prodname
+
+	--//do not use exec()
+	--EXEC(@strSql)
+End
+
+GO
+
+USE [master]
+GO
+
+/****** Object:  StoredProcedure [dbo].[SearchContactFAQsByString]    Script Date: 02/01/2012 11:43:56 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER OFF
+GO
+
+
+/* ------------------------------------------------------------
+   PROCEDURE:    SearchContactFAQsByString
+   
+   Description:  Selects a record from table 'ContactFAQs'
+   				 And puts values into parameters
+   
+   AUTHOR:       Rheem Manufacturing, Brian White - 12/20/2010 2:16:27 PM
+   ------------------------------------------------------------ */
+
+ALTER PROCEDURE [dbo].[SearchContactFAQsByString]
+(
+	@searchParam varchar(500)
+)
+As
+BEGIN
+	SET NOCOUNT ON
+	SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+	
+	DECLARE @Err Int
+	DECLARE @strSql varchar(4000)
+	
+	SET @strSql = '	Select 	[ID], [SubtopicID], [Title], [Content], [Rank]
+	FROM [ContactFAQs]
+	WHERE ' +  @searchParam
+
+	EXEC(@strSql)
+	
+	--//We should NOT be using exec above.
+	--//If params are NOT known, then be sure to clean sql
+	--//If params are known, format like example below
+	
+	--IF @prodname IS NOT NULL
+	--SELECT @sql = @sql + ' ProductName LIKE @prodname'
+	--EXEC sp_executesql @sql, N'@prodname varchar(400)',@prodname
+End
+
+GO
+
+USE [master]
+GO
+
+/****** Object:  StoredProcedure [dbo].[SearchContactListsByString]    Script Date: 02/01/2012 11:44:04 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+/* ------------------------------------------------------------
+   PROCEDURE:    SearchContactListsByString
+   
+   Description:  Selects a record from table 'ContactLists'
+   				 And puts values into parameters
+   
+   AUTHOR:       Rheem, Brian White - 9/13/2010 12:52:25 PM
+   ------------------------------------------------------------ */
+
+ALTER PROCEDURE [dbo].[SearchContactListsByString]
+(
+	@searchParam varchar(500)
+)
+As
+BEGIN
+	DECLARE @Err Int
+	DECLARE @strSql nvarchar(4000)
+	
+	--//If you don't need all fields, change Select string below
+	--//Only get the data you need
+	SET @strSql = '	Select 	[ID], [Category], [Contact], [Email]
+	FROM [ContactLists]
+	WHERE ' +  @searchParam
+	
+	EXEC sp_executesql @strSql
+	
+	--//Example (If Fields are known, format like below)
+	--IF @prodname IS NOT NULL
+	--SELECT @strSql = @strSql + ' ProductName LIKE @prodname'
+	
+	--EXEC sp_executesql @strSql, N'@prodname varchar(400)',@prodname
+
+	--//do not use exec()
+	--EXEC(@strSql)
+End
+
+GO
+
+USE [master]
+GO
+
+/****** Object:  StoredProcedure [dbo].[SearchContactListsByStringForSubTopic]    Script Date: 02/01/2012 11:44:11 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+/* ------------------------------------------------------------
+   PROCEDURE:    SearchContactListsByString
+   
+   Description:  Selects a record from table 'ContactLists'
+   				 And puts values into parameters
+   
+   AUTHOR:       Rheem, Brian White - 9/13/2010 12:52:25 PM
+   ------------------------------------------------------------ */
+
+ALTER PROCEDURE [dbo].[SearchContactListsByStringForSubTopic]
+(
+	@Category varchar(500)
+)
+As
+BEGIN
+	DECLARE @Err Int
+	SET NOCOUNT ON
+	
+	SELECT [ID], [Category], [Contact], [Email]
+	FROM [ContactLists]
+	WHERE Category = @Category
+	ORDER BY Contact
+		
+End
+
+GO
+
+USE [master]
+GO
+
+/****** Object:  StoredProcedure [dbo].[SearchEnvByString]    Script Date: 02/01/2012 11:44:21 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER OFF
+GO
+
+
+/* ------------------------------------------------------------
+   PROCEDURE:    SearchEnvByString
+   
+   Description:  Selects a record from table 'Env'
+   				 And puts values into parameters
+   
+   AUTHOR:       Rheem Manufacturing, Mike Harvey - 1/20/2011 12:05:43 PM
+   ------------------------------------------------------------ */
+
+ALTER PROCEDURE [dbo].[SearchEnvByString]
+(
+	@searchParam varchar(500)
+)
+As
+BEGIN
+	SET NOCOUNT ON
+	SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+	
+	DECLARE @Err Int
+	DECLARE @strSql varchar(4000)
+	
+	SET @strSql = '	Select 	[EnvID], [EnvName], [EnvValue], [TimeStamp]
+	FROM [Env]
+	WHERE ' +  @searchParam
+
+	EXEC(@strSql)
+	
+	--//We should NOT be using exec above.
+	--//If params are NOT known, then be sure to clean sql
+	--//If params are known, format like example below
+	
+	--IF @prodname IS NOT NULL
+	--SELECT @sql = @sql + ' ProductName LIKE @prodname'
+	--EXEC sp_executesql @sql, N'@prodname varchar(400)',@prodname
+End
+
+GO
+
+USE [master]
+GO
+
+/****** Object:  StoredProcedure [dbo].[SearchProductByString]    Script Date: 02/01/2012 11:44:29 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER OFF
+GO
+
+
+/* ------------------------------------------------------------
+   PROCEDURE:    SearchProductByString
+   
+   Description:  Selects a record from table 'Product'
+   				 And puts values into parameters
+   
+   AUTHOR:       Rheem Manufacturing, Mike Harvey - 12/27/2010 12:30:56 PM
+   ------------------------------------------------------------ */
+
+ALTER PROCEDURE [dbo].[SearchProductByString]
+(
+	@searchParam varchar(500)
+)
+As
+BEGIN
+	SET NOCOUNT ON
+	SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+	
+	DECLARE @Err Int
+	DECLARE @strSql varchar(4000)
+	
+	SET @strSql = '	Select 	[ProductID], [ProductCategoryID], [DivisionID], [Model], [MarketCommercial], [MarketResidential], [MarketManufacturedHome], [ProductLaunch], [Historical], [BrandID], [SeriesID], [Description], [TankWarranty], [PartsWarranty], [LaborWarranty], [HeatExchangeWarranty], [CompressorWarranty], [ExtendedWarranty], [WarrantyText], [EnergyStar], [EnergyGuide], [EnergyMiser], [DRHorton], [DisplayOnBHPG], [SeerID], [ACTonnageID], [Ton18], [Ton24], [Ton30], [Ton36], [Ton42], [Ton48], [Ton60], [Ton90], [Ton102], [Ton120], [Ton150], [Ton180], [Ton181], [Ton240], [Ton300], [Gallon2Point5], [Gallon6], [Gallon10], [Gallon15], [Gallon20], [Gallon30], [Gallon38], [Gallon40], [Gallon47], [Gallon50], [Gallon65], [Gallon80], [HLW], [SCAQMD], [ProductCopy], [VirtualTourText], [GasEfficiency], [HSPF], [ComfortControl], [ComfortControl2], [Gamma], [CabinetSize], [ARI210240], [UL], [R410A], [CSA], [SACC], [EIL], [NSF], [TaxCredit], [TaxCreditText], [Gas], [Electric], [Tankless], [Solar], [Gallon12], [Gallon29], [Gallon37], [Gallon45], [Gallon48], [Gallon60], [Gallon75], [Gallon90], [Gallon85], [Gallon100], [Gallon105], [Gallon110], [Gallon119], [Gallon120], [Gallon150], [Gallon2500], [OutdoorOnlyWarranty], [SortOrder], [PriceRange], [ShowInRegistration], [OutdoorUnitOnly], [OutdoorUnitGas], [OutdoorUnitAir], [IndoorUnitOnly], [PackageUnit], [OutdoorUnitWithCoil], [PointValue], [SRCC], [EfficiencyRange], [ContractorFAB]
+	FROM [Product]
+	WHERE ' +  @searchParam
+
+	EXEC(@strSql)
+	
+	--//We should NOT be using exec above.
+	--//If params are NOT known, then be sure to clean sql
+	--//If params are known, format like example below
+	
+	--IF @prodname IS NOT NULL
+	--SELECT @sql = @sql + ' ProductName LIKE @prodname'
+	--EXEC sp_executesql @sql, N'@prodname varchar(400)',@prodname
+End
+
+GO
+
+USE [master]
+GO
+
+/****** Object:  StoredProcedure [dbo].[SearchProductCategoryDocumentByString]    Script Date: 02/01/2012 11:44:38 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER OFF
+GO
+
+
+/* ------------------------------------------------------------
+   PROCEDURE:    SearchProductCategoryDocumentByString
+   
+   Description:  Selects a record from table 'ProductCategoryDocument'
+   				 And puts values into parameters
+   
+   AUTHOR:       Rheem Manufacturing, Mike Harvey - 12/27/2010 12:30:57 PM
+   ------------------------------------------------------------ */
+
+ALTER PROCEDURE [dbo].[SearchProductCategoryDocumentByString]
+(
+	@searchParam varchar(500)
+)
+As
+BEGIN
+	SET NOCOUNT ON
+	SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+	
+	DECLARE @Err Int
+	DECLARE @strSql varchar(4000)
+	
+	SET @strSql = '	Select 	[ProductCategoryDocumentID], [ProductCategoryID], [DocumentID], [PairingType]
+	FROM [ProductCategoryDocument]
+	WHERE ' +  @searchParam
+
+	EXEC(@strSql)
+	
+	--//We should NOT be using exec above.
+	--//If params are NOT known, then be sure to clean sql
+	--//If params are known, format like example below
+	
+	--IF @prodname IS NOT NULL
+	--SELECT @sql = @sql + ' ProductName LIKE @prodname'
+	--EXEC sp_executesql @sql, N'@prodname varchar(400)',@prodname
+End
+
+GO
+
+USE [master]
+GO
+
+/****** Object:  StoredProcedure [dbo].[SearchProductDocumentByString]    Script Date: 02/01/2012 11:44:47 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER OFF
+GO
+
+
+/* ------------------------------------------------------------
+   PROCEDURE:    SearchProductDocumentByString
+   
+   Description:  Selects a record from table 'ProductDocument'
+   				 And puts values into parameters
+   
+   AUTHOR:       Rheem Manufacturing, Mike Harvey - 12/27/2010 12:30:57 PM
+   ------------------------------------------------------------ */
+
+ALTER PROCEDURE [dbo].[SearchProductDocumentByString]
+(
+	@searchParam varchar(500)
+)
+As
+BEGIN
+	SET NOCOUNT ON
+	SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+	
+	DECLARE @Err Int
+	DECLARE @strSql varchar(4000)
+	
+	SET @strSql = '	Select 	[ProductDocumentID], [ProductID], [DocumentID], [PairingType], [MimeType], [DocumentTitle], [PublicationDate]
+	FROM [ProductDocument]
+	WHERE ' +  @searchParam
+
+	EXEC(@strSql)
+	
+	--//We should NOT be using exec above.
+	--//If params are NOT known, then be sure to clean sql
+	--//If params are known, format like example below
+	
+	--IF @prodname IS NOT NULL
+	--SELECT @sql = @sql + ' ProductName LIKE @prodname'
+	--EXEC sp_executesql @sql, N'@prodname varchar(400)',@prodname
+End
+
+GO
+
+USE [master]
+GO
+
+/****** Object:  StoredProcedure [dbo].[SearchProductLogByString]    Script Date: 02/01/2012 11:44:57 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER OFF
+GO
+
+
+/* ------------------------------------------------------------
+   PROCEDURE:    SearchProductLogByString
+   
+   Description:  Selects a record from table 'ProductLog'
+   				 And puts values into parameters
+   
+   AUTHOR:       Rheem Manufacturing, Mike Harvey - 12/27/2010 12:30:57 PM
+   ------------------------------------------------------------ */
+
+ALTER PROCEDURE [dbo].[SearchProductLogByString]
+(
+	@searchParam varchar(500)
+)
+As
+BEGIN
+	SET NOCOUNT ON
+	SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+	
+	DECLARE @Err Int
+	DECLARE @strSql varchar(4000)
+	
+	SET @strSql = '	Select 	[ProductLogID], [ProductID], [SeqID], [LogText]
+	FROM [ProductLog]
+	WHERE ' +  @searchParam
+
+	EXEC(@strSql)
+	
+	--//We should NOT be using exec above.
+	--//If params are NOT known, then be sure to clean sql
+	--//If params are known, format like example below
+	
+	--IF @prodname IS NOT NULL
+	--SELECT @sql = @sql + ' ProductName LIKE @prodname'
+	--EXEC sp_executesql @sql, N'@prodname varchar(400)',@prodname
+End
+
+GO
+
+USE [master]
+GO
+
+/****** Object:  StoredProcedure [dbo].[SearchProductNotesByString]    Script Date: 02/01/2012 11:45:08 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER OFF
+GO
+
+
+/* ------------------------------------------------------------
+   PROCEDURE:    SearchProductNotesByString
+   
+   Description:  Selects a record from table 'ProductNotes'
+   				 And puts values into parameters
+   
+   AUTHOR:       Rheem Manufacturing, Mike Harvey - 12/27/2010 12:30:57 PM
+   ------------------------------------------------------------ */
+
+ALTER PROCEDURE [dbo].[SearchProductNotesByString]
+(
+	@searchParam varchar(500)
+)
+As
+BEGIN
+	SET NOCOUNT ON
+	SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+	
+	DECLARE @Err Int
+	DECLARE @strSql varchar(4000)
+	
+	SET @strSql = '	Select 	[ProductNoteID], [ProductID], [NoteType], [Note], [DateAdded]
+	FROM [ProductNotes]
+	WHERE ' +  @searchParam
+
+	EXEC(@strSql)
+	
+	--//We should NOT be using exec above.
+	--//If params are NOT known, then be sure to clean sql
+	--//If params are known, format like example below
+	
+	--IF @prodname IS NOT NULL
+	--SELECT @sql = @sql + ' ProductName LIKE @prodname'
+	--EXEC sp_executesql @sql, N'@prodname varchar(400)',@prodname
+End
+
+GO
+
+USE [master]
+GO
+
+/****** Object:  StoredProcedure [dbo].[SearchProductProductGroupByString]    Script Date: 02/01/2012 11:45:15 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER OFF
+GO
+
+
+/* ------------------------------------------------------------
+   PROCEDURE:    SearchProductProductGroupByString
+   
+   Description:  Selects a record from table 'ProductProductGroup'
+   				 And puts values into parameters
+   
+   AUTHOR:       Rheem Manufacturing, Mike Harvey - 3/3/2011 12:42:27 PM
+   ------------------------------------------------------------ */
+
+ALTER PROCEDURE [dbo].[SearchProductProductGroupByString]
+(
+	@searchParam varchar(500)
+)
+As
+BEGIN
+	SET NOCOUNT ON
+	SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+	
+	DECLARE @Err Int
+	DECLARE @strSql varchar(4000)
+	
+	SET @strSql = '	Select 	[ProductProductGroupID], [ProductID], [ProductGroupID]
+	FROM [ProductProductGroup]
+	WHERE ' +  @searchParam
+
+	EXEC(@strSql)
+	
+	--//We should NOT be using exec above.
+	--//If params are NOT known, then be sure to clean sql
+	--//If params are known, format like example below
+	
+	--IF @prodname IS NOT NULL
+	--SELECT @sql = @sql + ' ProductName LIKE @prodname'
+	--EXEC sp_executesql @sql, N'@prodname varchar(400)',@prodname
+End
+
+GO
+
+USE [master]
+GO
+
+/****** Object:  StoredProcedure [dbo].[SearchracingGuests2011ByString]    Script Date: 02/01/2012 11:45:22 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER OFF
+GO
+
+
+/* ------------------------------------------------------------
+   PROCEDURE:    SearchracingGuests2011ByString
+   
+   Description:  Selects a record from table 'racingGuests2011'
+   				 And puts values into parameters
+   
+   AUTHOR:       Rheem Manufacturing, Brian White - 2/9/2011 10:39:53 AM
+   ------------------------------------------------------------ */
+
+ALTER PROCEDURE [dbo].[SearchracingGuests2011ByString]
+(
+	@searchParam varchar(500)
+)
+As
+BEGIN
+	SET NOCOUNT ON
+	SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+	
+	DECLARE @Err Int
+	DECLARE @strSql varchar(4000)
+	
+	SET @strSql = '	Select 	[racingGuestID], [racingHostPersonID], [raceNumber], [firstName], [lastName], [GuestName], [CompanyName], [Address1], [Address2], [City], [State], [PostalCode], [DealerBuilderETC], [gender], [shirtSize], [email], [affiliation], [division], [emergencyNumber], [phoneNumber], [title], [brandOther], [brand], [mainBusiness], [businessSector], [annualPurchase], [replaced], [CheckedIn], [HasRadio]
+	FROM [racingGuests2011]
+	WHERE ' +  @searchParam
+
+	EXEC(@strSql)
+	
+	--//We should NOT be using exec above.
+	--//If params are NOT known, then be sure to clean sql
+	--//If params are known, format like example below
+	
+	--IF @prodname IS NOT NULL
+	--SELECT @sql = @sql + ' ProductName LIKE @prodname'
+	--EXEC sp_executesql @sql, N'@prodname varchar(400)',@prodname
+End
+
+GO
+
+USE [master]
+GO
+
+/****** Object:  StoredProcedure [dbo].[SearchRheemTeamServiceRequestByString]    Script Date: 02/01/2012 11:45:30 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER OFF
+GO
+
+
+/* ------------------------------------------------------------
+   PROCEDURE:    SearchRheemTeamServiceRequestByString
+   
+   Description:  Selects a record from table 'RheemTeamServiceRequest'
+   				 And puts values into parameters
+   
+   AUTHOR:       Rheem Manufacturing, Mike Harvey - 1/19/2011 1:37:32 PM
+   ------------------------------------------------------------ */
+
+ALTER PROCEDURE [dbo].[SearchRheemTeamServiceRequestByString]
+(
+	@searchParam varchar(500)
+)
+As
+BEGIN
+	SET NOCOUNT ON
+	SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+	
+	DECLARE @Err Int
+	DECLARE @strSql varchar(4000)
+	
+	SET @strSql = '	Select 	[RheemTeamServiceRequestID], [DealerID], [RequestDate], [CustomerName], [Email], [Address], [City], [State], [PostalCode], [Phone], [CellPhone], [Media], [BestContactTime], [ServiceRequested], [Information], [OtherText], [Status], [OrganizationID]
+	FROM [RheemTeamServiceRequest]
+	WHERE ' +  @searchParam
+
+	EXEC(@strSql)
+	
+	--//We should NOT be using exec above.
+	--//If params are NOT known, then be sure to clean sql
+	--//If params are known, format like example below
+	
+	--IF @prodname IS NOT NULL
+	--SELECT @sql = @sql + ' ProductName LIKE @prodname'
+	--EXEC sp_executesql @sql, N'@prodname varchar(400)',@prodname
+End
+
+GO
+
+USE [master]
+GO
+
+/****** Object:  StoredProcedure [dbo].[SearchSEERByString]    Script Date: 02/01/2012 11:45:39 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER OFF
+GO
+
+
+/* ------------------------------------------------------------
+   PROCEDURE:    SearchSEERByString
+   
+   Description:  Selects a record from table 'SEER'
+   				 And puts values into parameters
+   
+   AUTHOR:       Rheem Manufacturing, Mike Harvey - 12/27/2010 12:30:57 PM
+   ------------------------------------------------------------ */
+
+ALTER PROCEDURE [dbo].[SearchSEERByString]
+(
+	@searchParam varchar(500)
+)
+As
+BEGIN
+	SET NOCOUNT ON
+	SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+	
+	DECLARE @Err Int
+	DECLARE @strSql varchar(4000)
+	
+	SET @strSql = '	Select 	[SeerID], [Seer]
+	FROM [SEER]
+	WHERE ' +  @searchParam
+
+	EXEC(@strSql)
+	
+	--//We should NOT be using exec above.
+	--//If params are NOT known, then be sure to clean sql
+	--//If params are known, format like example below
+	
+	--IF @prodname IS NOT NULL
+	--SELECT @sql = @sql + ' ProductName LIKE @prodname'
+	--EXEC sp_executesql @sql, N'@prodname varchar(400)',@prodname
+End
+
+GO
+
+USE [master]
+GO
+
+/****** Object:  StoredProcedure [dbo].[SearchSeriesByString]    Script Date: 02/01/2012 11:45:46 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER OFF
+GO
+
+
+/* ------------------------------------------------------------
+   PROCEDURE:    SearchSeriesByString
+   
+   Description:  Selects a record from table 'Series'
+   				 And puts values into parameters
+   
+   AUTHOR:       Rheem Manufacturing, Mike Harvey - 12/27/2010 12:30:57 PM
+   ------------------------------------------------------------ */
+
+ALTER PROCEDURE [dbo].[SearchSeriesByString]
+(
+	@searchParam varchar(500)
+)
+As
+BEGIN
+	SET NOCOUNT ON
+	SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+	
+	DECLARE @Err Int
+	DECLARE @strSql varchar(4000)
+	
+	SET @strSql = '	Select 	[SeriesID], [SeriesName], [DivisionID], [Description]
+	FROM [Series]
+	WHERE ' +  @searchParam
+
+	EXEC(@strSql)
+	
+	--//We should NOT be using exec above.
+	--//If params are NOT known, then be sure to clean sql
+	--//If params are known, format like example below
+	
+	--IF @prodname IS NOT NULL
+	--SELECT @sql = @sql + ' ProductName LIKE @prodname'
+	--EXEC sp_executesql @sql, N'@prodname varchar(400)',@prodname
+End
+
+GO
+
+USE [master]
+GO
+
+/****** Object:  StoredProcedure [dbo].[SearchSeriesDocumentByString]    Script Date: 02/01/2012 11:45:53 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER OFF
+GO
+
+
+/* ------------------------------------------------------------
+   PROCEDURE:    SearchSeriesDocumentByString
+   
+   Description:  Selects a record from table 'SeriesDocument'
+   				 And puts values into parameters
+   
+   AUTHOR:       Rheem Manufacturing, Mike Harvey - 12/27/2010 12:30:57 PM
+   ------------------------------------------------------------ */
+
+ALTER PROCEDURE [dbo].[SearchSeriesDocumentByString]
+(
+	@searchParam varchar(500)
+)
+As
+BEGIN
+	SET NOCOUNT ON
+	SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+	
+	DECLARE @Err Int
+	DECLARE @strSql varchar(4000)
+	
+	SET @strSql = '	Select 	[SeriesDocumentID], [SeriesID], [DocumentID], [PairingType]
+	FROM [SeriesDocument]
+	WHERE ' +  @searchParam
+
+	EXEC(@strSql)
+	
+	--//We should NOT be using exec above.
+	--//If params are NOT known, then be sure to clean sql
+	--//If params are known, format like example below
+	
+	--IF @prodname IS NOT NULL
+	--SELECT @sql = @sql + ' ProductName LIKE @prodname'
+	--EXEC sp_executesql @sql, N'@prodname varchar(400)',@prodname
+End
+
+GO
+
+USE [master]
+GO
+
+/****** Object:  StoredProcedure [dbo].[Searchtraining_class_registrationsByString]    Script Date: 02/01/2012 11:46:03 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER OFF
+GO
+
+
+/* ------------------------------------------------------------
+   PROCEDURE:    Searchtraining_class_registrationsByString
+   
+   Description:  Selects a record from table 'training_class_registrations'
+   				 And puts values into parameters
+   
+   AUTHOR:       Rheem Manufacturing, Mike Harvey - 1/10/2011 4:20:35 PM
+   ------------------------------------------------------------ */
+
+ALTER PROCEDURE [dbo].[Searchtraining_class_registrationsByString]
+(
+	@searchParam varchar(500)
+)
+As
+BEGIN
+	SET NOCOUNT ON
+	SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+	
+	DECLARE @Err Int
+	DECLARE @strSql varchar(4000)
+	
+	SET @strSql = '	Select 	[RegistrationID], [ClassID], [Attended], [AttendedLicenseNum], [AttendName], [AttendCompany], [AttendPhone], [AttendEMail], [AttendPosition], [AttendedLicenseType], [CertPrinted]
+	FROM [training_class_registrations]
+	WHERE ' +  @searchParam
+
+	EXEC(@strSql)
+	
+	--//We should NOT be using exec above.
+	--//If params are NOT known, then be sure to clean sql
+	--//If params are known, format like example below
+	
+	--IF @prodname IS NOT NULL
+	--SELECT @sql = @sql + ' ProductName LIKE @prodname'
+	--EXEC sp_executesql @sql, N'@prodname varchar(400)',@prodname
+End
+
+GO
+
+USE [master]
+GO
+
+/****** Object:  StoredProcedure [dbo].[Searchtraining_classesByString]    Script Date: 02/01/2012 11:46:10 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER OFF
+GO
+
+
+/* ------------------------------------------------------------
+   PROCEDURE:    Searchtraining_classesByString
+   
+   Description:  Selects a record from table 'training_classes'
+   				 And puts values into parameters
+   
+   AUTHOR:       Rheem Manufacturing, Mike Harvey - 1/10/2011 4:20:35 PM
+   ------------------------------------------------------------ */
+
+ALTER PROCEDURE [dbo].[Searchtraining_classesByString]
+(
+	@searchParam varchar(500)
+)
+As
+BEGIN
+	SET NOCOUNT ON
+	SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+	
+	DECLARE @Err Int
+	DECLARE @strSql varchar(4000)
+	
+	SET @strSql = '	Select 	[ClassID], [Status], [InstructorID], [ContactID], [ClassType], [ClassDate], [ClassLength], [LocationName], [LocationStreet], [LocationStreet2], [LocationCity], [LocationState], [LocationZip], [Sponsor], [SponsorID], [ContactPhone], [ContactEMail], [ClassAddlInfo], [SchedulerID], [SchedulerName], [ReminderSent], [Brand], [AttendanceFinalized]
+	FROM [training_classes]
+	WHERE ' +  @searchParam
+
+	EXEC(@strSql)
+	
+	--//We should NOT be using exec above.
+	--//If params are NOT known, then be sure to clean sql
+	--//If params are known, format like example below
+	
+	--IF @prodname IS NOT NULL
+	--SELECT @sql = @sql + ' ProductName LIKE @prodname'
+	--EXEC sp_executesql @sql, N'@prodname varchar(400)',@prodname
+End
+
+GO
+
+USE [master]
+GO
+
+/****** Object:  StoredProcedure [dbo].[UpdateCNTemplate]    Script Date: 02/01/2012 11:46:23 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER OFF
+GO
+
+
+/* ------------------------------------------------------------
+   PROCEDURE:    UpdateCNTemplate
+   
+   Description:  Updates a record In table 'CNTemplate'
+   
+   AUTHOR:       Rheem Manufacturing, Mike Harvey - 1/4/2011 10:28:22 AM
+   ------------------------------------------------------------ */
+
+ALTER PROCEDURE [dbo].[UpdateCNTemplate]
+(
+	@CNTemplateID uniqueidentifier, 
+	@CNCategoryID uniqueidentifier, 
+	@BrandID uniqueidentifier, 
+	@TemplateHTML text
+
+)
+As
+SET NOCOUNT ON
+SET XACT_ABORT ON
+
+BEGIN
+	DECLARE @Err Int
+
+	UPDATE [CNTemplate]
+	SET
+	[CNTemplateID] = @CNTemplateID, 
+	[CNCategoryID] = @CNCategoryID, 
+	[BrandID] = @BrandID, 
+	[TemplateHTML] = @TemplateHTML
+
+	WHERE [CNTemplateID] = @CNTemplateID
+
+	Set @Err = @@Error
+
+	RETURN @Err
+End
+
+GO
+
+USE [master]
+GO
+
+/****** Object:  StoredProcedure [dbo].[UpdateContactCategories]    Script Date: 02/01/2012 11:46:31 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+/* ------------------------------------------------------------
+   PROCEDURE:    UpdateContactCategories
+   
+   Description:  Updates a record In table 'ContactCategories'
+   
+   AUTHOR:       Rheem, Brian White - 9/13/2010 11:29:29 AM
+   ------------------------------------------------------------ */
+
+ALTER PROCEDURE [dbo].[UpdateContactCategories]
+(
+	@CategoryID int, 
+	@Category varchar(250)
+
+)
+As
+SET NOCOUNT ON
+
+BEGIN
+	DECLARE @Err Int
+
+	UPDATE [ContactCategories]
+	SET
+	[Category] = @Category
+
+	WHERE [CategoryID] = @CategoryID
+
+	Set @Err = @@Error
+
+	RETURN @Err
+End
+
+GO
+
+USE [master]
+GO
+
+/****** Object:  StoredProcedure [dbo].[UpdateContactEmails]    Script Date: 02/01/2012 11:46:37 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+/* ------------------------------------------------------------
+   PROCEDURE:    UpdateContactEmails
+   
+   Description:  Updates a record In table 'ContactEmails'
+   
+   AUTHOR:       Rheem, Brian White - 9/13/2010 11:29:29 AM
+   ------------------------------------------------------------ */
+
+ALTER PROCEDURE [dbo].[UpdateContactEmails]
+(
+	@EntryID int, 
+	@Topic nvarchar(250) = null, 
+	@Subtopic nvarchar(250) = null, 
+	@ToEmail nvarchar(100) = null, 
+	@PhoneNumber nvarchar(100) = null, 
+	@PostalCode nvarchar(20) = null, 
+	@Message nvarchar(max) = null, 
+	@TimeStamp datetime, 
+	@FromEmail nvarchar(100) = null, 
+	@FromName nvarchar(100) = null, 
+	@ModelNumber nvarchar(100) = null, 
+	@SerialNumber nvarchar(100) = null, 
+	@Country nvarchar(100) = null, 
+	@PlumberContractorName nvarchar(200) = null, 
+	@PlumberContractorPhoneNumber nvarchar(50) = null
+
+)
+As
+SET NOCOUNT ON
+
+BEGIN
+	DECLARE @Err Int
+
+	UPDATE [ContactEmails]
+	SET
+	[Topic] = @Topic, 
+	[Subtopic] = @Subtopic, 
+	[ToEmail] = @ToEmail, 
+	[PhoneNumber] = @PhoneNumber, 
+	[PostalCode] = @PostalCode, 
+	[Message] = @Message, 
+	[TimeStamp] = @TimeStamp, 
+	[FromEmail] = @FromEmail, 
+	[FromName] = @FromName, 
+	[ModelNumber] = @ModelNumber, 
+	[SerialNumber] = @SerialNumber, 
+	[Country] = @Country, 
+	[PlumberContractorName] = @PlumberContractorName, 
+	[PlumberContractorPhoneNumber] = @PlumberContractorPhoneNumber
+
+	WHERE [EntryID] = @EntryID
+
+	Set @Err = @@Error
+
+	RETURN @Err
+End
+
+GO
+
+USE [master]
+GO
+
+/****** Object:  StoredProcedure [dbo].[UpdateContactFAQs]    Script Date: 02/01/2012 11:46:45 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER OFF
+GO
+
+
+/* ------------------------------------------------------------
+   PROCEDURE:    UpdateContactFAQs
+   
+   Description:  Updates a record In table 'ContactFAQs'
+   
+   AUTHOR:       Rheem Manufacturing, Brian White - 12/20/2010 2:16:27 PM
+   ------------------------------------------------------------ */
+
+ALTER PROCEDURE [dbo].[UpdateContactFAQs]
+(
+	@ID uniqueidentifier, 
+	@SubtopicID int, 
+	@Title varchar(200), 
+	@Content varchar(max), 
+	@Rank int
+
+)
+As
+SET NOCOUNT ON
+SET XACT_ABORT ON
+
+BEGIN
+	DECLARE @Err Int
+
+	UPDATE [ContactFAQs]
+	SET
+	[ID] = @ID, 
+	[SubtopicID] = @SubtopicID, 
+	[Title] = @Title, 
+	[Content] = @Content, 
+	[Rank] = @Rank
+
+	WHERE [ID] = @ID
+
+	Set @Err = @@Error
+
+	RETURN @Err
+End
+
+GO
+
+USE [master]
+GO
+
+/****** Object:  StoredProcedure [dbo].[UpdateContactLists]    Script Date: 02/01/2012 11:46:53 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+/* ------------------------------------------------------------
+   PROCEDURE:    UpdateContactLists
+   
+   Description:  Updates a record In table 'ContactLists'
+   
+   AUTHOR:       Rheem, Brian White - 9/13/2010 12:52:25 PM
+   ------------------------------------------------------------ */
+
+ALTER PROCEDURE [dbo].[UpdateContactLists]
+(
+	@ID int, 
+	@Category varchar(250), 
+	@Contact varchar(250), 
+	@Email varchar(250)
+
+)
+As
+SET NOCOUNT ON
+
+BEGIN
+	DECLARE @Err Int
+
+	UPDATE [ContactLists]
+	SET
+	[Category] = @Category, 
+	[Contact] = @Contact, 
+	[Email] = @Email
+
+	WHERE [ID] = @ID
+
+	Set @Err = @@Error
+
+	RETURN @Err
+End
+
+GO
+
+USE [master]
+GO
+
+/****** Object:  StoredProcedure [dbo].[UpdateEnv]    Script Date: 02/01/2012 11:47:02 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER OFF
+GO
+
+
+/* ------------------------------------------------------------
+   PROCEDURE:    UpdateEnv
+   
+   Description:  Updates a record In table 'Env'
+   
+   AUTHOR:       Rheem Manufacturing, Mike Harvey - 1/20/2011 12:05:43 PM
+   ------------------------------------------------------------ */
+
+ALTER PROCEDURE [dbo].[UpdateEnv]
+(
+	@EnvID uniqueidentifier, 
+	@EnvName varchar(50), 
+	@EnvValue text, 
+	@TimeStamp datetime
+
+)
+As
+SET NOCOUNT ON
+SET XACT_ABORT ON
+
+BEGIN
+	DECLARE @Err Int
+
+	UPDATE [Env]
+	SET
+	[EnvID] = @EnvID, 
+	[EnvName] = @EnvName, 
+	[EnvValue] = @EnvValue, 
+	[TimeStamp] = @TimeStamp
+
+	WHERE [EnvID] = @EnvID
+
+	Set @Err = @@Error
+
+	RETURN @Err
+End
+
+GO
+
+USE [master]
+GO
+
+/****** Object:  StoredProcedure [dbo].[UpdateProduct]    Script Date: 02/01/2012 11:47:09 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER OFF
+GO
+
+
+/* ------------------------------------------------------------
+   PROCEDURE:    UpdateProduct
+   
+   Description:  Updates a record In table 'Product'
+   
+   AUTHOR:       Rheem Manufacturing, Mike Harvey - 12/27/2010 12:30:56 PM
+   ------------------------------------------------------------ */
+
+ALTER PROCEDURE [dbo].[UpdateProduct]
+(
+	@ProductID uniqueidentifier, 
+	@ProductCategoryID uniqueidentifier, 
+	@DivisionID uniqueidentifier, 
+	@Model varchar(50), 
+	@MarketCommercial bit, 
+	@MarketResidential bit, 
+	@MarketManufacturedHome bit, 
+	@ProductLaunch bit, 
+	@Historical bit, 
+	@BrandID uniqueidentifier, 
+	@SeriesID uniqueidentifier, 
+	@Description text, 
+	@TankWarranty int, 
+	@PartsWarranty int, 
+	@LaborWarranty int, 
+	@HeatExchangeWarranty int, 
+	@CompressorWarranty int, 
+	@ExtendedWarranty int, 
+	@WarrantyText text, 
+	@EnergyStar bit, 
+	@EnergyGuide bit, 
+	@EnergyMiser bit, 
+	@DRHorton bit, 
+	@DisplayOnBHPG bit, 
+	@SeerID uniqueidentifier, 
+	@ACTonnageID uniqueidentifier, 
+	@Ton18 bit, 
+	@Ton24 bit, 
+	@Ton30 bit, 
+	@Ton36 bit, 
+	@Ton42 bit, 
+	@Ton48 bit, 
+	@Ton60 bit, 
+	@Ton90 bit, 
+	@Ton102 bit, 
+	@Ton120 bit, 
+	@Ton150 bit, 
+	@Ton180 bit, 
+	@Ton181 bit, 
+	@Ton240 bit, 
+	@Ton300 bit, 
+	@Gallon2Point5 bit, 
+	@Gallon6 bit, 
+	@Gallon10 bit, 
+	@Gallon15 bit, 
+	@Gallon20 bit, 
+	@Gallon30 bit, 
+	@Gallon38 bit, 
+	@Gallon40 bit, 
+	@Gallon47 bit, 
+	@Gallon50 bit, 
+	@Gallon65 bit, 
+	@Gallon80 bit, 
+	@HLW bit, 
+	@SCAQMD bit, 
+	@ProductCopy text, 
+	@VirtualTourText text, 
+	@GasEfficiency float, 
+	@HSPF float, 
+	@ComfortControl bit, 
+	@ComfortControl2 bit, 
+	@Gamma bit, 
+	@CabinetSize varchar(50), 
+	@ARI210240 bit, 
+	@UL bit, 
+	@R410A bit, 
+	@CSA bit, 
+	@SACC bit, 
+	@EIL bit, 
+	@NSF bit, 
+	@TaxCredit int, 
+	@TaxCreditText text, 
+	@Gas bit, 
+	@Electric bit, 
+	@Tankless bit, 
+	@Solar bit, 
+	@Gallon12 bit, 
+	@Gallon29 bit, 
+	@Gallon37 bit, 
+	@Gallon45 bit, 
+	@Gallon48 bit, 
+	@Gallon60 bit, 
+	@Gallon75 bit, 
+	@Gallon90 bit, 
+	@Gallon85 bit, 
+	@Gallon100 bit, 
+	@Gallon105 bit, 
+	@Gallon110 bit, 
+	@Gallon119 bit, 
+	@Gallon120 bit, 
+	@Gallon150 bit, 
+	@Gallon2500 bit, 
+	@OutdoorOnlyWarranty bit, 
+	@SortOrder int, 
+	@PriceRange int, 
+	@ShowInRegistration bit, 
+	@OutdoorUnitOnly bit, 
+	@OutdoorUnitGas bit, 
+	@OutdoorUnitAir bit, 
+	@IndoorUnitOnly bit, 
+	@PackageUnit bit, 
+	@OutdoorUnitWithCoil bit, 
+	@PointValue int, 
+	@SRCC bit, 
+	@EfficiencyRange varchar(50), 
+	@ContractorFAB text
+
+)
+As
+SET NOCOUNT ON
+SET XACT_ABORT ON
+
+BEGIN
+	DECLARE @Err Int
+
+	UPDATE [Product]
+	SET
+	[ProductID] = @ProductID, 
+	[ProductCategoryID] = @ProductCategoryID, 
+	[DivisionID] = @DivisionID, 
+	[Model] = @Model, 
+	[MarketCommercial] = @MarketCommercial, 
+	[MarketResidential] = @MarketResidential, 
+	[MarketManufacturedHome] = @MarketManufacturedHome, 
+	[ProductLaunch] = @ProductLaunch, 
+	[Historical] = @Historical, 
+	[BrandID] = @BrandID, 
+	[SeriesID] = @SeriesID, 
+	[Description] = @Description, 
+	[TankWarranty] = @TankWarranty, 
+	[PartsWarranty] = @PartsWarranty, 
+	[LaborWarranty] = @LaborWarranty, 
+	[HeatExchangeWarranty] = @HeatExchangeWarranty, 
+	[CompressorWarranty] = @CompressorWarranty, 
+	[ExtendedWarranty] = @ExtendedWarranty, 
+	[WarrantyText] = @WarrantyText, 
+	[EnergyStar] = @EnergyStar, 
+	[EnergyGuide] = @EnergyGuide, 
+	[EnergyMiser] = @EnergyMiser, 
+	[DRHorton] = @DRHorton, 
+	[DisplayOnBHPG] = @DisplayOnBHPG, 
+	[SeerID] = @SeerID, 
+	[ACTonnageID] = @ACTonnageID, 
+	[Ton18] = @Ton18, 
+	[Ton24] = @Ton24, 
+	[Ton30] = @Ton30, 
+	[Ton36] = @Ton36, 
+	[Ton42] = @Ton42, 
+	[Ton48] = @Ton48, 
+	[Ton60] = @Ton60, 
+	[Ton90] = @Ton90, 
+	[Ton102] = @Ton102, 
+	[Ton120] = @Ton120, 
+	[Ton150] = @Ton150, 
+	[Ton180] = @Ton180, 
+	[Ton181] = @Ton181, 
+	[Ton240] = @Ton240, 
+	[Ton300] = @Ton300, 
+	[Gallon2Point5] = @Gallon2Point5, 
+	[Gallon6] = @Gallon6, 
+	[Gallon10] = @Gallon10, 
+	[Gallon15] = @Gallon15, 
+	[Gallon20] = @Gallon20, 
+	[Gallon30] = @Gallon30, 
+	[Gallon38] = @Gallon38, 
+	[Gallon40] = @Gallon40, 
+	[Gallon47] = @Gallon47, 
+	[Gallon50] = @Gallon50, 
+	[Gallon65] = @Gallon65, 
+	[Gallon80] = @Gallon80, 
+	[HLW] = @HLW, 
+	[SCAQMD] = @SCAQMD, 
+	[ProductCopy] = @ProductCopy, 
+	[VirtualTourText] = @VirtualTourText, 
+	[GasEfficiency] = @GasEfficiency, 
+	[HSPF] = @HSPF, 
+	[ComfortControl] = @ComfortControl, 
+	[ComfortControl2] = @ComfortControl2, 
+	[Gamma] = @Gamma, 
+	[CabinetSize] = @CabinetSize, 
+	[ARI210240] = @ARI210240, 
+	[UL] = @UL, 
+	[R410A] = @R410A, 
+	[CSA] = @CSA, 
+	[SACC] = @SACC, 
+	[EIL] = @EIL, 
+	[NSF] = @NSF, 
+	[TaxCredit] = @TaxCredit, 
+	[TaxCreditText] = @TaxCreditText, 
+	[Gas] = @Gas, 
+	[Electric] = @Electric, 
+	[Tankless] = @Tankless, 
+	[Solar] = @Solar, 
+	[Gallon12] = @Gallon12, 
+	[Gallon29] = @Gallon29, 
+	[Gallon37] = @Gallon37, 
+	[Gallon45] = @Gallon45, 
+	[Gallon48] = @Gallon48, 
+	[Gallon60] = @Gallon60, 
+	[Gallon75] = @Gallon75, 
+	[Gallon90] = @Gallon90, 
+	[Gallon85] = @Gallon85, 
+	[Gallon100] = @Gallon100, 
+	[Gallon105] = @Gallon105, 
+	[Gallon110] = @Gallon110, 
+	[Gallon119] = @Gallon119, 
+	[Gallon120] = @Gallon120, 
+	[Gallon150] = @Gallon150, 
+	[Gallon2500] = @Gallon2500, 
+	[OutdoorOnlyWarranty] = @OutdoorOnlyWarranty, 
+	[SortOrder] = @SortOrder, 
+	[PriceRange] = @PriceRange, 
+	[ShowInRegistration] = @ShowInRegistration, 
+	[OutdoorUnitOnly] = @OutdoorUnitOnly, 
+	[OutdoorUnitGas] = @OutdoorUnitGas, 
+	[OutdoorUnitAir] = @OutdoorUnitAir, 
+	[IndoorUnitOnly] = @IndoorUnitOnly, 
+	[PackageUnit] = @PackageUnit, 
+	[OutdoorUnitWithCoil] = @OutdoorUnitWithCoil, 
+	[PointValue] = @PointValue, 
+	[SRCC] = @SRCC, 
+	[EfficiencyRange] = @EfficiencyRange, 
+	[ContractorFAB] = @ContractorFAB
+
+	WHERE [ProductID] = @ProductID
+
+	Set @Err = @@Error
+
+	RETURN @Err
+End
+
+GO
+
+USE [master]
+GO
+
+/****** Object:  StoredProcedure [dbo].[UpdateProductCategoryDocument]    Script Date: 02/01/2012 11:47:16 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER OFF
+GO
+
+
+/* ------------------------------------------------------------
+   PROCEDURE:    UpdateProductCategoryDocument
+   
+   Description:  Updates a record In table 'ProductCategoryDocument'
+   
+   AUTHOR:       Rheem Manufacturing, Mike Harvey - 12/27/2010 12:30:57 PM
+   ------------------------------------------------------------ */
+
+ALTER PROCEDURE [dbo].[UpdateProductCategoryDocument]
+(
+	@ProductCategoryDocumentID uniqueidentifier, 
+	@ProductCategoryID uniqueidentifier, 
+	@DocumentID uniqueidentifier, 
+	@PairingType nvarchar(50)
+
+)
+As
+SET NOCOUNT ON
+SET XACT_ABORT ON
+
+BEGIN
+	DECLARE @Err Int
+
+	UPDATE [ProductCategoryDocument]
+	SET
+	[ProductCategoryDocumentID] = @ProductCategoryDocumentID, 
+	[ProductCategoryID] = @ProductCategoryID, 
+	[DocumentID] = @DocumentID, 
+	[PairingType] = @PairingType
+
+	WHERE [ProductCategoryDocumentID] = @ProductCategoryDocumentID
+
+	Set @Err = @@Error
+
+	RETURN @Err
+End
+
+GO
+
+USE [master]
+GO
+
+/****** Object:  StoredProcedure [dbo].[UpdateProductDocument]    Script Date: 02/01/2012 11:47:28 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER OFF
+GO
+
+
+/* ------------------------------------------------------------
+   PROCEDURE:    UpdateProductDocument
+   
+   Description:  Updates a record In table 'ProductDocument'
+   
+   AUTHOR:       Rheem Manufacturing, Mike Harvey - 12/27/2010 12:30:57 PM
+   ------------------------------------------------------------ */
+
+ALTER PROCEDURE [dbo].[UpdateProductDocument]
+(
+	@ProductDocumentID uniqueidentifier, 
+	@ProductID uniqueidentifier, 
+	@DocumentID uniqueidentifier, 
+	@PairingType nvarchar(100), 
+	@MimeType varchar(50), 
+	@DocumentTitle varchar(256), 
+	@PublicationDate datetime
+
+)
+As
+SET NOCOUNT ON
+SET XACT_ABORT ON
+
+BEGIN
+	DECLARE @Err Int
+
+	UPDATE [ProductDocument]
+	SET
+	[ProductDocumentID] = @ProductDocumentID, 
+	[ProductID] = @ProductID, 
+	[DocumentID] = @DocumentID, 
+	[PairingType] = @PairingType, 
+	[MimeType] = @MimeType, 
+	[DocumentTitle] = @DocumentTitle, 
+	[PublicationDate] = @PublicationDate
+
+	WHERE [ProductDocumentID] = @ProductDocumentID
+
+	Set @Err = @@Error
+
+	RETURN @Err
+End
+
+GO
+
+USE [master]
+GO
+
+/****** Object:  StoredProcedure [dbo].[UpdateProductLog]    Script Date: 02/01/2012 11:47:35 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER OFF
+GO
+
+
+/* ------------------------------------------------------------
+   PROCEDURE:    UpdateProductLog
+   
+   Description:  Updates a record In table 'ProductLog'
+   
+   AUTHOR:       Rheem Manufacturing, Mike Harvey - 12/27/2010 12:30:57 PM
+   ------------------------------------------------------------ */
+
+ALTER PROCEDURE [dbo].[UpdateProductLog]
+(
+	@ProductLogID uniqueidentifier, 
+	@ProductID uniqueidentifier, 
+	@SeqID int, 
+	@LogText varchar(1024)
+
+)
+As
+SET NOCOUNT ON
+SET XACT_ABORT ON
+
+BEGIN
+	DECLARE @Err Int
+
+	UPDATE [ProductLog]
+	SET
+	[ProductLogID] = @ProductLogID, 
+	[ProductID] = @ProductID, 
+	[SeqID] = @SeqID, 
+	[LogText] = @LogText
+
+	WHERE [ProductLogID] = @ProductLogID
+
+	Set @Err = @@Error
+
+	RETURN @Err
+End
+
+GO
+
+USE [master]
+GO
+
+/****** Object:  StoredProcedure [dbo].[UpdateProductNotes]    Script Date: 02/01/2012 11:47:42 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER OFF
+GO
+
+
+/* ------------------------------------------------------------
+   PROCEDURE:    UpdateProductNotes
+   
+   Description:  Updates a record In table 'ProductNotes'
+   
+   AUTHOR:       Rheem Manufacturing, Mike Harvey - 12/27/2010 12:30:57 PM
+   ------------------------------------------------------------ */
+
+ALTER PROCEDURE [dbo].[UpdateProductNotes]
+(
+	@ProductNoteID uniqueidentifier, 
+	@ProductID uniqueidentifier, 
+	@NoteType varchar(50), 
+	@Note text, 
+	@DateAdded datetime
+
+)
+As
+SET NOCOUNT ON
+SET XACT_ABORT ON
+
+BEGIN
+	DECLARE @Err Int
+
+	UPDATE [ProductNotes]
+	SET
+	[ProductNoteID] = @ProductNoteID, 
+	[ProductID] = @ProductID, 
+	[NoteType] = @NoteType, 
+	[Note] = @Note, 
+	[DateAdded] = @DateAdded
+
+	WHERE [ProductNoteID] = @ProductNoteID
+
+	Set @Err = @@Error
+
+	RETURN @Err
+End
+
+GO
+
+USE [master]
+GO
+
+/****** Object:  StoredProcedure [dbo].[UpdateProductProductGroup]    Script Date: 02/01/2012 11:47:52 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER OFF
+GO
+
+
+/* ------------------------------------------------------------
+   PROCEDURE:    UpdateProductProductGroup
+   
+   Description:  Updates a record In table 'ProductProductGroup'
+   
+   AUTHOR:       Rheem Manufacturing, Mike Harvey - 3/3/2011 12:42:27 PM
+   ------------------------------------------------------------ */
+
+ALTER PROCEDURE [dbo].[UpdateProductProductGroup]
+(
+	@ProductProductGroupID uniqueidentifier, 
+	@ProductID uniqueidentifier, 
+	@ProductGroupID uniqueidentifier
+
+)
+As
+SET NOCOUNT ON
+SET XACT_ABORT ON
+
+BEGIN
+	DECLARE @Err Int
+
+	UPDATE [ProductProductGroup]
+	SET
+	[ProductProductGroupID] = @ProductProductGroupID, 
+	[ProductID] = @ProductID, 
+	[ProductGroupID] = @ProductGroupID
+
+	WHERE [ProductProductGroupID] = @ProductProductGroupID
+
+	Set @Err = @@Error
+
+	RETURN @Err
+End
+
+GO
+
+USE [master]
+GO
+
+/****** Object:  StoredProcedure [dbo].[UpdateracingGuests2011]    Script Date: 02/01/2012 11:48:01 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER OFF
+GO
+
+
+/* ------------------------------------------------------------
+   PROCEDURE:    UpdateracingGuests2011
+   
+   Description:  Updates a record In table 'racingGuests2011'
+   
+   AUTHOR:       Rheem Manufacturing, Brian White - 2/9/2011 10:39:53 AM
+   ------------------------------------------------------------ */
+
+ALTER PROCEDURE [dbo].[UpdateracingGuests2011]
+(
+	@racingGuestID int, 
+	@racingHostPersonID uniqueidentifier, 
+	@raceNumber int, 
+	@firstName varchar(50), 
+	@lastName varchar(50), 
+	@GuestName varchar(250), 
+	@CompanyName varchar(250), 
+	@Address1 varchar(250), 
+	@Address2 varchar(250), 
+	@City varchar(250), 
+	@State varchar(50), 
+	@PostalCode varchar(250), 
+	@DealerBuilderETC varchar(250), 
+	@gender varchar(50), 
+	@shirtSize varchar(50), 
+	@email varchar(250), 
+	@affiliation varchar(250), 
+	@division varchar(250), 
+	@emergencyNumber varchar(50), 
+	@phoneNumber varchar(50), 
+	@title varchar(50), 
+	@brandOther varchar(50), 
+	@brand varchar(50), 
+	@mainBusiness varchar(50), 
+	@businessSector varchar(50), 
+	@annualPurchase bigint, 
+	@replaced bit, 
+	@CheckedIn int, 
+	@HasRadio varchar(50)
+
+)
+As
+SET NOCOUNT ON
+SET XACT_ABORT ON
+
+BEGIN
+	DECLARE @Err Int
+
+	UPDATE [racingGuests2011]
+	SET
+	[racingHostPersonID] = @racingHostPersonID, 
+	[raceNumber] = @raceNumber, 
+	[firstName] = @firstName, 
+	[lastName] = @lastName, 
+	[GuestName] = @GuestName, 
+	[CompanyName] = @CompanyName, 
+	[Address1] = @Address1, 
+	[Address2] = @Address2, 
+	[City] = @City, 
+	[State] = @State, 
+	[PostalCode] = @PostalCode, 
+	[DealerBuilderETC] = @DealerBuilderETC, 
+	[gender] = @gender, 
+	[shirtSize] = @shirtSize, 
+	[email] = @email, 
+	[affiliation] = @affiliation, 
+	[division] = @division, 
+	[emergencyNumber] = @emergencyNumber, 
+	[phoneNumber] = @phoneNumber, 
+	[title] = @title, 
+	[brandOther] = @brandOther, 
+	[brand] = @brand, 
+	[mainBusiness] = @mainBusiness, 
+	[businessSector] = @businessSector, 
+	[annualPurchase] = @annualPurchase, 
+	[replaced] = @replaced, 
+	[CheckedIn] = @CheckedIn, 
+	[HasRadio] = @HasRadio
+
+	WHERE [racingGuestID] = @racingGuestID
+
+	Set @Err = @@Error
+
+	RETURN @Err
+End
+
+GO
+
+USE [master]
+GO
+
+/****** Object:  StoredProcedure [dbo].[UpdateRheemTeamServiceRequest]    Script Date: 02/01/2012 11:48:08 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER OFF
+GO
+
+
+/* ------------------------------------------------------------
+   PROCEDURE:    UpdateRheemTeamServiceRequest
+   
+   Description:  Updates a record In table 'RheemTeamServiceRequest'
+   
+   AUTHOR:       Rheem Manufacturing, Mike Harvey - 1/19/2011 1:37:32 PM
+   ------------------------------------------------------------ */
+
+ALTER PROCEDURE [dbo].[UpdateRheemTeamServiceRequest]
+(
+	@RheemTeamServiceRequestID uniqueidentifier, 
+	@DealerID uniqueidentifier, 
+	@RequestDate datetime, 
+	@CustomerName varchar(80), 
+	@Email varchar(256), 
+	@Address varchar(80), 
+	@City varchar(80), 
+	@State char(2), 
+	@PostalCode char(10), 
+	@Phone char(14), 
+	@CellPhone char(14), 
+	@Media char(20), 
+	@BestContactTime varchar(50), 
+	@ServiceRequested varchar(50), 
+	@Information varchar(2048), 
+	@OtherText varchar(256), 
+	@Status varchar(50), 
+	@OrganizationID uniqueidentifier
+
+)
+As
+SET NOCOUNT ON
+SET XACT_ABORT ON
+
+BEGIN
+	DECLARE @Err Int
+
+	UPDATE [RheemTeamServiceRequest]
+	SET
+	[RheemTeamServiceRequestID] = @RheemTeamServiceRequestID, 
+	[DealerID] = @DealerID, 
+	[RequestDate] = @RequestDate, 
+	[CustomerName] = @CustomerName, 
+	[Email] = @Email, 
+	[Address] = @Address, 
+	[City] = @City, 
+	[State] = @State, 
+	[PostalCode] = @PostalCode, 
+	[Phone] = @Phone, 
+	[CellPhone] = @CellPhone, 
+	[Media] = @Media, 
+	[BestContactTime] = @BestContactTime, 
+	[ServiceRequested] = @ServiceRequested, 
+	[Information] = @Information, 
+	[OtherText] = @OtherText, 
+	[Status] = @Status, 
+	[OrganizationID] = @OrganizationID
+
+	WHERE [RheemTeamServiceRequestID] = @RheemTeamServiceRequestID
+
+	Set @Err = @@Error
+
+	RETURN @Err
+End
+
+GO
+
+USE [master]
+GO
+
+/****** Object:  StoredProcedure [dbo].[UpdateSEER]    Script Date: 02/01/2012 11:48:16 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER OFF
+GO
+
+
+/* ------------------------------------------------------------
+   PROCEDURE:    UpdateSEER
+   
+   Description:  Updates a record In table 'SEER'
+   
+   AUTHOR:       Rheem Manufacturing, Mike Harvey - 12/27/2010 12:30:57 PM
+   ------------------------------------------------------------ */
+
+ALTER PROCEDURE [dbo].[UpdateSEER]
+(
+	@SeerID uniqueidentifier, 
+	@Seer int
+
+)
+As
+SET NOCOUNT ON
+SET XACT_ABORT ON
+
+BEGIN
+	DECLARE @Err Int
+
+	UPDATE [SEER]
+	SET
+	[SeerID] = @SeerID, 
+	[Seer] = @Seer
+
+	WHERE [SeerID] = @SeerID
+
+	Set @Err = @@Error
+
+	RETURN @Err
+End
+
+GO
+
+USE [master]
+GO
+
+/****** Object:  StoredProcedure [dbo].[UpdateSeries]    Script Date: 02/01/2012 11:48:23 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER OFF
+GO
+
+
+/* ------------------------------------------------------------
+   PROCEDURE:    UpdateSeries
+   
+   Description:  Updates a record In table 'Series'
+   
+   AUTHOR:       Rheem Manufacturing, Mike Harvey - 12/27/2010 12:30:57 PM
+   ------------------------------------------------------------ */
+
+ALTER PROCEDURE [dbo].[UpdateSeries]
+(
+	@SeriesID uniqueidentifier, 
+	@SeriesName varchar(50), 
+	@DivisionID uniqueidentifier, 
+	@Description varchar(256)
+
+)
+As
+SET NOCOUNT ON
+SET XACT_ABORT ON
+
+BEGIN
+	DECLARE @Err Int
+
+	UPDATE [Series]
+	SET
+	[SeriesID] = @SeriesID, 
+	[SeriesName] = @SeriesName, 
+	[DivisionID] = @DivisionID, 
+	[Description] = @Description
+
+	WHERE [SeriesID] = @SeriesID
+
+	Set @Err = @@Error
+
+	RETURN @Err
+End
+
+GO
+
+USE [master]
+GO
+
+/****** Object:  StoredProcedure [dbo].[UpdateSeriesDocument]    Script Date: 02/01/2012 11:48:30 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER OFF
+GO
+
+
+/* ------------------------------------------------------------
+   PROCEDURE:    UpdateSeriesDocument
+   
+   Description:  Updates a record In table 'SeriesDocument'
+   
+   AUTHOR:       Rheem Manufacturing, Mike Harvey - 12/27/2010 12:30:57 PM
+   ------------------------------------------------------------ */
+
+ALTER PROCEDURE [dbo].[UpdateSeriesDocument]
+(
+	@SeriesDocumentID uniqueidentifier, 
+	@SeriesID uniqueidentifier, 
+	@DocumentID uniqueidentifier, 
+	@PairingType nvarchar(50)
+
+)
+As
+SET NOCOUNT ON
+SET XACT_ABORT ON
+
+BEGIN
+	DECLARE @Err Int
+
+	UPDATE [SeriesDocument]
+	SET
+	[SeriesDocumentID] = @SeriesDocumentID, 
+	[SeriesID] = @SeriesID, 
+	[DocumentID] = @DocumentID, 
+	[PairingType] = @PairingType
+
+	WHERE [SeriesDocumentID] = @SeriesDocumentID
+
+	Set @Err = @@Error
+
+	RETURN @Err
+End
+
+GO
+
+USE [master]
+GO
+
+/****** Object:  StoredProcedure [dbo].[Updatetraining_class_registrations]    Script Date: 02/01/2012 11:48:37 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER OFF
+GO
+
+
+/* ------------------------------------------------------------
+   PROCEDURE:    Updatetraining_class_registrations
+   
+   Description:  Updates a record In table 'training_class_registrations'
+   
+   AUTHOR:       Rheem Manufacturing, Mike Harvey - 1/10/2011 4:20:35 PM
+   ------------------------------------------------------------ */
+
+ALTER PROCEDURE [dbo].[Updatetraining_class_registrations]
+(
+	@RegistrationID bigint, 
+	@ClassID int, 
+	@Attended int, 
+	@AttendedLicenseNum varchar(16), 
+	@AttendName varchar(50), 
+	@AttendCompany varchar(50), 
+	@AttendPhone varchar(20), 
+	@AttendEMail varchar(70), 
+	@AttendPosition varchar(50), 
+	@AttendedLicenseType varchar(50), 
+	@CertPrinted bit
+
+)
+As
+SET NOCOUNT ON
+SET XACT_ABORT ON
+
+BEGIN
+	DECLARE @Err Int
+
+	UPDATE [training_class_registrations]
+	SET
+	[ClassID] = @ClassID, 
+	[Attended] = @Attended, 
+	[AttendedLicenseNum] = @AttendedLicenseNum, 
+	[AttendName] = @AttendName, 
+	[AttendCompany] = @AttendCompany, 
+	[AttendPhone] = @AttendPhone, 
+	[AttendEMail] = @AttendEMail, 
+	[AttendPosition] = @AttendPosition, 
+	[AttendedLicenseType] = @AttendedLicenseType, 
+	[CertPrinted] = @CertPrinted
+
+	WHERE [RegistrationID] = @RegistrationID
+
+	Set @Err = @@Error
+
+	RETURN @Err
+End
+
+GO
+
+USE [master]
+GO
+
+/****** Object:  StoredProcedure [dbo].[Updatetraining_classes]    Script Date: 02/01/2012 11:48:44 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER OFF
+GO
+
+
+/* ------------------------------------------------------------
+   PROCEDURE:    Updatetraining_classes
+   
+   Description:  Updates a record In table 'training_classes'
+   
+   AUTHOR:       Rheem Manufacturing, Mike Harvey - 1/10/2011 4:20:35 PM
+   ------------------------------------------------------------ */
+
+ALTER PROCEDURE [dbo].[Updatetraining_classes]
+(
+	@ClassID int, 
+	@Status tinyint, 
+	@InstructorID uniqueidentifier, 
+	@ContactID uniqueidentifier, 
+	@ClassType smallint, 
+	@ClassDate datetime, 
+	@ClassLength decimal, 
+	@LocationName varchar(50), 
+	@LocationStreet varchar(50), 
+	@LocationStreet2 varchar(30), 
+	@LocationCity varchar(50), 
+	@LocationState char(2), 
+	@LocationZip varchar(10), 
+	@Sponsor varchar(50), 
+	@SponsorID uniqueidentifier, 
+	@ContactPhone varchar(20), 
+	@ContactEMail varchar(70), 
+	@ClassAddlInfo varchar(255), 
+	@SchedulerID uniqueidentifier, 
+	@SchedulerName varchar(50), 
+	@ReminderSent bit, 
+	@Brand int, 
+	@AttendanceFinalized bit
+
+)
+As
+SET NOCOUNT ON
+SET XACT_ABORT ON
+
+BEGIN
+	DECLARE @Err Int
+
+	UPDATE [training_classes]
+	SET
+	[Status] = @Status, 
+	[InstructorID] = @InstructorID, 
+	[ContactID] = @ContactID, 
+	[ClassType] = @ClassType, 
+	[ClassDate] = @ClassDate, 
+	[ClassLength] = @ClassLength, 
+	[LocationName] = @LocationName, 
+	[LocationStreet] = @LocationStreet, 
+	[LocationStreet2] = @LocationStreet2, 
+	[LocationCity] = @LocationCity, 
+	[LocationState] = @LocationState, 
+	[LocationZip] = @LocationZip, 
+	[Sponsor] = @Sponsor, 
+	[SponsorID] = @SponsorID, 
+	[ContactPhone] = @ContactPhone, 
+	[ContactEMail] = @ContactEMail, 
+	[ClassAddlInfo] = @ClassAddlInfo, 
+	[SchedulerID] = @SchedulerID, 
+	[SchedulerName] = @SchedulerName, 
+	[ReminderSent] = @ReminderSent, 
+	[Brand] = @Brand, 
+	[AttendanceFinalized] = @AttendanceFinalized
+
+	WHERE [ClassID] = @ClassID
+
+	Set @Err = @@Error
+
+	RETURN @Err
+End
+
+GO
+
+USE [master]
+GO
+
+/****** Object:  UserDefinedFunction [dbo].[CountDays]    Script Date: 02/01/2012 11:49:02 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date, ,>
+-- Description:	<Description, ,>
+-- =============================================
+ALTER FUNCTION [dbo].[CountDays] 
+(
+	@BeginDate datetime,
+	@EndDate datetime,
+	@Topic varchar(50)
+)
+RETURNS Int
+AS
+BEGIN
+
+	DECLARE @dCount Int
+	
+	Declare @tDateBegin datetime
+	set @tDateBegin = @BeginDate + ' 12:00:01 AM'
+	
+	Declare @tDateEnd datetime
+	set @tDateEnd = @EndDate + ' 11:59:59 PM'
+
+		
+	Select @dCount = COUNT(TimeStamp)
+	from ContactEmails
+	where TimeStamp between @tDateBegin and @tDateEnd
+	And Topic = @Topic
+
+	
+	-- Return the result of the function
+	RETURN @dCount
+
+END
+
+GO
+
+USE [master]
+GO
+
+/****** Object:  UserDefinedFunction [dbo].[CountDaysByMonths]    Script Date: 02/01/2012 11:49:13 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date, ,>
+-- Description:	<Description, ,>
+-- =============================================
+ALTER FUNCTION [dbo].[CountDaysByMonths]
+(
+	@MonthNum int,
+	@YearNum int,
+	@Topic varchar(50)
+)
+RETURNS int
+AS
+BEGIN
+	-- Declare the return variable here
+	DECLARE @dCount Int
+
+	-- Add the T-SQL statements to compute the return value here
+	Select @dCount = COUNT(TimeStamp)
+		from ContactEmails
+		where Topic = @Topic
+		and DATEPART(m, TimeStamp) = @MonthNum
+		and DATEPART(YEAR, TimeStamp) = @YearNum
+
+	-- Return the result of the function
+	RETURN @dCount
+
+END
+
+GO
+
+USE [master]
+GO
+
+/****** Object:  UserDefinedFunction [dbo].[CountDaysByWeeks]    Script Date: 02/01/2012 11:49:23 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date, ,>
+-- Description:	<Description, ,>
+-- =============================================
+ALTER FUNCTION [dbo].[CountDaysByWeeks]
+(
+	@WeekNum int,
+	@YearNum int,
+	@Topic varchar(50)
+)
+RETURNS int
+AS
+BEGIN
+	-- Declare the return variable here
+	DECLARE @dCount Int
+
+	-- Add the T-SQL statements to compute the return value here
+	Select @dCount = COUNT(TimeStamp)
+		from ContactEmails
+		where Topic = @Topic
+		and DATEPART(wk, TimeStamp) = @WeekNum
+		and DATEPART(YEAR, TimeStamp) = @YearNum
+
+	-- Return the result of the function
+	RETURN @dCount
+
+END
+
+GO
+
+

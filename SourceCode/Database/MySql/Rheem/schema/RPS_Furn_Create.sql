@@ -1,0 +1,38 @@
+Use rheem;
+
+CREATE TABLE IF NOT EXISTS rps_furn(
+    furnId int(11) NOT NULL AUTO_INCREMENT,
+	ID int NOT NULL,
+	Manuf nvarchar(50) NULL,
+	ARIModel nvarchar(50) NULL,
+	Model nvarchar(50) NULL,
+	Series nvarchar(50) NULL,
+	Fuel nvarchar(10) NULL,
+	Status smallint NULL,
+	NOX bit NOT NULL,
+	Input int NULL,
+	Output int NULL,
+	AFUE real NULL,
+	FlowDir nvarchar(10) NULL,
+	HtgStages smallint NULL,
+	ClgStages smallint NULL,
+	MtrType nvarchar(10) NULL,
+	MtrHP nvarchar(10) NULL,
+	MtrSpeeds nvarchar(50) NULL,
+	WheelType nvarchar(10) NULL,
+	WheelSize nvarchar(10) NULL,
+	AirflowLo smallint NULL,
+	AirflowHi smallint NULL,
+	FilterSize smallint NULL,
+	VoltsLo smallint NULL,
+	VoltsHi smallint NULL,
+	Phase smallint NULL,
+	FLA real NULL,
+	Frequency smallint NULL,
+	Height nvarchar(50) NULL,
+	Width nvarchar(50) NULL,
+	Depth nvarchar(50) NULL,
+	Weight smallint NULL,
+	PRIMARY KEY (furnId)
+);
+
