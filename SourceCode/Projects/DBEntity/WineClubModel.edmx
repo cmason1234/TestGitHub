@@ -1,0 +1,441 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="mywinecompetitionModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Competition">
+          <Key>
+            <PropertyRef Name="CompetitionId" />
+          </Key>
+          <Property Name="CompetitionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MonthlyCompetition" Type="bit" Nullable="false" />
+          <Property Name="CompetitionName" Type="varchar" MaxLength="512" Nullable="false" />
+          <Property Name="Year" Type="int" Nullable="false" />
+          <Property Name="Month" Type="varchar" MaxLength="125" />
+        </EntityType>
+        <EntityType Name="EnvironmentTable">
+          <Key>
+            <PropertyRef Name="EnvironmentTableID" />
+          </Key>
+          <Property Name="EnvironmentTableID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EnvironmentVariableName" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="EnvironmentVariableValue" Type="varchar" MaxLength="1024" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MenuCategory">
+          <Key>
+            <PropertyRef Name="MenuCategoryId" />
+          </Key>
+          <Property Name="MenuCategoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MenuCategoryName" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="MenuCategoryDisplayOrder" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MenuItem">
+          <Key>
+            <PropertyRef Name="MenuItemId" />
+          </Key>
+          <Property Name="MenuItemId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MenuItemName" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="MenuCategoryId" Type="int" Nullable="false" />
+          <Property Name="MenuItemDisplayOrder" Type="int" Nullable="false" />
+          <Property Name="OnClickText" Type="varchar" MaxLength="300" />
+        </EntityType>
+        <EntityType Name="Person">
+          <Key>
+            <PropertyRef Name="PersonID" />
+          </Key>
+          <Property Name="PersonID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Username" Type="varchar" MaxLength="50" />
+          <Property Name="FirstName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="MiddleName" Type="varchar" MaxLength="50" />
+          <Property Name="LastName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="EmailAddress" Type="varchar" MaxLength="50" />
+          <Property Name="EncryptedPassword" Type="varchar" MaxLength="50" />
+          <Property Name="PasswordSeed" Type="varchar" MaxLength="50" />
+          <Property Name="PasswordDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="WineEntry">
+          <Key>
+            <PropertyRef Name="WineEntryID" />
+          </Key>
+          <Property Name="WineEntryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompetitionID" Type="int" Nullable="false" />
+          <Property Name="EntryID" Type="int" Nullable="false" />
+          <Property Name="WineName" Type="varchar" MaxLength="256" />
+          <Property Name="EntrantName" Type="varchar" MaxLength="256" />
+          <Property Name="TableNum" Type="int" />
+          <Property Name="FlightNum" Type="int" />
+          <Property Name="SeqNum" Type="int" />
+          <Property Name="AvgScore" Type="float" />
+          <Property Name="MedalColor" Type="varchar" MaxLength="512" />
+          <Property Name="CategoryName" Type="varchar" MaxLength="512" />
+        </EntityType>
+        <EntityType Name="WineScoring">
+          <Key>
+            <PropertyRef Name="WineScoringID" />
+          </Key>
+          <Property Name="WineScoringID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="WineEntryId" Type="int" Nullable="false" />
+          <Property Name="EnteredPersonID" Type="int" Nullable="false" />
+          <Property Name="JudgeNum" Type="int" />
+          <Property Name="JudgeInitials" Type="varchar" MaxLength="25" />
+          <Property Name="Clarity" Type="float" Nullable="false" />
+          <Property Name="Color" Type="float" Nullable="false" />
+          <Property Name="Aroma" Type="float" Nullable="false" />
+          <Property Name="Ta" Type="float" Nullable="false" />
+          <Property Name="Texture" Type="float" Nullable="false" />
+          <Property Name="Flavor" Type="float" Nullable="false" />
+          <Property Name="Bitterness" Type="float" Nullable="false" />
+          <Property Name="Finish" Type="float" Nullable="false" />
+          <Property Name="Quality" Type="float" Nullable="false" />
+          <Property Name="JudgeTotal" Type="float" Nullable="false" />
+          <Property Name="Score" Type="float" Nullable="false" />
+        </EntityType>
+        <Association Name="MenuItem_fk1">
+          <End Role="MenuCategory" Type="Self.MenuCategory" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="MenuItem" Type="Self.MenuItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MenuCategory">
+              <PropertyRef Name="MenuCategoryId" />
+            </Principal>
+            <Dependent Role="MenuItem">
+              <PropertyRef Name="MenuCategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="wineentry_fk1">
+          <End Role="Competition" Type="Self.Competition" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="WineEntry" Type="Self.WineEntry" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Competition">
+              <PropertyRef Name="CompetitionId" />
+            </Principal>
+            <Dependent Role="WineEntry">
+              <PropertyRef Name="CompetitionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="winescoring_fk1">
+          <End Role="WineEntry" Type="Self.WineEntry" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="WineScoring" Type="Self.WineScoring" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WineEntry">
+              <PropertyRef Name="WineEntryID" />
+            </Principal>
+            <Dependent Role="WineScoring">
+              <PropertyRef Name="WineEntryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="mywinecompetitionModelStoreContainer">
+          <EntitySet Name="Competition" EntityType="Self.Competition" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EnvironmentTable" EntityType="Self.EnvironmentTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MenuCategory" EntityType="Self.MenuCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MenuItem" EntityType="Self.MenuItem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Person" EntityType="Self.Person" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WineEntry" EntityType="Self.WineEntry" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WineScoring" EntityType="Self.WineScoring" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="MenuItem_fk1" Association="Self.MenuItem_fk1">
+            <End Role="MenuCategory" EntitySet="MenuCategory" />
+            <End Role="MenuItem" EntitySet="MenuItem" />
+          </AssociationSet>
+          <AssociationSet Name="wineentry_fk1" Association="Self.wineentry_fk1">
+            <End Role="Competition" EntitySet="Competition" />
+            <End Role="WineEntry" EntitySet="WineEntry" />
+          </AssociationSet>
+          <AssociationSet Name="winescoring_fk1" Association="Self.winescoring_fk1">
+            <End Role="WineEntry" EntitySet="WineEntry" />
+            <End Role="WineScoring" EntitySet="WineScoring" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="mywinecompetitionModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="EnvironmentTable">
+          <Key>
+            <PropertyRef Name="EnvironmentTableID" />
+          </Key>
+          <Property Name="EnvironmentTableID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EnvironmentVariableName" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EnvironmentVariableValue" Type="String" MaxLength="1024" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MenuCategory">
+          <Key>
+            <PropertyRef Name="MenuCategoryId" />
+          </Key>
+          <Property Name="MenuCategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MenuCategoryName" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MenuCategoryDisplayOrder" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="MenuItems" Relationship="Self.MenuItem_fk1" FromRole="MenuCategory" ToRole="MenuItem" />
+        </EntityType>
+        <EntityType Name="MenuItem">
+          <Key>
+            <PropertyRef Name="MenuItemId" />
+          </Key>
+          <Property Name="MenuItemId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MenuItemName" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MenuCategoryId" Type="Int32" Nullable="false" />
+          <Property Name="MenuItemDisplayOrder" Type="Int32" Nullable="false" />
+          <Property Name="OnClickText" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="MenuCategory" Relationship="Self.MenuItem_fk1" FromRole="MenuItem" ToRole="MenuCategory" />
+        </EntityType>
+        <Association Name="MenuItem_fk1">
+          <End Role="MenuCategory" Type="Self.MenuCategory" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="MenuItem" Type="Self.MenuItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MenuCategory">
+              <PropertyRef Name="MenuCategoryId" />
+            </Principal>
+            <Dependent Role="MenuItem">
+              <PropertyRef Name="MenuCategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="mywinecompetitionEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="EnvironmentTables" EntityType="Self.EnvironmentTable" />
+          <EntitySet Name="MenuCategories" EntityType="Self.MenuCategory" />
+          <EntitySet Name="MenuItems" EntityType="Self.MenuItem" />
+          <AssociationSet Name="MenuItem_fk1" Association="Self.MenuItem_fk1">
+            <End Role="MenuCategory" EntitySet="MenuCategories" />
+            <End Role="MenuItem" EntitySet="MenuItems" />
+          </AssociationSet>
+          <EntitySet Name="Competitions" EntityType="mywinecompetitionModel.Competition" />
+          <EntitySet Name="WineEntries" EntityType="mywinecompetitionModel.WineEntry" />
+          <AssociationSet Name="wineentry_fk1" Association="mywinecompetitionModel.wineentry_fk1">
+            <End Role="Competition" EntitySet="Competitions" />
+            <End Role="WineEntry" EntitySet="WineEntries" />
+          </AssociationSet>
+          <EntitySet Name="People" EntityType="mywinecompetitionModel.Person" />
+          <EntitySet Name="WineScorings" EntityType="mywinecompetitionModel.WineScoring" />
+          <AssociationSet Name="winescoring_fk1" Association="mywinecompetitionModel.winescoring_fk1">
+            <End Role="WineEntry" EntitySet="WineEntries" />
+            <End Role="WineScoring" EntitySet="WineScorings" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="Competition">
+          <Key>
+            <PropertyRef Name="CompetitionId" />
+          </Key>
+          <Property Name="CompetitionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MonthlyCompetition" Type="Boolean" Nullable="false" />
+          <Property Name="CompetitionName" Type="String" Nullable="false" MaxLength="512" FixedLength="false" Unicode="false" />
+          <Property Name="Year" Type="Int32" Nullable="false" />
+          <Property Name="Month" Type="String" MaxLength="125" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="WineEntries" Relationship="mywinecompetitionModel.wineentry_fk1" FromRole="Competition" ToRole="WineEntry" />
+        </EntityType>
+        <EntityType Name="WineEntry">
+          <Key>
+            <PropertyRef Name="WineEntryID" />
+          </Key>
+          <Property Name="WineEntryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompetitionID" Type="Int32" Nullable="false" />
+          <Property Name="EntryID" Type="Int32" Nullable="false" />
+          <Property Name="WineName" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="EntrantName" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="TableNum" Type="Int32" />
+          <Property Name="FlightNum" Type="Int32" />
+          <Property Name="SeqNum" Type="Int32" />
+          <Property Name="AvgScore" Type="Double" />
+          <Property Name="MedalColor" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Competition" Relationship="mywinecompetitionModel.wineentry_fk1" FromRole="WineEntry" ToRole="Competition" />
+          <Property Name="CategoryName" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="WineScorings" Relationship="mywinecompetitionModel.winescoring_fk1" FromRole="WineEntry" ToRole="WineScoring" />
+        </EntityType>
+        <Association Name="wineentry_fk1">
+          <End Type="mywinecompetitionModel.Competition" Role="Competition" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="mywinecompetitionModel.WineEntry" Role="WineEntry" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Competition">
+              <PropertyRef Name="CompetitionId" />
+            </Principal>
+            <Dependent Role="WineEntry">
+              <PropertyRef Name="CompetitionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Person">
+          <Key>
+            <PropertyRef Name="PersonID" />
+          </Key>
+          <Property Name="PersonID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EmailAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EncryptedPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PasswordSeed" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PasswordDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="WineScoring">
+          <Key>
+            <PropertyRef Name="WineScoringID" />
+          </Key>
+          <Property Name="WineScoringID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WineEntryId" Type="Int32" Nullable="false" />
+          <Property Name="EnteredPersonID" Type="Int32" Nullable="false" />
+          <Property Name="JudgeNum" Type="Int32" />
+          <Property Name="JudgeInitials" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="Clarity" Type="Double" Nullable="false" />
+          <Property Name="Color" Type="Double" Nullable="false" />
+          <Property Name="Aroma" Type="Double" Nullable="false" />
+          <Property Name="Ta" Type="Double" Nullable="false" />
+          <Property Name="Texture" Type="Double" Nullable="false" />
+          <Property Name="Flavor" Type="Double" Nullable="false" />
+          <Property Name="Bitterness" Type="Double" Nullable="false" />
+          <Property Name="Finish" Type="Double" Nullable="false" />
+          <Property Name="Quality" Type="Double" Nullable="false" />
+          <Property Name="JudgeTotal" Type="Double" Nullable="false" />
+          <Property Name="Score" Type="Double" Nullable="false" />
+          <NavigationProperty Name="WineEntry" Relationship="mywinecompetitionModel.winescoring_fk1" FromRole="WineScoring" ToRole="WineEntry" />
+        </EntityType>
+        <Association Name="winescoring_fk1">
+          <End Type="mywinecompetitionModel.WineEntry" Role="WineEntry" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="mywinecompetitionModel.WineScoring" Role="WineScoring" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WineEntry">
+              <PropertyRef Name="WineEntryID" />
+            </Principal>
+            <Dependent Role="WineScoring">
+              <PropertyRef Name="WineEntryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="mywinecompetitionModelStoreContainer" CdmEntityContainer="mywinecompetitionEntities">
+          <EntitySetMapping Name="EnvironmentTables">
+            <EntityTypeMapping TypeName="mywinecompetitionModel.EnvironmentTable">
+              <MappingFragment StoreEntitySet="EnvironmentTable">
+                <ScalarProperty Name="EnvironmentTableID" ColumnName="EnvironmentTableID" />
+                <ScalarProperty Name="EnvironmentVariableName" ColumnName="EnvironmentVariableName" />
+                <ScalarProperty Name="EnvironmentVariableValue" ColumnName="EnvironmentVariableValue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MenuCategories">
+            <EntityTypeMapping TypeName="mywinecompetitionModel.MenuCategory">
+              <MappingFragment StoreEntitySet="MenuCategory">
+                <ScalarProperty Name="MenuCategoryId" ColumnName="MenuCategoryId" />
+                <ScalarProperty Name="MenuCategoryName" ColumnName="MenuCategoryName" />
+                <ScalarProperty Name="MenuCategoryDisplayOrder" ColumnName="MenuCategoryDisplayOrder" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MenuItems">
+            <EntityTypeMapping TypeName="mywinecompetitionModel.MenuItem">
+              <MappingFragment StoreEntitySet="MenuItem">
+                <ScalarProperty Name="MenuItemId" ColumnName="MenuItemId" />
+                <ScalarProperty Name="MenuItemName" ColumnName="MenuItemName" />
+                <ScalarProperty Name="MenuCategoryId" ColumnName="MenuCategoryId" />
+                <ScalarProperty Name="MenuItemDisplayOrder" ColumnName="MenuItemDisplayOrder" />
+                <ScalarProperty Name="OnClickText" ColumnName="OnClickText" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Competitions">
+            <EntityTypeMapping TypeName="mywinecompetitionModel.Competition">
+              <MappingFragment StoreEntitySet="Competition">
+                <ScalarProperty Name="Month" ColumnName="Month" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="CompetitionName" ColumnName="CompetitionName" />
+                <ScalarProperty Name="MonthlyCompetition" ColumnName="MonthlyCompetition" />
+                <ScalarProperty Name="CompetitionId" ColumnName="CompetitionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WineEntries">
+            <EntityTypeMapping TypeName="mywinecompetitionModel.WineEntry">
+              <MappingFragment StoreEntitySet="WineEntry">
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+                <ScalarProperty Name="MedalColor" ColumnName="MedalColor" />
+                <ScalarProperty Name="AvgScore" ColumnName="AvgScore" />
+                <ScalarProperty Name="SeqNum" ColumnName="SeqNum" />
+                <ScalarProperty Name="FlightNum" ColumnName="FlightNum" />
+                <ScalarProperty Name="TableNum" ColumnName="TableNum" />
+                <ScalarProperty Name="EntrantName" ColumnName="EntrantName" />
+                <ScalarProperty Name="WineName" ColumnName="WineName" />
+                <ScalarProperty Name="EntryID" ColumnName="EntryID" />
+                <ScalarProperty Name="CompetitionID" ColumnName="CompetitionID" />
+                <ScalarProperty Name="WineEntryID" ColumnName="WineEntryID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="People">
+            <EntityTypeMapping TypeName="mywinecompetitionModel.Person">
+              <MappingFragment StoreEntitySet="Person">
+                <ScalarProperty Name="PasswordDate" ColumnName="PasswordDate" />
+                <ScalarProperty Name="PasswordSeed" ColumnName="PasswordSeed" />
+                <ScalarProperty Name="EncryptedPassword" ColumnName="EncryptedPassword" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="PersonID" ColumnName="PersonID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WineScorings">
+            <EntityTypeMapping TypeName="mywinecompetitionModel.WineScoring">
+              <MappingFragment StoreEntitySet="WineScoring">
+                <ScalarProperty Name="Score" ColumnName="Score" />
+                <ScalarProperty Name="JudgeTotal" ColumnName="JudgeTotal" />
+                <ScalarProperty Name="Quality" ColumnName="Quality" />
+                <ScalarProperty Name="Finish" ColumnName="Finish" />
+                <ScalarProperty Name="Bitterness" ColumnName="Bitterness" />
+                <ScalarProperty Name="Flavor" ColumnName="Flavor" />
+                <ScalarProperty Name="Texture" ColumnName="Texture" />
+                <ScalarProperty Name="Ta" ColumnName="Ta" />
+                <ScalarProperty Name="Aroma" ColumnName="Aroma" />
+                <ScalarProperty Name="Color" ColumnName="Color" />
+                <ScalarProperty Name="Clarity" ColumnName="Clarity" />
+                <ScalarProperty Name="JudgeInitials" ColumnName="JudgeInitials" />
+                <ScalarProperty Name="JudgeNum" ColumnName="JudgeNum" />
+                <ScalarProperty Name="EnteredPersonID" ColumnName="EnteredPersonID" />
+                <ScalarProperty Name="WineEntryId" ColumnName="WineEntryId" />
+                <ScalarProperty Name="WineScoringID" ColumnName="WineScoringID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

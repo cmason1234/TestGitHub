@@ -1,0 +1,256 @@
+
+@import url(AJAXStyleSheet.css);
+CustomTabStyle .ajax__tab_tab
+{
+    height: 50px;
+    padding: 4px;
+    margin: 0;
+    background: url(img/onglets/tab.gif) repeat-x;
+}
+
+table.DataTable
+{
+    background-color: #ededed;
+    text-align: left;
+    border-spacing: 4px;
+    border-style: none;
+    margin-bottom: 10px;
+}
+
+/* TODO: Need to reconcile; I had to add this because the ones in screens was affecting my tables.  */
+td
+{
+    border-style: none;
+    padding: 1px 2px;
+    font-size: 10pt;
+}
+
+td.tableDefinition
+{
+    font-size: 12pt;
+    font-weight: bold;
+}
+
+.BlockHeader
+{
+    font-size: 10pt;
+    padding-bottom: 10px;
+}
+
+.BlockHeader h1
+{
+    font-size: 14pt;
+    font-weight: bold;
+    margin-bottom: -15px;
+}
+
+.tableButtons
+{
+    padding-top: 0pt;
+    border-spacing: 12px;
+    margin-bottom: 10px;
+}
+
+
+table.ContractorWSRequestChange
+{
+    padding: 5px;
+    border-spacing: 10px;
+    margin-bottom: 10px;
+}
+
+table.ContractorWSTable
+{
+    background-color: #e2eff8;
+    padding: 10px;
+    text-align: left;
+    border-spacing: 4px;
+    margin-bottom: 10px;
+}
+
+table.BlankTable
+{
+    margin-bottom: 10px;
+}
+
+.fake-toolbar
+{
+    /* default background colour, for all layout engines that don't implement gradients */
+    background: #f8f8f8;
+    border: 1px solid #EFEFEF;
+    background: -moz-linear-gradient(top, #f8f8f8, #c8c8c8); /* gecko based browsers */
+    background: -webkit-gradient(linear, left top, left bottom, from(#f8f8f8), to(#c8c8c8)); /* webkit based browsers */
+    color: #000000; /* text colour (black) */
+    height: auto; /* gradient uses the full height of the element */
+    padding: 1px; /* distance from border edge to text */ /* For Internet Explorer 5.5 - 7 */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#f8f8f8, endColorstr=#c8c8c8); /* For Internet Explorer 8 */
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#f8f8f8, endColorstr=#c8c8c8)";
+    width: 100%;
+    z-index: 90001;
+}
+
+.rbToggleButton:hover
+{
+    border-color: #939393;
+    border-style: solid;
+    border-width: 1px;
+}
+
+.clear
+{
+    clear: both;
+}
+
+.box_shadow
+{
+    -webkit-box-shadow: 5px 5px 7px 0px #999; /* Saf3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+    box-shadow: 5px 5px 7px 0px #999; /* Opera 10.5, IE9, FF4+, Chrome 6+, iOS 5 */
+}
+
+.box_round
+{
+    -webkit-border-radius: 10px; /* Saf3-4, iOS 1-3.2, Android =1.6 */
+    border-radius: 10px; /* Opera 10.5, IE9, Saf5, Chrome, FF4+, iOS 4, Android 2.1+ */
+}
+.fieldset100Percent
+{
+    width: 650px;
+    float: left;
+    margin-right: 20px;
+    padding: 20px 10px 10px 10px;
+    border: 1px #ccc solid;
+    font-family: Arial;
+    font-size: 14px;
+}
+.fieldset50Percent
+{
+    width: 300px;
+    float: left;
+    margin-right: 20px;
+    padding: 20px 10px 10px 10px;
+    border: 1px #ccc solid;
+    font-family: Arial;
+    font-size: 14px;
+}
+
+.fieldset200Pixelst
+{
+    width: 200px;
+    float: left;
+    margin-right: 20px;
+    padding: 20px 10px 10px 10px;
+    border: 1px #ccc solid;
+    font-family: Arial;
+    font-size: 14px;
+}
+.fieldset415Pixels
+{
+    width: 415px;
+    float: left;
+    margin-right: 20px;
+    padding: 20px 10px 10px 10px;
+    border: 1px #ccc solid;
+    font-family: Arial;
+    font-size: 14px;
+}
+
+.fieldset400PixelsCoOp
+{
+    width: 400px;
+    height: 30px;
+    float: left;
+    margin-right: 20px;
+    padding: 5px 5px 5px 5px;
+    border: 1px #ccc solid;
+    font-family: Arial;
+    font-size: 18px;
+    background-color :#ccc;
+}
+
+
+legend
+{
+    font-family: Arial;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.DMSListSearchDropDownList
+{
+    width: 200px;
+    border-radius: 5px;
+}
+.DMSListSearchTextBox
+{
+    width: 200px;
+    border-radius: 5px;
+}
+.DMSListSearchText
+{
+    text-align: right;
+}
+.dropDownLists
+{
+    font-family: Arial;
+    font-size: 12px;
+    width: 250px;
+    border-radius: 5px;
+}
+.newDocumentTextBox
+{
+    width: 350px;
+    height: 15px;
+    font-family: Arial;
+    font-size: 14px;
+    vertical-align: middle;
+    border-radius: 5px;
+}
+#ContentArea
+{
+position: fixed;
+width: 100%;
+background-color: #ffffff;
+padding: 0;
+margin: 0;
+border: 0;
+}
+#documentfields
+{
+    background-color: #ededed;
+    width: 920px;
+    margin-left: 20px;
+    border-radius: 5px;
+}
+#documentfieldsTable
+{
+    border-spacing: 4px;
+}
+#keywordTextArea
+{
+    border-radius: 5px;
+    height: 30px;
+    width: 350px;
+}
+#datepicker
+{
+    border-radius: 5px;
+    font-family: Arial;
+    font-weight: bold;
+    text-align: center;
+}
+#moresearchTable
+{
+    background-color: #ededed;
+    margin-left: 20px;
+    border-radius: 5px;
+}
+.DMSTextBox
+{
+    height: 20px;
+    width: 260px;
+}
+.DMSDropDown
+{
+    height: 20px;
+    width: 260px;
+}

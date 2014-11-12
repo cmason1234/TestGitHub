@@ -1,0 +1,56 @@
+﻿<%@ Master Language="VB" AutoEventWireup="false" CodeBehind="BlankBootstrap3.master.vb" Inherits="Wine.Web.BlankBootstrap3" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <style type="text/css">
+        #ajaxBusy {
+            display: none;
+            margin: 0px 0px 0px -50px; /* left margin is half width of the div, to centre it */
+            padding: 30px 10px 10px 10px;
+            position: absolute;
+            left: 30%;
+            top: 325px;
+            width: 500px;
+            height: 150px;
+            text-align: center;
+            background: #e8e8e8 url('/_resources/images/ajax-loader.gif') no-repeat center center;
+            border: 1px solid #000;
+            z-index: 100;
+        }
+    </style>
+
+    <link href="/_resources/js/bootstrap/3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="/_resources/js/css/fancybox/jquery.fancybox.css" type="text/css" media="screen" />
+
+    <link type="text/css" rel="stylesheet" href="/_resources/js/css/jquery.dataTables.css" />
+
+    <link href="/_resources/js/css/winebootstrapmods.css" rel="stylesheet" />
+    
+    <link rel="stylesheet" type="text/css" href="/_resources/js/css/wine-admaker.css" media="screen" />
+
+    <!-- custom styles -->
+    <script type="text/javascript" src="/_resources/js/jquery/jquery_1.10.2.min.js"></script>
+    <script type="text/javascript" src="/_resources/js/jquery/jquery.textCounter-min.js"></script>
+    <script type="text/javascript" src="/_resources/js/jquery/jquery-ui_1.10.3.min.js"></script>
+    <script type="text/javascript" src="/_resources/js/bootstrap/3.0/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/_resources/js/jquery/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="/_resources/js/jquery/bootstrap-formhelpers-selectbox.js"></script>
+
+    <script type="text/javascript" src="/_resources/js/js/jqc_Ajax2.js"></script>
+
+    <!-- fancyBox -->
+    <script type="text/javascript" src="/_resources/js/css/fancybox/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+    <asp:ContentPlaceHolder ID="head" runat="server"></asp:ContentPlaceHolder>
+</head>
+<body>
+    <div id="ajaxBusy" style="display: none">
+        <p id="ajaxBusyMsg">Please wait...</p>
+    </div>
+    <asp:ContentPlaceHolder ID="cphMain" runat="server"></asp:ContentPlaceHolder>
+</body>
+</html>

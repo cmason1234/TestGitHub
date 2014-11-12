@@ -1,0 +1,167 @@
+﻿body {
+    padding: 10px 40px 10px 40px;
+}
+
+.tab-content {
+    height: 600px;
+    overflow: auto;
+    border-left: solid 1px #cdcdcd;
+    border-right: solid 1px #cdcdcd;
+    border-bottom: solid 1px #cdcdcd;
+    padding: 20px;
+}
+
+.btn-primary {
+    padding: 3px;
+}
+
+.btnRow {
+    float: right;
+}
+
+.hideme {
+    display: none;
+}
+
+/*------------------------------------*/
+/*	        LISTS                     */
+/*------------------------------------*/
+.double, .triple {
+    width: 560px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    border-top: 1px solid #ccc;
+}
+
+.quad, .six, .seven {
+    width: 760px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    border-top: 1px solid #ccc;
+}
+
+.double li {
+    width: 50%;
+    float: left;
+    display: inline;
+}
+
+.triple li {
+    width: 33.333%;
+    float: left;
+    display: inline;
+}
+
+.quad li {
+    width: 25%;
+    float: left;
+    display: inline;
+}
+
+.six li {
+    width: 16.666%;
+    float: left;
+    display: inline;
+}
+
+.seven li {
+    width: 14.25%;
+    float: left;
+    display: inline;
+}
+
+.alert-info {
+    color: #808084;
+    background-color: whiteSmoke;
+    border-color: #808084;
+}
+
+.label-info, .badge-info {
+    background-color: #808084;
+}
+
+a {
+    color: #808084;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+		 * DataTables
+		 */
+.dataTables_length, .dataTables_info {
+    float: left;
+}
+
+.dataTables_filter, .dataTables_paginate {
+    float: right;
+}
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+		 * DataTables sorting
+		 */
+
+.sorting_asc {
+    background: url('/_resources/images/boot/sort_asc.png') no-repeat center right;
+}
+
+.sorting_desc {
+    background: url('/_resources/images/boot/sort_desc.png') no-repeat center right;
+}
+
+.sorting {
+    background: url('/_resources/images/boot/sort_both.png') no-repeat center right;
+}
+
+.sorting_asc_disabled {
+    background: url('/_resources/images/boot/sort_asc_disabled.png') no-repeat center right;
+}
+
+.sorting_desc_disabled {
+    background: url('/_resources/images/boot/sort_desc_disabled.png') no-repeat center right;
+}
+
+table.display thead th:active,
+table.display thead td:active {
+    outline: none;
+}
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+		 * DataTables paging
+		 */
+.paging_full_numbers {
+    width: 400px;
+    height: 22px;
+    line-height: 22px;
+}
+
+    .paging_full_numbers a:active {
+        outline: none;
+    }
+
+    .paging_full_numbers a:hover {
+        text-decoration: none;
+    }
+
+    .paging_full_numbers a.paginate_button,
+    .paging_full_numbers a.paginate_active {
+        border: 1px solid #aaa;
+        padding: 2px 5px;
+        margin: 0;
+        cursor: pointer;
+        *cursor: hand;
+        color: #333 !important;
+    }
+
+    .paging_full_numbers a.paginate_button {
+        background-color: #fff;
+    }
+
+        .paging_full_numbers a.paginate_button:hover {
+            background-color: #ccc;
+            text-decoration: none !important;
+        }
+
+    .paging_full_numbers a.paginate_active {
+        background-color: #ddd;
+    }

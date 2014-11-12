@@ -1,0 +1,527 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>
+    </SchemaVersion>
+    <ProjectGuid>{CD8E53D2-B177-494B-AE08-1CEEF98E43D7}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{F184B08F-C81C-45F6-A57F-5ABD9991F28F}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <RootNamespace>
+    </RootNamespace>
+    <AssemblyName>MyWineSite</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MyType>Custom</MyType>
+    <UseIISExpress>false</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\</OutputPath>
+    <DocumentationFile>WebForms_Basic.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DocumentationFile>WebForms_Basic.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\..\Projects\DBEntity\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\..\Projects\DBEntity\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\..\Solutions\MyWineSite\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="AspNet.ScriptManager.bootstrap">
+      <HintPath>..\..\Solutions\MyWineSite\packages\AspNet.ScriptManager.bootstrap.3.0.0\lib\net45\AspNet.ScriptManager.bootstrap.dll</HintPath>
+    </Reference>
+    <Reference Include="AspNet.ScriptManager.jQuery">
+      <HintPath>..\..\Solutions\MyWineSite\packages\AspNet.ScriptManager.jQuery.1.10.2\lib\net45\AspNet.ScriptManager.jQuery.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ScriptManager.MSAjax">
+      <HintPath>..\..\Solutions\MyWineSite\packages\Microsoft.AspNet.ScriptManager.MSAjax.5.0.0\lib\net45\Microsoft.ScriptManager.MSAjax.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ScriptManager.WebForms">
+      <HintPath>..\..\Solutions\MyWineSite\packages\Microsoft.AspNet.ScriptManager.WebForms.5.0.0\lib\net45\Microsoft.ScriptManager.WebForms.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <HintPath>..\..\Solutions\MyWineSite\packages\Microsoft.AspNet.Web.Optimization.1.1.1\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Web.UI, Version=2012.2.607.40, Culture=neutral, PublicKeyToken=121fae78165ba3d4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Telerik.Web.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\..\Solutions\MyWineSite\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\..\Solutions\MyWineSite\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <Private>True</Private>
+      <HintPath>..\..\Solutions\MyWineSite\packages\Newtonsoft.Json.5.0.6\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Web.Optimization.WebForms">
+      <Private>True</Private>
+      <HintPath>..\..\Solutions\MyWineSite\packages\Microsoft.AspNet.Web.Optimization.WebForms.1.1.1\lib\net45\Microsoft.AspNet.Web.Optimization.WebForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.FriendlyUrls">
+      <HintPath>..\..\Solutions\MyWineSite\packages\Microsoft.AspNet.FriendlyUrls.Core.1.0.2\lib\net45\Microsoft.AspNet.FriendlyUrls.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Collections.Specialized" />
+    <Import Include="System.Configuration" />
+    <Import Include="System.Text" />
+    <Import Include="System.Text.RegularExpressions" />
+    <Import Include="System.Web" />
+    <Import Include="System.Web.Caching" />
+    <Import Include="System.Web.Routing" />
+    <Import Include="System.Web.SessionState" />
+    <Import Include="System.Web.Security" />
+    <Import Include="System.Web.Profile" />
+    <Import Include="System.Web.UI" />
+    <Import Include="System.Web.UI.WebControls" />
+    <Import Include="System.Web.UI.WebControls.WebParts" />
+    <Import Include="System.Web.UI.HtmlControls" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AdminTools\PersonAddEdit.aspx" />
+    <Content Include="AdminTools\PersonSearch.aspx" />
+    <Content Include="Competition\CompAddEdit.aspx" />
+    <Content Include="Competition\WineEntryAddEdit.aspx" />
+    <Content Include="Competition\WineScoreAddEdit.aspx" />
+    <Content Include="LoginPub.aspx" />
+    <Content Include="Logout.aspx" />
+    <Content Include="Competition\CompSearch.aspx" />
+    <Content Include="packages.config" />
+    <Content Include="MasterPage\BlankBootstrap3.Master" />
+    <Content Include="_resources\images\ajax-loader.gif" />
+    <Content Include="_resources\images\boot\sort_asc.png" />
+    <Content Include="_resources\images\boot\sort_asc_disabled.png" />
+    <Content Include="_resources\images\boot\sort_both.png" />
+    <Content Include="_resources\images\boot\sort_desc.png" />
+    <Content Include="_resources\images\boot\sort_desc_disabled.png" />
+    <Content Include="_resources\images\checkbox-checked.png" />
+    <Content Include="_resources\images\checkbox-required.png" />
+    <Content Include="_resources\images\checkbox-unchecked.png" />
+    <Content Include="_resources\images\deselected.png" />
+    <Content Include="_resources\images\DownloadIcon.png" />
+    <Content Include="_resources\images\edit-deleteSprite.png" />
+    <Content Include="_resources\images\EditPencil.png" />
+    <Content Include="_resources\images\ico\Add-16x16.png" />
+    <Content Include="_resources\images\ico\address_book2_add-16x16.png" />
+    <Content Include="_resources\images\ico\address_book2_delete_16x16.png" />
+    <Content Include="_resources\images\ico\applications-32x32.png" />
+    <Content Include="_resources\images\ico\blogs-16x16.png" />
+    <Content Include="_resources\images\ico\calendar-16x16.png" />
+    <Content Include="_resources\images\ico\cancel-16x16.png" />
+    <Content Include="_resources\images\ico\complete-25x19.png" />
+    <Content Include="_resources\images\ico\contract.png" />
+    <Content Include="_resources\images\ico\copy-16x16.png" />
+    <Content Include="_resources\images\ico\crosshairs.png" />
+    <Content Include="_resources\images\ico\delete-16x16.png" />
+    <Content Include="_resources\images\ico\deleteFancy.png" />
+    <Content Include="_resources\images\ico\down_16x16.png" />
+    <Content Include="_resources\images\ico\editPencil.png" />
+    <Content Include="_resources\images\ico\employee-32x32.png" />
+    <Content Include="_resources\images\ico\Enable-16x16.png" />
+    <Content Include="_resources\images\ico\excel-16x16.png" />
+    <Content Include="_resources\images\ico\favorites-16x16.png" />
+    <Content Include="_resources\images\ico\favorites_add-24x24.png" />
+    <Content Include="_resources\images\ico\favorites_delete-24x24.png" />
+    <Content Include="_resources\images\ico\folder-16x16.png" />
+    <Content Include="_resources\images\ico\help-16x16.png" />
+    <Content Include="_resources\images\ico\Hyperlink-16x16.png" />
+    <Content Include="_resources\images\ico\ico_new_16x16.gif" />
+    <Content Include="_resources\images\ico\import-16x16.png" />
+    <Content Include="_resources\images\ico\insert-doc-16x16.png" />
+    <Content Include="_resources\images\ico\insert-document-16x16.png" />
+    <Content Include="_resources\images\ico\list-16x16.png" />
+    <Content Include="_resources\images\ico\Login-16x16.png" />
+    <Content Include="_resources\images\ico\mail-16x16.png" />
+    <Content Include="_resources\images\ico\map-16x16.png" />
+    <Content Include="_resources\images\ico\marketing-32x32.png" />
+    <Content Include="_resources\images\ico\money-16x16.png" />
+    <Content Include="_resources\images\ico\msgErr-16x16.png" />
+    <Content Include="_resources\images\ico\msgInfo-16x16.png" />
+    <Content Include="_resources\images\ico\msgOK-16x16.png" />
+    <Content Include="_resources\images\ico\msgWarn-16x16.png" />
+    <Content Include="_resources\images\ico\new-16x16.png" />
+    <Content Include="_resources\images\ico\next_16x16.png" />
+    <Content Include="_resources\images\ico\no_image-100x100.png" />
+    <Content Include="_resources\images\ico\opened_folder-16x16.png" />
+    <Content Include="_resources\images\ico\PasswordChange-16x16.png" />
+    <Content Include="_resources\images\ico\pdf-16x16.png" />
+    <Content Include="_resources\images\ico\phonebook-16x16.png" />
+    <Content Include="_resources\images\ico\power-16x16.png" />
+    <Content Include="_resources\images\ico\prev_16x16.png" />
+    <Content Include="_resources\images\ico\print-16x16.png" />
+    <Content Include="_resources\images\ico\productInfo-32x32.png" />
+    <Content Include="_resources\images\ico\quote.png" />
+    <Content Include="_resources\images\ico\refresh-16x16.png" />
+    <Content Include="_resources\images\ico\reports-16x16.png" />
+    <Content Include="_resources\images\ico\sales-32x32.png" />
+    <Content Include="_resources\images\ico\save-16x16.png" />
+    <Content Include="_resources\images\ico\search-16x16.png" />
+    <Content Include="_resources\images\ico\search-more-16x16.png" />
+    <Content Include="_resources\images\ico\secure_blud.png" />
+    <Content Include="_resources\images\ico\secure_green.png" />
+    <Content Include="_resources\images\ico\secure_red.png" />
+    <Content Include="_resources\images\ico\secure_yellow.png" />
+    <Content Include="_resources\images\ico\upload_16x16.png" />
+    <Content Include="_resources\images\ico\user_male_delete-16x16.png" />
+    <Content Include="_resources\images\ico\user_man_disable_16x16.png" />
+    <Content Include="_resources\images\ico\user_man_enable_16x16.png" />
+    <Content Include="_resources\images\ico\widgets-16x16.png" />
+    <Content Include="_resources\images\ico\word-16x16.png" />
+    <Content Include="_resources\images\measurement-lines.png" />
+    <Content Include="_resources\images\measurement-lines_small.png" />
+    <Content Include="_resources\images\menuarrow.gif" />
+    <Content Include="_resources\images\menubg.gif" />
+    <Content Include="_resources\images\menubgover.gif" />
+    <Content Include="_resources\images\ruud-tile.jpg" />
+    <Content Include="_resources\images\selected.png" />
+    <Content Include="_resources\images\toolbar-bkg.png" />
+    <Content Include="_resources\js\Bootstrap\3.0\dist\css\bootstrap-formhelpers-countries.flags.css" />
+    <Content Include="_resources\js\Bootstrap\3.0\dist\css\bootstrap-formhelpers-currencies.flags.css" />
+    <Content Include="_resources\js\Bootstrap\3.0\dist\css\bootstrap-formhelpers.css" />
+    <Content Include="_resources\js\Bootstrap\3.0\dist\css\bootstrap-theme.min.css" />
+    <Content Include="_resources\js\Bootstrap\3.0\dist\css\bootstrap.css" />
+    <Content Include="_resources\js\Bootstrap\3.0\dist\css\bootstrap.min.css" />
+    <Content Include="_resources\js\Bootstrap\3.0\dist\css\BreadCrumb.css" />
+    <Content Include="_resources\js\Bootstrap\3.0\dist\css\docs.css" />
+    <Content Include="_resources\js\Bootstrap\3.0\dist\css\prettify.css" />
+    <Content Include="_resources\js\Bootstrap\3.0\dist\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="_resources\js\Bootstrap\3.0\dist\js\bootstrap.js" />
+    <Content Include="_resources\js\Bootstrap\3.0\dist\js\bootstrap.min.js" />
+    <Content Include="_resources\js\Bootstrap\FormHelpers\css\bootstrap-formhelpers-countries.flags.css" />
+    <Content Include="_resources\js\Bootstrap\FormHelpers\css\bootstrap-formhelpers-currencies.flags.css" />
+    <Content Include="_resources\js\Bootstrap\FormHelpers\css\bootstrap-formhelpers.css" />
+    <Content Include="_resources\js\Bootstrap\FormHelpers\css\docs.css" />
+    <Content Include="_resources\js\Bootstrap\FormHelpers\css\prettify.css" />
+    <Content Include="_resources\js\Bootstrap\FormHelpers\js\bootstrap-formhelpers-countries.en_US.js" />
+    <Content Include="_resources\js\Bootstrap\FormHelpers\js\bootstrap-formhelpers-countries.js" />
+    <Content Include="_resources\js\Bootstrap\FormHelpers\js\bootstrap-formhelpers-datepicker.en_US.js" />
+    <Content Include="_resources\js\Bootstrap\FormHelpers\js\bootstrap-formhelpers-datepicker.js" />
+    <Content Include="_resources\js\Bootstrap\FormHelpers\js\bootstrap-formhelpers-selectbox.js" />
+    <Content Include="_resources\js\Bootstrap\FormHelpers\js\bootstrap-formhelpers-states.en_US.js" />
+    <Content Include="_resources\js\Bootstrap\FormHelpers\js\bootstrap-formhelpers-states.js" />
+    <Content Include="_resources\js\Bootstrap\FormHelpers\js\prettify.js" />
+    <Content Include="_resources\js\csshorizontalmenu.js" />
+    <Content Include="_resources\js\css\AJAXStyleSheet.css" />
+    <Content Include="_resources\js\css\bluetabs.css" />
+    <Content Include="_resources\js\css\csshorizontalmenu.css" />
+    <Content Include="_resources\js\css\dataTables.tableTools.css" />
+    <Content Include="_resources\js\css\fancybox\blank.gif" />
+    <Content Include="_resources\js\css\fancybox\fancybox_loading%402x.gif" />
+    <Content Include="_resources\js\css\fancybox\fancybox_loading.gif" />
+    <Content Include="_resources\js\css\fancybox\fancybox_overlay.png" />
+    <Content Include="_resources\js\css\fancybox\fancybox_sprite%402x.png" />
+    <Content Include="_resources\js\css\fancybox\fancybox_sprite.png" />
+    <Content Include="_resources\js\css\fancybox\helpers\fancybox_buttons.png" />
+    <Content Include="_resources\js\css\fancybox\helpers\jquery.fancybox-buttons.css" />
+    <Content Include="_resources\js\css\fancybox\helpers\jquery.fancybox-buttons.js" />
+    <Content Include="_resources\js\css\fancybox\helpers\jquery.fancybox-media.js" />
+    <Content Include="_resources\js\css\fancybox\helpers\jquery.fancybox-thumbs.css" />
+    <Content Include="_resources\js\css\fancybox\helpers\jquery.fancybox-thumbs.js" />
+    <Content Include="_resources\js\css\fancybox\jquery.fancybox.css" />
+    <Content Include="_resources\js\css\fancybox\jquery.fancybox.js" />
+    <Content Include="_resources\js\css\fancybox\jquery.fancybox.pack.js" />
+    <Content Include="_resources\js\css\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="_resources\js\css\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="_resources\js\css\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="_resources\js\css\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="_resources\js\css\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="_resources\js\css\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="_resources\js\css\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="_resources\js\css\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="_resources\js\css\images\ui-icons_222222_256x240.png" />
+    <Content Include="_resources\js\css\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="_resources\js\css\images\ui-icons_454545_256x240.png" />
+    <Content Include="_resources\js\css\images\ui-icons_888888_256x240.png" />
+    <Content Include="_resources\js\css\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="_resources\js\css\jquery-ui.min.css" />
+    <Content Include="_resources\js\css\jquery.dataTables.css" />
+    <Content Include="_resources\js\css\jquery.fileupload.css" />
+    <Content Include="_resources\js\css\main.css" />
+    <Content Include="_resources\js\css\normalize-1.1.1.css" />
+    <Content Include="_resources\js\css\SSApps.css" />
+    <Content Include="_resources\js\css\wine-admaker.css" />
+    <Content Include="_resources\js\css\winebootstrapmods.css" />
+    <Content Include="_resources\js\jQuery\bootstrap-formhelpers-countries.en_US.js" />
+    <Content Include="_resources\js\jQuery\bootstrap-formhelpers-countries.js" />
+    <Content Include="_resources\js\jQuery\bootstrap-formhelpers-datepicker.en_US.js" />
+    <Content Include="_resources\js\jQuery\bootstrap-formhelpers-datepicker.js" />
+    <Content Include="_resources\js\jQuery\bootstrap-formhelpers-selectbox.js" />
+    <Content Include="_resources\js\jQuery\bootstrap-formhelpers-states.en_US.js" />
+    <Content Include="_resources\js\jQuery\bootstrap-formhelpers-states.js" />
+    <Content Include="_resources\js\jQuery\canvas-to-blob.min.js" />
+    <Content Include="_resources\js\jQuery\dataTables.tableTools.js" />
+    <Content Include="_resources\js\jQuery\dataTables.tableTools.min.js" />
+    <Content Include="_resources\js\jQuery\jquery-1.9.1.min.js" />
+    <Content Include="_resources\js\jQuery\jquery-ui_1.10.3.min.js" />
+    <Content Include="_resources\js\jQuery\jquery.dataTables.min.js" />
+    <Content Include="_resources\js\jQuery\jquery.fileupload-audio.js" />
+    <Content Include="_resources\js\jQuery\jquery.fileupload-image.js" />
+    <Content Include="_resources\js\jQuery\jquery.fileupload-process.js" />
+    <Content Include="_resources\js\jQuery\jquery.fileupload-validate.js" />
+    <Content Include="_resources\js\jQuery\jquery.fileupload-video.js" />
+    <Content Include="_resources\js\jQuery\jquery.fileupload.js" />
+    <Content Include="_resources\js\jQuery\jquery.iframe-transport.js" />
+    <Content Include="_resources\js\jQuery\jquery.jqplot.min.js" />
+    <Content Include="_resources\js\jQuery\jquery.smoothscroll-min-1-4-10.js" />
+    <Content Include="_resources\js\jQuery\jquery.tablescroll.js" />
+    <Content Include="_resources\js\jQuery\jquery.textCounter-min.js" />
+    <Content Include="_resources\js\jQuery\jquery.tools.min.js" />
+    <Content Include="_resources\js\jQuery\jquery.ui.widget.js" />
+    <Content Include="_resources\js\jQuery\jquery.validate_1.11.1.js" />
+    <Content Include="_resources\js\jQuery\jquery_1.10.2.min.js" />
+    <Content Include="_resources\js\jQuery\load-image.min.js" />
+    <Content Include="_resources\js\jQuery\prettify.js" />
+    <Content Include="_resources\js\js\jqc_Ajax2.js" />
+    <Content Include="_resources\js\js\modernizr-2.6.2.min.js" />
+    <Content Include="MasterPage\Blank.Master" />
+    <Content Include="Default.aspx" />
+    <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
+    <Content Include="Web.config" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <Content Include="_resources\js\Bootstrap\3.0\dist\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="_resources\js\Bootstrap\3.0\dist\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="_resources\js\Bootstrap\3.0\dist\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="_resources\js\css\fancybox\sprite.psd" />
+    <Content Include="_resources\js\css\fancybox\Thumbs.db" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AdminTools\PersonAddEdit.aspx.designer.vb">
+      <DependentUpon>PersonAddEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminTools\PersonAddEdit.aspx.vb">
+      <DependentUpon>PersonAddEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminTools\PersonSearch.aspx.designer.vb">
+      <DependentUpon>PersonSearch.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminTools\PersonSearch.aspx.vb">
+      <DependentUpon>PersonSearch.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Competition\CompAddEdit.aspx.designer.vb">
+      <DependentUpon>CompAddEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Competition\CompAddEdit.aspx.vb">
+      <DependentUpon>CompAddEdit.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Competition\WineEntryAddEdit.aspx.designer.vb">
+      <DependentUpon>WineEntryAddEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Competition\WineEntryAddEdit.aspx.vb">
+      <DependentUpon>WineEntryAddEdit.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Competition\WineScoreAddEdit.aspx.designer.vb">
+      <DependentUpon>WineScoreAddEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Competition\WineScoreAddEdit.aspx.vb">
+      <DependentUpon>WineScoreAddEdit.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.vb">
+      <SubType>ASPXCodeBehind</SubType>
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Default.aspx.designer.vb">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.vb">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="LoginPub.aspx.designer.vb">
+      <DependentUpon>LoginPub.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="LoginPub.aspx.vb">
+      <DependentUpon>LoginPub.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Logout.aspx.designer.vb">
+      <DependentUpon>Logout.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Logout.aspx.vb">
+      <DependentUpon>Logout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterPage\Blank.Master.designer.vb">
+      <DependentUpon>Blank.Master</DependentUpon>
+    </Compile>
+    <Compile Include="MasterPage\Blank.Master.vb">
+      <DependentUpon>Blank.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterPage\BlankBootstrap3.Master.designer.vb">
+      <DependentUpon>BlankBootstrap3.Master</DependentUpon>
+    </Compile>
+    <Compile Include="MasterPage\BlankBootstrap3.Master.vb">
+      <DependentUpon>BlankBootstrap3.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Competition\CompSearch.aspx.designer.vb">
+      <DependentUpon>CompSearch.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Competition\CompSearch.aspx.vb">
+      <DependentUpon>CompSearch.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\MyExtensions\MyWebExtension.vb">
+      <VBMyExtensionTemplateID>Microsoft.VisualBasic.Web.MyExtension</VBMyExtensionTemplateID>
+      <VBMyExtensionTemplateVersion>1.0.0.0</VBMyExtensionTemplateVersion>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="WebMaster.vb">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Projects\CommonCode\CommonCode.vbproj">
+      <Project>{c66e4423-ebbe-4d1c-ab11-beae466e11f8}</Project>
+      <Name>CommonCode</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Projects\DBEntity\DBEntity.vbproj">
+      <Project>{61548e1a-cb57-45c3-a82c-4c0d562a3d7a}</Project>
+      <Name>DBEntity</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>52443</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://wineclub.localhost.com</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

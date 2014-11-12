@@ -1,3 +1,0 @@
-CREATE SCHEMA IF NOT EXISTS rheem;
-Use rheem;
-
