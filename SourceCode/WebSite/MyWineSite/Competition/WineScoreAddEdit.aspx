@@ -60,8 +60,8 @@
                     <td colspan="3">
                         Wine #&nbsp;
                         <telerik:RadNumericTextBox Width="50" ID="tbWineNum" runat="server"
-                               NumberFormat-GroupSeparator="" NumberFormat-DecimalDigits="0"
-                               EnabledStyle-HorizontalAlign="Right" ReadOnly="true" />
+                            NumberFormat-GroupSeparator="" NumberFormat-DecimalDigits="0"
+                            EnabledStyle-HorizontalAlign="Right" ReadOnly="true" />
                     </td>
                 </tr>
                 <tr>
@@ -74,8 +74,8 @@
                     <td colspan="3">
                         Judge #&nbsp;
                         <telerik:RadNumericTextBox Width="50" ID="tbJudgeNum" runat="server"
-                               MinValue="0" MaxValue="50" NumberFormat-GroupSeparator="" NumberFormat-DecimalDigits="0"
-                               EnabledStyle-HorizontalAlign="Right" />
+                            MinValue="0" MaxValue="50" NumberFormat-GroupSeparator="" NumberFormat-DecimalDigits="0"
+                            EnabledStyle-HorizontalAlign="Right" />
                     </td>
                 </tr>
                 <tr>
@@ -165,6 +165,15 @@
                         <telerik:RadNumericTextBox Width="75" ID="tbCalcScore" runat="server"
                             MinValue="0" MaxValue="20" NumberFormat-GroupSeparator="" NumberFormat-DecimalDigits="4"
                             EnabledStyle-HorizontalAlign="Right" ReadOnly="true" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <telerik:RadButton ID="btnSave2" runat="server" Icon-PrimaryIconUrl="/_resources/images/ico/Save-16x16.png" Text="Save" ToolTip="Save" Width="100" ButtonType="StandardButton" />
+                    </td>
+                    <td></td>
+                    <td>
+                        <telerik:RadButton ID="btnCreateNew2" runat="server" Icon-PrimaryIconUrl="/_resources/images/ico/ico_new_16x16.gif" Text="Add New Wine Score" ToolTip="Add New" Width="150" ButtonType="StandardButton" />
                     </td>
                 </tr>
             </table>

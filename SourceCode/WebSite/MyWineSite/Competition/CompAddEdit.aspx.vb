@@ -54,7 +54,7 @@
             Dim sql As String
             sql = "select WineEntryID, CompetitionID, EntryID, WineName, EntrantName, TableNum, " &
                 "FlightNum, SeqNum, AvgScore, MedalColor " &
-                "from WineEntry where CompetitionID = " & competitionID.ToString & "   order by  AvgScore, EntryID"
+                "from WineEntry where CompetitionID = " & competitionID.ToString & "   order by  AvgScore desc, EntryID asc"
 
             Dim pds As New System.Data.DataSet
             Wine.Common.SQL.FillDataSet(pds, sql, "WineEntry")

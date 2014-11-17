@@ -229,5 +229,23 @@ Namespace Wine.Web
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
         Protected WithEvents tbCalcScore As Global.Telerik.Web.UI.RadNumericTextBox
+
+        '''<summary>
+        '''btnSave2 control.
+        '''</summary>
+        '''<remarks>
+        '''Auto-generated field.
+        '''To modify move field declaration from designer file to code-behind file.
+        '''</remarks>
+        Protected WithEvents btnSave2 As Global.Telerik.Web.UI.RadButton
+
+        '''<summary>
+        '''btnCreateNew2 control.
+        '''</summary>
+        '''<remarks>
+        '''Auto-generated field.
+        '''To modify move field declaration from designer file to code-behind file.
+        '''</remarks>
+        Protected WithEvents btnCreateNew2 As Global.Telerik.Web.UI.RadButton
     End Class
 End Namespace

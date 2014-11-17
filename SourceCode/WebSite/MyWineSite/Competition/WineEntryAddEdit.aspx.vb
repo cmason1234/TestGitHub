@@ -39,7 +39,7 @@
                         tbAvgScore.Text = .AvgScore.ToString
                         tbMedalColor.Text = .MedalColor
                     End With
-                    GetScoringEntries(wineEntryID, competitionID)
+                    GetScoringEntries(wineEntryID, competitionID, True)
                 Else
                     divScoreList.Visible = False
                 End If
@@ -48,7 +48,7 @@
             hfWineEntryId.Value = wineEntryID.ToString
         End Sub
 
-        Private Sub GetScoringEntries(wineEntryID As Integer, competitionID As Integer)
+        Private Sub GetScoringEntries(wineEntryID As Integer, competitionID As Integer, bind As Boolean)
 
             Dim sql As String
             sql = "select WineScoringID, wineEntryID, EnteredPersonID, " &
@@ -77,7 +77,9 @@
                 dgGridScoreComp.Visible = False
             End If
             dgGridScoreComp.DataSource = pds
-            dgGridScoreComp.DataBind()
+            If bind Then
+                dgGridScoreComp.DataBind()
+            End If
         End Sub
 
         Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
@@ -127,9 +129,9 @@
             If wineEntryID = 0 Then
                 db.WineEntries.Add(wineEntry)
             End If
-            hfWineEntryId.Value = wineEntry.WineEntryID.ToString
             db.SaveChanges()
-            GetScoringEntries(wineEntry.WineEntryID, wineEntry.CompetitionID)
+            hfWineEntryId.Value = wineEntry.WineEntryID.ToString
+            GetScoringEntries(wineEntry.WineEntryID, wineEntry.CompetitionID, True)
         End Sub
 
         Private Sub btnCancel_Click(sender As Object, e As EventArgs) Handles btnCancel.Click
@@ -156,6 +158,18 @@
 
         Private Sub btnCreateNewWineEntry_Click(sender As Object, e As EventArgs) Handles btnCreateNewWineEntry.Click
             Response.Redirect("/Competition/WineEntryAddEdit.aspx?CompetitionID=" & hfCompetitionID.Value & "&WineEntryID=0")
+        End Sub
+
+        Private Sub dgGridScoreComp_NeedDataSource(sender As Object, e As Telerik.Web.UI.GridNeedDataSourceEventArgs) Handles dgGridScoreComp.NeedDataSource
+            Dim sCompID As String = hfCompetitionID.Value
+            Dim competitionID As Integer = 0
+            Dim sWineEntryID As String = hfWineEntryId.Value
+            Dim wineEntryID As Integer = 0
+
+            Integer.TryParse(sCompID, competitionID)
+            Integer.TryParse(sWineEntryID, wineEntryID)
+
+            GetScoringEntries(wineEntryID:=wineEntryID, competitionID:=competitionID, bind:=False)
         End Sub
     End Class
 End Namespace

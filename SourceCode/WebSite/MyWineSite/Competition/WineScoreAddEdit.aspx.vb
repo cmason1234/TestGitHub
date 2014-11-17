@@ -60,6 +60,8 @@
                         tbBitterness.Value = 0
                         tbFinish.Value = 0
                         tbQuality.Value = 0
+                        tbJudgeScore.Value = 0
+                        tbCalcScore.Value = 0
                     End If
                 End If
             End If
@@ -107,10 +109,15 @@
             If wineScoringID = 0 Then
                 db.WineScorings.Add(wineScoring)
             End If
-            hfWineScoringID.Value = wineScoring.WineScoringID.ToString
             db.SaveChanges()
+            hfWineScoringID.Value = wineScoring.WineScoringID.ToString
 
             UpdateAvgScore(wineEntryID, db)
+        End Sub
+
+
+        Private Sub btnSave2_Click(sender As Object, e As EventArgs) Handles btnSave2.Click
+            btnSave_Click(sender, e)
         End Sub
 
         Private Sub UpdateAvgScore(wineEntryID As Integer, db As DBEntity.mywinecompetitionEntities)
@@ -153,14 +160,22 @@
             Dim db As New DBEntity.mywinecompetitionEntities(Wine.Common.XmlConfig.ConfigVal("WineCompetition_ConnectionString"))
             If Integer.TryParse(sWineScoringID, wineScoringID) AndAlso wineScoringID > 0 Then
                 Dim wineScoring As DBEntity.WineScoring = db.WineScorings.Find(wineScoringID)
+                Dim wineEntryID As Integer = wineScoring.WineEntryId
                 db.WineScorings.Remove(wineScoring)
                 db.SaveChanges()
-                Response.Redirect("/Competition/WineEntryAddEdit.aspx?CompetitionID=" & hfCompetitionID.Value & "&WineEntryID=" & hfWineEntryId.Value)
+                UpdateAvgScore(wineEntryID:=wineEntryID, db:=db)
             End If
+            Response.Redirect("/Competition/WineEntryAddEdit.aspx?CompetitionID=" & hfCompetitionID.Value & "&WineEntryID=" & hfWineEntryId.Value)
         End Sub
 
         Private Sub btnCreateNew_Click(sender As Object, e As EventArgs) Handles btnCreateNew.Click
             Response.Redirect("/Competition/WineScoreAddEdit.aspx?CompetitionID=" & hfCompetitionID.Value & "&WineEntryID=" & hfWineEntryId.Value & "&WineScoringID=0")
         End Sub
+
+
+        Private Sub btnCreateNew2_Click(sender As Object, e As EventArgs) Handles btnCreateNew2.Click
+            btnCreateNew_Click(sender, e)
+        End Sub
+
     End Class
 End Namespace

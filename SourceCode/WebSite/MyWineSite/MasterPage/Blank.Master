@@ -38,7 +38,7 @@
             <div id="topbanner"></div>
         </div>
 
-        <div id="ContentArea">
+        <div id="ContentArea" style="overflow: scroll; overflow-y: scroll; overflow-x:hidden; height:700px;">
             <asp:ContentPlaceHolder ID="cphMain" runat="server"></asp:ContentPlaceHolder>
         </div>
 

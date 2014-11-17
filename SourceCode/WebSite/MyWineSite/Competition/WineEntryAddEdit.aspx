@@ -125,14 +125,14 @@
         </span>
         <div style="margin-left: 4px;">
 
-            <telerik:RadGrid ID="dgGridScoreComp" Width="85%" AllowPaging="true" PageSize="100" AllowCustomPaging="false" AllowSorting="False" runat="server" AutoGenerateColumns="false">
+            <telerik:RadGrid ID="dgGridScoreComp" Width="85%" AllowPaging="true" PageSize="100" AllowCustomPaging="false" AllowSorting="true" runat="server" AutoGenerateColumns="false">
                 <PagerStyle Mode="NumericPages" Position="TopAndBottom" AlwaysVisible="false" />
                 <ExportSettings IgnorePaging="true" />
                 <MasterTableView TableLayout="Fixed" EnableViewState="false">
                     <Columns>
                         <telerik:GridHyperLinkColumn HeaderText="Judge" DataTextField="JudgeID" DataNavigateUrlFields="WineEntryID, WineScoringID, CompetitionID" 
                             DataNavigateUrlFormatString="/Competition/WineScoreAddEdit.aspx?WineEntryID={0}&WineScoringID={1}&CompetitionID={2}" 
-                             ItemStyle-Wrap="true"/>
+                             ItemStyle-Wrap="true" SortExpression="JudgeID"/>
                         <telerik:GridBoundColumn HeaderText="Score" DataField="Score" />
                         <telerik:GridBoundColumn HeaderText="JudgeScore" DataField="JudgeTotal" />
                         <telerik:GridBoundColumn HeaderText="Clarity" DataField="Clarity" />

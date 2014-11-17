@@ -93,15 +93,15 @@
         <div style="margin-left: 4px;">
 
             <telerik:RadGrid ItemStyle-Wrap="false" ID="dgGridMonthlyComp" Width="80%" AllowPaging="true" 
-                PageSize="100" AllowCustomPaging="false" AllowSorting="true" runat="server" AutoGenerateColumns="false">
+                PageSize="100" AllowCustomPaging="false" AllowSorting="true" runat="server" AutoGenerateColumns="false" ShowFooter="true">
                 <PagerStyle Mode="NumericPages" Position="TopAndBottom" AlwaysVisible="false" />
                 <ExportSettings IgnorePaging="true" />
                 <MasterTableView TableLayout="Fixed" EnableViewState="false">
                     <Columns>
-                        <telerik:GridHyperLinkColumn HeaderText="Entry" DataTextField="EntryID" DataNavigateUrlFields="CompetitionID, WineEntryID" DataNavigateUrlFormatString="/Competition/WineEntryAddEdit.aspx?CompetitionID={0}&WineEntryID={1}" />
-                        <telerik:GridBoundColumn HeaderText="Wine Name" DataField="WineName" />
-                        <telerik:GridBoundColumn HeaderText="Entrant Name" DataField="EntrantName" />
-                        <telerik:GridBoundColumn HeaderText="AvgScore" DataField="AvgScore" />
+                        <telerik:GridHyperLinkColumn HeaderText="Entry" FooterText="Entry" DataTextField="EntryID" DataNavigateUrlFields="CompetitionID, WineEntryID" DataNavigateUrlFormatString="/Competition/WineEntryAddEdit.aspx?CompetitionID={0}&WineEntryID={1}" SortExpression="EntryID" />
+                        <telerik:GridBoundColumn HeaderText="Wine Name" FooterText="Wine Name" DataField="WineName" />
+                        <telerik:GridBoundColumn HeaderText="Entrant Name" FooterText="Entrant Name" DataField="EntrantName" />
+                        <telerik:GridBoundColumn HeaderText="AvgScore" FooterText="AvgScore" DataField="AvgScore" />
                     </Columns>
                 </MasterTableView>
                 <HeaderStyle HorizontalAlign="Left" />
@@ -127,10 +127,10 @@
             <asp:Literal ID="litYearlyCount" EnableViewState="false" runat="server" />
         </span>
         <div style="margin-left: 4px;">
-            <asp:DataGrid ItemStyle-Wrap="false" ID="DataGrid1" Width="750" AllowPaging="true" PageSize="100" AllowCustomPaging="false" AllowSorting="False" runat="server" AutoGenerateColumns="false">
+            <asp:DataGrid ItemStyle-Wrap="false" ID="DataGrid1" Width="750" AllowPaging="true" PageSize="100" AllowCustomPaging="false" AllowSorting="true" runat="server" AutoGenerateColumns="false">
                 <PagerStyle Mode="NumericPages" Position="TopAndBottom" />
                 <Columns>
-                    <asp:HyperLinkColumn HeaderText="Name" HeaderStyle-Width="350" DataTextField="CompetitionName" DataNavigateUrlField="CompetitionId" DataNavigateUrlFormatString="/Competition/CompAddEdit.aspx?CompetitionID={0}" />
+                    <asp:HyperLinkColumn HeaderText="Name" HeaderStyle-Width="350" DataTextField="CompetitionName" DataNavigateUrlField="CompetitionId" DataNavigateUrlFormatString="/Competition/CompAddEdit.aspx?CompetitionID={0}" SortExpression="CompetitionId" />
                     <asp:BoundColumn HeaderText="Year" DataField="Year" />
                     <asp:BoundColumn HeaderText="Month" DataField="Month" />
                     <asp:BoundColumn HeaderText="Type" DataField="CompType" />
