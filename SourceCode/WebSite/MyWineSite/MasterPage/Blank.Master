@@ -17,7 +17,7 @@
         <form id="form1" runat="server">
         <asp:ScriptManager ID="sm1" runat="server" EnableCdn="false" EnablePartialRendering="true"></asp:ScriptManager>
 
-        <div id="topsection" style="margin-top:15px;">
+        <div id="topsection" style="margin-top: 15px;">
             <!--begin topbar-->
             <div id="topbar">
                 <div class="horizontalcssmenu">
@@ -38,11 +38,13 @@
             <div id="topbanner"></div>
         </div>
 
-        <div id="ContentArea" style="overflow: scroll; overflow-y: scroll; overflow-x:hidden; height:700px;">
+        <div id="ContentArea" style="position:relative; overflow:auto; overflow-x: hidden; overflow-y:auto;"  >
             <asp:ContentPlaceHolder ID="cphMain" runat="server"></asp:ContentPlaceHolder>
         </div>
-
+        <br />
+        <br />
         </form>
+        <div id="blank" style="height:40px;"></div>
     </div>
 </body>
 </html>
