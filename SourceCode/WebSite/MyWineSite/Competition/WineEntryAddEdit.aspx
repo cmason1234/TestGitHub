@@ -14,7 +14,7 @@
                     <telerik:RadButton ID="btnDel" runat="server" Icon-PrimaryIconUrl="/_resources/images/ico/delete-16x16.png" Text="Delete" ToolTip="Delete" Width="100" ButtonType="StandardButton" />
                 </td>
                 <td style="border-right-width: 1px; border-right-style: solid; border-right-color: #939393;">
-                    <telerik:RadButton ID="btnCancel" runat="server" Icon-PrimaryIconUrl="/_resources/images/ico/cancel-16x16.png" Text="Cancel" ToolTip="Cancel" Width="100" ButtonType="StandardButton" />
+                    <telerik:RadButton ID="btnCancel" runat="server" Icon-PrimaryIconUrl="/_resources/images/ico/cancel-16x16.png" Text="Cancel To Score Edit" ToolTip="Cancel" Width="150" ButtonType="StandardButton" />
                 </td>
                 <td style="border-right-width: 1px; border-right-style: solid; border-right-color: #939393;">
                     <telerik:RadButton ID="btnCreateNewWineEntry" runat="server" Icon-PrimaryIconUrl="/_resources/images/ico/ico_new_16x16.gif" Text="Add New Wine Entry" ToolTip="Add New Wine Entry" Width="150" ButtonType="StandardButton" />
