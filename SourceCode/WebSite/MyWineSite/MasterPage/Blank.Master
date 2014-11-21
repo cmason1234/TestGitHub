@@ -1,4 +1,4 @@
-﻿<%@ Master Language="VB" AutoEventWireup="false" CodeBehind="Blank.master.vb" Inherits="Rheem.Web.Partners.Blank" %>
+﻿<%@ Master Language="VB" AutoEventWireup="false" CodeBehind="Blank.master.vb" Inherits="Wine.Web.Blank" %>
 
 <!DOCTYPE html>
 
@@ -38,13 +38,17 @@
             <div id="topbanner"></div>
         </div>
 
-        <div id="ContentArea" style="position:relative; overflow:auto; overflow-x: hidden; overflow-y:auto;"  >
+        <div id="AppTitleBar" style="margin-top: 55px;">
+            <asp:Literal ID="litAppTitle" runat="server"></asp:Literal>
+        </div>
+
+        <div id="ContentArea" style="position: relative; overflow: auto; overflow-x: hidden; overflow-y: auto; margin-top:40px;">
             <asp:ContentPlaceHolder ID="cphMain" runat="server"></asp:ContentPlaceHolder>
         </div>
         <br />
         <br />
         </form>
-        <div id="blank" style="height:40px;"></div>
+        <div id="blank" style="height: 40px;"></div>
     </div>
 </body>
 </html>

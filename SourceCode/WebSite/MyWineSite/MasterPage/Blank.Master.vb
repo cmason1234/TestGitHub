@@ -1,11 +1,24 @@
 ﻿
-Namespace Rheem.Web.Partners
+Namespace Wine.Web
 
     Public Class Blank
         Inherits System.Web.UI.MasterPage
 
+        Dim _AppTitle As String
+
+        Public Property AppTitle() As String
+            Get
+                Return _AppTitle
+            End Get
+
+            Set(ByVal Value As String)
+                _AppTitle = Value
+            End Set
+        End Property
 
         Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+            '//Load Title in Application Title Bar
+            litAppTitle.Text = "<b>" & AppTitle & "</b>"
 
         End Sub
 

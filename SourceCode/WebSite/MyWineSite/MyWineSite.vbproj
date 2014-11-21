@@ -145,6 +145,7 @@
     <Content Include="Competition\CompSearch.aspx" />
     <Content Include="packages.config" />
     <Content Include="MasterPage\BlankBootstrap3.Master" />
+    <Content Include="_controls\ctlErrorMessages.ascx" />
     <Content Include="_resources\images\ajax-loader.gif" />
     <Content Include="_resources\images\boot\sort_asc.png" />
     <Content Include="_resources\images\boot\sort_asc_disabled.png" />
@@ -448,6 +449,13 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="WebMaster.vb">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="_controls\ctlErrorMessages.ascx.designer.vb">
+      <DependentUpon>ctlErrorMessages.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="_controls\ctlErrorMessages.ascx.vb">
+      <DependentUpon>ctlErrorMessages.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
   </ItemGroup>

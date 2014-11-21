@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/MasterPage/Blank.Master"
     CodeBehind="CompAddEdit.aspx.vb" Inherits="Wine.Web.CompAddEdit" %>
 
+<%@ MasterType TypeName="Wine.Web.Blank" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cphMain" runat="server">
@@ -15,7 +16,7 @@
                     <telerik:RadButton ID="btnDel" runat="server" Icon-PrimaryIconUrl="/_resources/images/ico/delete-16x16.png"  Text="Delete" ToolTip="Delete" Width="100" ButtonType="StandardButton" />
                 </td>
                 <td style="border-right-width: 1px; border-right-style: solid; border-right-color: #939393;">
-                    <telerik:RadButton ID="btnCancel" runat="server" Icon-PrimaryIconUrl="/_resources/images/ico/cancel-16x16.png"  Text="Cancel" ToolTip="Cancel" Width="100" ButtonType="StandardButton" />
+                    <telerik:RadButton ID="btnCancel" runat="server" Icon-PrimaryIconUrl="/_resources/images/ico/cancel-16x16.png"  Text="Back to Competitions" ToolTip="Back to Competitions" Width="150" ButtonType="StandardButton" />
                 </td>
             </tr>
         </table>

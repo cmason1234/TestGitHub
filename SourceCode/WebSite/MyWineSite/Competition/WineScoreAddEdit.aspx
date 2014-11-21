@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/MasterPage/Blank.Master"
     CodeBehind="WineScoreAddEdit.aspx.vb" Inherits="Wine.Web.WineScoreAddEdit" %>
 
+<%@ MasterType TypeName="Wine.Web.Blank" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <script type="text/javascript" src="/_resources/js/jquery/jquery_1.10.2.min.js"></script>
 
@@ -38,7 +39,7 @@
                     <telerik:RadButton ID="btnDel" runat="server" Icon-PrimaryIconUrl="/_resources/images/ico/delete-16x16.png" Text="Delete" ToolTip="Delete" Width="100" ButtonType="StandardButton" />
                 </td>
                 <td style="border-right-width: 1px; border-right-style: solid; border-right-color: #939393;">
-                    <telerik:RadButton ID="btnCancel" runat="server" Icon-PrimaryIconUrl="/_resources/images/ico/cancel-16x16.png" Text="Cancel" ToolTip="Cancel" Width="100" ButtonType="StandardButton" />
+                    <telerik:RadButton ID="btnCancel" runat="server" Icon-PrimaryIconUrl="/_resources/images/ico/cancel-16x16.png" Text="Back To Wine Entry" ToolTip="Back To Wine Entry" Width="150" ButtonType="StandardButton" />
                 </td>
                 <td style="border-right-width: 1px; border-right-style: solid; border-right-color: #939393;">
                     <telerik:RadButton ID="btnCreateNew" runat="server" Icon-PrimaryIconUrl="/_resources/images/ico/ico_new_16x16.gif" Text="Add New Wine Score" ToolTip="Add New" Width="150" ButtonType="StandardButton" />
@@ -61,13 +62,13 @@
                         Wine #&nbsp;
                         <telerik:RadNumericTextBox Width="50" ID="tbWineNum" runat="server"
                             NumberFormat-GroupSeparator="" NumberFormat-DecimalDigits="0"
-                            EnabledStyle-HorizontalAlign="Right" ReadOnly="true" />
+                            EnabledStyle-HorizontalAlign="Right" ReadOnly="true" BackColor="LightGray" />
                     </td>
                 </tr>
                 <tr>
                     <td colspan="3">
                         Wine Name&nbsp;
-                        <telerik:RadTextBox ID="tbWineName" runat="server" EnabledStyle-HorizontalAlign="Right" ReadOnly="true" />
+                        <telerik:RadTextBox ID="tbWineName" runat="server" EnabledStyle-HorizontalAlign="Right" ReadOnly="true" BackColor="LightGray" />
                     </td>
                 </tr>
                 <tr>
@@ -164,7 +165,16 @@
                     <td>
                         <telerik:RadNumericTextBox Width="75" ID="tbCalcScore" runat="server"
                             MinValue="0" MaxValue="20" NumberFormat-GroupSeparator="" NumberFormat-DecimalDigits="4"
-                            EnabledStyle-HorizontalAlign="Right" ReadOnly="true" />
+                            EnabledStyle-HorizontalAlign="Right" ReadOnly="true" BackColor="LightGray" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Avg Score<br /><asp:TextBox CssClass="textbox" Width="75" ID="tbAvgScore" runat="server" ReadOnly="true" BackColor="LightGray"  />
+                    </td>
+                    <td></td>
+                    <td>
+                        Medal<br /><asp:TextBox CssClass="textbox" Width="100" ID="tbMedalColor" runat="server" ReadOnly="true" BackColor="LightGray" />
                     </td>
                 </tr>
                 <tr>

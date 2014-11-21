@@ -10,7 +10,7 @@
 Option Strict On
 Option Explicit On
 
-Namespace Rheem.Web.Partners
+Namespace Wine.Web
 
     Partial Public Class Blank
 
@@ -40,6 +40,15 @@ Namespace Rheem.Web.Partners
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
         Protected WithEvents sm1 As Global.System.Web.UI.ScriptManager
+
+        '''<summary>
+        '''litAppTitle control.
+        '''</summary>
+        '''<remarks>
+        '''Auto-generated field.
+        '''To modify move field declaration from designer file to code-behind file.
+        '''</remarks>
+        Protected WithEvents litAppTitle As Global.System.Web.UI.WebControls.Literal
 
         '''<summary>
         '''cphMain control.

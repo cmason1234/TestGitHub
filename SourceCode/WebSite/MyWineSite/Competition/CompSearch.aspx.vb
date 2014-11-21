@@ -3,6 +3,7 @@
         Inherits WebMaster
 
         Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+            Master.AppTitle = "Search For Competitions"
             If Not IsPostBack Then
                 UpdateGrid(True)
             End If

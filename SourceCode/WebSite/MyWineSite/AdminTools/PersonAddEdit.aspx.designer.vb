@@ -193,5 +193,17 @@ Namespace Wine.Web
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
         Protected WithEvents btnChangePassword As Global.Telerik.Web.UI.RadButton
+
+        '''<summary>
+        '''Master property.
+        '''</summary>
+        '''<remarks>
+        '''Auto-generated property.
+        '''</remarks>
+        Public Shadows ReadOnly Property Master() As Wine.Web.Blank
+            Get
+                Return CType(MyBase.Master, Wine.Web.Blank)
+            End Get
+        End Property
     End Class
 End Namespace

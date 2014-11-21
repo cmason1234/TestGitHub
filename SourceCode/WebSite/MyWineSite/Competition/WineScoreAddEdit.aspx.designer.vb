@@ -231,6 +231,24 @@ Namespace Wine.Web
         Protected WithEvents tbCalcScore As Global.Telerik.Web.UI.RadNumericTextBox
 
         '''<summary>
+        '''tbAvgScore control.
+        '''</summary>
+        '''<remarks>
+        '''Auto-generated field.
+        '''To modify move field declaration from designer file to code-behind file.
+        '''</remarks>
+        Protected WithEvents tbAvgScore As Global.System.Web.UI.WebControls.TextBox
+
+        '''<summary>
+        '''tbMedalColor control.
+        '''</summary>
+        '''<remarks>
+        '''Auto-generated field.
+        '''To modify move field declaration from designer file to code-behind file.
+        '''</remarks>
+        Protected WithEvents tbMedalColor As Global.System.Web.UI.WebControls.TextBox
+
+        '''<summary>
         '''btnSave2 control.
         '''</summary>
         '''<remarks>
@@ -247,5 +265,17 @@ Namespace Wine.Web
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
         Protected WithEvents btnCreateNew2 As Global.Telerik.Web.UI.RadButton
+
+        '''<summary>
+        '''Master property.
+        '''</summary>
+        '''<remarks>
+        '''Auto-generated property.
+        '''</remarks>
+        Public Shadows ReadOnly Property Master() As Wine.Web.Blank
+            Get
+                Return CType(MyBase.Master, Wine.Web.Blank)
+            End Get
+        End Property
     End Class
 End Namespace
