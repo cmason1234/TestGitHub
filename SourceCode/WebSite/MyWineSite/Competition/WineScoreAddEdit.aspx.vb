@@ -6,6 +6,7 @@
         Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
             Master.AppTitle = "Wine Score Add/Edit"
             If Not IsPostBack Then
+                btnValidate.Visible = False
                 LoadFromDB()
             End If
         End Sub
@@ -29,12 +30,23 @@
                 If Not IsNothing(Request.Params("WineEntryId")) AndAlso
                     Integer.TryParse(sWineEntryID, wineEntryID) AndAlso wineEntryID > 0 Then
                     Dim wineEntry As DBEntity.WineEntry = db.WineEntries.Find(wineEntryID)
+
                     tbWineNum.Value = wineEntry.EntryID.ToString
                     tbWineName.Text = wineEntry.WineName
+
+                    tbAvgScore.Text = wineEntry.AvgScore.ToString
+                    tbMedalColor.Text = wineEntry.MedalColor
 
                     If Not IsNothing(Request.Params("WineScoringID")) AndAlso
                         Integer.TryParse(sWineScoringID, wineScoringID) AndAlso wineScoringID > 0 Then
                         Dim wineScore As DBEntity.WineScoring = db.WineScorings.Find(wineScoringID)
+
+                        Dim test = (From ws In db.WineScorings Join ep In db.People On ws.EnteredPersonID Equals ep.PersonID
+                              Group Join vs In db.People On ws.ValidatedPersonID Equals vs.PersonID Into valList = Group
+                              From vs In valList.DefaultIfEmpty()
+                              Where ws.WineScoringID = wineScoringID
+                              Select ws, ep.Username, valName = If(vs Is Nothing, String.Empty, vs.Username)).ToList
+
 
                         With wineScore
                             tbClarity.Value = .Clarity
@@ -51,6 +63,7 @@
                             tbJudgeScore.Value = .JudgeTotal
                             tbCalcScore.Value = .Score
                         End With
+                        btnValidate.Visible = True
                     Else
                         tbClarity.Value = 0
                         tbColor.Value = 0
@@ -106,6 +119,7 @@
                 .Quality = tbQuality.Value
                 .JudgeTotal = tbJudgeScore.Value
                 .Score = tbCalcScore.Value
+                .ValidatedPersonID = Nothing
             End With
             If wineScoringID = 0 Then
                 db.WineScorings.Add(wineScoring)
@@ -114,6 +128,7 @@
             hfWineScoringID.Value = wineScoring.WineScoringID.ToString
 
             UpdateAvgScore(wineEntryID, db)
+            btnValidate.Visible = True
         End Sub
 
 
@@ -144,10 +159,11 @@
                 End If
                 wineEntry.MedalColor = medalColor
                 db.SaveChanges()
+                tbAvgScore.Text = wineEntry.AvgScore.ToString
+                tbMedalColor.Text = wineEntry.MedalColor
             End If
 
         End Sub
-
 
         Private Sub btnCancel_Click(sender As Object, e As EventArgs) Handles btnCancel.Click
             Response.Redirect("/Competition/WineEntryAddEdit.aspx?CompetitionID=" & hfCompetitionID.Value & "&WineEntryID=" & hfWineEntryId.Value)
@@ -178,5 +194,61 @@
             btnCreateNew_Click(sender, e)
         End Sub
 
+        Private Sub btnSwitch_Click(sender As Object, e As EventArgs) Handles btnSwitch.Click
+            Dim sWineNum As String = tbWineSwitch.Value
+            Dim wineNum As Integer = 0
+
+            If Integer.TryParse(sWineNum, wineNum) AndAlso wineNum > 0 Then
+                Dim db As New DBEntity.mywinecompetitionEntities(Wine.Common.XmlConfig.ConfigVal("WineCompetition_ConnectionString"))
+                Dim wineScoringList = (From s In db.WineEntries Where s.EntryID = wineNum).ToList
+                If wineScoringList.Count > 0 Then
+                    Dim wineEntryID As Integer = wineScoringList.FirstOrDefault.WineEntryID
+                    Response.Redirect("/Competition/WineEntryAddEdit.aspx?CompetitionID=" & hfCompetitionID.Value & "&WineEntryID=" & wineEntryID.ToString)
+                Else
+                End If
+            End If
+
+        End Sub
+
+        Private Sub btnValidate_Click(sender As Object, e As EventArgs) Handles btnValidate.Click
+            Dim sCompID As String = hfCompetitionID.Value
+            Dim competitionID As Integer = 0
+            Dim sWineEntryID As String = hfWineEntryId.Value
+            Dim wineEntryID As Integer = 0
+            Dim sWineScoringID As String = hfWineScoringID.Value
+            Dim wineScoringID As Integer = 0
+
+            Integer.TryParse(sCompID, competitionID)
+            Integer.TryParse(sWineEntryID, wineEntryID)
+
+            Dim db As New DBEntity.mywinecompetitionEntities(Wine.Common.XmlConfig.ConfigVal("WineCompetition_ConnectionString"))
+            Dim wineScoring As DBEntity.WineScoring = Nothing
+
+            ' Not a lot of checking here, since we have to have a saved item to even get the button to click.
+            Integer.TryParse(sWineScoringID, wineScoringID)
+            wineScoring = db.WineScorings.Find(wineScoringID)
+
+            With wineScoring
+                .WineEntryId = wineEntryID
+                .JudgeNum = tbJudgeNum.Value
+                .JudgeInitials = tbJudgeName.Text
+                .Clarity = tbClarity.Value
+                .Color = tbColor.Value
+                .Aroma = tbAroma.Value
+                .Ta = tbAcidity.Value
+                .Texture = tbBody.Value
+                .Flavor = tbFlavor.Value
+                .Bitterness = tbBitterness.Value
+                .Finish = tbFinish.Value
+                .Quality = tbQuality.Value
+                .JudgeTotal = tbJudgeScore.Value
+                .Score = tbCalcScore.Value
+                .ValidatedPersonID = currentPerson.PersonID
+            End With
+            db.SaveChanges()
+
+            UpdateAvgScore(wineEntryID, db)
+            btnValidate.Visible = True
+        End Sub
     End Class
 End Namespace

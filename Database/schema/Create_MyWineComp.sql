@@ -120,3 +120,30 @@ BEGIN
 	) ON [PRIMARY]
 END
 GO
+
+IF NOT EXISTS(SELECT * FROM sys.foreign_keys 
+           WHERE object_id = OBJECT_ID(N'[dbo].[winescoring_fk2]') 
+             AND parent_object_id = OBJECT_ID(N'[dbo].[WineScoring]'))
+BEGIN
+	ALTER TABLE WineScoring ADD CONSTRAINT winescoring_fk2 FOREIGN KEY (EnteredPersonID) 
+    REFERENCES Person (PersonID) 
+END
+GO
+
+IF NOT EXISTS(SELECT * FROM sys.columns where Name = N'ValidatedPersonID'  
+            and Object_ID = Object_ID(N'WineScoring'))
+BEGIN
+			ALTER TABLE WineScoring ADD ValidatedPersonID INT NULL
+END
+GO
+
+
+
+IF NOT EXISTS(SELECT * FROM sys.foreign_keys 
+           WHERE object_id = OBJECT_ID(N'[dbo].[winescoring_fk3]') 
+             AND parent_object_id = OBJECT_ID(N'[dbo].[WineScoring]'))
+BEGIN
+	ALTER TABLE WineScoring ADD CONSTRAINT winescoring_fk3 FOREIGN KEY (ValidatedPersonID) 
+    REFERENCES Person (PersonID) 
+END
+GO

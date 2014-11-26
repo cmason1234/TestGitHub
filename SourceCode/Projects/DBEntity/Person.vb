@@ -21,4 +21,7 @@ Partial Public Class Person
     Public Property PasswordSeed As String
     Public Property PasswordDate As Nullable(Of Date)
 
+    Public Overridable Property WineScorings As ICollection(Of WineScoring) = New HashSet(Of WineScoring)
+    Public Overridable Property WineScorings1 As ICollection(Of WineScoring) = New HashSet(Of WineScoring)
+
 End Class

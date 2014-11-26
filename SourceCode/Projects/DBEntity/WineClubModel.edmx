@@ -91,6 +91,7 @@
           <Property Name="Quality" Type="float" Nullable="false" />
           <Property Name="JudgeTotal" Type="float" Nullable="false" />
           <Property Name="Score" Type="float" Nullable="false" />
+          <Property Name="ValidatedPersonID" Type="int" />
         </EntityType>
         <Association Name="MenuItem_fk1">
           <End Role="MenuCategory" Type="Self.MenuCategory" Multiplicity="1">
@@ -134,6 +135,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="winescoring_fk2">
+          <End Role="Person" Type="Self.Person" Multiplicity="1" />
+          <End Role="WineScoring" Type="Self.WineScoring" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="PersonID" />
+            </Principal>
+            <Dependent Role="WineScoring">
+              <PropertyRef Name="EnteredPersonID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="winescoring_fk3">
+          <End Role="Person" Type="Self.Person" Multiplicity="0..1" />
+          <End Role="WineScoring" Type="Self.WineScoring" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="PersonID" />
+            </Principal>
+            <Dependent Role="WineScoring">
+              <PropertyRef Name="ValidatedPersonID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="mywinecompetitionModelStoreContainer">
           <EntitySet Name="Competition" EntityType="Self.Competition" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EnvironmentTable" EntityType="Self.EnvironmentTable" Schema="dbo" store:Type="Tables" />
@@ -152,6 +177,14 @@
           </AssociationSet>
           <AssociationSet Name="winescoring_fk1" Association="Self.winescoring_fk1">
             <End Role="WineEntry" EntitySet="WineEntry" />
+            <End Role="WineScoring" EntitySet="WineScoring" />
+          </AssociationSet>
+          <AssociationSet Name="winescoring_fk2" Association="Self.winescoring_fk2">
+            <End Role="Person" EntitySet="Person" />
+            <End Role="WineScoring" EntitySet="WineScoring" />
+          </AssociationSet>
+          <AssociationSet Name="winescoring_fk3" Association="Self.winescoring_fk3">
+            <End Role="Person" EntitySet="Person" />
             <End Role="WineScoring" EntitySet="WineScoring" />
           </AssociationSet>
         </EntityContainer>
@@ -221,6 +254,14 @@
             <End Role="WineEntry" EntitySet="WineEntries" />
             <End Role="WineScoring" EntitySet="WineScorings" />
           </AssociationSet>
+          <AssociationSet Name="winescoring_fk2" Association="mywinecompetitionModel.winescoring_fk2">
+            <End Role="Person" EntitySet="People" />
+            <End Role="WineScoring" EntitySet="WineScorings" />
+          </AssociationSet>
+          <AssociationSet Name="winescoring_fk3" Association="mywinecompetitionModel.winescoring_fk3">
+            <End Role="Person" EntitySet="People" />
+            <End Role="WineScoring" EntitySet="WineScorings" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="Competition">
           <Key>
@@ -278,6 +319,8 @@
           <Property Name="EncryptedPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="PasswordSeed" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="PasswordDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="WineScorings" Relationship="mywinecompetitionModel.winescoring_fk2" FromRole="Person" ToRole="WineScoring" />
+          <NavigationProperty Name="WineScorings1" Relationship="mywinecompetitionModel.winescoring_fk3" FromRole="Person" ToRole="WineScoring" />
         </EntityType>
         <EntityType Name="WineScoring">
           <Key>
@@ -300,6 +343,9 @@
           <Property Name="JudgeTotal" Type="Double" Nullable="false" />
           <Property Name="Score" Type="Double" Nullable="false" />
           <NavigationProperty Name="WineEntry" Relationship="mywinecompetitionModel.winescoring_fk1" FromRole="WineScoring" ToRole="WineEntry" />
+          <Property Name="ValidatedPersonID" Type="Int32" />
+          <NavigationProperty Name="Person" Relationship="mywinecompetitionModel.winescoring_fk2" FromRole="WineScoring" ToRole="Person" />
+          <NavigationProperty Name="Person1" Relationship="mywinecompetitionModel.winescoring_fk3" FromRole="WineScoring" ToRole="Person" />
         </EntityType>
         <Association Name="winescoring_fk1">
           <End Type="mywinecompetitionModel.WineEntry" Role="WineEntry" Multiplicity="1">
@@ -312,6 +358,30 @@
             </Principal>
             <Dependent Role="WineScoring">
               <PropertyRef Name="WineEntryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="winescoring_fk2">
+          <End Type="mywinecompetitionModel.Person" Role="Person" Multiplicity="1" />
+          <End Type="mywinecompetitionModel.WineScoring" Role="WineScoring" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="PersonID" />
+            </Principal>
+            <Dependent Role="WineScoring">
+              <PropertyRef Name="EnteredPersonID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="winescoring_fk3">
+          <End Type="mywinecompetitionModel.Person" Role="Person" Multiplicity="0..1" />
+          <End Type="mywinecompetitionModel.WineScoring" Role="WineScoring" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="PersonID" />
+            </Principal>
+            <Dependent Role="WineScoring">
+              <PropertyRef Name="ValidatedPersonID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -396,6 +466,7 @@
           <EntitySetMapping Name="WineScorings">
             <EntityTypeMapping TypeName="mywinecompetitionModel.WineScoring">
               <MappingFragment StoreEntitySet="WineScoring">
+                <ScalarProperty Name="ValidatedPersonID" ColumnName="ValidatedPersonID" />
                 <ScalarProperty Name="Score" ColumnName="Score" />
                 <ScalarProperty Name="JudgeTotal" ColumnName="JudgeTotal" />
                 <ScalarProperty Name="Quality" ColumnName="Quality" />

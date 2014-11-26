@@ -27,7 +27,10 @@ Partial Public Class WineScoring
     Public Property Quality As Double
     Public Property JudgeTotal As Double
     Public Property Score As Double
+    Public Property ValidatedPersonID As Nullable(Of Integer)
 
     Public Overridable Property WineEntry As WineEntry
+    Public Overridable Property Person As Person
+    Public Overridable Property Person1 As Person
 
 End Class

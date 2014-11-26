@@ -105,6 +105,15 @@ Namespace Wine.Web
         Protected WithEvents tbWineNum As Global.Telerik.Web.UI.RadNumericTextBox
 
         '''<summary>
+        '''btnValidate control.
+        '''</summary>
+        '''<remarks>
+        '''Auto-generated field.
+        '''To modify move field declaration from designer file to code-behind file.
+        '''</remarks>
+        Protected WithEvents btnValidate As Global.Telerik.Web.UI.RadButton
+
+        '''<summary>
         '''tbWineName control.
         '''</summary>
         '''<remarks>
@@ -265,6 +274,24 @@ Namespace Wine.Web
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
         Protected WithEvents btnCreateNew2 As Global.Telerik.Web.UI.RadButton
+
+        '''<summary>
+        '''tbWineSwitch control.
+        '''</summary>
+        '''<remarks>
+        '''Auto-generated field.
+        '''To modify move field declaration from designer file to code-behind file.
+        '''</remarks>
+        Protected WithEvents tbWineSwitch As Global.Telerik.Web.UI.RadNumericTextBox
+
+        '''<summary>
+        '''btnSwitch control.
+        '''</summary>
+        '''<remarks>
+        '''Auto-generated field.
+        '''To modify move field declaration from designer file to code-behind file.
+        '''</remarks>
+        Protected WithEvents btnSwitch As Global.Telerik.Web.UI.RadButton
 
         '''<summary>
         '''Master property.

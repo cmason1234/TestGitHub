@@ -58,21 +58,25 @@
             <legend>General Info</legend>
             <table>
                 <tr>
-                    <td colspan="3">
+                    <td colspan="2">
                         Wine #&nbsp;
                         <telerik:RadNumericTextBox Width="50" ID="tbWineNum" runat="server"
                             NumberFormat-GroupSeparator="" NumberFormat-DecimalDigits="0"
                             EnabledStyle-HorizontalAlign="Right" ReadOnly="true" BackColor="LightGray" />
                     </td>
+                    <td></td>
+                    <td rowspan="4" style="text-align:right; vertical-align:middle;">
+                        <telerik:RadButton ID="btnValidate" runat="server" Icon-PrimaryIconUrl="/_resources/images/ico/Enable-16x16.png" Text="Validate Wine Score" ToolTip="Validate" Width="150" ButtonType="StandardButton" />
+                    </td>
                 </tr>
                 <tr>
-                    <td colspan="3">
+                    <td colspan="2">
                         Wine Name&nbsp;
                         <telerik:RadTextBox ID="tbWineName" runat="server" EnabledStyle-HorizontalAlign="Right" ReadOnly="true" BackColor="LightGray" />
                     </td>
                 </tr>
                 <tr>
-                    <td colspan="3">
+                    <td colspan="2">
                         Judge #&nbsp;
                         <telerik:RadNumericTextBox Width="50" ID="tbJudgeNum" runat="server"
                             MinValue="0" MaxValue="50" NumberFormat-GroupSeparator="" NumberFormat-DecimalDigits="0"
@@ -80,13 +84,14 @@
                     </td>
                 </tr>
                 <tr>
-                    <td colspan="3">
+                    <td colspan="2">
                         Judge Name&nbsp;<telerik:RadTextBox Width="125" ID="tbJudgeName" runat="server" />
                     </td>
                 </tr>
+                <tr><td></td></tr>
                 <tr>
-                    <td style="width: 155px;">Clarity (1)</td>
-                    <td style="width: 155px;">Color (2)</td>
+                    <td style="width: 140px;">Clarity (1)</td>
+                    <td style="width: 140px;">Color (2)</td>
                     <td style="width: 155px;">Aroma (4)</td>
                 </tr>
                 <tr>
@@ -106,6 +111,7 @@
                             EnabledStyle-HorizontalAlign="Right" ClientEvents-OnBlur="updateTotalScore" />
                     </td>
                 </tr>
+                <tr><td></td></tr>
                 <tr>
                     <td>Acidity (1)</td>
                     <td>Body (2)</td>
@@ -128,6 +134,7 @@
                             EnabledStyle-HorizontalAlign="Right" ClientEvents-OnBlur="updateTotalScore" />
                     </td>
                 </tr>
+                <tr><td></td></tr>
                 <tr>
                     <td>Bitterness (1)</td>
                     <td>Finish (1)</td>
@@ -184,6 +191,29 @@
                     <td></td>
                     <td>
                         <telerik:RadButton ID="btnCreateNew2" runat="server" Icon-PrimaryIconUrl="/_resources/images/ico/ico_new_16x16.gif" Text="Add New Wine Score" ToolTip="Add New" Width="150" ButtonType="StandardButton" />
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
+        <br class="clear" />
+        <br />
+
+        <fieldset class="fieldset100Percent box_round box_shadow">
+            <legend>Switch Wine Entry</legend>
+            <table>
+                <tr>
+                    <td>
+                        Switch Wine #
+                    </td>
+                    <td>
+                        <telerik:RadNumericTextBox Width="50" ID="tbWineSwitch" runat="server"
+                            NumberFormat-GroupSeparator="" NumberFormat-DecimalDigits="0"
+                            EnabledStyle-HorizontalAlign="Right"  />
+                    </td>
+                    <td>
+                        <telerik:RadButton ID="btnSwitch" runat="server"  
+                            Icon-PrimaryIconUrl="/_resources/images/ico/Login-16x16.png" Text="Switch Wine Entry" 
+                            ToolTip="Switch" Width="150" ButtonType="StandardButton" />
                     </td>
                 </tr>
             </table>
