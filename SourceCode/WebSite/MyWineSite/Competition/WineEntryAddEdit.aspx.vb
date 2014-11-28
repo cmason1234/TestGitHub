@@ -41,6 +41,7 @@ Namespace Wine.Web
                         tbSeqNum.Text = .SeqNum.ToString
                         tbAvgScore.Text = .AvgScore.ToString
                         tbMedalColor.Text = .MedalColor
+                        tbCategoryNumber.Text = .CatNum
                     End With
                     GetScoringEntries(wineEntryID, competitionID, True)
                 Else
@@ -115,6 +116,7 @@ Namespace Wine.Web
                 .WineName = tbWineName.Text
                 .EntrantName = tbEntrantName.Text
                 .CategoryName = tbCategoryName.Text
+                .CatNum = tbCategoryNumber.Text
                 If tbTableNum.Text.Length > 0 Then
                     .TableNum = Convert.ToInt64(tbTableNum.Text)
                 End If

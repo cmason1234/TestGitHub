@@ -177,6 +177,24 @@ Namespace Wine.Web
         Protected WithEvents btnNewWine3 As Global.System.Web.UI.WebControls.Button
 
         '''<summary>
+        '''tbWineSwitch control.
+        '''</summary>
+        '''<remarks>
+        '''Auto-generated field.
+        '''To modify move field declaration from designer file to code-behind file.
+        '''</remarks>
+        Protected WithEvents tbWineSwitch As Global.Telerik.Web.UI.RadNumericTextBox
+
+        '''<summary>
+        '''btnSwitch control.
+        '''</summary>
+        '''<remarks>
+        '''Auto-generated field.
+        '''To modify move field declaration from designer file to code-behind file.
+        '''</remarks>
+        Protected WithEvents btnSwitch As Global.Telerik.Web.UI.RadButton
+
+        '''<summary>
         '''litYearlyCount control.
         '''</summary>
         '''<remarks>
@@ -186,13 +204,13 @@ Namespace Wine.Web
         Protected WithEvents litYearlyCount As Global.System.Web.UI.WebControls.Literal
 
         '''<summary>
-        '''DataGrid1 control.
+        '''dgGridYearlyComp control.
         '''</summary>
         '''<remarks>
         '''Auto-generated field.
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
-        Protected WithEvents DataGrid1 As Global.System.Web.UI.WebControls.DataGrid
+        Protected WithEvents dgGridYearlyComp As Global.Telerik.Web.UI.RadGrid
 
         '''<summary>
         '''btnNewWine4 control.
@@ -202,6 +220,24 @@ Namespace Wine.Web
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
         Protected WithEvents btnNewWine4 As Global.System.Web.UI.WebControls.Button
+
+        '''<summary>
+        '''tbWineSwitch1 control.
+        '''</summary>
+        '''<remarks>
+        '''Auto-generated field.
+        '''To modify move field declaration from designer file to code-behind file.
+        '''</remarks>
+        Protected WithEvents tbWineSwitch1 As Global.Telerik.Web.UI.RadNumericTextBox
+
+        '''<summary>
+        '''btnSwitch1 control.
+        '''</summary>
+        '''<remarks>
+        '''Auto-generated field.
+        '''To modify move field declaration from designer file to code-behind file.
+        '''</remarks>
+        Protected WithEvents btnSwitch1 As Global.Telerik.Web.UI.RadButton
 
         '''<summary>
         '''Master property.

@@ -13,10 +13,10 @@
                     <telerik:RadButton ID="btnSave" runat="server" Icon-PrimaryIconUrl="/_resources/images/ico/Save-16x16.png" Text="Save" ToolTip="Save" Width="100" ButtonType="StandardButton" />
                 </td>
                 <td style="border-right-width: 1px; border-right-style: solid; border-right-color: #939393;" id="delArea" runat="server">
-                    <telerik:RadButton ID="btnDel" runat="server" Icon-PrimaryIconUrl="/_resources/images/ico/delete-16x16.png"  Text="Delete" ToolTip="Delete" Width="100" ButtonType="StandardButton" />
+                    <telerik:RadButton ID="btnDel" runat="server" Icon-PrimaryIconUrl="/_resources/images/ico/delete-16x16.png" Text="Delete" ToolTip="Delete" Width="100" ButtonType="StandardButton" />
                 </td>
                 <td style="border-right-width: 1px; border-right-style: solid; border-right-color: #939393;">
-                    <telerik:RadButton ID="btnCancel" runat="server" Icon-PrimaryIconUrl="/_resources/images/ico/cancel-16x16.png"  Text="Back to Competitions" ToolTip="Back to Competitions" Width="150" ButtonType="StandardButton" />
+                    <telerik:RadButton ID="btnCancel" runat="server" Icon-PrimaryIconUrl="/_resources/images/ico/cancel-16x16.png" Text="Back to Competitions" ToolTip="Back to Competitions" Width="150" ButtonType="StandardButton" />
                 </td>
             </tr>
         </table>
@@ -93,16 +93,17 @@
         </span>
         <div style="margin-left: 4px;">
 
-            <telerik:RadGrid ItemStyle-Wrap="false" ID="dgGridMonthlyComp" Width="80%" AllowPaging="true" 
-                PageSize="100" AllowCustomPaging="false" AllowSorting="true" runat="server" AutoGenerateColumns="false" ShowFooter="true">
+            <telerik:RadGrid ItemStyle-Wrap="false" ID="dgGridMonthlyComp" Width="80%" AllowPaging="true"
+                PageSize="30" AllowCustomPaging="false" AllowSorting="true" runat="server" AutoGenerateColumns="false" ShowFooter="true">
                 <PagerStyle Mode="NumericPages" Position="TopAndBottom" AlwaysVisible="false" />
                 <ExportSettings IgnorePaging="true" />
-                <MasterTableView TableLayout="Fixed" EnableViewState="false">
+                <MasterTableView TableLayout="Fixed" EnableViewState="true">
                     <Columns>
                         <telerik:GridHyperLinkColumn HeaderText="Entry" FooterText="Entry" DataTextField="EntryID" DataNavigateUrlFields="CompetitionID, WineEntryID" DataNavigateUrlFormatString="/Competition/WineEntryAddEdit.aspx?CompetitionID={0}&WineEntryID={1}" SortExpression="EntryID" />
                         <telerik:GridBoundColumn HeaderText="Wine Name" FooterText="Wine Name" DataField="WineName" />
                         <telerik:GridBoundColumn HeaderText="Entrant Name" FooterText="Entrant Name" DataField="EntrantName" />
                         <telerik:GridBoundColumn HeaderText="AvgScore" FooterText="AvgScore" DataField="AvgScore" />
+                        <telerik:GridBoundColumn HeaderText="MedalColor" FooterText="MedalColor" DataField="MedalColor" />
                     </Columns>
                 </MasterTableView>
                 <HeaderStyle HorizontalAlign="Left" />
@@ -123,27 +124,81 @@
 
 
     <div id="divYearlyList" runat="server">
-        <asp:Button ID="btnNewWine3" runat="server" Text="Add New Wine" OnClick="btnNewWine_Click" />&nbsp;
-        <span style="margin-left: 12px;">
-            <asp:Literal ID="litYearlyCount" EnableViewState="false" runat="server" />
-        </span>
-        <div style="margin-left: 4px;">
-            <asp:DataGrid ItemStyle-Wrap="false" ID="DataGrid1" Width="750" AllowPaging="true" PageSize="100" AllowCustomPaging="false" AllowSorting="true" runat="server" AutoGenerateColumns="false">
-                <PagerStyle Mode="NumericPages" Position="TopAndBottom" />
-                <Columns>
-                    <asp:HyperLinkColumn HeaderText="Name" HeaderStyle-Width="350" DataTextField="CompetitionName" DataNavigateUrlField="CompetitionId" DataNavigateUrlFormatString="/Competition/CompAddEdit.aspx?CompetitionID={0}" SortExpression="CompetitionId" />
-                    <asp:BoundColumn HeaderText="Year" DataField="Year" />
-                    <asp:BoundColumn HeaderText="Month" DataField="Month" />
-                    <asp:BoundColumn HeaderText="Type" DataField="CompType" />
-                </Columns>
-                <HeaderStyle HorizontalAlign="Left" />
-                <AlternatingItemStyle BackColor="White" />
-                <ItemStyle BackColor="#FFFBD6" ForeColor="#333333" />
-            </asp:DataGrid>
-        </div>
-        <br />
-        <br />
-        <asp:Button ID="btnNewWine4" runat="server" Text="Add New Wine" OnClick="btnNewWine_Click" />
+        <table style="width: 85%;">
+            <tr>
+                <td style="width: 40%">
+                    <asp:Button ID="btnNewWine3" runat="server" Text="Add New Wine" OnClick="btnNewWine_Click" />
+                </td>
+                <td>
+                    <telerik:RadNumericTextBox Width="50" ID="tbWineSwitch" runat="server"
+                        NumberFormat-GroupSeparator="" NumberFormat-DecimalDigits="0"
+                        EnabledStyle-HorizontalAlign="Right" />&nbsp;
+                    <telerik:RadButton ID="btnSwitch" runat="server"  
+                            Icon-PrimaryIconUrl="/_resources/images/ico/Login-16x16.png" Text="Switch Wine Entry" 
+                            ToolTip="Switch" Width="150" ButtonType="StandardButton" />
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <br />
+                    <span style="margin-left: 12px;">
+                        <asp:Literal ID="litYearlyCount" EnableViewState="false" runat="server" />
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <telerik:RadGrid ID="dgGridYearlyComp" AllowPaging="false" PageSize="20" AllowSorting="false" runat="server"
+                        AllowCustomPaging="false" AutoGenerateColumns="false" ShowFooter="True" GridLines="Both" Width="80%">
+                        <PagerStyle Mode="NumericPages" Position="TopAndBottom" />
+                        <MasterTableView DataMember="WineColors" DataKeyNames="MedalColor" Width="100%" Name="MedalColor" HierarchyLoadMode="Client">
+                            <HeaderStyle Font-Bold="true" Font-Size="Small" />
+                            <FooterStyle Font-Bold="true" Font-Size="Small" />
+                            <DetailTables>
+                                <telerik:GridTableView HierarchyLoadMode="Client" DataMember="WineEntry" DataKeyNames="MedalColor" Width="100%" runat="server" ShowHeader="true">
+                                    <ParentTableRelation>
+                                        <telerik:GridRelationFields DetailKeyField="MedalColor" MasterKeyField="MedalColor" />
+                                    </ParentTableRelation>
+                                    <RowIndicatorColumn CurrentFilterFunction="NoFilter" FilterListOptions="VaryByDataType" Visible="False">
+                                        <HeaderStyle Width="20px"></HeaderStyle>
+                                    </RowIndicatorColumn>
+                                    <Columns>
+                                        <telerik:GridHyperLinkColumn HeaderText="Entry" FooterText="Entry" DataTextField="EntryID" DataNavigateUrlFields="CompetitionID, WineEntryID" DataNavigateUrlFormatString="/Competition/WineEntryAddEdit.aspx?CompetitionID={0}&WineEntryID={1}" SortExpression="EntryID" />
+                                        <telerik:GridBoundColumn HeaderText="Wine Name" FooterText="Wine Name" DataField="WineName" />
+                                        <telerik:GridBoundColumn HeaderText="AvgScore" FooterText="AvgScore" DataField="AvgScore" />
+                                        <telerik:GridBoundColumn HeaderText="MedalColor" FooterText="MedalColor" DataField="MedalColor" />
+                                    </Columns>
+                                </telerik:GridTableView>
+                            </DetailTables>
+                            <RowIndicatorColumn CurrentFilterFunction="NoFilter" FilterListOptions="VaryByDataType" Visible="False">
+                                <HeaderStyle Width="20px"></HeaderStyle>
+                            </RowIndicatorColumn>
+                            <ExpandCollapseColumn CurrentFilterFunction="NoFilter" FilterListOptions="VaryByDataType" Resizable="False">
+                                <HeaderStyle Width="20px"></HeaderStyle>
+                            </ExpandCollapseColumn>
+                            <Columns>
+                                <telerik:GridBoundColumn DataField="MedalColor" />
+                                <telerik:GridBoundColumn DataField="NumMedals" />
+                            </Columns>
+                        </MasterTableView>
+                    </telerik:RadGrid>
+                    <br />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <asp:Button ID="btnNewWine4" runat="server" Text="Add New Wine" OnClick="btnNewWine_Click" />
+                </td>
+                <td>
+                    <telerik:RadNumericTextBox Width="50" ID="tbWineSwitch1" runat="server"
+                        NumberFormat-GroupSeparator="" NumberFormat-DecimalDigits="0"
+                        EnabledStyle-HorizontalAlign="Right" />&nbsp;
+                    <telerik:RadButton ID="btnSwitch1" runat="server"  
+                            Icon-PrimaryIconUrl="/_resources/images/ico/Login-16x16.png" Text="Switch Wine Entry" 
+                            ToolTip="Switch" Width="150" ButtonType="StandardButton" />
+                </td>
+            </tr>
+        </table>
 
         <br />
         <br />

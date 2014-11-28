@@ -141,6 +141,15 @@ Namespace Wine.Web
         Protected WithEvents tbCategoryName As Global.System.Web.UI.WebControls.TextBox
 
         '''<summary>
+        '''tbCategoryNumber control.
+        '''</summary>
+        '''<remarks>
+        '''Auto-generated field.
+        '''To modify move field declaration from designer file to code-behind file.
+        '''</remarks>
+        Protected WithEvents tbCategoryNumber As Global.System.Web.UI.WebControls.TextBox
+
+        '''<summary>
         '''tbTableNum control.
         '''</summary>
         '''<remarks>

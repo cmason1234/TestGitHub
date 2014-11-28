@@ -70,6 +70,7 @@
           <Property Name="AvgScore" Type="float" />
           <Property Name="MedalColor" Type="varchar" MaxLength="512" />
           <Property Name="CategoryName" Type="varchar" MaxLength="512" />
+          <Property Name="CatNum" Type="varchar" MaxLength="20" />
         </EntityType>
         <EntityType Name="WineScoring">
           <Key>
@@ -291,6 +292,7 @@
           <NavigationProperty Name="Competition" Relationship="mywinecompetitionModel.wineentry_fk1" FromRole="WineEntry" ToRole="Competition" />
           <Property Name="CategoryName" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="WineScorings" Relationship="mywinecompetitionModel.winescoring_fk1" FromRole="WineEntry" ToRole="WineScoring" />
+          <Property Name="CatNum" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="wineentry_fk1">
           <End Type="mywinecompetitionModel.Competition" Role="Competition" Multiplicity="1">
@@ -434,6 +436,7 @@
           <EntitySetMapping Name="WineEntries">
             <EntityTypeMapping TypeName="mywinecompetitionModel.WineEntry">
               <MappingFragment StoreEntitySet="WineEntry">
+                <ScalarProperty Name="CatNum" ColumnName="CatNum" />
                 <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
                 <ScalarProperty Name="MedalColor" ColumnName="MedalColor" />
                 <ScalarProperty Name="AvgScore" ColumnName="AvgScore" />

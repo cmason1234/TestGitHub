@@ -76,6 +76,12 @@
                     </td>
                 </tr>
                 <tr>
+                    <td><b>Category Number</b></td>
+                    <td>
+                        <asp:TextBox CssClass="textBox" Width="50" ID="tbCategoryNumber" runat="server" emptyMessage="Cat Num" />
+                    </td>
+                </tr>
+                <tr>
                     <td colspan="2">
                         <table>
                             <tr>

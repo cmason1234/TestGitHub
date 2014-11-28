@@ -42,7 +42,7 @@
                     If comp.MonthlyCompetition Then
                         ShowMonthlyCompResults(competitionID, True)
                     Else
-                        ShowYearlyCompResults(db, comp)
+                        ShowYearlyCompResults(competitionID, True)
                     End If
                 End If
             End If
@@ -75,9 +75,54 @@
         End Sub
 
 
-        Private Sub ShowYearlyCompResults(db As DBEntity.mywinecompetitionEntities, comp As DBEntity.Competition)
-            Throw New NotImplementedException
+        Private Sub ShowYearlyCompResults(competitionID As Integer, bind As Boolean)
+            divYearlyList.Visible = True
+
+            Dim sql As String
+            sql = "select  case medalcolor " &
+                "when 'gold' then 1 " &
+                "when 'silver' then 2 " &
+                "when 'bronze' then 3 " &
+                "else 4 end as MedalOrder, MedalColor, COUNT(*) as NumMedals " &
+                "from WineEntry where CompetitionID = " & competitionID.ToString &
+                "group by MedalColor order by MedalOrder"
+            Dim mds As New System.Data.DataSet
+            Wine.Common.SQL.FillDataSet(mds, sql, "WineColors")
+
+            sql = "select WineEntryID, CompetitionID, EntryID, WineName, " &
+                     "TableNum, FlightNum, SeqNum, AvgScore, CatNum, MedalColor, " &
+                     "case medalcolor " &
+                       "when 'gold' then 1 " &
+                       "when 'silver' then 2 " &
+                       "when 'bronze' then 3 " &
+                       "else 4 end as MedalOrder " &
+                "from WineEntry where CompetitionID = " & competitionID.ToString &
+                " order by  MedalOrder, catnum, AvgScore desc"
+
+            Dim pds As New System.Data.DataSet
+            Wine.Common.SQL.FillDataSet(pds, sql, "WineEntry")
+            If pds.Tables(0).Rows.Count > 0 Then
+                litYearlyCount.Text = "(" & pds.Tables(0).Rows.Count & ")"
+            End If
+
+            Dim dt As System.Data.DataTable = mds.Tables(0).Copy
+            pds.Tables.Add(dt)
+
+            dgGridYearlyComp.DataSource = pds
+            If bind Then
+                dgGridYearlyComp.DataBind()
+            End If
+
+
         End Sub
+
+
+        Private Sub dgGridYearlyComp_NeedDataSource(sender As Object, e As Telerik.Web.UI.GridNeedDataSourceEventArgs) Handles dgGridYearlyComp.NeedDataSource
+            Dim compId As Integer = 0
+            Integer.TryParse(hfCompetitionID.Value, compId)
+            ShowYearlyCompResults(compId, False)
+        End Sub
+
 
         Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
             SaveCompetition()
@@ -149,6 +194,36 @@
             Response.Redirect("/Competition/WineEntryAddEdit.aspx?CompetitionID=" & hfCompetitionID.Value & "&WineEntryID=0")
         End Sub
 
+        Private Sub btnSwitch_Click(sender As Object, e As EventArgs) Handles btnSwitch.Click
+            Dim sWineNum As String = tbWineSwitch.Value
+            Dim wineNum As Integer = 0
 
+            If Integer.TryParse(sWineNum, wineNum) AndAlso wineNum > 0 Then
+                Dim db As New DBEntity.mywinecompetitionEntities(Wine.Common.XmlConfig.ConfigVal("WineCompetition_ConnectionString"))
+                Dim wineScoringList = (From s In db.WineEntries Where s.EntryID = wineNum).ToList
+                If wineScoringList.Count > 0 Then
+                    Dim wineEntryID As Integer = wineScoringList.FirstOrDefault.WineEntryID
+                    Response.Redirect("/Competition/WineEntryAddEdit.aspx?CompetitionID=" & hfCompetitionID.Value & "&WineEntryID=" & wineEntryID.ToString)
+                Else
+                End If
+            End If
+
+        End Sub
+
+        Private Sub btnSwitch1_Click(sender As Object, e As EventArgs) Handles btnSwitch1.Click
+            Dim sWineNum As String = tbWineSwitch1.Value
+            Dim wineNum As Integer = 0
+
+            If Integer.TryParse(sWineNum, wineNum) AndAlso wineNum > 0 Then
+                Dim db As New DBEntity.mywinecompetitionEntities(Wine.Common.XmlConfig.ConfigVal("WineCompetition_ConnectionString"))
+                Dim wineScoringList = (From s In db.WineEntries Where s.EntryID = wineNum).ToList
+                If wineScoringList.Count > 0 Then
+                    Dim wineEntryID As Integer = wineScoringList.FirstOrDefault.WineEntryID
+                    Response.Redirect("/Competition/WineEntryAddEdit.aspx?CompetitionID=" & hfCompetitionID.Value & "&WineEntryID=" & wineEntryID.ToString)
+                Else
+                End If
+            End If
+
+        End Sub
     End Class
 End Namespace
