@@ -35,7 +35,7 @@
                 <tr>
                     <td><b>Competion Name</b></td>
                     <td>
-                        <asp:TextBox CssClass="textBox" Width="350" ID="tbCompNameTextBox" runat="server" ReadOnly="true" BackColor="LightGray"/>
+                        <asp:TextBox CssClass="textBox" Width="350" ID="tbCompNameTextBox" runat="server" ReadOnly="true" BackColor="LightGray" />
                     </td>
                 </tr>
                 <tr>
@@ -105,7 +105,7 @@
                                 </td>
                                 <td>
                                     <b>Medal</b>&nbsp;
-                                    <asp:TextBox CssClass="textbox" Width="100" ID="tbMedalColor" runat="server" ReadOnly="true"  BackColor="LightGray"/>
+                                    <asp:TextBox CssClass="textbox" Width="100" ID="tbMedalColor" runat="server" ReadOnly="true" BackColor="LightGray" />
                                 </td>
                             </tr>
                         </table>
@@ -119,44 +119,73 @@
     </div>
 
     <div id="divScoreList" runat="server">
-        <telerik:RadButton ID="btnNewScore" runat="server" Icon-PrimaryIconUrl="/_resources/images/ico/Add-16x16.png" Text="Add New Score" ToolTip="Add New Score" Width="125" ButtonType="StandardButton" OnClick="btnNewScore_Click" />
+        <table style="width: 85%">
+            <tr>
+                <td style="width: 40%;">
+                    <telerik:RadButton ID="btnNewScore" runat="server" Icon-PrimaryIconUrl="/_resources/images/ico/Add-16x16.png"
+                        Text="Add New Score" ToolTip="Add New Score" Width="125" ButtonType="StandardButton" OnClick="btnNewScore_Click" />
+                </td>
+                <td >
+                    <telerik:RadButton ID="btnValidate" runat="server" Icon-PrimaryIconUrl="/_resources/images/ico/Enable-16x16.png"
+                        Text="Validate Scores" ToolTip="Validate Scores" Width="125" ButtonType="StandardButton" OnClick="btnValidate_Click" />
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <span style="margin-left: 12px;">
+                        <asp:Literal ID="litScoreCount" EnableViewState="false" runat="server" />
+                    </span>
+                    <div style="margin-left: 4px;">
+                        <telerik:RadGrid ID="dgGridScoreComp" Width="85%" AllowPaging="true" PageSize="100"
+                            AllowCustomPaging="false" AllowSorting="true" runat="server" AutoGenerateColumns="false"
+                            AllowMultiRowSelection="true">
+                            <PagerStyle Mode="NumericPages" Position="TopAndBottom" AlwaysVisible="false" />
+                            <ExportSettings IgnorePaging="true" />
+                            <MasterTableView TableLayout="Fixed" EnableViewState="true">
+                                <Columns>
+                                    <telerik:GridClientSelectColumn UniqueName="ClientSelectColumn" HeaderStyle-Width="25px"
+                                        ItemStyle-Width="25px" />
+                                    <telerik:GridHyperLinkColumn HeaderText="Judge" DataTextField="JudgeID" DataNavigateUrlFields="WineEntryID, WineScoringID, CompetitionID"
+                                        DataNavigateUrlFormatString="/Competition/WineScoreAddEdit.aspx?WineEntryID={0}&WineScoringID={1}&CompetitionID={2}"
+                                        ItemStyle-Wrap="true" SortExpression="JudgeID" />
+                                    <telerik:GridBoundColumn Visible="false" DataField="WineScoringID" UniqueName="WineScoringID" />
+                                    <telerik:GridBoundColumn HeaderText="Score" DataField="Score" />
+                                    <telerik:GridBoundColumn HeaderText="JudgeScore" DataField="JudgeTotal" />
+                                    <telerik:GridBoundColumn HeaderText="Clarity" DataField="Clarity" />
+                                    <telerik:GridBoundColumn HeaderText="Color" DataField="Color" />
+                                    <telerik:GridBoundColumn HeaderText="Aroma" DataField="Aroma" />
+                                    <telerik:GridBoundColumn HeaderText="Ta" DataField="Ta" />
+                                    <telerik:GridBoundColumn HeaderText="Texture" DataField="Texture" />
+                                    <telerik:GridBoundColumn HeaderText="Flavor" DataField="Flavor" />
+                                    <telerik:GridBoundColumn HeaderText="Bitterness" DataField="Bitterness" />
+                                    <telerik:GridBoundColumn HeaderText="Finish" DataField="Finish" />
+                                    <telerik:GridBoundColumn HeaderText="Quality" DataField="Quality" />
+                                    <telerik:GridBoundColumn HeaderText="Entered" DataField="EnteredBy" />
+                                    <telerik:GridBoundColumn HeaderText="Validated" DataField="ValidatedBy" />
+                                </Columns>
+                            </MasterTableView>
+                            <HeaderStyle HorizontalAlign="Left" />
+                            <ClientSettings EnableRowHoverStyle="true" AllowColumnsReorder="true" ReorderColumnsOnClient="true">
+                                <Scrolling AllowScroll="false" EnableVirtualScrollPaging="true" SaveScrollPosition="True"></Scrolling>
+                                <Selecting AllowRowSelect="true" UseClientSelectColumnOnly="true" />
+                                <Resizing AllowRowResize="False" EnableRealTimeResize="false" ResizeGridOnColumnResize="false" AllowColumnResize="true"></Resizing>
+                            </ClientSettings>
+                        </telerik:RadGrid>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <telerik:RadButton ID="btnNewScore2" runat="server" Icon-PrimaryIconUrl="/_resources/images/ico/Add-16x16.png" 
+                        Text="Add New Score" ToolTip="Add New Score" Width="125" ButtonType="StandardButton" OnClick="btnNewScore_Click" />
+                </td>
+                <td>
+                    <telerik:RadButton ID="btnValidate2" runat="server" Icon-PrimaryIconUrl="/_resources/images/ico/Enable-16x16.png"
+                        Text="Validate Scores" ToolTip="Validate Scores" Width="125" ButtonType="StandardButton" OnClick="btnValidate_Click" />
+                </td>
+            </tr>
+        </table>
         <br />
-        <span style="margin-left: 12px;">
-            <asp:Literal ID="litScoreCount" EnableViewState="false" runat="server" />
-        </span>
-        <div style="margin-left: 4px;">
-
-            <telerik:RadGrid ID="dgGridScoreComp" Width="85%" AllowPaging="true" PageSize="100" AllowCustomPaging="false" AllowSorting="true" runat="server" AutoGenerateColumns="false">
-                <PagerStyle Mode="NumericPages" Position="TopAndBottom" AlwaysVisible="false" />
-                <ExportSettings IgnorePaging="true" />
-                <MasterTableView TableLayout="Fixed" EnableViewState="false">
-                    <Columns>
-                        <telerik:GridHyperLinkColumn HeaderText="Judge" DataTextField="JudgeID" DataNavigateUrlFields="WineEntryID, WineScoringID, CompetitionID" 
-                            DataNavigateUrlFormatString="/Competition/WineScoreAddEdit.aspx?WineEntryID={0}&WineScoringID={1}&CompetitionID={2}" 
-                             ItemStyle-Wrap="true" SortExpression="JudgeID"/>
-                        <telerik:GridBoundColumn HeaderText="Score" DataField="Score" />
-                        <telerik:GridBoundColumn HeaderText="JudgeScore" DataField="JudgeTotal" />
-                        <telerik:GridBoundColumn HeaderText="Clarity" DataField="Clarity" />
-                        <telerik:GridBoundColumn HeaderText="Color" DataField="Color" />
-                        <telerik:GridBoundColumn HeaderText="Aroma" DataField="Aroma" />
-                        <telerik:GridBoundColumn HeaderText="Ta" DataField="Ta" />
-                        <telerik:GridBoundColumn HeaderText="Texture" DataField="Texture" />
-                        <telerik:GridBoundColumn HeaderText="Flavor" DataField="Flavor" />
-                        <telerik:GridBoundColumn HeaderText="Bitterness" DataField="Bitterness" />
-                        <telerik:GridBoundColumn HeaderText="Finish" DataField="Finish" />
-                        <telerik:GridBoundColumn HeaderText="Quality" DataField="Quality" />
-                        <telerik:GridBoundColumn HeaderText="Entered By" DataField="Username" />
-                    </Columns>
-                </MasterTableView>
-                <HeaderStyle HorizontalAlign="Left" />
-                <ClientSettings EnableRowHoverStyle="true" AllowColumnsReorder="true" ReorderColumnsOnClient="true">
-                    <Scrolling AllowScroll="false" EnableVirtualScrollPaging="true" SaveScrollPosition="True"></Scrolling>
-                    <Selecting AllowRowSelect="false" />
-                    <Resizing AllowRowResize="False" EnableRealTimeResize="false" ResizeGridOnColumnResize="false" AllowColumnResize="true"></Resizing>
-                </ClientSettings>
-            </telerik:RadGrid>
-        </div>
-        <telerik:RadButton ID="btnNewScore2" runat="server" Icon-PrimaryIconUrl="/_resources/images/ico/Add-16x16.png" Text="Add New Score" ToolTip="Add New Score" Width="125" ButtonType="StandardButton" OnClick="btnNewScore_Click" />
 
         <br />
         <br />

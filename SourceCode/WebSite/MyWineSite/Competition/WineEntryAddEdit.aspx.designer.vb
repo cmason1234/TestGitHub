@@ -204,6 +204,15 @@ Namespace Wine.Web
         Protected WithEvents btnNewScore As Global.Telerik.Web.UI.RadButton
 
         '''<summary>
+        '''btnValidate control.
+        '''</summary>
+        '''<remarks>
+        '''Auto-generated field.
+        '''To modify move field declaration from designer file to code-behind file.
+        '''</remarks>
+        Protected WithEvents btnValidate As Global.Telerik.Web.UI.RadButton
+
+        '''<summary>
         '''litScoreCount control.
         '''</summary>
         '''<remarks>
@@ -229,6 +238,15 @@ Namespace Wine.Web
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
         Protected WithEvents btnNewScore2 As Global.Telerik.Web.UI.RadButton
+
+        '''<summary>
+        '''btnValidate2 control.
+        '''</summary>
+        '''<remarks>
+        '''Auto-generated field.
+        '''To modify move field declaration from designer file to code-behind file.
+        '''</remarks>
+        Protected WithEvents btnValidate2 As Global.Telerik.Web.UI.RadButton
 
         '''<summary>
         '''Master property.

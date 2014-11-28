@@ -41,12 +41,15 @@
                         Integer.TryParse(sWineScoringID, wineScoringID) AndAlso wineScoringID > 0 Then
                         Dim wineScore As DBEntity.WineScoring = db.WineScorings.Find(wineScoringID)
 
-                        Dim test = (From ws In db.WineScorings Join ep In db.People On ws.EnteredPersonID Equals ep.PersonID
-                              Group Join vs In db.People On ws.ValidatedPersonID Equals vs.PersonID Into valList = Group
-                              From vs In valList.DefaultIfEmpty()
-                              Where ws.WineScoringID = wineScoringID
-                              Select ws, ep.Username, valName = If(vs Is Nothing, String.Empty, vs.Username)).ToList
+                        Dim enteredby As String = ""
 
+                        If Not IsNothing(wineScore.EnteredPersonID) Then
+                            enteredby = wineScore.Person.Username
+                        End If
+                        Dim validatedby As String = ""
+                        If wineScore.ValidatedPersonID Then
+                            validatedby = wineScore.Person1.Username
+                        End If
 
                         With wineScore
                             tbClarity.Value = .Clarity
@@ -63,7 +66,22 @@
                             tbJudgeScore.Value = .JudgeTotal
                             tbCalcScore.Value = .Score
                         End With
-                        btnValidate.Visible = True
+                        If enteredby.Length = 0 Then
+                            lblEnteredBy.Visible = False
+                            lblEnteredByText.Visible = False
+                        Else
+                            lblEnteredBy.Visible = True
+                            lblEnteredByText.Visible = True
+                            lblEnteredBy.Text = enteredby
+                        End If
+                        If validatedby.Length = 0 Then
+                            btnValidate.Visible = True
+                        Else
+                            btnValidate.Visible = False
+                            lblValidatedBy.Visible = True
+                            lblValidText.Visible = True
+                            lblValidatedBy.Text = validatedby
+                        End If
                     Else
                         tbClarity.Value = 0
                         tbColor.Value = 0
@@ -77,7 +95,7 @@
                         tbJudgeScore.Value = 0
                         tbCalcScore.Value = 0
                     End If
-                End If
+                    End If
             End If
             hfCompetitionID.Value = competitionID.ToString
             hfWineEntryId.Value = wineEntryID.ToString
@@ -129,6 +147,10 @@
 
             UpdateAvgScore(wineEntryID, db)
             btnValidate.Visible = True
+            lblEnteredBy.Visible = True
+            lblEnteredByText.Visible = True
+            lblEnteredBy.Text = currentPerson.Username
+
         End Sub
 
 
@@ -248,7 +270,10 @@
             db.SaveChanges()
 
             UpdateAvgScore(wineEntryID, db)
-            btnValidate.Visible = True
+            btnValidate.Visible = False
+            lblValidatedBy.Visible = True
+            lblValidText.Visible = True
+            lblValidatedBy.Text = currentPerson.PersonID
         End Sub
     End Class
 End Namespace

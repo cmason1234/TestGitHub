@@ -66,6 +66,11 @@
                     </td>
                     <td></td>
                     <td rowspan="4" style="text-align:right; vertical-align:middle;">
+                        <asp:Label ID="lblEnteredByText" runat="server"><b>Entered By:</b><br /></asp:Label>
+                        <asp:Label ID="lblEnteredBy" runat="server"></asp:Label>
+                        <br />
+                        <asp:Label ID="lblValidText" runat="server" Visible="false"><b>Validated By:</b><br /></asp:Label>
+                        <asp:Label ID="lblValidatedBy" runat="server" Visible="false"></asp:Label>
                         <telerik:RadButton ID="btnValidate" runat="server" Icon-PrimaryIconUrl="/_resources/images/ico/Enable-16x16.png" Text="Validate Wine Score" ToolTip="Validate" Width="150" ButtonType="StandardButton" />
                     </td>
                 </tr>

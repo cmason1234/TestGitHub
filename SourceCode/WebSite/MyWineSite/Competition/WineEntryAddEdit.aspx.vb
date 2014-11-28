@@ -1,6 +1,8 @@
-﻿Namespace Wine.Web
+﻿Imports Telerik.Web.UI
+
+Namespace Wine.Web
     Public Class WineEntryAddEdit
-        Inherits System.Web.UI.Page
+        Inherits WebMaster
 
         Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
             Master.AppTitle = "Wine Entries Add/Edit"
@@ -54,10 +56,12 @@
             Dim sql As String
             sql = "select WineScoringID, wineEntryID, EnteredPersonID, " &
                 "JudgeNum, JudgeInitials, Clarity, Color, Aroma, Ta, Texture, " &
-                "Flavor, Bitterness, Finish, Quality, JudgeTotal, Score, p.Username, " &
-                "'' as JudgeID, " & competitionID.ToString & " as CompetitionID " &
+                "Flavor, Bitterness, Finish, Quality, JudgeTotal, Score, p.Username as EnteredBy, " &
+                "'' as JudgeID, " & competitionID.ToString & " as CompetitionID, " &
+                "ISNULL( p1.Username, '') as ValidatedBy  " &
                 "from WineScoring ws " &
                 "INNER JOIN Person p on p.PersonID=ws.EnteredPersonID " &
+                "LEFT OUTER JOIN Person P1 on ws.ValidatedPersonID=p1.PersonID " &
                 "where wineEntryID = " & wineEntryID.ToString & " Order by Score"
 
             Dim pds As New System.Data.DataSet
@@ -171,6 +175,33 @@
             Integer.TryParse(sWineEntryID, wineEntryID)
 
             GetScoringEntries(wineEntryID:=wineEntryID, competitionID:=competitionID, bind:=False)
+        End Sub
+
+
+        Public Sub btnValidate_Click(sender As Object, e As EventArgs)
+            Dim selectedItems As Telerik.Web.UI.GridItemCollection = dgGridScoreComp.SelectedItems
+            Dim db As New DBEntity.mywinecompetitionEntities(Wine.Common.XmlConfig.ConfigVal("WineCompetition_ConnectionString"))
+            Dim wineScoring As DBEntity.WineScoring = Nothing
+            For Each item As GridDataItem In selectedItems
+                ' Get the checkbox value for the row 
+                Dim sWineScoringID = item("WineScoringID").Text.ToString()
+                Dim intWineScoringID As Integer = 0
+                Integer.TryParse(sWineScoringID, intWineScoringID)
+
+                wineScoring = db.WineScorings.Find(intWineScoringID)
+                wineScoring.ValidatedPersonID = currentPerson.PersonID
+            Next
+            db.SaveChanges()
+
+            Dim sCompID As String = hfCompetitionID.Value
+            Dim competitionID As Integer = 0
+            Dim sWineEntryID As String = hfWineEntryId.Value
+            Dim wineEntryID As Integer = 0
+
+            Integer.TryParse(sCompID, competitionID)
+            Integer.TryParse(sWineEntryID, wineEntryID)
+
+            GetScoringEntries(wineEntryID:=wineEntryID, competitionID:=competitionID, bind:=True)
         End Sub
     End Class
 End Namespace

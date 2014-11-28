@@ -105,6 +105,42 @@ Namespace Wine.Web
         Protected WithEvents tbWineNum As Global.Telerik.Web.UI.RadNumericTextBox
 
         '''<summary>
+        '''lblEnteredByText control.
+        '''</summary>
+        '''<remarks>
+        '''Auto-generated field.
+        '''To modify move field declaration from designer file to code-behind file.
+        '''</remarks>
+        Protected WithEvents lblEnteredByText As Global.System.Web.UI.WebControls.Label
+
+        '''<summary>
+        '''lblEnteredBy control.
+        '''</summary>
+        '''<remarks>
+        '''Auto-generated field.
+        '''To modify move field declaration from designer file to code-behind file.
+        '''</remarks>
+        Protected WithEvents lblEnteredBy As Global.System.Web.UI.WebControls.Label
+
+        '''<summary>
+        '''lblValidText control.
+        '''</summary>
+        '''<remarks>
+        '''Auto-generated field.
+        '''To modify move field declaration from designer file to code-behind file.
+        '''</remarks>
+        Protected WithEvents lblValidText As Global.System.Web.UI.WebControls.Label
+
+        '''<summary>
+        '''lblValidatedBy control.
+        '''</summary>
+        '''<remarks>
+        '''Auto-generated field.
+        '''To modify move field declaration from designer file to code-behind file.
+        '''</remarks>
+        Protected WithEvents lblValidatedBy As Global.System.Web.UI.WebControls.Label
+
+        '''<summary>
         '''btnValidate control.
         '''</summary>
         '''<remarks>
