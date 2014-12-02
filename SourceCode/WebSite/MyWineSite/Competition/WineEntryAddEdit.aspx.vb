@@ -42,6 +42,22 @@ Namespace Wine.Web
                         tbAvgScore.Text = .AvgScore.ToString
                         tbMedalColor.Text = .MedalColor
                         tbCategoryNumber.Text = .CatNum
+                        If .AvgScore >= 19 Then
+                            tbAvgScore.BackColor = Drawing.Color.Gold
+                            tbMedalColor.BackColor = Drawing.Color.Gold
+                        ElseIf .AvgScore >= 17 Then
+                            tbAvgScore.BackColor = Drawing.Color.Yellow
+                            tbMedalColor.BackColor = Drawing.Color.Yellow
+                        ElseIf .AvgScore >= 15 Then
+                            tbAvgScore.BackColor = Drawing.Color.Silver
+                            tbMedalColor.BackColor = Drawing.Color.Silver
+                        ElseIf .AvgScore >= 13 Then
+                            tbAvgScore.BackColor = Drawing.Color.Peru
+                            tbMedalColor.BackColor = Drawing.Color.Peru
+                        Else
+                            tbAvgScore.BackColor = Drawing.Color.LightGray
+                            tbMedalColor.BackColor = Drawing.Color.LightGray
+                        End If
                     End With
                     GetScoringEntries(wineEntryID, competitionID, True)
                 Else

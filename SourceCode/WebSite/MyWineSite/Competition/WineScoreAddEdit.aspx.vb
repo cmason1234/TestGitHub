@@ -37,6 +37,24 @@
                     tbAvgScore.Text = wineEntry.AvgScore.ToString
                     tbMedalColor.Text = wineEntry.MedalColor
 
+                    If wineEntry.AvgScore >= 19 Then
+                        tbAvgScore.BackColor = Drawing.Color.Gold
+                        tbMedalColor.BackColor = Drawing.Color.Gold
+                    ElseIf wineEntry.AvgScore >= 17 Then
+                        tbAvgScore.BackColor = Drawing.Color.Yellow
+                        tbMedalColor.BackColor = Drawing.Color.Yellow
+                    ElseIf wineEntry.AvgScore >= 15 Then
+                        tbAvgScore.BackColor = Drawing.Color.Silver
+                        tbMedalColor.BackColor = Drawing.Color.Silver
+                    ElseIf wineEntry.AvgScore >= 13 Then
+                        tbAvgScore.BackColor = Drawing.Color.Peru
+                        tbMedalColor.BackColor = Drawing.Color.Peru
+                    Else
+                        tbAvgScore.BackColor = Drawing.Color.LightGray
+                        tbMedalColor.BackColor = Drawing.Color.LightGray
+                    End If
+
+
                     If Not IsNothing(Request.Params("WineScoringID")) AndAlso
                         Integer.TryParse(sWineScoringID, wineScoringID) AndAlso wineScoringID > 0 Then
                         Dim wineScore As DBEntity.WineScoring = db.WineScorings.Find(wineScoringID)
@@ -95,7 +113,7 @@
                         tbJudgeScore.Value = 0
                         tbCalcScore.Value = 0
                     End If
-                    End If
+                End If
             End If
             hfCompetitionID.Value = competitionID.ToString
             hfWineEntryId.Value = wineEntryID.ToString
@@ -172,12 +190,24 @@
                 Dim medalColor As String = Nothing
                 If avg >= 19 Then
                     medalColor = "Double Gold"
+                    tbAvgScore.BackColor = Drawing.Color.Gold
+                    tbMedalColor.BackColor = Drawing.Color.Gold
                 ElseIf avg >= 17 Then
                     medalColor = "Gold"
+                    tbAvgScore.BackColor = Drawing.Color.Yellow
+                    tbMedalColor.BackColor = Drawing.Color.Yellow
                 ElseIf avg >= 15 Then
                     medalColor = "Silver"
+                    tbAvgScore.BackColor = Drawing.Color.Silver
+                    tbMedalColor.BackColor = Drawing.Color.Silver
                 ElseIf avg >= 13 Then
                     medalColor = "Bronze"
+                    tbAvgScore.BackColor = Drawing.Color.Peru
+                    tbMedalColor.BackColor = Drawing.Color.Peru
+                Else
+                    medalColor = ""
+                    tbAvgScore.BackColor = Drawing.Color.LightGray
+                    tbMedalColor.BackColor = Drawing.Color.LightGray
                 End If
                 wineEntry.MedalColor = medalColor
                 db.SaveChanges()

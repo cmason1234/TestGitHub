@@ -20,7 +20,17 @@
                 var finish = $find('<%=tbFinish.ClientID%>').get_value();
                 var quality = $find('<%=tbQuality.ClientID%>').get_value();
                 var total = clarity + color + aroma + ta + body + flavor + bitterness + finish + quality;
-                $find('<%=tbCalcScore.ClientID%>').set_value(total)
+                $find('<%=tbCalcScore.ClientID%>').set_value(total);
+                var judgeTotal = $find('<%=tbJudgeScore.ClientID%>').get_value();
+                var save1 = $find('<%=btnSave.ClientID%>')
+                var save2 = $find('<%=btnSave2.ClientID%>')
+                if (total != judgeTotal) {
+                    save1.set_enabled(false);
+                    save2.set_enabled(false);
+                } else {
+                    save1.set_enabled(true);
+                    save2.set_enabled(true);
+                }
             }
         };
 
@@ -59,13 +69,13 @@
             <table>
                 <tr>
                     <td colspan="2">
-                        Wine #&nbsp;
+                        Entry #&nbsp;
                         <telerik:RadNumericTextBox Width="50" ID="tbWineNum" runat="server"
                             NumberFormat-GroupSeparator="" NumberFormat-DecimalDigits="0"
                             EnabledStyle-HorizontalAlign="Right" ReadOnly="true" BackColor="LightGray" />
                     </td>
-                    <td></td>
-                    <td rowspan="4" style="text-align:right; vertical-align:middle;">
+                    
+                    <td rowspan="3" style="text-align: right; vertical-align: middle;">
                         <asp:Label ID="lblEnteredByText" runat="server"><b>Entered By:</b><br /></asp:Label>
                         <asp:Label ID="lblEnteredBy" runat="server"></asp:Label>
                         <br />
@@ -82,6 +92,50 @@
                 </tr>
                 <tr>
                     <td colspan="2">
+                        Category Number&nbsp;
+                        <asp:TextBox CssClass="textBox" Width="50" ID="tbCategoryNumber" runat="server" emptyMessage="Cat Num" ReadOnly="true" BackColor="LightGray" />
+                    </td>
+                </tr>
+
+                <tr>
+                    <td colspan="2">
+                        <table>
+                            <tr>
+                                <td>
+                                    Table Num&nbsp;
+                                    <telerik:RadNumericTextBox Width="50" ID="tbTableNum" runat="server"
+                                        MinValue="0" MaxValue="999999999" NumberFormat-GroupSeparator="" NumberFormat-DecimalDigits="0"
+                                        EnabledStyle-HorizontalAlign="Right" ReadOnly="true" BackColor="LightGray" />
+                                </td>
+                                <td>
+                                    Flight Num&nbsp;
+                                    <telerik:RadNumericTextBox Width="50" ID="tbFlightNum" runat="server"
+                                        MinValue="0" MaxValue="999999999" NumberFormat-GroupSeparator="" NumberFormat-DecimalDigits="0"
+                                        EnabledStyle-HorizontalAlign="Right" ReadOnly="true" BackColor="LightGray" />
+                                </td>
+                                <td>
+                                    Seq Num&nbsp;
+                                    <telerik:RadNumericTextBox Width="50" ID="tbSeqNum" runat="server"
+                                        MinValue="0" MaxValue="999999999" NumberFormat-GroupSeparator="" NumberFormat-DecimalDigits="0"
+                                        EnabledStyle-HorizontalAlign="Right" ReadOnly="true" BackColor="LightGray" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Avg Score&nbsp;
+                                    <asp:TextBox CssClass="textbox" Width="75" ID="TextBox1" runat="server" ReadOnly="true" BackColor="LightGray" />
+                                </td>
+                                <td>
+                                    Medal&nbsp;
+                                    <asp:TextBox CssClass="textbox" Width="100" ID="TextBox2" runat="server" ReadOnly="true" BackColor="LightGray" />
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td colspan="2">
                         Judge #&nbsp;
                         <telerik:RadNumericTextBox Width="50" ID="tbJudgeNum" runat="server"
                             MinValue="0" MaxValue="50" NumberFormat-GroupSeparator="" NumberFormat-DecimalDigits="0"
@@ -93,7 +147,9 @@
                         Judge Name&nbsp;<telerik:RadTextBox Width="125" ID="tbJudgeName" runat="server" />
                     </td>
                 </tr>
-                <tr><td></td></tr>
+                <tr>
+                    <td></td>
+                </tr>
                 <tr>
                     <td style="width: 140px;">Clarity (1)</td>
                     <td style="width: 140px;">Color (2)</td>
@@ -116,7 +172,9 @@
                             EnabledStyle-HorizontalAlign="Right" ClientEvents-OnBlur="updateTotalScore" />
                     </td>
                 </tr>
-                <tr><td></td></tr>
+                <tr>
+                    <td></td>
+                </tr>
                 <tr>
                     <td>Acidity (1)</td>
                     <td>Body (2)</td>
@@ -139,7 +197,9 @@
                             EnabledStyle-HorizontalAlign="Right" ClientEvents-OnBlur="updateTotalScore" />
                     </td>
                 </tr>
-                <tr><td></td></tr>
+                <tr>
+                    <td></td>
+                </tr>
                 <tr>
                     <td>Bitterness (1)</td>
                     <td>Finish (1)</td>
@@ -171,7 +231,7 @@
                     <td>
                         <telerik:RadNumericTextBox Width="75" ID="tbJudgeScore" runat="server"
                             MinValue="0" MaxValue="20" NumberFormat-GroupSeparator="" NumberFormat-DecimalDigits="4"
-                            EnabledStyle-HorizontalAlign="Right" />
+                            EnabledStyle-HorizontalAlign="Right" ClientEvents-OnBlur="updateTotalScore" />
                     </td>
                     <td></td>
                     <td>
@@ -182,11 +242,13 @@
                 </tr>
                 <tr>
                     <td>
-                        Avg Score<br /><asp:TextBox CssClass="textbox" Width="75" ID="tbAvgScore" runat="server" ReadOnly="true" BackColor="LightGray"  />
+                        Avg Score<br />
+                        <asp:TextBox CssClass="textbox" Width="75" ID="tbAvgScore" runat="server" ReadOnly="true" BackColor="LightGray" />
                     </td>
                     <td></td>
                     <td>
-                        Medal<br /><asp:TextBox CssClass="textbox" Width="100" ID="tbMedalColor" runat="server" ReadOnly="true" BackColor="LightGray" />
+                        Medal<br />
+                        <asp:TextBox CssClass="textbox" Width="100" ID="tbMedalColor" runat="server" ReadOnly="true" BackColor="LightGray" />
                     </td>
                 </tr>
                 <tr>
@@ -213,11 +275,11 @@
                     <td>
                         <telerik:RadNumericTextBox Width="50" ID="tbWineSwitch" runat="server"
                             NumberFormat-GroupSeparator="" NumberFormat-DecimalDigits="0"
-                            EnabledStyle-HorizontalAlign="Right"  />
+                            EnabledStyle-HorizontalAlign="Right" />
                     </td>
                     <td>
-                        <telerik:RadButton ID="btnSwitch" runat="server"  
-                            Icon-PrimaryIconUrl="/_resources/images/ico/Login-16x16.png" Text="Switch Wine Entry" 
+                        <telerik:RadButton ID="btnSwitch" runat="server"
+                            Icon-PrimaryIconUrl="/_resources/images/ico/Login-16x16.png" Text="Switch Wine Entry"
                             ToolTip="Switch" Width="150" ButtonType="StandardButton" />
                     </td>
                 </tr>

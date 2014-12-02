@@ -80,22 +80,29 @@
 
             Dim sql As String
             sql = "select  case medalcolor " &
-                "when 'gold' then 1 " &
-                "when 'silver' then 2 " &
-                "when 'bronze' then 3 " &
-                "else 4 end as MedalOrder, MedalColor, COUNT(*) as NumMedals " &
-                "from WineEntry where CompetitionID = " & competitionID.ToString &
+                "when 'double gold' then 1 " &
+                "when 'gold' then 2 " &
+                "when 'silver' then 3 " &
+                "when 'bronze' then 4 " &
+                "when '' then 5 " &
+                "else 6 end as MedalOrder, " &
+                "isnull(MedalColor, 'Not Scored') as MedalColor, " &
+                "COUNT(*) as NumMedals " &
+                " from WineEntry where CompetitionID = " & competitionID.ToString &
                 "group by MedalColor order by MedalOrder"
             Dim mds As New System.Data.DataSet
             Wine.Common.SQL.FillDataSet(mds, sql, "WineColors")
 
             sql = "select WineEntryID, CompetitionID, EntryID, WineName, " &
-                     "TableNum, FlightNum, SeqNum, AvgScore, CatNum, MedalColor, " &
+                     "TableNum, FlightNum, SeqNum, AvgScore, CatNum, " &
+                     "isnull(MedalColor, 'Not Scored') as MedalColor, " &
                      "case medalcolor " &
-                       "when 'gold' then 1 " &
-                       "when 'silver' then 2 " &
-                       "when 'bronze' then 3 " &
-                       "else 4 end as MedalOrder " &
+                     "when 'double gold' then 1 " &
+                     "when 'gold' then 2 " &
+                     "when 'silver' then 3 " &
+                     "when 'bronze' then 4 " &
+                     "when '' then 5 " &
+                     "else 6 end as MedalOrder " &
                 "from WineEntry where CompetitionID = " & competitionID.ToString &
                 " order by  MedalOrder, catnum, AvgScore desc"
 
