@@ -20,16 +20,27 @@
                 var finish = $find('<%=tbFinish.ClientID%>').get_value();
                 var quality = $find('<%=tbQuality.ClientID%>').get_value();
                 var total = clarity + color + aroma + ta + body + flavor + bitterness + finish + quality;
-                $find('<%=tbCalcScore.ClientID%>').set_value(total);
-                var judgeTotal = $find('<%=tbJudgeScore.ClientID%>').get_value();
-                var save1 = $find('<%=btnSave.ClientID%>')
-                var save2 = $find('<%=btnSave2.ClientID%>')
+                var calcScoreID = $find('<%=tbCalcScore.ClientID%>');
+                var judgeTotalID = $find('<%=tbJudgeScore.ClientID%>');
+                var judgeTotal = judgeTotalID.get_value();
+                var save1 = $find('<%=btnSave.ClientID%>');
+                var save2 = $find('<%=btnSave2.ClientID%>');
+
+                calcScoreID.set_value(total);
                 if (total != judgeTotal) {
                     save1.set_enabled(false);
                     save2.set_enabled(false);
+                    judgeTotalID.get_styles().EnabledStyle[0] += "background-color: red;";
+                    judgeTotalID.updateCssClass();
+                    calcScoreID.get_styles().ReadOnlyStyle[0] += "background-color: red;";
+                    calcScoreID.updateCssClass();
                 } else {
                     save1.set_enabled(true);
                     save2.set_enabled(true);
+                    judgeTotalID.get_styles().EnabledStyle[0] += "background-color: white;";
+                    judgeTotalID.updateCssClass();
+                    calcScoreID.get_styles().ReadOnlyStyle[0] += "background-color: LightGray;";
+                    calcScoreID.updateCssClass();
                 }
             }
         };
@@ -93,7 +104,7 @@
                 <tr>
                     <td colspan="2">
                         Category Number&nbsp;
-                        <asp:TextBox CssClass="textBox" Width="50" ID="tbCategoryNumber" runat="server" emptyMessage="Cat Num" ReadOnly="true" BackColor="LightGray" />
+                        <telerik:RadTextBox CssClass="textBox" Width="50" ID="tbCategoryNumber" runat="server" emptyMessage="Cat Num" ReadOnly="true" BackColor="LightGray" />
                     </td>
                 </tr>
 
@@ -118,16 +129,6 @@
                                     <telerik:RadNumericTextBox Width="50" ID="tbSeqNum" runat="server"
                                         MinValue="0" MaxValue="999999999" NumberFormat-GroupSeparator="" NumberFormat-DecimalDigits="0"
                                         EnabledStyle-HorizontalAlign="Right" ReadOnly="true" BackColor="LightGray" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    Avg Score&nbsp;
-                                    <asp:TextBox CssClass="textbox" Width="75" ID="TextBox1" runat="server" ReadOnly="true" BackColor="LightGray" />
-                                </td>
-                                <td>
-                                    Medal&nbsp;
-                                    <asp:TextBox CssClass="textbox" Width="100" ID="TextBox2" runat="server" ReadOnly="true" BackColor="LightGray" />
                                 </td>
                             </tr>
                         </table>
@@ -243,12 +244,12 @@
                 <tr>
                     <td>
                         Avg Score<br />
-                        <asp:TextBox CssClass="textbox" Width="75" ID="tbAvgScore" runat="server" ReadOnly="true" BackColor="LightGray" />
+                        <telerik:RadTextBox CssClass="textbox" Width="75" ID="tbAvgScore" runat="server" ReadOnly="true" BackColor="LightGray" />
                     </td>
                     <td></td>
                     <td>
                         Medal<br />
-                        <asp:TextBox CssClass="textbox" Width="100" ID="tbMedalColor" runat="server" ReadOnly="true" BackColor="LightGray" />
+                        <telerik:RadTextBox CssClass="textbox" Width="100" ID="tbMedalColor" runat="server" ReadOnly="true" BackColor="LightGray" />
                     </td>
                 </tr>
                 <tr>
@@ -266,7 +267,7 @@
         <br />
 
         <fieldset class="fieldset100Percent box_round box_shadow">
-            <legend>Switch Wine Entry</legend>
+            <legend>Switch Wine #</legend>
             <table>
                 <tr>
                     <td>
@@ -279,8 +280,8 @@
                     </td>
                     <td>
                         <telerik:RadButton ID="btnSwitch" runat="server"
-                            Icon-PrimaryIconUrl="/_resources/images/ico/Login-16x16.png" Text="Switch Wine Entry"
-                            ToolTip="Switch" Width="150" ButtonType="StandardButton" />
+                            Icon-PrimaryIconUrl="/_resources/images/ico/Login-16x16.png" Text="Score Different Wine"
+                            ToolTip="Score" Width="150" ButtonType="StandardButton" />
                     </td>
                 </tr>
             </table>

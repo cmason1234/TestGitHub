@@ -165,7 +165,7 @@ Namespace Wine.Web
         '''Auto-generated field.
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
-        Protected WithEvents tbCategoryNumber As Global.System.Web.UI.WebControls.TextBox
+        Protected WithEvents tbCategoryNumber As Global.Telerik.Web.UI.RadTextBox
 
         '''<summary>
         '''tbTableNum control.
@@ -193,24 +193,6 @@ Namespace Wine.Web
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
         Protected WithEvents tbSeqNum As Global.Telerik.Web.UI.RadNumericTextBox
-
-        '''<summary>
-        '''TextBox1 control.
-        '''</summary>
-        '''<remarks>
-        '''Auto-generated field.
-        '''To modify move field declaration from designer file to code-behind file.
-        '''</remarks>
-        Protected WithEvents TextBox1 As Global.System.Web.UI.WebControls.TextBox
-
-        '''<summary>
-        '''TextBox2 control.
-        '''</summary>
-        '''<remarks>
-        '''Auto-generated field.
-        '''To modify move field declaration from designer file to code-behind file.
-        '''</remarks>
-        Protected WithEvents TextBox2 As Global.System.Web.UI.WebControls.TextBox
 
         '''<summary>
         '''tbJudgeNum control.
@@ -336,7 +318,7 @@ Namespace Wine.Web
         '''Auto-generated field.
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
-        Protected WithEvents tbAvgScore As Global.System.Web.UI.WebControls.TextBox
+        Protected WithEvents tbAvgScore As Global.Telerik.Web.UI.RadTextBox
 
         '''<summary>
         '''tbMedalColor control.
@@ -345,7 +327,7 @@ Namespace Wine.Web
         '''Auto-generated field.
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
-        Protected WithEvents tbMedalColor As Global.System.Web.UI.WebControls.TextBox
+        Protected WithEvents tbMedalColor As Global.Telerik.Web.UI.RadTextBox
 
         '''<summary>
         '''btnSave2 control.

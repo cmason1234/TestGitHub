@@ -5,48 +5,48 @@
         Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
             Master.AppTitle = "Competition Add/Edit"
             If Not IsPostBack Then
-                LoadFromDB()
+                Dim sCompID As String = Request.Params("CompetitionID")
+                Dim competitionID As Integer = 0
+                If Request.Params("CompetitionID") IsNot Nothing Then
+                    If Integer.TryParse(sCompID, competitionID) AndAlso competitionID > 0 Then
+                        LoadFromDB(competitionID)
+                    End If
+                End If
+                hfCompetitionID.Value = competitionID.ToString
             End If
         End Sub
 
-        Private Sub LoadFromDB()
-            Dim sCompID As String = Request.Params("CompetitionID")
-            Dim competitionID As Integer = 0
+        Private Sub LoadFromDB(competitionID As Integer)
             divMontlyList.Visible = False
             divYearlyList.Visible = False
 
-            If Request.Params("CompetitionID") IsNot Nothing Then
-                If Integer.TryParse(sCompID, competitionID) AndAlso competitionID > 0 Then
-                    Dim db As New DBEntity.mywinecompetitionEntities(Wine.Common.XmlConfig.ConfigVal("WineCompetition_ConnectionString"))
-                    Dim comp As DBEntity.Competition = db.Competitions.Find(competitionID)
-                    tbCompNameTextBox.Text = comp.CompetitionName
-                    If comp.MonthlyCompetition Then
-                        ddlCompType.SelectedValue = "Monthly"
-                    Else
-                        ddlCompType.SelectedValue = "Yearly"
-                    End If
-                    If Wine.Common.HTML.CanSetDropDownValue(ddlYear, comp.Year.ToString) Then
-                        If IsNothing(comp.Year) Then
-                            ddlYear.SelectedValue = ""
-                        Else
-                            ddlYear.SelectedValue = comp.Year.ToString
-                        End If
-                    End If
-                    If Wine.Common.HTML.CanSetDropDownValue(ddlMonth, comp.Month) Then
-                        If IsNothing(comp.Month) Then
-                            ddlMonth.SelectedValue = ""
-                        Else
-                            ddlMonth.SelectedValue = comp.Month.ToString
-                        End If
-                    End If
-                    If comp.MonthlyCompetition Then
-                        ShowMonthlyCompResults(competitionID, True)
-                    Else
-                        ShowYearlyCompResults(competitionID, True)
-                    End If
+            Dim db As New DBEntity.mywinecompetitionEntities(Wine.Common.XmlConfig.ConfigVal("WineCompetition_ConnectionString"))
+            Dim comp As DBEntity.Competition = db.Competitions.Find(competitionID)
+            tbCompNameTextBox.Text = comp.CompetitionName
+            If comp.MonthlyCompetition Then
+                ddlCompType.SelectedValue = "Monthly"
+            Else
+                ddlCompType.SelectedValue = "Yearly"
+            End If
+            If Wine.Common.HTML.CanSetDropDownValue(ddlYear, comp.Year.ToString) Then
+                If IsNothing(comp.Year) Then
+                    ddlYear.SelectedValue = ""
+                Else
+                    ddlYear.SelectedValue = comp.Year.ToString
                 End If
             End If
-            hfCompetitionID.Value = competitionID.ToString
+            If Wine.Common.HTML.CanSetDropDownValue(ddlMonth, comp.Month) Then
+                If IsNothing(comp.Month) Then
+                    ddlMonth.SelectedValue = ""
+                Else
+                    ddlMonth.SelectedValue = comp.Month.ToString
+                End If
+            End If
+            If comp.MonthlyCompetition Then
+                ShowMonthlyCompResults(competitionID, True)
+            Else
+                ShowYearlyCompResults(competitionID, True)
+            End If
         End Sub
 
         Private Sub ShowMonthlyCompResults(competitionID As Integer, bind As Boolean)
@@ -79,17 +79,24 @@
             divYearlyList.Visible = True
 
             Dim sql As String
-            sql = "select  case medalcolor " &
-                "when 'double gold' then 1 " &
-                "when 'gold' then 2 " &
-                "when 'silver' then 3 " &
-                "when 'bronze' then 4 " &
-                "when '' then 5 " &
-                "else 6 end as MedalOrder, " &
-                "isnull(MedalColor, 'Not Scored') as MedalColor, " &
-                "COUNT(*) as NumMedals " &
-                " from WineEntry where CompetitionID = " & competitionID.ToString &
-                "group by MedalColor order by MedalOrder"
+            sql = "select 1 as MedalOrder, 'Double Gold' as medalColor, COUNT(*) as NumMedals " &
+                "from WineEntry where CompetitionID = 4 and medalcolor='double gold' " &
+                "union " &
+                "select 2, 'Gold', COUNT(*) as NumMedals " &
+                "from WineEntry where CompetitionID = " & competitionID.ToString & " and medalcolor='gold' " &
+                "union " &
+                "select 3, 'Silver', COUNT(*) as NumMedals " &
+                "from WineEntry where CompetitionID = " & competitionID.ToString & " and medalcolor='Silver' " &
+                "UNION " &
+                "select 4, 'Bronze', COUNT(*) as NumMedals " &
+                "from WineEntry where CompetitionID = " & competitionID.ToString & " and medalcolor='bronze' " &
+                "UNION " &
+                "select 5, '', COUNT(*) as NumMedals " &
+                "from WineEntry where CompetitionID = " & competitionID.ToString & " and medalcolor='' " &
+                "UNION " &
+                "select 6, 'NOT SCORED', COUNT(*) as NumMedals " &
+                "from WineEntry where CompetitionID = " & competitionID.ToString & " and medalcolor is null " &
+                "order by MedalOrder"
             Dim mds As New System.Data.DataSet
             Wine.Common.SQL.FillDataSet(mds, sql, "WineColors")
 
@@ -133,7 +140,6 @@
 
         Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
             SaveCompetition()
-            LoadFromDB()
         End Sub
 
         Private Sub SaveCompetition()
@@ -171,6 +177,7 @@
             End If
             db.SaveChanges()
             hfCompetitionID.Value = competition.CompetitionId.ToString
+            LoadFromDB(competition.CompetitionId)
             delArea.Visible = True
         End Sub
 

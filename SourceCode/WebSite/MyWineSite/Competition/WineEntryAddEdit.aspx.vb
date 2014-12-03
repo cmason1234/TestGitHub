@@ -85,6 +85,8 @@ Namespace Wine.Web
             Wine.Common.SQL.FillDataSet(pds, sql, "WineEntry")
             If pds.Tables(0).Rows.Count > 0 Then
                 dgGridScoreComp.Visible = True
+                btnValidate.Visible = True
+                btnValidate2.Visible = True
                 litScoreCount.Text = "(" & pds.Tables(0).Rows.Count & ")"
                 For Each dr As System.Data.DataRow In pds.Tables(0).Rows
                     Dim judgeNum As String = Wine.Common.Validation.NullHelperInteger(dr, "JudgeNum").ToString
@@ -97,6 +99,8 @@ Namespace Wine.Web
                 Next
             Else
                 dgGridScoreComp.Visible = False
+                btnValidate.Visible = False
+                btnValidate2.Visible = False
             End If
             dgGridScoreComp.DataSource = pds
             If bind Then

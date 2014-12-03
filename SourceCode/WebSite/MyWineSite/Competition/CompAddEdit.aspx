@@ -134,8 +134,8 @@
                         NumberFormat-GroupSeparator="" NumberFormat-DecimalDigits="0"
                         EnabledStyle-HorizontalAlign="Right" />&nbsp;
                     <telerik:RadButton ID="btnSwitch" runat="server"  
-                            Icon-PrimaryIconUrl="/_resources/images/ico/Login-16x16.png" Text="Switch Wine Entry" 
-                            ToolTip="Switch" Width="150" ButtonType="StandardButton" />
+                            Icon-PrimaryIconUrl="/_resources/images/ico/Login-16x16.png" Text="View Wine Scores" 
+                            ToolTip="View" Width="150" ButtonType="StandardButton" />
                 </td>
             </tr>
             <tr>
@@ -194,8 +194,8 @@
                         NumberFormat-GroupSeparator="" NumberFormat-DecimalDigits="0"
                         EnabledStyle-HorizontalAlign="Right" />&nbsp;
                     <telerik:RadButton ID="btnSwitch1" runat="server"  
-                            Icon-PrimaryIconUrl="/_resources/images/ico/Login-16x16.png" Text="Switch Wine Entry" 
-                            ToolTip="Switch" Width="150" ButtonType="StandardButton" />
+                            Icon-PrimaryIconUrl="/_resources/images/ico/Login-16x16.png" Text="View Wine Scores" 
+                            ToolTip="View" Width="150" ButtonType="StandardButton" />
                 </td>
             </tr>
         </table>

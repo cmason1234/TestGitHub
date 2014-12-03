@@ -54,6 +54,10 @@
                         tbMedalColor.BackColor = Drawing.Color.LightGray
                     End If
 
+                    tbTableNum.Text = wineEntry.TableNum
+                    tbSeqNum.Text = wineEntry.SeqNum
+                    tbCategoryNumber.Text = wineEntry.CatNum
+                    tbFlightNum.Text = wineEntry.FlightNum
 
                     If Not IsNothing(Request.Params("WineScoringID")) AndAlso
                         Integer.TryParse(sWineScoringID, wineScoringID) AndAlso wineScoringID > 0 Then
@@ -255,7 +259,7 @@
                 Dim wineScoringList = (From s In db.WineEntries Where s.EntryID = wineNum).ToList
                 If wineScoringList.Count > 0 Then
                     Dim wineEntryID As Integer = wineScoringList.FirstOrDefault.WineEntryID
-                    Response.Redirect("/Competition/WineEntryAddEdit.aspx?CompetitionID=" & hfCompetitionID.Value & "&WineEntryID=" & wineEntryID.ToString)
+                    Response.Redirect("/Competition/WineScoreAddEdit.aspx?CompetitionID=" & hfCompetitionID.Value & "&WineEntryID=" & wineEntryID.ToString & "&WineScoringID=0")
                 Else
                 End If
             End If
