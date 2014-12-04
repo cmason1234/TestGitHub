@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/MasterPage/Blank.Master"
     CodeBehind="WineScoreAddEdit.aspx.vb" Inherits="Wine.Web.WineScoreAddEdit" %>
 
+<%@ Register Src="../_Controls/ctlErrorMessages.ascx" TagName="ErrorMessages" TagPrefix="ucErrorMessages" %>
 <%@ MasterType TypeName="Wine.Web.Blank" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <script type="text/javascript" src="/_resources/js/jquery/jquery_1.10.2.min.js"></script>
@@ -70,8 +71,7 @@
     </div>
 
     <div runat="server" id="divPadHasLI" class="pad hasLI ">
-
-        <br />
+        <ucerrormessages:errormessages id="ucErrorMessages" runat="server" />
         <asp:HiddenField ID="hfCompetitionID" runat="server" Visible="false" />
         <asp:HiddenField ID="hfWineEntryId" runat="server" Visible="false" />
         <asp:HiddenField ID="hfWineScoringID" runat="server" Visible="false" />
@@ -143,7 +143,7 @@
                             EnabledStyle-HorizontalAlign="Right" />
                     </td>
                 </tr>
-                <tr>
+                <tr id="judgenameTR" runat="server" visible="false">
                     <td colspan="2">
                         Judge Name&nbsp;<telerik:RadTextBox Width="125" ID="tbJudgeName" runat="server" />
                     </td>

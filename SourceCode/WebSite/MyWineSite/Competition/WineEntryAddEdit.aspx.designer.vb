@@ -69,6 +69,15 @@ Namespace Wine.Web
         Protected WithEvents divPadHasLI As Global.System.Web.UI.HtmlControls.HtmlGenericControl
 
         '''<summary>
+        '''ucErrorMessages control.
+        '''</summary>
+        '''<remarks>
+        '''Auto-generated field.
+        '''To modify move field declaration from designer file to code-behind file.
+        '''</remarks>
+        Protected WithEvents ucErrorMessages As Global.Rheem.Web.Partners.ctlErrorMessages
+
+        '''<summary>
         '''hfWineEntryId control.
         '''</summary>
         '''<remarks>

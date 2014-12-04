@@ -2,17 +2,29 @@
     Public Class CompAddEdit
         Inherits System.Web.UI.Page
 
+        Dim userMessage As String = ""
+
         Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
             Master.AppTitle = "Competition Add/Edit"
             If Not IsPostBack Then
                 Dim sCompID As String = Request.Params("CompetitionID")
                 Dim competitionID As Integer = 0
+                divMontlyList.Visible = False
+                divYearlyList.Visible = False
                 If Request.Params("CompetitionID") IsNot Nothing Then
                     If Integer.TryParse(sCompID, competitionID) AndAlso competitionID > 0 Then
                         LoadFromDB(competitionID)
                     End If
                 End If
                 hfCompetitionID.Value = competitionID.ToString
+            End If
+        End Sub
+
+        Protected Sub Page_LoadComplete(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.LoadComplete
+            ucErrorMessages.Visible = False
+            If userMessage.Trim.Length > 0 Then
+                ucErrorMessages.Visible = True
+                ucErrorMessages.SetDescription(userMessage)
             End If
         End Sub
 
@@ -179,6 +191,7 @@
             hfCompetitionID.Value = competition.CompetitionId.ToString
             LoadFromDB(competition.CompetitionId)
             delArea.Visible = True
+            userMessage = "Competition successfully saved"
         End Sub
 
 

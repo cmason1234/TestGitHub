@@ -3,11 +3,21 @@
     Public Class WineScoreAddEdit
         Inherits WebMaster
 
+        Dim userMessage As String = ""
+
         Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
             Master.AppTitle = "Wine Score Add/Edit"
             If Not IsPostBack Then
                 btnValidate.Visible = False
                 LoadFromDB()
+            End If
+        End Sub
+
+        Protected Sub Page_LoadComplete(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.LoadComplete
+            ucErrorMessages.Visible = False
+            If userMessage.Trim.Length > 0 Then
+                ucErrorMessages.Visible = True
+                ucErrorMessages.SetDescription(userMessage)
             End If
         End Sub
 
@@ -172,7 +182,7 @@
             lblEnteredBy.Visible = True
             lblEnteredByText.Visible = True
             lblEnteredBy.Text = currentPerson.Username
-
+            userMessage = "Wine Score successfully saved"
         End Sub
 
 
@@ -308,6 +318,7 @@
             lblValidatedBy.Visible = True
             lblValidText.Visible = True
             lblValidatedBy.Text = currentPerson.PersonID
+            userMessage = "Wine Score successfully validated"
         End Sub
     End Class
 End Namespace

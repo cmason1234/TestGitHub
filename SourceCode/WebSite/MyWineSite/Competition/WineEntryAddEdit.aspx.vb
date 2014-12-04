@@ -4,12 +4,23 @@ Namespace Wine.Web
     Public Class WineEntryAddEdit
         Inherits WebMaster
 
+        Dim userMessage As String = ""
+
         Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
             Master.AppTitle = "Wine Entries Add/Edit"
             If Not IsPostBack Then
                 LoadFromDB()
             End If
         End Sub
+
+        Protected Sub Page_LoadComplete(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.LoadComplete
+            ucErrorMessages.Visible = False
+            If userMessage.Trim.Length > 0 Then
+                ucErrorMessages.Visible = True
+                ucErrorMessages.SetDescription(userMessage)
+            End If
+        End Sub
+
 
         Private Sub LoadFromDB()
             Dim sCompID As String = Request.Params("CompetitionID")
@@ -72,9 +83,9 @@ Namespace Wine.Web
 
             Dim sql As String
             sql = "select WineScoringID, wineEntryID, EnteredPersonID, " &
-                "JudgeNum, JudgeInitials, Clarity, Color, Aroma, Ta, Texture, " &
+                "JudgeNum, Clarity, Color, Aroma, Ta, Texture, " &
                 "Flavor, Bitterness, Finish, Quality, JudgeTotal, Score, p.Username as EnteredBy, " &
-                "'' as JudgeID, " & competitionID.ToString & " as CompetitionID, " &
+                 competitionID.ToString & " as CompetitionID, " &
                 "ISNULL( p1.Username, '') as ValidatedBy  " &
                 "from WineScoring ws " &
                 "INNER JOIN Person p on p.PersonID=ws.EnteredPersonID " &
@@ -88,15 +99,6 @@ Namespace Wine.Web
                 btnValidate.Visible = True
                 btnValidate2.Visible = True
                 litScoreCount.Text = "(" & pds.Tables(0).Rows.Count & ")"
-                For Each dr As System.Data.DataRow In pds.Tables(0).Rows
-                    Dim judgeNum As String = Wine.Common.Validation.NullHelperInteger(dr, "JudgeNum").ToString
-                    Dim judgeInitials As String = Wine.Common.Validation.NullHelper(dr, "JudgeInitials")
-                    If judgeInitials.Trim.Length <> 0 Then
-                        dr("JudgeID") = judgeInitials
-                    Else
-                        dr("JudgeID") = judgeNum
-                    End If
-                Next
             Else
                 dgGridScoreComp.Visible = False
                 btnValidate.Visible = False
@@ -159,6 +161,7 @@ Namespace Wine.Web
             db.SaveChanges()
             hfWineEntryId.Value = wineEntry.WineEntryID.ToString
             GetScoringEntries(wineEntry.WineEntryID, wineEntry.CompetitionID, True)
+            userMessage = "Wine successfully saved"
         End Sub
 
         Private Sub btnCancel_Click(sender As Object, e As EventArgs) Handles btnCancel.Click
@@ -224,6 +227,7 @@ Namespace Wine.Web
             Integer.TryParse(sWineEntryID, wineEntryID)
 
             GetScoringEntries(wineEntryID:=wineEntryID, competitionID:=competitionID, bind:=True)
+            userMessage = "Scores successfully validated"
         End Sub
     End Class
 End Namespace

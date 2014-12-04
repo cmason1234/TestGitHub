@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/MasterPage/Blank.Master"
     CodeBehind="WineEntryAddEdit.aspx.vb" Inherits="Wine.Web.WineEntryAddEdit" %>
 
+<%@ Register Src="../_Controls/ctlErrorMessages.ascx" TagName="ErrorMessages" TagPrefix="ucErrorMessages" %>
 <%@ MasterType TypeName="Wine.Web.Blank" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -25,8 +26,7 @@
     </div>
 
     <div runat="server" id="divPadHasLI" class="pad hasLI ">
-
-        <br />
+        <ucerrormessages:errormessages id="ucErrorMessages" runat="server" />
         <asp:HiddenField ID="hfWineEntryId" runat="server" Visible="false" />
         <asp:HiddenField ID="hfCompetitionID" runat="server" Visible="false" />
         <fieldset class="fieldset100Percent box_round box_shadow">
@@ -131,7 +131,7 @@
                     <telerik:RadButton ID="btnNewScore" runat="server" Icon-PrimaryIconUrl="/_resources/images/ico/Add-16x16.png"
                         Text="Add New Score" ToolTip="Add New Score" Width="125" ButtonType="StandardButton" OnClick="btnNewScore_Click" />
                 </td>
-                <td >
+                <td>
                     <telerik:RadButton ID="btnValidate" runat="server" Icon-PrimaryIconUrl="/_resources/images/ico/Enable-16x16.png"
                         Text="Validate Scores" ToolTip="Validate Scores" Width="125" ButtonType="StandardButton" OnClick="btnValidate_Click" />
                 </td>
@@ -151,7 +151,7 @@
                                 <Columns>
                                     <telerik:GridClientSelectColumn UniqueName="ClientSelectColumn" HeaderStyle-Width="25px"
                                         ItemStyle-Width="25px" />
-                                    <telerik:GridHyperLinkColumn HeaderText="Judge" DataTextField="JudgeID" DataNavigateUrlFields="WineEntryID, WineScoringID, CompetitionID"
+                                    <telerik:GridHyperLinkColumn HeaderText="Judge" DataTextField="JudgeNum" DataNavigateUrlFields="WineEntryID, WineScoringID, CompetitionID"
                                         DataNavigateUrlFormatString="/Competition/WineScoreAddEdit.aspx?WineEntryID={0}&WineScoringID={1}&CompetitionID={2}"
                                         ItemStyle-Wrap="true" SortExpression="JudgeID" />
                                     <telerik:GridBoundColumn Visible="false" DataField="WineScoringID" UniqueName="WineScoringID" />
@@ -182,7 +182,7 @@
             </tr>
             <tr>
                 <td>
-                    <telerik:RadButton ID="btnNewScore2" runat="server" Icon-PrimaryIconUrl="/_resources/images/ico/Add-16x16.png" 
+                    <telerik:RadButton ID="btnNewScore2" runat="server" Icon-PrimaryIconUrl="/_resources/images/ico/Add-16x16.png"
                         Text="Add New Score" ToolTip="Add New Score" Width="125" ButtonType="StandardButton" OnClick="btnNewScore_Click" />
                 </td>
                 <td>

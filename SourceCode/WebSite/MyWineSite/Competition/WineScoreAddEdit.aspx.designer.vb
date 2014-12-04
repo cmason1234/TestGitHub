@@ -69,6 +69,15 @@ Namespace Wine.Web
         Protected WithEvents divPadHasLI As Global.System.Web.UI.HtmlControls.HtmlGenericControl
 
         '''<summary>
+        '''ucErrorMessages control.
+        '''</summary>
+        '''<remarks>
+        '''Auto-generated field.
+        '''To modify move field declaration from designer file to code-behind file.
+        '''</remarks>
+        Protected WithEvents ucErrorMessages As Global.Rheem.Web.Partners.ctlErrorMessages
+
+        '''<summary>
         '''hfCompetitionID control.
         '''</summary>
         '''<remarks>
@@ -202,6 +211,15 @@ Namespace Wine.Web
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
         Protected WithEvents tbJudgeNum As Global.Telerik.Web.UI.RadNumericTextBox
+
+        '''<summary>
+        '''judgenameTR control.
+        '''</summary>
+        '''<remarks>
+        '''Auto-generated field.
+        '''To modify move field declaration from designer file to code-behind file.
+        '''</remarks>
+        Protected WithEvents judgenameTR As Global.System.Web.UI.HtmlControls.HtmlTableRow
 
         '''<summary>
         '''tbJudgeName control.

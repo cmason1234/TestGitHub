@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/MasterPage/Blank.Master"
     CodeBehind="CompAddEdit.aspx.vb" Inherits="Wine.Web.CompAddEdit" %>
 
+<%@ Register Src="../_Controls/ctlErrorMessages.ascx" TagName="ErrorMessages" TagPrefix="ucErrorMessages" %>
 <%@ MasterType TypeName="Wine.Web.Blank" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -24,7 +25,7 @@
 
     <div runat="server" id="divPadHasLI" class="pad hasLI ">
 
-        <br />
+        <ucErrorMessages:ErrorMessages ID="ucErrorMessages" runat="server" />
         <asp:HiddenField ID="hfCompetitionID" runat="server" Visible="false" />
         <fieldset class="fieldset100Percent box_round box_shadow">
             <legend>General Info</legend>
@@ -133,9 +134,9 @@
                     <telerik:RadNumericTextBox Width="50" ID="tbWineSwitch" runat="server"
                         NumberFormat-GroupSeparator="" NumberFormat-DecimalDigits="0"
                         EnabledStyle-HorizontalAlign="Right" />&nbsp;
-                    <telerik:RadButton ID="btnSwitch" runat="server"  
-                            Icon-PrimaryIconUrl="/_resources/images/ico/Login-16x16.png" Text="View Wine Scores" 
-                            ToolTip="View" Width="150" ButtonType="StandardButton" />
+                    <telerik:RadButton ID="btnSwitch" runat="server"
+                        Icon-PrimaryIconUrl="/_resources/images/ico/Login-16x16.png" Text="View Wine Scores"
+                        ToolTip="View" Width="150" ButtonType="StandardButton" />
                 </td>
             </tr>
             <tr>
@@ -193,9 +194,9 @@
                     <telerik:RadNumericTextBox Width="50" ID="tbWineSwitch1" runat="server"
                         NumberFormat-GroupSeparator="" NumberFormat-DecimalDigits="0"
                         EnabledStyle-HorizontalAlign="Right" />&nbsp;
-                    <telerik:RadButton ID="btnSwitch1" runat="server"  
-                            Icon-PrimaryIconUrl="/_resources/images/ico/Login-16x16.png" Text="View Wine Scores" 
-                            ToolTip="View" Width="150" ButtonType="StandardButton" />
+                    <telerik:RadButton ID="btnSwitch1" runat="server"
+                        Icon-PrimaryIconUrl="/_resources/images/ico/Login-16x16.png" Text="View Wine Scores"
+                        ToolTip="View" Width="150" ButtonType="StandardButton" />
                 </td>
             </tr>
         </table>

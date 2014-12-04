@@ -254,3 +254,53 @@ border: 0;
     height: 20px;
     width: 260px;
 }
+
+.msgSuccess
+{
+    border: solid 1px #cecece; 
+    padding: 5px 5px 5px 25px;
+    background: #ffffcc url(/_resources/images/ico/msgOK-16x16.png)  no-repeat;
+    background-position: 5px 5px;
+     font-size: 10pt;
+    font-weight: normal;
+}
+
+.msgErr
+{
+    border: solid 1px #cecece; 
+    padding: 5px 5px 5px 25px;
+    background: #ffffcc url(/_resources/images/ico/msgErr-16x16.png) no-repeat;
+    background-position: 5px 5px;
+     font-size: 10pt;
+    font-weight: normal;
+}
+
+.msgInfo
+{
+    border: solid 1px #cecece; 
+    padding: 5px 5px 5px 25px;
+    background: #ffffcc url(/_resources/images/ico/msgInfo-16x16.png) no-repeat;
+    background-position: 5px 5px;
+     font-size: 10pt;
+    font-weight: normal;
+}
+
+.msgRedInfo
+{
+    border: solid 1px #cecece; 
+    padding: 5px 5px 5px 45px;
+    background: #ffffcc url(/_resources/images/ico/msgRedInfo-16x16.png) no-repeat;
+    background-position: 5px 5px;
+     font-size: 10pt;
+    font-weight: normal;
+}
+
+.msgWarn
+{
+    border: solid 1px #cecece; 
+    padding: 5px 5px 5px 25px;
+    background: #ffffcc url(/_resources/images/ico/msgWarn-16x16.png) no-repeat;
+    background-position: 5px 5px;
+    font-size: 10pt;
+    font-weight: normal;
+}
