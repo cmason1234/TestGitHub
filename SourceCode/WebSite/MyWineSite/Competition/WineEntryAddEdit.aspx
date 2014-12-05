@@ -148,12 +148,15 @@
                             <PagerStyle Mode="NumericPages" Position="TopAndBottom" AlwaysVisible="false" />
                             <ExportSettings IgnorePaging="true" />
                             <MasterTableView TableLayout="Fixed" EnableViewState="true">
+                                <SortExpressions>
+                                    <telerik:GridSortExpression FieldName="JudgeNum" SortOrder="Ascending" />
+                                </SortExpressions>
                                 <Columns>
                                     <telerik:GridClientSelectColumn UniqueName="ClientSelectColumn" HeaderStyle-Width="25px"
                                         ItemStyle-Width="25px" />
                                     <telerik:GridHyperLinkColumn HeaderText="Judge" DataTextField="JudgeNum" DataNavigateUrlFields="WineEntryID, WineScoringID, CompetitionID"
                                         DataNavigateUrlFormatString="/Competition/WineScoreAddEdit.aspx?WineEntryID={0}&WineScoringID={1}&CompetitionID={2}"
-                                        ItemStyle-Wrap="true" SortExpression="JudgeID" />
+                                        ItemStyle-Wrap="true" SortExpression="JudgeNum" />
                                     <telerik:GridBoundColumn Visible="false" DataField="WineScoringID" UniqueName="WineScoringID" />
                                     <telerik:GridBoundColumn HeaderText="Score" DataField="Score" />
                                     <telerik:GridBoundColumn HeaderText="JudgeScore" DataField="JudgeTotal" />

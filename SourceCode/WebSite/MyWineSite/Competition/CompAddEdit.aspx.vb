@@ -1,4 +1,6 @@
-﻿Namespace Wine.Web
+﻿Imports Telerik.Web.UI
+
+Namespace Wine.Web
     Public Class CompAddEdit
         Inherits System.Web.UI.Page
 
@@ -106,7 +108,7 @@
                 "select 5, '', COUNT(*) as NumMedals " &
                 "from WineEntry where CompetitionID = " & competitionID.ToString & " and medalcolor='' " &
                 "UNION " &
-                "select 6, 'NOT SCORED', COUNT(*) as NumMedals " &
+                "select 6, 'Not Scored', COUNT(*) as NumMedals " &
                 "from WineEntry where CompetitionID = " & competitionID.ToString & " and medalcolor is null " &
                 "order by MedalOrder"
             Dim mds As New System.Data.DataSet
@@ -140,6 +142,17 @@
             End If
 
 
+        End Sub
+
+        Private Sub dgGridYearlyComp_DetailTableDataBind(sender As Object, e As Telerik.Web.UI.GridDetailTableDataBindEventArgs) Handles dgGridYearlyComp.DetailTableDataBind
+            Dim parentItem As GridDataItem = CType(e.DetailTableView.ParentItem, GridDataItem)
+            If parentItem.Edit Then
+                Return
+            End If
+            If (e.DetailTableView.DataMember = "WineEntry") Then
+                Dim ds As DataSet = CType(e.DetailTableView.DataSource, DataSet)
+                e.DetailTableView.DataSource = ds.Tables("WineEntry").Select("MedalColor = '" + parentItem("MedalColor").Text + "'")
+            End If
         End Sub
 
 
@@ -252,5 +265,8 @@
             End If
 
         End Sub
+
+
+
     End Class
 End Namespace

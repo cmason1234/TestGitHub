@@ -19,7 +19,7 @@
 
         End Sub
 
-        Private Function GetCompDataSet() As Object
+        Private Function GetCompDataSet() As System.Data.DataSet
 
             Dim addSQL As String = ""
 
@@ -55,7 +55,7 @@
         End Function
 
         Protected Sub findButton_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnFind.Click
-            UpdateGrid(bind:=True)
+            UpdateGrid(bind:=False)
         End Sub
 
 
@@ -63,5 +63,9 @@
             Response.Redirect("/Competition/CompAddEdit.aspx?CompetitionID=0")
         End Sub
 
+
+        Private Sub dgGridComp_NeedDataSource(sender As Object, e As Telerik.Web.UI.GridNeedDataSourceEventArgs) Handles dgGridComp.NeedDataSource
+            UpdateGrid(bind:=False)
+        End Sub
     End Class
 End Namespace

@@ -99,6 +99,9 @@
                 <PagerStyle Mode="NumericPages" Position="TopAndBottom" AlwaysVisible="false" />
                 <ExportSettings IgnorePaging="true" />
                 <MasterTableView TableLayout="Fixed" EnableViewState="true">
+                    <SortExpressions>
+                        <telerik:GridSortExpression FieldName="AvgScore" SortOrder="Descending" />
+                    </SortExpressions>
                     <Columns>
                         <telerik:GridHyperLinkColumn HeaderText="Entry" FooterText="Entry" DataTextField="EntryID" DataNavigateUrlFields="CompetitionID, WineEntryID" DataNavigateUrlFormatString="/Competition/WineEntryAddEdit.aspx?CompetitionID={0}&WineEntryID={1}" SortExpression="EntryID" />
                         <telerik:GridBoundColumn HeaderText="Wine Name" FooterText="Wine Name" DataField="WineName" />
@@ -149,23 +152,28 @@
             </tr>
             <tr>
                 <td colspan="2">
-                    <telerik:RadGrid ID="dgGridYearlyComp" AllowPaging="false" PageSize="20" AllowSorting="false" runat="server"
+                    <telerik:RadGrid ID="dgGridYearlyComp" AllowPaging="false" PageSize="10" AllowSorting="false" runat="server"
                         AllowCustomPaging="false" AutoGenerateColumns="false" ShowFooter="True" GridLines="Both" Width="80%">
-                        <PagerStyle Mode="NumericPages" Position="TopAndBottom" />
-                        <MasterTableView DataMember="WineColors" DataKeyNames="MedalColor" Width="100%" Name="MedalColor" HierarchyLoadMode="Client">
+                        <PagerStyle Mode="NumericPages" Position="Bottom" />
+                        <MasterTableView DataMember="WineColors" DataKeyNames="MedalColor" Width="100%" Name="MedalColor" HierarchyLoadMode="Client" GroupLoadMode="Server">
                             <HeaderStyle Font-Bold="true" Font-Size="Small" />
                             <FooterStyle Font-Bold="true" Font-Size="Small" />
                             <DetailTables>
-                                <telerik:GridTableView HierarchyLoadMode="Client" DataMember="WineEntry" DataKeyNames="MedalColor" Width="100%" runat="server" ShowHeader="true">
+                                <telerik:GridTableView HierarchyLoadMode="Client" AllowPaging="true" AllowSorting="true" DataMember="WineEntry" DataKeyNames="MedalColor" Width="100%" runat="server" ShowHeader="true">
+                                    <PagerStyle Position="Top" Mode="NumericPages" />
                                     <ParentTableRelation>
                                         <telerik:GridRelationFields DetailKeyField="MedalColor" MasterKeyField="MedalColor" />
                                     </ParentTableRelation>
                                     <RowIndicatorColumn CurrentFilterFunction="NoFilter" FilterListOptions="VaryByDataType" Visible="False">
                                         <HeaderStyle Width="20px"></HeaderStyle>
                                     </RowIndicatorColumn>
+                                    <SortExpressions>
+                                        <telerik:GridSortExpression FieldName="EntryID" SortOrder="Ascending" />
+                                    </SortExpressions>
                                     <Columns>
                                         <telerik:GridHyperLinkColumn HeaderText="Entry" FooterText="Entry" DataTextField="EntryID" DataNavigateUrlFields="CompetitionID, WineEntryID" DataNavigateUrlFormatString="/Competition/WineEntryAddEdit.aspx?CompetitionID={0}&WineEntryID={1}" SortExpression="EntryID" />
                                         <telerik:GridBoundColumn HeaderText="Wine Name" FooterText="Wine Name" DataField="WineName" />
+                                        <telerik:GridBoundColumn HeaderText="Category" FooterText="Category" DataField="CatNum" />
                                         <telerik:GridBoundColumn HeaderText="AvgScore" FooterText="AvgScore" DataField="AvgScore" />
                                         <telerik:GridBoundColumn HeaderText="MedalColor" FooterText="MedalColor" DataField="MedalColor" />
                                     </Columns>

@@ -54,12 +54,15 @@
         <span style="margin-left: 12px;">
             <asp:Literal ID="litCompetitionCount" EnableViewState="false" runat="server" /></span>
         <div style="margin-left: 4px;">
-            <telerik:RadGrid ItemStyle-Wrap="false" ID="dgGridComp" Width="750" AllowPaging="true" PageSize="100" AllowCustomPaging="false" AllowSorting="False" runat="server" AutoGenerateColumns="false">
+            <telerik:RadGrid ItemStyle-Wrap="false" ID="dgGridComp" Width="750" AllowPaging="true" PageSize="100" AllowCustomPaging="false" AllowSorting="true" runat="server" AutoGenerateColumns="false">
                 <PagerStyle Mode="NumericPages" Position="TopAndBottom" AlwaysVisible="false" />
                 <ExportSettings IgnorePaging="true" />
-                <MasterTableView TableLayout="Fixed" EnableViewState="false">
+                <MasterTableView TableLayout="Fixed" EnableViewState="false" >
+                    <SortExpressions>
+                        <telerik:GridSortExpression FieldName="CompetitionName" SortOrder="Ascending" />
+                    </SortExpressions>
                     <Columns>
-                        <telerik:GridHyperLinkColumn HeaderText="Name" HeaderStyle-Width="300" DataTextField="CompetitionName" DataNavigateUrlFields="CompetitionId" DataNavigateUrlFormatString="/Competition/CompAddEdit.aspx?CompetitionID={0}" />
+                        <telerik:GridHyperLinkColumn HeaderText="Name" HeaderStyle-Width="300" DataTextField="CompetitionName" DataNavigateUrlFields="CompetitionId" DataNavigateUrlFormatString="/Competition/CompAddEdit.aspx?CompetitionID={0}" SortExpression="CompetitionName"/>
                         <telerik:GridBoundColumn HeaderText="Year" DataField="Year" />
                         <telerik:GridBoundColumn HeaderText="Month" DataField="Month" />
                         <telerik:GridBoundColumn HeaderText="Type" DataField="CompType" />
