@@ -4,8 +4,7 @@
 <%@ Register Src="../_Controls/ctlErrorMessages.ascx" TagName="ErrorMessages" TagPrefix="ucErrorMessages" %>
 <%@ MasterType TypeName="Wine.Web.Blank" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <script type="text/javascript" src="/_resources/js/jquery/jquery_1.10.2.min.js"></script>
-
+    
     <script type="text/javascript">
         function updateTotalScore(sender, eventArgs) {
             "use strict";

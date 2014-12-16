@@ -64,10 +64,19 @@
                         tbMedalColor.BackColor = Drawing.Color.LightGray
                     End If
 
-                    tbTableNum.Text = wineEntry.TableNum
-                    tbSeqNum.Text = wineEntry.SeqNum
-                    tbCategoryNumber.Text = wineEntry.CatNum
-                    tbFlightNum.Text = wineEntry.FlightNum
+                    If Not IsNothing(wineEntry.TableNum) Then
+                        tbTableNum.Text = wineEntry.TableNum
+                    End If
+                    If Not IsNothing(wineEntry.SeqNum) Then
+                        tbSeqNum.Text = wineEntry.SeqNum
+                    End If
+                    If Not IsNothing(wineEntry.CatNum) Then
+                        tbCategoryNumber.Text = wineEntry.CatNum
+                    End If
+
+                    If Not IsNothing(wineEntry.FlightNum) Then
+                        tbFlightNum.Text = wineEntry.FlightNum
+                    End If
 
                     If Not IsNothing(Request.Params("WineScoringID")) AndAlso
                         Integer.TryParse(sWineScoringID, wineScoringID) AndAlso wineScoringID > 0 Then
