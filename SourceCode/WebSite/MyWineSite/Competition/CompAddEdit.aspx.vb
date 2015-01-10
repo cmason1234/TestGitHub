@@ -235,35 +235,39 @@ Namespace Wine.Web
         End Sub
 
         Private Sub btnSwitch_Click(sender As Object, e As EventArgs) Handles btnSwitch.Click
-            Dim sWineNum As String = tbWineSwitch.Value
-            Dim wineNum As Integer = 0
+            Dim sWineNum As String = ""
 
-            If Integer.TryParse(sWineNum, wineNum) AndAlso wineNum > 0 Then
-                Dim db As New DBEntity.mywinecompetitionEntities(Wine.Common.XmlConfig.ConfigVal("WineCompetition_ConnectionString"))
-                Dim wineScoringList = (From s In db.WineEntries Where s.EntryID = wineNum).ToList
-                If wineScoringList.Count > 0 Then
-                    Dim wineEntryID As Integer = wineScoringList.FirstOrDefault.WineEntryID
-                    Response.Redirect("/Competition/WineEntryAddEdit.aspx?CompetitionID=" & hfCompetitionID.Value & "&WineEntryID=" & wineEntryID.ToString)
-                Else
-                End If
+            Dim wineNum As Integer = 0
+            Dim sCompID As String = hfCompetitionID.Value
+            Dim competitionID As Integer = 0
+
+            If sender.ID = "btnSwitch1" Then
+                sWineNum = tbWineSwitch1.Value
+            ElseIf sender.ID.Equals("btnSwitch") Then
+                sWineNum = tbWineSwitch.Value
             End If
 
+            If sWineNum.Length > 0 Then
+                Integer.TryParse(sCompID, competitionID)
+
+                If Integer.TryParse(sWineNum, wineNum) AndAlso wineNum > 0 Then
+                    Dim db As New DBEntity.mywinecompetitionEntities(Wine.Common.XmlConfig.ConfigVal("WineCompetition_ConnectionString"))
+                    Dim wineScoringList = (From s In db.WineEntries Where s.EntryID = wineNum And s.CompetitionID = competitionID).ToList
+                    If wineScoringList.Count > 0 Then
+                        Dim wineEntryID As Integer = wineScoringList.FirstOrDefault.WineEntryID
+                        Response.Redirect("/Competition/WineEntryAddEdit.aspx?CompetitionID=" & hfCompetitionID.Value & "&WineEntryID=" & wineEntryID.ToString)
+                    Else
+                        ucErrorMessages.MessageClass() = "msgErr"
+                        userMessage = "Unable to find Wine Entry # " + sWineNum + " in this competition"
+                    End If
+                End If
+            Else
+                userMessage = "Unable to figure out where to find the wine Number - This should never happen"
+            End If
         End Sub
 
         Private Sub btnSwitch1_Click(sender As Object, e As EventArgs) Handles btnSwitch1.Click
-            Dim sWineNum As String = tbWineSwitch1.Value
-            Dim wineNum As Integer = 0
-
-            If Integer.TryParse(sWineNum, wineNum) AndAlso wineNum > 0 Then
-                Dim db As New DBEntity.mywinecompetitionEntities(Wine.Common.XmlConfig.ConfigVal("WineCompetition_ConnectionString"))
-                Dim wineScoringList = (From s In db.WineEntries Where s.EntryID = wineNum).ToList
-                If wineScoringList.Count > 0 Then
-                    Dim wineEntryID As Integer = wineScoringList.FirstOrDefault.WineEntryID
-                    Response.Redirect("/Competition/WineEntryAddEdit.aspx?CompetitionID=" & hfCompetitionID.Value & "&WineEntryID=" & wineEntryID.ToString)
-                Else
-                End If
-            End If
-
+            btnSwitch_Click(sender, e)
         End Sub
 
 

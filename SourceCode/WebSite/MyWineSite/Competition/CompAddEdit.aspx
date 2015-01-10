@@ -100,7 +100,7 @@
                 <ExportSettings IgnorePaging="true" />
                 <MasterTableView TableLayout="Fixed" EnableViewState="true">
                     <SortExpressions>
-                        <telerik:GridSortExpression FieldName="AvgScore" SortOrder="Descending" />
+                        <telerik:GridSortExpression FieldName="EntryID" SortOrder="Ascending" />
                     </SortExpressions>
                     <Columns>
                         <telerik:GridHyperLinkColumn HeaderText="Entry" FooterText="Entry" DataTextField="EntryID" DataNavigateUrlFields="CompetitionID, WineEntryID" DataNavigateUrlFormatString="/Competition/WineEntryAddEdit.aspx?CompetitionID={0}&WineEntryID={1}" SortExpression="EntryID" />

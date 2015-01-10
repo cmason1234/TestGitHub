@@ -78,6 +78,12 @@
             <legend>General Info</legend>
             <table>
                 <tr>
+                    <td><b>Competion Name</b></td>
+                    <td>
+                        <asp:TextBox CssClass="textBox" Width="350" ID="tbCompNameTextBox" runat="server" ReadOnly="true" BackColor="LightGray" />
+                    </td>
+                </tr>
+                <tr>
                     <td colspan="2">
                         Entry #&nbsp;
                         <telerik:RadNumericTextBox Width="50" ID="tbWineNum" runat="server"
