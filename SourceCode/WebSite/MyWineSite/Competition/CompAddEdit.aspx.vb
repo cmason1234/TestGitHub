@@ -94,7 +94,7 @@ Namespace Wine.Web
 
             Dim sql As String
             sql = "select 1 as MedalOrder, 'Double Gold' as medalColor, COUNT(*) as NumMedals " &
-                "from WineEntry where CompetitionID = 4 and medalcolor='double gold' " &
+                "from WineEntry where CompetitionID = " & competitionID.ToString & " and medalcolor='double gold' " &
                 "union " &
                 "select 2, 'Gold', COUNT(*) as NumMedals " &
                 "from WineEntry where CompetitionID = " & competitionID.ToString & " and medalcolor='gold' " &
