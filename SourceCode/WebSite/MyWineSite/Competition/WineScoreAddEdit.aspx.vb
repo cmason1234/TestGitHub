@@ -48,7 +48,7 @@
                     tbAvgScore.Text = wineEntry.AvgScore.ToString
                     tbMedalColor.Text = wineEntry.MedalColor
 
-                    If wineEntry.AvgScore >= 19 Then
+                    If wineEntry.AvgScore >= 18.5 Then
                         tbAvgScore.BackColor = Drawing.Color.Gold
                         tbMedalColor.BackColor = Drawing.Color.Gold
                     ElseIf wineEntry.AvgScore >= 17 Then
@@ -212,7 +212,7 @@
                 Dim avg As Double = total / wineScoringList.Count
                 wineEntry.AvgScore = avg
                 Dim medalColor As String = Nothing
-                If avg >= 19 Then
+                If avg >= 18.5 Then
                     medalColor = "Double Gold"
                     tbAvgScore.BackColor = Drawing.Color.Gold
                     tbMedalColor.BackColor = Drawing.Color.Gold

@@ -53,7 +53,7 @@ Namespace Wine.Web
                         tbAvgScore.Text = .AvgScore.ToString
                         tbMedalColor.Text = .MedalColor
                         tbCategoryNumber.Text = .CatNum
-                        If .AvgScore >= 19 Then
+                        If .AvgScore >= 18.5 Then
                             tbAvgScore.BackColor = Drawing.Color.Gold
                             tbMedalColor.BackColor = Drawing.Color.Gold
                         ElseIf .AvgScore >= 17 Then
