@@ -85,7 +85,9 @@
             End If
         End Sub
 
-        Private Sub btnChangePassword_Click(sender As Object, e As ImageClickEventArgs) Handles btnChangePassword.Click
+
+
+        Private Sub btnChangePassword_Click(sender As Object, e As EventArgs) Handles btnChangePassword.Click
             Dim sPersID As String = hfPersonID.Value
             Dim personID As Integer = 0
 

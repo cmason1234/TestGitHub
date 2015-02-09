@@ -27,6 +27,7 @@
                 var save2 = $find('<%=btnSave2.ClientID%>');
 
                 calcScoreID.set_value(total);
+                total = calcScoreID.get_value();  // Go get the rounded value from Telerik.
                 if (total != judgeTotal) {
                     save1.set_enabled(false);
                     save2.set_enabled(false);
