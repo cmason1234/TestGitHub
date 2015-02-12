@@ -23,6 +23,7 @@ Partial Public Class WineEntry
     Public Property MedalColor As String
     Public Property CategoryName As String
     Public Property CatNum As String
+    Public Property Vintage As String
 
     Public Overridable Property Competition As Competition
     Public Overridable Property WineScorings As ICollection(Of WineScoring) = New HashSet(Of WineScoring)

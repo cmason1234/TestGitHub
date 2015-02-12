@@ -177,15 +177,6 @@ Namespace Wine.Web
         Protected WithEvents tbWineName As Global.Telerik.Web.UI.RadTextBox
 
         '''<summary>
-        '''tbCategoryNumber control.
-        '''</summary>
-        '''<remarks>
-        '''Auto-generated field.
-        '''To modify move field declaration from designer file to code-behind file.
-        '''</remarks>
-        Protected WithEvents tbCategoryNumber As Global.Telerik.Web.UI.RadTextBox
-
-        '''<summary>
         '''tbTableNum control.
         '''</summary>
         '''<remarks>
@@ -211,6 +202,24 @@ Namespace Wine.Web
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
         Protected WithEvents tbSeqNum As Global.Telerik.Web.UI.RadNumericTextBox
+
+        '''<summary>
+        '''tbCategoryNumber control.
+        '''</summary>
+        '''<remarks>
+        '''Auto-generated field.
+        '''To modify move field declaration from designer file to code-behind file.
+        '''</remarks>
+        Protected WithEvents tbCategoryNumber As Global.Telerik.Web.UI.RadTextBox
+
+        '''<summary>
+        '''tbVintage control.
+        '''</summary>
+        '''<remarks>
+        '''Auto-generated field.
+        '''To modify move field declaration from designer file to code-behind file.
+        '''</remarks>
+        Protected WithEvents tbVintage As Global.System.Web.UI.WebControls.TextBox
 
         '''<summary>
         '''tbJudgeNum control.

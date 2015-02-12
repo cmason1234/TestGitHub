@@ -10,6 +10,9 @@ Namespace Wine.Web
             Master.AppTitle = "Wine Entries Add/Edit"
             If Not IsPostBack Then
                 LoadFromDB()
+                If currentPerson.Username.ToLower <> "cmason" Then
+                    btnDel.Visible = False
+                End If
             End If
         End Sub
 
@@ -53,6 +56,7 @@ Namespace Wine.Web
                         tbAvgScore.Text = .AvgScore.ToString
                         tbMedalColor.Text = .MedalColor
                         tbCategoryNumber.Text = .CatNum
+                        tbVintage.Text = .Vintage
                         If .AvgScore >= 18.5 Then
                             tbAvgScore.BackColor = Drawing.Color.Gold
                             tbMedalColor.BackColor = Drawing.Color.Gold
@@ -139,6 +143,7 @@ Namespace Wine.Web
                 .EntrantName = tbEntrantName.Text
                 .CategoryName = tbCategoryName.Text
                 .CatNum = tbCategoryNumber.Text
+                .Vintage = tbVintage.Text
                 If tbTableNum.Text.Length > 0 Then
                     .TableNum = Convert.ToInt64(tbTableNum.Text)
                 End If

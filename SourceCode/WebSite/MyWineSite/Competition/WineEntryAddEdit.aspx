@@ -26,7 +26,7 @@
     </div>
 
     <div runat="server" id="divPadHasLI" class="pad hasLI ">
-        <ucerrormessages:errormessages id="ucErrorMessages" runat="server" />
+        <ucErrorMessages:ErrorMessages ID="ucErrorMessages" runat="server" />
         <asp:HiddenField ID="hfWineEntryId" runat="server" Visible="false" />
         <asp:HiddenField ID="hfCompetitionID" runat="server" Visible="false" />
         <fieldset class="fieldset100Percent box_round box_shadow">
@@ -76,41 +76,50 @@
                     </td>
                 </tr>
                 <tr>
-                    <td><b>Category Number</b></td>
-                    <td>
-                        <asp:TextBox CssClass="textBox" Width="50" ID="tbCategoryNumber" runat="server" emptyMessage="Cat Num" />
-                    </td>
-                </tr>
-                <tr>
                     <td colspan="2">
                         <table>
                             <tr>
                                 <td>
-                                    <b>Table Num</b>&nbsp;
+                                    <b>Table Num</b></td>
+                                <td>
                                     <telerik:RadNumericTextBox Width="50" ID="tbTableNum" runat="server"
                                         MinValue="0" MaxValue="999999999" NumberFormat-GroupSeparator="" NumberFormat-DecimalDigits="0"
                                         EnabledStyle-HorizontalAlign="Right" />
                                 </td>
+                                <td style="white-space:nowrap;">
+                                    <b>Flight Num</b></td>
                                 <td>
-                                    <b>Flight Num</b>&nbsp;
                                     <telerik:RadNumericTextBox Width="50" ID="tbFlightNum" runat="server"
                                         MinValue="0" MaxValue="999999999" NumberFormat-GroupSeparator="" NumberFormat-DecimalDigits="0"
                                         EnabledStyle-HorizontalAlign="Right" />
                                 </td>
+                                <td style="white-space:nowrap;">
+                                    <b>Seq Num</b></td>
                                 <td>
-                                    <b>Seq Num</b>&nbsp;
                                     <telerik:RadNumericTextBox Width="50" ID="tbSeqNum" runat="server"
                                         MinValue="0" MaxValue="999999999" NumberFormat-GroupSeparator="" NumberFormat-DecimalDigits="0"
                                         EnabledStyle-HorizontalAlign="Right" />
                                 </td>
                             </tr>
                             <tr>
+                                <td style="white-space:nowrap;"><b>Category Number</b></td>
+                                <td style="width:15%;">
+                                    <asp:TextBox CssClass="textBox" Width="50" ID="tbCategoryNumber" runat="server" emptyMessage="Cat Num" />
+                                </td>
+                                <td style="white-space:nowrap;"><b>Vintage</b></td>
                                 <td>
-                                    <b>Avg Score</b>&nbsp;
+                                    <asp:TextBox CssClass="textBox" Width="50" ID="tbVintage" runat="server" emptyMessage="Vintage" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <b>Avg Score</b></td>
+                                <td>
                                     <asp:TextBox CssClass="textbox" Width="75" ID="tbAvgScore" runat="server" ReadOnly="true" BackColor="LightGray" />
                                 </td>
                                 <td>
-                                    <b>Medal</b>&nbsp;
+                                    <b>Medal</b></td>
+                                <td>
                                     <asp:TextBox CssClass="textbox" Width="100" ID="tbMedalColor" runat="server" ReadOnly="true" BackColor="LightGray" />
                                 </td>
                             </tr>

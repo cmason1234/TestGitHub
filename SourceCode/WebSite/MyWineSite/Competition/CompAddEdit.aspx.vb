@@ -2,7 +2,7 @@
 
 Namespace Wine.Web
     Public Class CompAddEdit
-        Inherits System.Web.UI.Page
+        Inherits WebMaster
 
         Dim userMessage As String = ""
 
@@ -19,6 +19,9 @@ Namespace Wine.Web
                     End If
                 End If
                 hfCompetitionID.Value = competitionID.ToString
+                If currentPerson.Username.ToLower <> "cmason" Then
+                    btnDel.Visible = False
+                End If
             End If
         End Sub
 

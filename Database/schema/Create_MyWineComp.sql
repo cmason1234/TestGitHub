@@ -95,10 +95,17 @@ BEGIN
 END
 GO
 
+IF NOT EXISTS(SELECT * FROM sys.columns where Name = N'Vintage'  
+            and Object_ID = Object_ID(N'WineEntry'))
+BEGIN
+			ALTER TABLE WineEntry ADD Vintage varchar(20) Null
+END
+GO
+
 IF NOT EXISTS(SELECT * FROM sys.columns where Name = N'CatNum'  
             and Object_ID = Object_ID(N'WineEntry'))
 BEGIN
-			ALTER TABLE WineEntry ADD CatNum varchar(20) Null,
+			ALTER TABLE WineEntry ADD CatNum varchar(20) Null
 END
 GO
 

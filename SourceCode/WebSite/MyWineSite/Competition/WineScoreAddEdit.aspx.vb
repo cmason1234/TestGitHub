@@ -10,6 +10,9 @@
             If Not IsPostBack Then
                 btnValidate.Visible = False
                 LoadFromDB()
+                If currentPerson.Username.ToLower <> "cmason" Then
+                    btnDel.Visible = False
+                End If
             End If
         End Sub
 
@@ -73,6 +76,9 @@
                     End If
                     If Not IsNothing(wineEntry.CatNum) Then
                         tbCategoryNumber.Text = wineEntry.CatNum
+                    End If
+                    If Not IsNothing(wineEntry.Vintage) Then
+                        tbVintage.Text = wineEntry.Vintage
                     End If
 
                     If Not IsNothing(wineEntry.FlightNum) Then

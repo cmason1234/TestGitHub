@@ -46,7 +46,7 @@ Module ImportSpreadsheet
             End If
             Log("Started at " & Now.ToShortDateString & " " & Now.ToShortTimeString)
 
-            ImportBudget()
+            ImportWineEntries()
 
             codeTimer.Stop()
             Log("Elapsed Time To Process Data: " & (codeTimer.ElapsedMilliseconds * 0.001).ToString & " Sec")
@@ -68,12 +68,12 @@ Module ImportSpreadsheet
         LogFile.WriteLine(text)
     End Sub
 
-    Private Sub ImportBudget()
+    Private Sub ImportWineEntries()
         Dim db As New DBEntity.mywinecompetitionEntities(Wine.Common.XmlConfig.ConfigVal("WineCompetition_ConnectionString"))
 
-        Dim compRow = (From s In db.Competitions Where s.CompetitionName = "2014 Yearly Competition").FirstOrDefault
+        Dim compRow = (From s In db.Competitions Where s.CompetitionName = "2015 Yearly Competition").FirstOrDefault
 
-        Dim fileName As String = "2014 MVWS Wine Competition Entry Form.xlsx"
+        Dim fileName As String = "Wine_Entry-2015.xlsx"
 
         Dim sConnectionString As String = "Provider=Microsoft.ACE.OLEDB.12.0;" &
             "Data Source=" & fileName &
@@ -98,7 +98,7 @@ Module ImportSpreadsheet
         Dim selectFrom As String = ""
         Dim fillName As String = ""
 
-        selectFrom = "SELECT * FROM [Wine_Entry_Cat$]"
+        selectFrom = "SELECT * FROM [Wine_Entries$]"
         fillName = "Input"
 
         Dim oleCmdSelect As New OleDbCommand(selectFrom, oleConn)
@@ -114,46 +114,45 @@ Module ImportSpreadsheet
                 Dim wineEntryRow As DBEntity.WineEntry = New DBEntity.WineEntry()
                 With wineEntryRow
                     .EntryID = Wine.Common.Validation.ExcelNullHelperInteger(dr, COLUMN_A)
-                    .WineName = Wine.Common.Validation.ExcelNullHelper(dr, COLUMN_R)
-                    .TableNum = Wine.Common.Validation.ExcelNullHelperInteger(dr, COLUMN_N)
-                    .FlightNum = Wine.Common.Validation.ExcelNullHelperInteger(dr, COLUMN_O)
-                    .SeqNum = Wine.Common.Validation.ExcelNullHelperInteger(dr, COLUMN_P)
-                    .CatNum = Wine.Common.Validation.ExcelNullHelper(dr, COLUMN_Q)
-                    .CategoryName = Wine.Common.Validation.ExcelNullHelper(dr, COLUMN_S)
-                    .AvgScore = Wine.Common.Validation.ExcelNullHelperDouble(dr, COLUMN_L)
-                    .MedalColor = Wine.Common.Validation.ExcelNullHelper(dr, COLUMN_M)
+                    .WineName = Wine.Common.Validation.ExcelNullHelper(dr, COLUMN_P)     ' This is the ingredient column
+                    .TableNum = Wine.Common.Validation.ExcelNullHelperInteger(dr, COLUMN_L)
+                    .FlightNum = Wine.Common.Validation.ExcelNullHelperInteger(dr, COLUMN_M)
+                    .SeqNum = Wine.Common.Validation.ExcelNullHelperInteger(dr, COLUMN_N)
+                    .CatNum = Wine.Common.Validation.ExcelNullHelper(dr, COLUMN_O)
+                    .CategoryName = Wine.Common.Validation.ExcelNullHelper(dr, COLUMN_Q)
+                    .Vintage = Wine.Common.Validation.ExcelNullHelper(dr, COLUMN_R)
+                    '.AvgScore = Wine.Common.Validation.ExcelNullHelperDouble(dr, COLUMN_J)   
+                    '.MedalColor = Wine.Common.Validation.ExcelNullHelper(dr, COLUMN_K)
                 End With
                 compRow.WineEntries.Add(wineEntryRow)
-                Dim wineScore As DBEntity.WineScoring
-                For scoreNum As Integer = 1 To 5
-                    Dim judgeNum As Integer
-                    Dim judgeTotal As Double
-                    Select Case scoreNum
-                        Case 1
-                            judgeNum = Wine.Common.Validation.ExcelNullHelperInteger(dr, COLUMN_B)
-                            judgeTotal = Wine.Common.Validation.ExcelNullHelperDouble(dr, COLUMN_C)
-                        Case 2
-                            judgeNum = Wine.Common.Validation.ExcelNullHelperInteger(dr, COLUMN_D)
-                            judgeTotal = Wine.Common.Validation.ExcelNullHelperDouble(dr, COLUMN_E)
-                        Case 3
-                            judgeNum = Wine.Common.Validation.ExcelNullHelperInteger(dr, COLUMN_F)
-                            judgeTotal = Wine.Common.Validation.ExcelNullHelperDouble(dr, COLUMN_G)
-                        Case 4
-                            judgeNum = Wine.Common.Validation.ExcelNullHelperInteger(dr, COLUMN_H)
-                            judgeTotal = Wine.Common.Validation.ExcelNullHelperDouble(dr, COLUMN_I)
-                        Case 5
-                            judgeNum = Wine.Common.Validation.ExcelNullHelperInteger(dr, COLUMN_J)
-                            judgeTotal = Wine.Common.Validation.ExcelNullHelperDouble(dr, COLUMN_K)
-                    End Select
-                    If judgeNum <> 0 AndAlso judgeTotal <> 0 Then
-                        wineScore = New DBEntity.WineScoring
-                        wineScore.EnteredPersonID = 1
-                        wineScore.JudgeNum = judgeNum
-                        wineScore.JudgeTotal = judgeTotal
-                        wineScore.Score = judgeTotal
-                        wineEntryRow.WineScorings.Add(wineScore)
-                    End If
-                Next
+                ' We are not going to import any existing wine scores
+                'Dim wineScore As DBEntity.WineScoring
+                'For scoreNum As Integer = 1 To 4
+                '    Dim judgeNum As Integer
+                '    Dim judgeTotal As Double
+                '    Select Case scoreNum
+                '        Case 1
+                '            judgeNum = Wine.Common.Validation.ExcelNullHelperInteger(dr, COLUMN_B)
+                '            judgeTotal = Wine.Common.Validation.ExcelNullHelperDouble(dr, COLUMN_C)
+                '        Case 2
+                '            judgeNum = Wine.Common.Validation.ExcelNullHelperInteger(dr, COLUMN_D)
+                '            judgeTotal = Wine.Common.Validation.ExcelNullHelperDouble(dr, COLUMN_E)
+                '        Case 3
+                '            judgeNum = Wine.Common.Validation.ExcelNullHelperInteger(dr, COLUMN_F)
+                '            judgeTotal = Wine.Common.Validation.ExcelNullHelperDouble(dr, COLUMN_G)
+                '        Case 4
+                '            judgeNum = Wine.Common.Validation.ExcelNullHelperInteger(dr, COLUMN_H)
+                '            judgeTotal = Wine.Common.Validation.ExcelNullHelperDouble(dr, COLUMN_I)
+                '    End Select
+                '    If judgeNum <> 0 AndAlso judgeTotal <> 0 Then
+                '        wineScore = New DBEntity.WineScoring
+                '        wineScore.EnteredPersonID = 1
+                '        wineScore.JudgeNum = judgeNum
+                '        wineScore.JudgeTotal = judgeTotal
+                '        wineScore.Score = judgeTotal
+                '        wineEntryRow.WineScorings.Add(wineScore)
+                '    End If
+                'Next
                 db.SaveChanges()
             End If
             row += 1

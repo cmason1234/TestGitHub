@@ -80,12 +80,12 @@
             <table>
                 <tr>
                     <td><b>Competion Name</b></td>
-                    <td>
+                    <td colspan="2">
                         <asp:TextBox CssClass="textBox" Width="350" ID="tbCompNameTextBox" runat="server" ReadOnly="true" BackColor="LightGray" />
                     </td>
                 </tr>
                 <tr>
-                    <td colspan="2">
+                    <td colspan="3">
                         Entry #&nbsp;
                         <telerik:RadNumericTextBox Width="50" ID="tbWineNum" runat="server"
                             NumberFormat-GroupSeparator="" NumberFormat-DecimalDigits="0"
@@ -102,20 +102,14 @@
                     </td>
                 </tr>
                 <tr>
-                    <td colspan="2">
+                    <td colspan="3">
                         Wine Name&nbsp;
-                        <telerik:RadTextBox ID="tbWineName" runat="server" EnabledStyle-HorizontalAlign="Right" ReadOnly="true" BackColor="LightGray" />
+                        <telerik:RadTextBox ID="tbWineName" runat="server" Width="350" EnabledStyle-HorizontalAlign="Left" ReadOnly="true" BackColor="LightGray" />
                     </td>
                 </tr>
+                <tr><td></td></tr>
                 <tr>
-                    <td colspan="2">
-                        Category Number&nbsp;
-                        <telerik:RadTextBox CssClass="textBox" Width="50" ID="tbCategoryNumber" runat="server" emptyMessage="Cat Num" ReadOnly="true" BackColor="LightGray" />
-                    </td>
-                </tr>
-
-                <tr>
-                    <td colspan="2">
+                    <td colspan="3">
                         <table>
                             <tr>
                                 <td>
@@ -130,19 +124,29 @@
                                         MinValue="0" MaxValue="999999999" NumberFormat-GroupSeparator="" NumberFormat-DecimalDigits="0"
                                         EnabledStyle-HorizontalAlign="Right" ReadOnly="true" BackColor="LightGray" />
                                 </td>
-                                <td>
+                                <td style="white-space:nowrap;">
                                     Seq Num&nbsp;
                                     <telerik:RadNumericTextBox Width="50" ID="tbSeqNum" runat="server"
                                         MinValue="0" MaxValue="999999999" NumberFormat-GroupSeparator="" NumberFormat-DecimalDigits="0"
                                         EnabledStyle-HorizontalAlign="Right" ReadOnly="true" BackColor="LightGray" />
                                 </td>
                             </tr>
+                            <tr>
+                                <td style="white-space:nowrap;">Cat Number&nbsp;
+                                    <telerik:RadTextBox CssClass="textBox" Width="50" ID="tbCategoryNumber" runat="server" 
+                                        emptyMessage="Cat Num" ReadOnly="true" BackColor="LightGray" />
+                                </td>
+                                <td style="white-space:nowrap;">Vintage&nbsp;
+                                    <asp:TextBox CssClass="textBox" Width="50" ID="tbVintage" runat="server" emptyMessage="Vintage" ReadOnly="true" BackColor="LightGray"  />
+                                </td>
+
+                            </tr>
                         </table>
                     </td>
                 </tr>
 
                 <tr>
-                    <td colspan="2">
+                    <td colspan="3">
                         Judge #&nbsp;
                         <telerik:RadNumericTextBox Width="50" ID="tbJudgeNum" runat="server"
                             MinValue="0" MaxValue="50" NumberFormat-GroupSeparator="" NumberFormat-DecimalDigits="0"
@@ -150,7 +154,7 @@
                     </td>
                 </tr>
                 <tr id="judgenameTR" runat="server" visible="false">
-                    <td colspan="2">
+                    <td colspan="3">
                         Judge Name&nbsp;<telerik:RadTextBox Width="125" ID="tbJudgeName" runat="server" />
                     </td>
                 </tr>
