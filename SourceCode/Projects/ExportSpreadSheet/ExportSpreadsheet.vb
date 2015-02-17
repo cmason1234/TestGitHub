@@ -32,6 +32,13 @@ Module ExportSpreadsheet
     Dim LogFile As System.IO.StreamWriter
     Dim fileName As String = ""
 
+    '   I decided to just use sql to pull the data into sql server and copy/paste that into the spreadsheet provided.
+    '    select EntryID, ws1.JudgeNum, ws1.Score, ws2.JudgeNum, ws2.Score, ws3.JudgeNum, ws3.Score, AvgScore, MedalColor, WineName
+    '  from WineEntry we
+    '  inner join WineScoring ws1 on we.WineEntryID=ws1.WineEntryId
+    '  inner join WineScoring ws2 on we.WineEntryID=ws2.WineEntryId and ws1.JudgeNum < ws2.JudgeNum
+    '  inner join WineScoring ws3 on we.WineEntryID=ws3.WineEntryId and ws2.JudgeNum < ws3.JudgeNum
+    'where CompetitionID=8 order by EntryID asc
 
     Sub Main()
         Try
@@ -68,10 +75,73 @@ Module ExportSpreadsheet
         System.Console.Write(text & vbCrLf)
         LogFile.WriteLine(text)
     End Sub
-    End Sub
 
     Private Sub ExportWineEntries()
-        Throw New NotImplementedException
+        Dim db As New DBEntity.mywinecompetitionEntities(Wine.Common.XmlConfig.ConfigVal("WineCompetition_ConnectionString"))
+
+        Dim compRow = (From s In db.Competitions Where s.CompetitionName = "2015 Yearly Competition").FirstOrDefault
+
+        Dim fileName As String = "Wine_Entry-2015.xlsx"
+
+        Dim sConnectionString As String = "Provider=Microsoft.ACE.OLEDB.12.0;" &
+            "Data Source=" & fileName &
+            "; Extended Properties=""Excel 12.0; HDR=NO;"""
+        Dim oleConn As New OleDbConnection(sConnectionString)
+        oleConn.Open()
+
+
+        'Dim dtSheets As DataTable =
+        '  oleConn.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, Nothing)
+        'Dim listSheet As New List(Of String)
+        'Dim drSheet As DataRow
+
+        'For Each drSheet In dtSheets.Rows
+        '    listSheet.Add(drSheet("TABLE_NAME").ToString())
+        'Next
+
+        ''show sheetname in textbox where multiline is true
+        'For Each sheet As String In listSheet
+        '    Log(sheet)
+        'Next
+
+        Dim selectFrom As String = ""
+        Dim fillName As String = ""
+
+        selectFrom = "SELECT * FROM [Wine_Entries$]"
+        fillName = "Input"
+
+        Dim oleCmdSelect As New OleDbCommand(selectFrom, oleConn)
+        Dim oleAdapter As New OleDbDataAdapter
+        oleAdapter.SelectCommand = oleCmdSelect
+        Dim ds As New DataSet
+        oleAdapter.Fill(ds, fillName)
+
+        Dim dt As DataTable = ds.Tables(fillName)
+        Dim row As Integer = 0
+        For Each dr As System.Data.DataRow In dt.Rows
+            If row <> 0 Then
+                Dim wineEntryRow As DBEntity.WineEntry = New DBEntity.WineEntry()
+                With wineEntryRow
+                    .EntryID = Wine.Common.Validation.ExcelNullHelperInteger(dr, COLUMN_A)
+                    .WineName = Wine.Common.Validation.ExcelNullHelper(dr, COLUMN_P)     ' This is the ingredient column
+                    .TableNum = Wine.Common.Validation.ExcelNullHelperInteger(dr, COLUMN_L)
+                    .FlightNum = Wine.Common.Validation.ExcelNullHelperInteger(dr, COLUMN_M)
+                    .SeqNum = Wine.Common.Validation.ExcelNullHelperInteger(dr, COLUMN_N)
+                    .CatNum = Wine.Common.Validation.ExcelNullHelper(dr, COLUMN_O)
+                    .CategoryName = Wine.Common.Validation.ExcelNullHelper(dr, COLUMN_Q)
+                    .Vintage = Wine.Common.Validation.ExcelNullHelper(dr, COLUMN_R)
+                    '.AvgScore = Wine.Common.Validation.ExcelNullHelperDouble(dr, COLUMN_J)   
+                    '.MedalColor = Wine.Common.Validation.ExcelNullHelper(dr, COLUMN_K)
+                End With
+            End If
+            row += 1
+            Log("Row " & row.ToString & " complete")
+        Next
+
+        oleConn.Close()
+
+
+
     End Sub
 
 End Module
