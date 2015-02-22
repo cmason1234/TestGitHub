@@ -59,9 +59,9 @@ Namespace Wine.Web
                     ddlMonth.SelectedValue = comp.Month.ToString
                 End If
             End If
-            If comp.MonthlyCompetition Then
-                ShowMonthlyCompResults(competitionID, True)
-            Else
+
+            ShowMonthlyCompResults(competitionID, True)
+            If Not comp.MonthlyCompetition Then
                 ShowYearlyCompResults(competitionID, True)
             End If
         End Sub
@@ -272,7 +272,6 @@ Namespace Wine.Web
         Private Sub btnSwitch1_Click(sender As Object, e As EventArgs) Handles btnSwitch1.Click
             btnSwitch_Click(sender, e)
         End Sub
-
 
 
     End Class

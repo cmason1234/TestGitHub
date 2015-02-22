@@ -123,51 +123,6 @@ Namespace Wine.Web
         Protected WithEvents ddlMonth As Global.System.Web.UI.WebControls.DropDownList
 
         '''<summary>
-        '''divMontlyList control.
-        '''</summary>
-        '''<remarks>
-        '''Auto-generated field.
-        '''To modify move field declaration from designer file to code-behind file.
-        '''</remarks>
-        Protected WithEvents divMontlyList As Global.System.Web.UI.HtmlControls.HtmlGenericControl
-
-        '''<summary>
-        '''btnNewWine1 control.
-        '''</summary>
-        '''<remarks>
-        '''Auto-generated field.
-        '''To modify move field declaration from designer file to code-behind file.
-        '''</remarks>
-        Protected WithEvents btnNewWine1 As Global.Telerik.Web.UI.RadButton
-
-        '''<summary>
-        '''litMontlyCount control.
-        '''</summary>
-        '''<remarks>
-        '''Auto-generated field.
-        '''To modify move field declaration from designer file to code-behind file.
-        '''</remarks>
-        Protected WithEvents litMontlyCount As Global.System.Web.UI.WebControls.Literal
-
-        '''<summary>
-        '''dgGridMonthlyComp control.
-        '''</summary>
-        '''<remarks>
-        '''Auto-generated field.
-        '''To modify move field declaration from designer file to code-behind file.
-        '''</remarks>
-        Protected WithEvents dgGridMonthlyComp As Global.Telerik.Web.UI.RadGrid
-
-        '''<summary>
-        '''btnNewWine2 control.
-        '''</summary>
-        '''<remarks>
-        '''Auto-generated field.
-        '''To modify move field declaration from designer file to code-behind file.
-        '''</remarks>
-        Protected WithEvents btnNewWine2 As Global.Telerik.Web.UI.RadButton
-
-        '''<summary>
         '''divYearlyList control.
         '''</summary>
         '''<remarks>
@@ -247,6 +202,51 @@ Namespace Wine.Web
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
         Protected WithEvents btnSwitch1 As Global.Telerik.Web.UI.RadButton
+
+        '''<summary>
+        '''divMontlyList control.
+        '''</summary>
+        '''<remarks>
+        '''Auto-generated field.
+        '''To modify move field declaration from designer file to code-behind file.
+        '''</remarks>
+        Protected WithEvents divMontlyList As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+
+        '''<summary>
+        '''btnNewWine1 control.
+        '''</summary>
+        '''<remarks>
+        '''Auto-generated field.
+        '''To modify move field declaration from designer file to code-behind file.
+        '''</remarks>
+        Protected WithEvents btnNewWine1 As Global.Telerik.Web.UI.RadButton
+
+        '''<summary>
+        '''litMontlyCount control.
+        '''</summary>
+        '''<remarks>
+        '''Auto-generated field.
+        '''To modify move field declaration from designer file to code-behind file.
+        '''</remarks>
+        Protected WithEvents litMontlyCount As Global.System.Web.UI.WebControls.Literal
+
+        '''<summary>
+        '''dgGridMonthlyComp control.
+        '''</summary>
+        '''<remarks>
+        '''Auto-generated field.
+        '''To modify move field declaration from designer file to code-behind file.
+        '''</remarks>
+        Protected WithEvents dgGridMonthlyComp As Global.Telerik.Web.UI.RadGrid
+
+        '''<summary>
+        '''btnNewWine2 control.
+        '''</summary>
+        '''<remarks>
+        '''Auto-generated field.
+        '''To modify move field declaration from designer file to code-behind file.
+        '''</remarks>
+        Protected WithEvents btnNewWine2 As Global.Telerik.Web.UI.RadButton
 
         '''<summary>
         '''Master property.

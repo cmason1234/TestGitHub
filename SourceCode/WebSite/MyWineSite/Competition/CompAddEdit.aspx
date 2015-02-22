@@ -19,6 +19,7 @@
                 <td style="border-right-width: 1px; border-right-style: solid; border-right-color: #939393;">
                     <telerik:RadButton ID="btnCancel" runat="server" Icon-PrimaryIconUrl="/_resources/images/ico/cancel-16x16.png" Text="Back to Competitions" ToolTip="Back to Competitions" Width="150" ButtonType="StandardButton" />
                 </td>
+
             </tr>
         </table>
     </div>
@@ -85,47 +86,6 @@
         <br class="clear" />
         <br />
     </div>
-
-    <div id="divMontlyList" runat="server">
-        <telerik:RadButton ID="btnNewWine1" runat="server" Icon-PrimaryIconUrl="/_resources/images/ico/Add-16x16.png" Text="Add New Wine" ToolTip="Add New Wine" Width="125" ButtonType="StandardButton" OnClick="btnNewWine_Click" />
-        <br />
-        <span style="margin-left: 12px;">
-            <asp:Literal ID="litMontlyCount" EnableViewState="false" runat="server" />
-        </span>
-        <div style="margin-left: 4px;">
-
-            <telerik:RadGrid ItemStyle-Wrap="false" ID="dgGridMonthlyComp" Width="80%" AllowPaging="true"
-                PageSize="30" AllowCustomPaging="false" AllowSorting="true" runat="server" AutoGenerateColumns="false" ShowFooter="true">
-                <PagerStyle Mode="NumericPages" Position="TopAndBottom" AlwaysVisible="false" />
-                <ExportSettings IgnorePaging="true" />
-                <MasterTableView TableLayout="Fixed" EnableViewState="true">
-                    <SortExpressions>
-                        <telerik:GridSortExpression FieldName="EntryID" SortOrder="Ascending" />
-                    </SortExpressions>
-                    <Columns>
-                        <telerik:GridHyperLinkColumn HeaderText="Entry" FooterText="Entry" DataTextField="EntryID" DataNavigateUrlFields="CompetitionID, WineEntryID" DataNavigateUrlFormatString="/Competition/WineEntryAddEdit.aspx?CompetitionID={0}&WineEntryID={1}" SortExpression="EntryID" />
-                        <telerik:GridBoundColumn HeaderText="Wine Name" FooterText="Wine Name" DataField="WineName" />
-                        <telerik:GridBoundColumn HeaderText="Entrant Name" FooterText="Entrant Name" DataField="EntrantName" />
-                        <telerik:GridBoundColumn HeaderText="AvgScore" FooterText="AvgScore" DataField="AvgScore" />
-                        <telerik:GridBoundColumn HeaderText="MedalColor" FooterText="MedalColor" DataField="MedalColor" />
-                    </Columns>
-                </MasterTableView>
-                <HeaderStyle HorizontalAlign="Left" />
-                <ClientSettings EnableRowHoverStyle="true" AllowColumnsReorder="true" ReorderColumnsOnClient="true">
-                    <Scrolling AllowScroll="false" EnableVirtualScrollPaging="true" SaveScrollPosition="True"></Scrolling>
-                    <Selecting AllowRowSelect="false" />
-                    <Resizing AllowRowResize="False" EnableRealTimeResize="false" ResizeGridOnColumnResize="false" AllowColumnResize="true"></Resizing>
-                </ClientSettings>
-            </telerik:RadGrid>
-        </div>
-
-        <telerik:RadButton ID="btnNewWine2" runat="server" Icon-PrimaryIconUrl="/_resources/images/ico/Add-16x16.png" Text="Add New Wine" ToolTip="Add New Wine" Width="125" ButtonType="StandardButton" OnClick="btnNewWine_Click" />
-
-        <br />
-        <br />
-
-    </div>
-
 
     <div id="divYearlyList" runat="server">
         <table style="width: 85%;">
@@ -208,6 +168,47 @@
                 </td>
             </tr>
         </table>
+
+        <br />
+        <br />
+
+    </div>
+
+
+    <div id="divMontlyList" runat="server">
+        <telerik:RadButton ID="btnNewWine1" runat="server" Icon-PrimaryIconUrl="/_resources/images/ico/Add-16x16.png" Text="Add New Wine" ToolTip="Add New Wine" Width="125" ButtonType="StandardButton" OnClick="btnNewWine_Click" />
+        <br />
+        <span style="margin-left: 12px;">
+            <asp:Literal ID="litMontlyCount" EnableViewState="false" runat="server" />
+        </span>
+        <div style="margin-left: 4px;">
+
+            <telerik:RadGrid ItemStyle-Wrap="false" ID="dgGridMonthlyComp" Width="80%" AllowPaging="true"
+                PageSize="10" AllowCustomPaging="false" AllowSorting="true" runat="server" AutoGenerateColumns="false" ShowFooter="true">
+                <PagerStyle Mode="NumericPages" Position="TopAndBottom" AlwaysVisible="false" />
+                <ExportSettings IgnorePaging="true" />
+                <MasterTableView TableLayout="Fixed" EnableViewState="true">
+                    <SortExpressions>
+                        <telerik:GridSortExpression FieldName="EntryID" SortOrder="Ascending" />
+                    </SortExpressions>
+                    <Columns>
+                        <telerik:GridHyperLinkColumn HeaderText="Entry" FooterText="Entry" DataTextField="EntryID" DataNavigateUrlFields="CompetitionID, WineEntryID" DataNavigateUrlFormatString="/Competition/WineEntryAddEdit.aspx?CompetitionID={0}&WineEntryID={1}" SortExpression="EntryID" />
+                        <telerik:GridBoundColumn HeaderText="Wine Name" FooterText="Wine Name" DataField="WineName" />
+                        <telerik:GridBoundColumn HeaderText="Entrant Name" FooterText="Entrant Name" DataField="EntrantName" />
+                        <telerik:GridBoundColumn HeaderText="AvgScore" FooterText="AvgScore" DataField="AvgScore" />
+                        <telerik:GridBoundColumn HeaderText="MedalColor" FooterText="MedalColor" DataField="MedalColor" />
+                    </Columns>
+                </MasterTableView>
+                <HeaderStyle HorizontalAlign="Left" />
+                <ClientSettings EnableRowHoverStyle="true" AllowColumnsReorder="true" ReorderColumnsOnClient="true">
+                    <Scrolling AllowScroll="false" EnableVirtualScrollPaging="true" SaveScrollPosition="True"></Scrolling>
+                    <Selecting AllowRowSelect="false" />
+                    <Resizing AllowRowResize="False" EnableRealTimeResize="false" ResizeGridOnColumnResize="false" AllowColumnResize="true"></Resizing>
+                </ClientSettings>
+            </telerik:RadGrid>
+        </div>
+
+        <telerik:RadButton ID="btnNewWine2" runat="server" Icon-PrimaryIconUrl="/_resources/images/ico/Add-16x16.png" Text="Add New Wine" ToolTip="Add New Wine" Width="125" ButtonType="StandardButton" OnClick="btnNewWine_Click" />
 
         <br />
         <br />
