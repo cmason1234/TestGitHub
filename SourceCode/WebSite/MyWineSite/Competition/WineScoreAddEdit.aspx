@@ -151,6 +151,7 @@
                         <telerik:RadNumericTextBox Width="50" ID="tbJudgeNum" runat="server"
                             MinValue="0" MaxValue="50" NumberFormat-GroupSeparator="" NumberFormat-DecimalDigits="0"
                             EnabledStyle-HorizontalAlign="Right" />
+                        <asp:RequiredFieldValidator ID="judgeNumRequiredFieldValidator" runat="server" ControlToValidate="tbJudgeNum" ForeColor="Red">* Judge # is Required</asp:RequiredFieldValidator>
                     </td>
                 </tr>
                 <tr id="judgenameTR" runat="server" visible="false">

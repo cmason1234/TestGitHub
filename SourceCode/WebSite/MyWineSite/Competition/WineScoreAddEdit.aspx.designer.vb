@@ -231,6 +231,15 @@ Namespace Wine.Web
         Protected WithEvents tbJudgeNum As Global.Telerik.Web.UI.RadNumericTextBox
 
         '''<summary>
+        '''judgeNumRequiredFieldValidator control.
+        '''</summary>
+        '''<remarks>
+        '''Auto-generated field.
+        '''To modify move field declaration from designer file to code-behind file.
+        '''</remarks>
+        Protected WithEvents judgeNumRequiredFieldValidator As Global.System.Web.UI.WebControls.RequiredFieldValidator
+
+        '''<summary>
         '''judgenameTR control.
         '''</summary>
         '''<remarks>
