@@ -4,6 +4,8 @@
 <%@ Register Src="../_Controls/ctlErrorMessages.ascx" TagName="ErrorMessages" TagPrefix="ucErrorMessages" %>
 <%@ MasterType TypeName="Wine.Web.Blank" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <script src="/_resources/js/jQuery/     
+         jquery-1.11.0.min.js?vNumTp=987" type="text/javascript"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cphMain" runat="server">
     <div class="fake-toolbar">
