@@ -240,6 +240,24 @@ Namespace Wine.Web
         Protected WithEvents btnValidate As Global.Telerik.Web.UI.RadButton
 
         '''<summary>
+        '''btnLock control.
+        '''</summary>
+        '''<remarks>
+        '''Auto-generated field.
+        '''To modify move field declaration from designer file to code-behind file.
+        '''</remarks>
+        Protected WithEvents btnLock As Global.Telerik.Web.UI.RadButton
+
+        '''<summary>
+        '''btnUnlock control.
+        '''</summary>
+        '''<remarks>
+        '''Auto-generated field.
+        '''To modify move field declaration from designer file to code-behind file.
+        '''</remarks>
+        Protected WithEvents btnUnlock As Global.Telerik.Web.UI.RadButton
+
+        '''<summary>
         '''litScoreCount control.
         '''</summary>
         '''<remarks>
@@ -274,6 +292,24 @@ Namespace Wine.Web
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
         Protected WithEvents btnValidate2 As Global.Telerik.Web.UI.RadButton
+
+        '''<summary>
+        '''btnLock2 control.
+        '''</summary>
+        '''<remarks>
+        '''Auto-generated field.
+        '''To modify move field declaration from designer file to code-behind file.
+        '''</remarks>
+        Protected WithEvents btnLock2 As Global.Telerik.Web.UI.RadButton
+
+        '''<summary>
+        '''btnUnLock2 control.
+        '''</summary>
+        '''<remarks>
+        '''Auto-generated field.
+        '''To modify move field declaration from designer file to code-behind file.
+        '''</remarks>
+        Protected WithEvents btnUnLock2 As Global.Telerik.Web.UI.RadButton
 
         '''<summary>
         '''Master property.

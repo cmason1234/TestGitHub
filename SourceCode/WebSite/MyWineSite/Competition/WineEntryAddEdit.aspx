@@ -136,17 +136,23 @@
     <div id="divScoreList" runat="server">
         <table style="width: 85%">
             <tr>
-                <td style="width: 40%;">
+                <td style="width: 33%;">
                     <telerik:RadButton ID="btnNewScore" runat="server" Icon-PrimaryIconUrl="/_resources/images/ico/Add-16x16.png"
                         Text="Add New Score" ToolTip="Add New Score" Width="125" ButtonType="StandardButton" OnClick="btnNewScore_Click" />
                 </td>
-                <td>
+                <td style="width: 33%;">
                     <telerik:RadButton ID="btnValidate" runat="server" Icon-PrimaryIconUrl="/_resources/images/ico/Enable-16x16.png"
                         Text="Validate Scores" ToolTip="Validate Scores" Width="125" ButtonType="StandardButton" OnClick="btnValidate_Click" />
                 </td>
+                <td style="width: 33%;">
+                    <telerik:RadButton ID="btnLock" runat="server" Icon-PrimaryIconUrl="/_resources/images/ico/Lock-16x16.png"
+                        Text="Lock Scores" ToolTip="Lock Scores" Width="125" ButtonType="StandardButton" OnClick="btnChangeLock_Click" />
+                    <telerik:RadButton ID="btnUnlock" runat="server" Icon-PrimaryIconUrl="/_resources/images/ico/Lock-open-16x16.png"
+                        Text="UnLock Scores" ToolTip="UnLock Scores" Width="125" ButtonType="StandardButton" OnClick="btnChangeLock_Click" />
+                </td>
             </tr>
             <tr>
-                <td colspan="2">
+                <td colspan="3">
                     <span style="margin-left: 12px;">
                         <asp:Literal ID="litScoreCount" EnableViewState="false" runat="server" />
                     </span>
@@ -200,6 +206,12 @@
                 <td>
                     <telerik:RadButton ID="btnValidate2" runat="server" Icon-PrimaryIconUrl="/_resources/images/ico/Enable-16x16.png"
                         Text="Validate Scores" ToolTip="Validate Scores" Width="125" ButtonType="StandardButton" OnClick="btnValidate_Click" />
+                </td>
+                <td>
+                    <telerik:RadButton ID="btnLock2" runat="server" Icon-PrimaryIconUrl="/_resources/images/ico/Lock-16x16.png"
+                        Text="Lock Scores" ToolTip="Lock Scores" Width="125" ButtonType="StandardButton" OnClick="btnChangeLock_Click" />
+                    <telerik:RadButton ID="btnUnLock2" runat="server" Icon-PrimaryIconUrl="/_resources/images/ico/Lock-open-16x16.png"
+                        Text="UnLock Scores" ToolTip="UnLock Scores" Width="125" ButtonType="StandardButton" OnClick="btnChangeLock_Click" />
                 </td>
             </tr>
         </table>

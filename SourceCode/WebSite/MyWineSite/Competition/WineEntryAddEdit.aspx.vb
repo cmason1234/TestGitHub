@@ -74,6 +74,13 @@ Namespace Wine.Web
                             tbMedalColor.BackColor = Drawing.Color.LightGray
                         End If
                     End With
+
+                    btnLock.Visible = Not wineEntry.Locked
+                    btnLock2.Visible = Not wineEntry.Locked
+                    btnUnlock.Visible = wineEntry.Locked
+                    btnUnLock2.Visible = wineEntry.Locked
+                    btnNewScore.Enabled = Not wineEntry.Locked
+                    btnNewScore2.Enabled = Not wineEntry.Locked
                     GetScoringEntries(wineEntryID, competitionID, True)
                 Else
                     divScoreList.Visible = False
@@ -234,5 +241,28 @@ Namespace Wine.Web
             GetScoringEntries(wineEntryID:=wineEntryID, competitionID:=competitionID, bind:=True)
             userMessage = "Scores successfully validated"
         End Sub
+
+        Public Sub btnChangeLock_Click(sender As Object, e As EventArgs)
+            Dim db As New DBEntity.mywinecompetitionEntities(Wine.Common.XmlConfig.ConfigVal("WineCompetition_ConnectionString"))
+
+            Dim sWineEntryID As String = hfWineEntryId.Value
+            Dim wineEntryID As Integer = 0
+
+            If Integer.TryParse(sWineEntryID, wineEntryID) AndAlso wineEntryID > 0 Then
+
+                Dim wineEntry As DBEntity.WineEntry = db.WineEntries.Find(wineEntryID)
+                wineEntry.Locked = Not wineEntry.Locked
+
+                btnLock.Visible = Not wineEntry.Locked
+                btnLock2.Visible = Not wineEntry.Locked
+                btnUnlock.Visible = wineEntry.Locked
+                btnUnLock2.Visible = wineEntry.Locked
+                btnNewScore.Enabled = Not wineEntry.Locked
+                btnNewScore2.Enabled = Not wineEntry.Locked
+
+                db.SaveChanges()
+            End If
+        End Sub
+
     End Class
 End Namespace
