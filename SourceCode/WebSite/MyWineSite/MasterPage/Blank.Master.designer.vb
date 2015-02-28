@@ -58,5 +58,14 @@ Namespace Wine.Web
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
         Protected WithEvents cphMain As Global.System.Web.UI.WebControls.ContentPlaceHolder
+
+        '''<summary>
+        '''cphExtra control.
+        '''</summary>
+        '''<remarks>
+        '''Auto-generated field.
+        '''To modify move field declaration from designer file to code-behind file.
+        '''</remarks>
+        Protected WithEvents cphExtra As Global.System.Web.UI.WebControls.ContentPlaceHolder
     End Class
 End Namespace
