@@ -4,6 +4,8 @@
 <%@ Register Src="../_Controls/ctlErrorMessages.ascx" TagName="ErrorMessages" TagPrefix="ucErrorMessages" %>
 <%@ MasterType TypeName="Wine.Web.Blank" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <link rel="stylesheet" href="/_resources/js/jQuery/jquery-ui-1.11.3.css">
+    <script src="/_resources/js/jQuery/jquery-1.11.min.js"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cphMain" runat="server">
     <div class="fake-toolbar">
@@ -143,7 +145,7 @@
             <tr>
                 <td style="width: 33%;">
                     <telerik:RadButton ID="btnNewScore" runat="server" Icon-PrimaryIconUrl="/_resources/images/ico/Add-16x16.png"
-                        Text="Add New Score" ToolTip="Add New Score" Width="125" ButtonType="StandardButton" OnClick="btnNewScore_Click" />
+                        Text="Add New Score" ToolTip="Add New Score" Width="125" ButtonType="StandardButton" AutoPostBack="false" />
                 </td>
                 <td style="width: 33%;">
                     <telerik:RadButton ID="btnValidate" runat="server" Icon-PrimaryIconUrl="/_resources/images/ico/Enable-16x16.png"
@@ -206,7 +208,7 @@
             <tr>
                 <td>
                     <telerik:RadButton ID="btnNewScore2" runat="server" Icon-PrimaryIconUrl="/_resources/images/ico/Add-16x16.png"
-                        Text="Add New Score" ToolTip="Add New Score" Width="125" ButtonType="StandardButton" AutoPostBack="false" OnClick="btnNewScore_Click" />
+                        Text="Add New Score" ToolTip="Add New Score" Width="125" ButtonType="StandardButton" AutoPostBack="false" />
                 </td>
                 <td>
                     <telerik:RadButton ID="btnValidate2" runat="server" Icon-PrimaryIconUrl="/_resources/images/ico/Enable-16x16.png"
@@ -227,126 +229,203 @@
 
     </div>
 
+    <div id="dialog-form" title="Add new Score">
+        <p class="validateTips">All form fields are required.</p>
+        <fieldset>
+            <table>
+                <tr>
+                    <td colspan="3">
+                        Judge #&nbsp;
+                        <telerik:RadNumericTextBox Width="50" ID="tbJudgeNum" runat="server"
+                            MinValue="0" MaxValue="50" NumberFormat-GroupSeparator="" NumberFormat-DecimalDigits="0"
+                            EnabledStyle-HorizontalAlign="Right" />
+                        <asp:RequiredFieldValidator ID="judgeNumRequiredFieldValidator" runat="server" ControlToValidate="tbJudgeNum" ForeColor="Red">* Judge # is Required</asp:RequiredFieldValidator>
+                    </td>
+                </tr>
+                <tr id="judgenameTR" runat="server" visible="false">
+                    <td colspan="3">
+                        Judge Name&nbsp;<telerik:RadTextBox Width="125" ID="tbJudgeName" runat="server" />
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td style="width: 140px;">Clarity (1)</td>
+                    <td style="width: 140px;">Color (2)</td>
+                    <td style="width: 155px;">Aroma (4)</td>
+                </tr>
+                <tr>
+                    <td>
+                        <telerik:RadNumericTextBox Width="50" ID="tbClarity" runat="server"
+                            MinValue="0" MaxValue="1" NumberFormat-GroupSeparator="" NumberFormat-DecimalDigits="4"
+                            EnabledStyle-HorizontalAlign="Right" ClientEvents-OnBlur="updateTotalScore" />
+                    </td>
+                    <td>
+                        <telerik:RadNumericTextBox Width="50" ID="tbColor" runat="server"
+                            MinValue="0" MaxValue="2" NumberFormat-GroupSeparator="" NumberFormat-DecimalDigits="4"
+                            EnabledStyle-HorizontalAlign="Right" ClientEvents-OnBlur="updateTotalScore" />
+                    </td>
+                    <td>
+                        <telerik:RadNumericTextBox Width="50" ID="tbAroma" runat="server"
+                            MinValue="0" MaxValue="4" NumberFormat-GroupSeparator="" NumberFormat-DecimalDigits="4"
+                            EnabledStyle-HorizontalAlign="Right" ClientEvents-OnBlur="updateTotalScore" />
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Acidity (1)</td>
+                    <td>Body (2)</td>
+                    <td>Flavor (4)</td>
+                </tr>
+                <tr>
+                    <td>
+                        <telerik:RadNumericTextBox Width="50" ID="tbAcidity" runat="server"
+                            MinValue="0" MaxValue="1" NumberFormat-GroupSeparator="" NumberFormat-DecimalDigits="4"
+                            EnabledStyle-HorizontalAlign="Right" ClientEvents-OnBlur="updateTotalScore" />
+                    </td>
+                    <td>
+                        <telerik:RadNumericTextBox Width="50" ID="tbBody" runat="server"
+                            MinValue="0" MaxValue="2" NumberFormat-GroupSeparator="" NumberFormat-DecimalDigits="4"
+                            EnabledStyle-HorizontalAlign="Right" ClientEvents-OnBlur="updateTotalScore" />
+                    </td>
+                    <td>
+                        <telerik:RadNumericTextBox Width="50" ID="tbFlavor" runat="server"
+                            MinValue="0" MaxValue="4" NumberFormat-GroupSeparator="" NumberFormat-DecimalDigits="4"
+                            EnabledStyle-HorizontalAlign="Right" ClientEvents-OnBlur="updateTotalScore" />
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Bitterness (1)</td>
+                    <td>Finish (1)</td>
+                    <td>Quality (4)</td>
+                </tr>
+                <tr>
+                    <td>
+                        <telerik:RadNumericTextBox Width="50" ID="tbBitterness" runat="server"
+                            MinValue="0" MaxValue="1" NumberFormat-GroupSeparator="" NumberFormat-DecimalDigits="4"
+                            EnabledStyle-HorizontalAlign="Right" ClientEvents-OnBlur="updateTotalScore" />
+                    </td>
+                    <td>
+                        <telerik:RadNumericTextBox Width="50" ID="tbFinish" runat="server"
+                            MinValue="0" MaxValue="1" NumberFormat-GroupSeparator="" NumberFormat-DecimalDigits="4"
+                            EnabledStyle-HorizontalAlign="Right" ClientEvents-OnBlur="updateTotalScore" />
+                    </td>
+                    <td>
+                        <telerik:RadNumericTextBox Width="50" ID="tbQuality" runat="server"
+                            MinValue="0" MaxValue="4" NumberFormat-GroupSeparator="" NumberFormat-DecimalDigits="4"
+                            EnabledStyle-HorizontalAlign="Right" ClientEvents-OnBlur="updateTotalScore" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Judge Score</td>
+                    <td></td>
+                    <td>Calc Score</td>
+                </tr>
+                <tr>
+                    <td>
+                        <telerik:RadNumericTextBox Width="75" ID="tbJudgeScore" runat="server"
+                            MinValue="0" MaxValue="20" NumberFormat-GroupSeparator="" NumberFormat-DecimalDigits="4"
+                            EnabledStyle-HorizontalAlign="Right" ClientEvents-OnBlur="updateTotalScore" />
+                    </td>
+                    <td></td>
+                    <td>
+                        <telerik:RadNumericTextBox Width="75" ID="tbCalcScore" runat="server"
+                            MinValue="0" MaxValue="20" NumberFormat-GroupSeparator="" NumberFormat-DecimalDigits="4"
+                            EnabledStyle-HorizontalAlign="Right" ReadOnly="true" BackColor="LightGray" />
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
+    </div>
+
+
 </asp:Content>
 
-<asp:Content ID="Contnet3" ContentPlaceHolderID="cphExtra" runat="server">
-    <link rel="stylesheet" href="/_resources/js/jQuery/jquery-ui-1.11.3.css">
-    <script src="/_resources/js/jQuery/jquery-1.11.min.js"></script>
-    <script src="//code.jquery.com/ui/1.11.3/jquery-ui.js"></script>
+<asp:Content ID="Content3" ContentPlaceHolderID="cphExtra" runat="server">
+    <script src="/_resources/js/jQuery/jquery-ui-1.11.3.js"></script>
     <script>
-        $(function () {
-            var dialog, form,
-            // From http://www.whatwg.org/specs/web-apps/current-work/multipage/states-of-the-type-attribute.html#e-mail-state-%28type=email%29
-            emailRegex = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/,
-            name = $("#name"),
-            email = $("#email"),
-            password = $("#password"),
-            allFields = $([]).add(name).add(email).add(password),
-            tips = $(".validateTips");
-            function updateTips(t) {
-                tips
-                .text(t)
-                .addClass("ui-state-highlight");
-                setTimeout(function () {
-                    tips.removeClass("ui-state-highlight", 1500);
-                }, 500);
-            }
-            function checkLength(o, n, min, max) {
-                if (o.val().length > max || o.val().length < min) {
-                    o.addClass("ui-state-error");
-                    updateTips("Length of " + n + " must be between " +
-                    min + " and " + max + ".");
-                    return false;
-                } else {
-                    return true;
-                }
-            }
-            function checkRegexp(o, regexp, n) {
-                if (!(regexp.test(o.val()))) {
-                    o.addClass("ui-state-error");
-                    updateTips(n);
-                    return false;
-                } else {
-                    return true;
-                }
-            }
-            function addUser() {
-                var valid = true;
-                allFields.removeClass("ui-state-error");
-                valid = valid && checkLength(name, "username", 3, 16);
-                valid = valid && checkLength(email, "email", 6, 80);
-                valid = valid && checkLength(password, "password", 5, 16);
-                valid = valid && checkRegexp(name, /^[a-z]([0-9a-z_\s])+$/i, "Username may consist of a-z, 0-9, underscores, spaces and must begin with a letter.");
-                valid = valid && checkRegexp(email, emailRegex, "eg. ui@jquery.com");
-                valid = valid && checkRegexp(password, /^([0-9a-zA-Z])+$/, "Password field only allow : a-z 0-9");
-                if (valid) {
-                    $("#users tbody").append("<tr>" +
-                    "<td>" + name.val() + "</td>" +
-                    "<td>" + email.val() + "</td>" +
-                    "<td>" + password.val() + "</td>" +
-                    "</tr>");
-                    dialog.dialog("close");
-                }
-                return valid;
-            }
-            dialog = $("#dialog-form").dialog({
+        var WINE = WINE || {};
+        WINE.EntryAddEdit = {};
+
+        jQuery(document).ready(function () {
+
+        });
+
+
+        WINE.EntryAddEdit.openPopup = function () {
+            "use strict";
+
+            jQuery("#dialog-form").dialog({
                 autoOpen: false,
-                height: 300,
+                height: 380,
                 width: 350,
                 modal: true,
-                buttons: {
-                    "Create an account": addUser,
-                    Cancel: function () {
-                        dialog.dialog("close");
-                    }
+                buttons: [{
+                    id: "btn-save",
+                    text: "Save Wine Score",
+                    click: WINE.EntryAddEdit.saveWineScore
                 },
+                {
+                    id: "btn-cancel",
+                    text: "Cancel",
+                    click: function () {
+                        jQuery("#dialog-form").dialog("close");
+                    }
+                }],
                 close: function () {
-                    form[0].reset();
-                    allFields.removeClass("ui-state-error");
                 }
             });
-            form = dialog.find("form").on("submit", function (event) {
-                event.preventDefault();
-                addUser();
-            });
-            $("#create-user").button().on("click", function () {
-                dialog.dialog("open");
-            });
-        });
+            jQuery('#btn-save').button("option", "disabled", true);
+            jQuery("#dialog-form").dialog("open");
+        };
+
+        WINE.EntryAddEdit.saveWineScore = function () {
+            var j = 0;
+            jQuery("#dialog-form").dialog("close");
+        };
+
+        function updateTotalScore(sender, eventArgs) {
+            "use strict";
+            var newScore = 0;
+            if (!sender._invalid) {
+                var clarity = $find('<%=tbClarity.ClientID%>').get_value();
+                var color = $find('<%=tbColor.ClientID%>').get_value();
+                var aroma = $find('<%=tbAroma.ClientID%>').get_value();
+                var ta = $find('<%=tbAcidity.ClientID%>').get_value();
+                var body = $find('<%=tbBody.ClientID%>').get_value();
+                var flavor = $find('<%=tbFlavor.ClientID%>').get_value();
+                var bitterness = $find('<%=tbBitterness.ClientID%>').get_value();
+                var finish = $find('<%=tbFinish.ClientID%>').get_value();
+                var quality = $find('<%=tbQuality.ClientID%>').get_value();
+                var total = clarity + color + aroma + ta + body + flavor + bitterness + finish + quality;
+                var calcScoreID = $find('<%=tbCalcScore.ClientID%>');
+                var judgeTotalID = $find('<%=tbJudgeScore.ClientID%>');
+                var judgeTotal = judgeTotalID.get_value();
+                var save1 = jQuery('#btn-save');
+
+                calcScoreID.set_value(total);
+                total = calcScoreID.get_value();  // Go get the rounded value from Telerik.
+                if (total != judgeTotal) {
+                    save1.button("option", "disabled", true);
+                    judgeTotalID.get_styles().EnabledStyle[0] += "background-color: red;";
+                    judgeTotalID.updateCssClass();
+                    calcScoreID.get_styles().ReadOnlyStyle[0] += "background-color: red;";
+                    calcScoreID.updateCssClass();
+                } else {
+                    save1.button("option", "disabled", false);
+                    judgeTotalID.get_styles().EnabledStyle[0] += "background-color: white;";
+                    judgeTotalID.updateCssClass();
+                    calcScoreID.get_styles().ReadOnlyStyle[0] += "background-color: LightGray;";
+                    calcScoreID.updateCssClass();
+                }
+            }
+        };
+
     </script>
-    <div id="dialog-form" title="Create new user">
-        <p class="validateTips">All form fields are required.</p>
-        <form>
-        <fieldset>
-            <label for="name">Name</label>
-            <input type="text" name="name" id="name" value="Jane Smith" class="text ui-widget-content ui-corner-all">
-            <label for="email">Email</label>
-            <input type="text" name="email" id="email" value="jane@smith.com" class="text ui-widget-content ui-corner-all">
-            <label for="password">Password</label>
-            <input type="password" name="password" id="password" value="xxxxxxx" class="text ui-widget-content ui-corner-all">
-            <!-- Allow form submission with keyboard without duplicating the dialog button -->
-            <input type="submit" tabindex="-1" style="position: absolute; top: -1000px">
-        </fieldset>
-        </form>
-    </div>
-    <div id="users-contain" class="ui-widget">
-        <h1>Existing Users:</h1>
-        <table id="users" class="ui-widget ui-widget-content">
-            <thead>
-                <tr class="ui-widget-header ">
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Password</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>John Doe</td>
-                    <td>john.doe@example.com</td>
-                    <td>johndoe1</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-    <button id="create-user">Create new user</button>
 </asp:Content>

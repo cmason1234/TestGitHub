@@ -14,6 +14,8 @@ Namespace Wine.Web
                     btnDel.Visible = False
                 End If
             End If
+            btnNewScore.Attributes.Add("onclick", "WINE.EntryAddEdit.openPopup();")
+            btnNewScore2.Attributes.Add("onclick", "WINE.EntryAddEdit.openPopup();")
         End Sub
 
         Protected Sub Page_LoadComplete(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.LoadComplete
