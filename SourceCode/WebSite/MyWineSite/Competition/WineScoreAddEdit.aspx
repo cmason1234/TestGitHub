@@ -64,7 +64,7 @@
                     <telerik:RadButton ID="btnCancel" runat="server" Icon-PrimaryIconUrl="/_resources/images/ico/cancel-16x16.png" Text="Back To Wine Entry" ToolTip="Back To Wine Entry" Width="150" ButtonType="StandardButton" />
                 </td>
                 <td style="border-right-width: 1px; border-right-style: solid; border-right-color: #939393;">
-                    <telerik:RadButton ID="btnCreateNew" runat="server" Icon-PrimaryIconUrl="/_resources/images/ico/ico_new_16x16.gif" Text="Add New Wine Score" ToolTip="Add New" Width="150" ButtonType="StandardButton" />
+                    <telerik:RadButton ID="btnCreateNew" runat="server" Icon-PrimaryIconUrl="/_resources/images/ico/ico_new_16x16.gif" Text="Add New Wine Score" ToolTip="Add New" Width="150" ButtonType="StandardButton" Visible="false" />
                 </td>
             </tr>
         </table>
@@ -269,7 +269,7 @@
                     </td>
                     <td></td>
                     <td>
-                        <telerik:RadButton ID="btnCreateNew2" runat="server" Icon-PrimaryIconUrl="/_resources/images/ico/ico_new_16x16.gif" Text="Add New Wine Score" ToolTip="Add New" Width="150" ButtonType="StandardButton" />
+                        <telerik:RadButton ID="btnCreateNew2" runat="server" Icon-PrimaryIconUrl="/_resources/images/ico/ico_new_16x16.gif" Text="Add New Wine Score" ToolTip="Add New" Width="150" ButtonType="StandardButton" visible="false" />
                     </td>
                 </tr>
             </table>

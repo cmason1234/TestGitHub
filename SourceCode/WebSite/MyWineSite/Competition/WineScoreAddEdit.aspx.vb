@@ -289,7 +289,7 @@
                 Dim wineScoringList = (From s In db.WineEntries Where s.EntryID = wineNum And s.CompetitionID = competitionID).ToList
                 If wineScoringList.Count > 0 Then
                     Dim wineEntryID As Integer = wineScoringList.FirstOrDefault.WineEntryID
-                    Response.Redirect("/Competition/WineScoreAddEdit.aspx?CompetitionID=" & hfCompetitionID.Value & "&WineEntryID=" & wineEntryID.ToString & "&WineScoringID=0")
+                    Response.Redirect("/Competition/WineEntryAddEdit.aspx?CompetitionID=" & hfCompetitionID.Value & "&WineEntryID=" & wineEntryID.ToString)
                 Else
                     ucErrorMessages.MessageClass() = "msgErr"
                     userMessage = "Unable to find Wine Entry # " + sWineNum + " in this competition"

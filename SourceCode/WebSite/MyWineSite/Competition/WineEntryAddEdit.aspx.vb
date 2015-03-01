@@ -204,6 +204,89 @@ Namespace Wine.Web
             Response.Redirect("/Competition/WineEntryAddEdit.aspx?CompetitionID=" & hfCompetitionID.Value & "&WineEntryID=0")
         End Sub
 
+        Private Sub btnAddScore_Click(sender As Object, e As EventArgs) Handles btnAddScore.Click
+            Dim sCompID As String = hfCompetitionID.Value
+            Dim competitionID As Integer = 0
+            Dim sWineEntryID As String = hfWineEntryId.Value
+            Dim wineEntryID As Integer = 0
+
+            Integer.TryParse(sCompID, competitionID)
+            Integer.TryParse(sWineEntryID, wineEntryID)
+
+            Dim db As New DBEntity.mywinecompetitionEntities(Wine.Common.XmlConfig.ConfigVal("WineCompetition_ConnectionString"))
+            Dim wineScoring As DBEntity.WineScoring = Nothing
+
+            wineScoring = New DBEntity.WineScoring
+            With wineScoring
+                .WineEntryId = wineEntryID
+                .EnteredPersonID = currentPerson.PersonID
+                .JudgeNum = tbJudgeNum2.Text
+                '.JudgeInitials = tbJudgeName.Text
+                .Clarity = tbClarity2.Value
+                .Color = tbColor2.Value
+                .Aroma = tbAroma2.Value
+                .Ta = tbAcidity2.Value
+                .Texture = tbBody2.Value
+                .Flavor = tbFlavor2.Value
+                .Bitterness = tbBitterness2.Value
+                .Finish = tbFinish2.Value
+                .Quality = tbQuality2.Value
+                .JudgeTotal = tbJudgeScore2.Value
+                .Score = tbCalcScore2.Value
+                .ValidatedPersonID = Nothing
+            End With
+            db.WineScorings.Add(wineScoring)
+
+            db.SaveChanges()
+
+            UpdateAvgScore(wineEntryID, db)
+            btnValidate.Visible = True
+            userMessage = "Wine Score successfully saved"
+            LoadFromDB()
+        End Sub
+
+        Private Sub UpdateAvgScore(wineEntryID As Integer, db As DBEntity.mywinecompetitionEntities)
+            Dim wineEntry As DBEntity.WineEntry = db.WineEntries.Find(wineEntryID)
+            Dim wineScoringList = wineEntry.WineScorings
+
+            If wineScoringList.Count > 0 Then
+                Dim total As Double = 0
+                For Each winescoring As DBEntity.WineScoring In wineScoringList
+                    total += winescoring.Score
+                Next
+                Dim avg As Double = total / wineScoringList.Count
+                wineEntry.AvgScore = avg
+                Dim medalColor As String = Nothing
+                If avg >= 18.5 Then
+                    medalColor = "Double Gold"
+                    tbAvgScore.BackColor = Drawing.Color.Gold
+                    tbMedalColor.BackColor = Drawing.Color.Gold
+                ElseIf avg >= 17 Then
+                    medalColor = "Gold"
+                    tbAvgScore.BackColor = Drawing.Color.Yellow
+                    tbMedalColor.BackColor = Drawing.Color.Yellow
+                ElseIf avg >= 15 Then
+                    medalColor = "Silver"
+                    tbAvgScore.BackColor = Drawing.Color.Silver
+                    tbMedalColor.BackColor = Drawing.Color.Silver
+                ElseIf avg >= 13 Then
+                    medalColor = "Bronze"
+                    tbAvgScore.BackColor = Drawing.Color.Peru
+                    tbMedalColor.BackColor = Drawing.Color.Peru
+                Else
+                    medalColor = ""
+                    tbAvgScore.BackColor = Drawing.Color.LightGray
+                    tbMedalColor.BackColor = Drawing.Color.LightGray
+                End If
+                wineEntry.MedalColor = medalColor
+                db.SaveChanges()
+                tbAvgScore.Text = wineEntry.AvgScore.ToString
+                tbMedalColor.Text = wineEntry.MedalColor
+            End If
+
+        End Sub
+
+
         Private Sub dgGridScoreComp_NeedDataSource(sender As Object, e As Telerik.Web.UI.GridNeedDataSourceEventArgs) Handles dgGridScoreComp.NeedDataSource
             Dim sCompID As String = hfCompetitionID.Value
             Dim competitionID As Integer = 0

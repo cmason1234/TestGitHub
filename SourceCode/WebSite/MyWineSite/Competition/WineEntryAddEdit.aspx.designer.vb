@@ -231,6 +231,15 @@ Namespace Wine.Web
         Protected WithEvents btnNewScore As Global.Telerik.Web.UI.RadButton
 
         '''<summary>
+        '''btnAddScore control.
+        '''</summary>
+        '''<remarks>
+        '''Auto-generated field.
+        '''To modify move field declaration from designer file to code-behind file.
+        '''</remarks>
+        Protected WithEvents btnAddScore As Global.System.Web.UI.WebControls.Button
+
+        '''<summary>
         '''btnValidate control.
         '''</summary>
         '''<remarks>
@@ -312,6 +321,114 @@ Namespace Wine.Web
         Protected WithEvents btnUnLock2 As Global.Telerik.Web.UI.RadButton
 
         '''<summary>
+        '''tbJudgeNum2 control.
+        '''</summary>
+        '''<remarks>
+        '''Auto-generated field.
+        '''To modify move field declaration from designer file to code-behind file.
+        '''</remarks>
+        Protected WithEvents tbJudgeNum2 As Global.Telerik.Web.UI.RadTextBox
+
+        '''<summary>
+        '''tbClarity2 control.
+        '''</summary>
+        '''<remarks>
+        '''Auto-generated field.
+        '''To modify move field declaration from designer file to code-behind file.
+        '''</remarks>
+        Protected WithEvents tbClarity2 As Global.Telerik.Web.UI.RadNumericTextBox
+
+        '''<summary>
+        '''tbColor2 control.
+        '''</summary>
+        '''<remarks>
+        '''Auto-generated field.
+        '''To modify move field declaration from designer file to code-behind file.
+        '''</remarks>
+        Protected WithEvents tbColor2 As Global.Telerik.Web.UI.RadNumericTextBox
+
+        '''<summary>
+        '''tbAroma2 control.
+        '''</summary>
+        '''<remarks>
+        '''Auto-generated field.
+        '''To modify move field declaration from designer file to code-behind file.
+        '''</remarks>
+        Protected WithEvents tbAroma2 As Global.Telerik.Web.UI.RadNumericTextBox
+
+        '''<summary>
+        '''tbAcidity2 control.
+        '''</summary>
+        '''<remarks>
+        '''Auto-generated field.
+        '''To modify move field declaration from designer file to code-behind file.
+        '''</remarks>
+        Protected WithEvents tbAcidity2 As Global.Telerik.Web.UI.RadNumericTextBox
+
+        '''<summary>
+        '''tbBody2 control.
+        '''</summary>
+        '''<remarks>
+        '''Auto-generated field.
+        '''To modify move field declaration from designer file to code-behind file.
+        '''</remarks>
+        Protected WithEvents tbBody2 As Global.Telerik.Web.UI.RadNumericTextBox
+
+        '''<summary>
+        '''tbFlavor2 control.
+        '''</summary>
+        '''<remarks>
+        '''Auto-generated field.
+        '''To modify move field declaration from designer file to code-behind file.
+        '''</remarks>
+        Protected WithEvents tbFlavor2 As Global.Telerik.Web.UI.RadNumericTextBox
+
+        '''<summary>
+        '''tbBitterness2 control.
+        '''</summary>
+        '''<remarks>
+        '''Auto-generated field.
+        '''To modify move field declaration from designer file to code-behind file.
+        '''</remarks>
+        Protected WithEvents tbBitterness2 As Global.Telerik.Web.UI.RadNumericTextBox
+
+        '''<summary>
+        '''tbFinish2 control.
+        '''</summary>
+        '''<remarks>
+        '''Auto-generated field.
+        '''To modify move field declaration from designer file to code-behind file.
+        '''</remarks>
+        Protected WithEvents tbFinish2 As Global.Telerik.Web.UI.RadNumericTextBox
+
+        '''<summary>
+        '''tbQuality2 control.
+        '''</summary>
+        '''<remarks>
+        '''Auto-generated field.
+        '''To modify move field declaration from designer file to code-behind file.
+        '''</remarks>
+        Protected WithEvents tbQuality2 As Global.Telerik.Web.UI.RadNumericTextBox
+
+        '''<summary>
+        '''tbJudgeScore2 control.
+        '''</summary>
+        '''<remarks>
+        '''Auto-generated field.
+        '''To modify move field declaration from designer file to code-behind file.
+        '''</remarks>
+        Protected WithEvents tbJudgeScore2 As Global.Telerik.Web.UI.RadNumericTextBox
+
+        '''<summary>
+        '''tbCalcScore2 control.
+        '''</summary>
+        '''<remarks>
+        '''Auto-generated field.
+        '''To modify move field declaration from designer file to code-behind file.
+        '''</remarks>
+        Protected WithEvents tbCalcScore2 As Global.Telerik.Web.UI.RadNumericTextBox
+
+        '''<summary>
         '''tbJudgeNum control.
         '''</summary>
         '''<remarks>
@@ -319,33 +436,6 @@ Namespace Wine.Web
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
         Protected WithEvents tbJudgeNum As Global.Telerik.Web.UI.RadNumericTextBox
-
-        '''<summary>
-        '''judgeNumRequiredFieldValidator control.
-        '''</summary>
-        '''<remarks>
-        '''Auto-generated field.
-        '''To modify move field declaration from designer file to code-behind file.
-        '''</remarks>
-        Protected WithEvents judgeNumRequiredFieldValidator As Global.System.Web.UI.WebControls.RequiredFieldValidator
-
-        '''<summary>
-        '''judgenameTR control.
-        '''</summary>
-        '''<remarks>
-        '''Auto-generated field.
-        '''To modify move field declaration from designer file to code-behind file.
-        '''</remarks>
-        Protected WithEvents judgenameTR As Global.System.Web.UI.HtmlControls.HtmlTableRow
-
-        '''<summary>
-        '''tbJudgeName control.
-        '''</summary>
-        '''<remarks>
-        '''Auto-generated field.
-        '''To modify move field declaration from designer file to code-behind file.
-        '''</remarks>
-        Protected WithEvents tbJudgeName As Global.Telerik.Web.UI.RadTextBox
 
         '''<summary>
         '''tbClarity control.
