@@ -25,7 +25,7 @@
  /* COUNTRIES CLASS DEFINITION
   * ====================== */
 
-  var BFHCountries = function (element, options) {
+  var bfhCountries = function (element, options) {
     this.options = $.extend({}, $.fn.bfhcountries.defaults, options)
     this.$element = $(element)
     
@@ -54,9 +54,9 @@
     }
   }
 
-  BFHCountries.prototype = {
+  bfhCountries.prototype = {
 
-    constructor: BFHCountries
+    constructor: bfhCountries
 
     , addCountries: function () {
       var value = this.options.country
@@ -126,12 +126,12 @@
         , data = $this.data('bfhcountries')
         , options = typeof option == 'object' && option
         
-      if (!data) $this.data('bfhcountries', (data = new BFHCountries(this, options)))
+      if (!data) $this.data('bfhcountries', (data = new bfhCountries(this, options)))
       if (typeof option == 'string') data[option]()
     })
   }
 
-  $.fn.bfhcountries.Constructor = BFHCountries
+  $.fn.bfhcountries.Constructor = bfhCountries
 
   $.fn.bfhcountries.defaults = {
     country: "",

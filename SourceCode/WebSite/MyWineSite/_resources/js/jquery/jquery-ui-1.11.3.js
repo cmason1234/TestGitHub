@@ -320,8 +320,8 @@ $.ui.plugin = {
  */
 
 
-var widget_uuid = 0,
-	widget_slice = Array.prototype.slice;
+var widgetUuid = 0,
+	widgetSlice = Array.prototype.slice;
 
 $.cleanData = (function( orig ) {
 	return function( elems ) {
@@ -401,21 +401,21 @@ $.widget = function( name, base, prototype ) {
 			var _super = function() {
 					return base.prototype[ prop ].apply( this, arguments );
 				},
-				_superApply = function( args ) {
+				superApply = function( args ) {
 					return base.prototype[ prop ].apply( this, args );
 				};
 			return function() {
 				var __super = this._super,
-					__superApply = this._superApply,
+					superApply = this._superApply,
 					returnValue;
 
 				this._super = _super;
-				this._superApply = _superApply;
+				this._superApply = superApply;
 
 				returnValue = value.apply( this, arguments );
 
 				this._super = __super;
-				this._superApply = __superApply;
+				this._superApply = superApply;
 
 				return returnValue;
 			};
@@ -458,7 +458,7 @@ $.widget = function( name, base, prototype ) {
 };
 
 $.widget.extend = function( target ) {
-	var input = widget_slice.call( arguments, 1 ),
+	var input = widgetSlice.call( arguments, 1 ),
 		inputIndex = 0,
 		inputLength = input.length,
 		key,
@@ -487,7 +487,7 @@ $.widget.bridge = function( name, object ) {
 	var fullName = object.prototype.widgetFullName || name;
 	$.fn[ name ] = function( options ) {
 		var isMethodCall = typeof options === "string",
-			args = widget_slice.call( arguments, 1 ),
+			args = widgetSlice.call( arguments, 1 ),
 			returnValue = this;
 
 		if ( isMethodCall ) {
@@ -553,7 +553,7 @@ $.Widget.prototype = {
 	_createWidget: function( options, element ) {
 		element = $( element || this.defaultElement || this )[ 0 ];
 		this.element = $( element );
-		this.uuid = widget_uuid++;
+		this.uuid = widgetUuid++;
 		this.eventNamespace = "." + this.widgetName + this.uuid;
 
 		this.bindings = $();
@@ -3316,7 +3316,7 @@ $.widget("ui.resizable", $.ui.mouse, {
 		this._mouseDestroy();
 
 		var wrapper,
-			_destroy = function(exp) {
+			destroy = function(exp) {
 				$(exp)
 					.removeClass("ui-resizable ui-resizable-disabled ui-resizable-resizing")
 					.removeData("resizable")
@@ -3328,7 +3328,7 @@ $.widget("ui.resizable", $.ui.mouse, {
 
 		// TODO: Unwrap at same DOM position
 		if (this.elementIsWrapper) {
-			_destroy(this.element);
+			destroy(this.element);
 			wrapper = this.element;
 			this.originalElement.css({
 				position: wrapper.css("position"),
@@ -3341,7 +3341,7 @@ $.widget("ui.resizable", $.ui.mouse, {
 		}
 
 		this.originalElement.css("resize", this.originalResizeStyle);
-		_destroy(this.originalElement);
+		destroy(this.originalElement);
 
 		return this;
 	},
@@ -4031,7 +4031,7 @@ $.ui.plugin.add("resizable", "alsoResize", {
 	start: function() {
 		var that = $(this).resizable( "instance" ),
 			o = that.options,
-			_store = function(exp) {
+			store = function(exp) {
 				$(exp).each(function() {
 					var el = $(this);
 					el.data("ui-resizable-alsoresize", {
@@ -4044,14 +4044,14 @@ $.ui.plugin.add("resizable", "alsoResize", {
 		if (typeof(o.alsoResize) === "object" && !o.alsoResize.parentNode) {
 			if (o.alsoResize.length) {
 				o.alsoResize = o.alsoResize[0];
-				_store(o.alsoResize);
+				store(o.alsoResize);
 			} else {
 				$.each(o.alsoResize, function(exp) {
-					_store(exp);
+					store(exp);
 				});
 			}
 		} else {
-			_store(o.alsoResize);
+			store(o.alsoResize);
 		}
 	},
 
@@ -4067,7 +4067,7 @@ $.ui.plugin.add("resizable", "alsoResize", {
 				left: (that.position.left - op.left) || 0
 			},
 
-			_alsoResize = function(exp, c) {
+			alsoResize = function(exp, c) {
 				$(exp).each(function() {
 					var el = $(this), start = $(this).data("ui-resizable-alsoresize"), style = {},
 						css = c && c.length ?
@@ -4089,10 +4089,10 @@ $.ui.plugin.add("resizable", "alsoResize", {
 
 		if (typeof(o.alsoResize) === "object" && !o.alsoResize.nodeType) {
 			$.each(o.alsoResize, function(exp, c) {
-				_alsoResize(exp, c);
+				alsoResize(exp, c);
 			});
 		} else {
-			_alsoResize(o.alsoResize);
+			alsoResize(o.alsoResize);
 		}
 	},
 
@@ -8011,9 +8011,9 @@ var button = $.ui.button;
 
 $.extend($.ui, { datepicker: { version: "1.11.3" } });
 
-var datepicker_instActive;
+var datepickerInstActive;
 
-function datepicker_getZindex( elem ) {
+function datepickerGetZindex( elem ) {
 	var position, value;
 	while ( elem.length && elem[ 0 ] !== document ) {
 		// Ignore z-index if position is set to a value where z-index is ignored by the browser
@@ -8127,7 +8127,7 @@ function Datepicker() {
 	$.extend(this._defaults, this.regional[""]);
 	this.regional.en = $.extend( true, {}, this.regional[ "" ]);
 	this.regional[ "en-US" ] = $.extend( true, {}, this.regional.en );
-	this.dpDiv = datepicker_bindHover($("<div id='" + this._mainDivId + "' class='ui-datepicker ui-widget ui-widget-content ui-helper-clearfix ui-corner-all'></div>"));
+	this.dpDiv = datepickerBindHover($("<div id='" + this._mainDivId + "' class='ui-datepicker ui-widget ui-widget-content ui-helper-clearfix ui-corner-all'></div>"));
 }
 
 $.extend(Datepicker.prototype, {
@@ -8147,7 +8147,7 @@ $.extend(Datepicker.prototype, {
 	 * @return the manager object
 	 */
 	setDefaults: function(settings) {
-		datepicker_extendRemove(this._defaults, settings || {});
+		datepickerExtendRemove(this._defaults, settings || {});
 		return this;
 	},
 
@@ -8180,7 +8180,7 @@ $.extend(Datepicker.prototype, {
 			drawMonth: 0, drawYear: 0, // month being drawn
 			inline: inline, // is datepicker inline or not
 			dpDiv: (!inline ? this.dpDiv : // presentation div
-			datepicker_bindHover($("<div class='" + this._inlineClass + " ui-datepicker ui-widget ui-widget-content ui-helper-clearfix ui-corner-all'></div>")))};
+			datepickerBindHover($("<div class='" + this._inlineClass + " ui-datepicker ui-widget ui-widget-content ui-helper-clearfix ui-corner-all'></div>")))};
 	},
 
 	/* Attach the date picker to an input field. */
@@ -8206,14 +8206,14 @@ $.extend(Datepicker.prototype, {
 	_attachments: function(input, inst) {
 		var showOn, buttonText, buttonImage,
 			appendText = this._get(inst, "appendText"),
-			isRTL = this._get(inst, "isRTL");
+			isRtl = this._get(inst, "isRTL");
 
 		if (inst.append) {
 			inst.append.remove();
 		}
 		if (appendText) {
 			inst.append = $("<span class='" + this._appendClass + "'>" + appendText + "</span>");
-			input[isRTL ? "before" : "after"](inst.append);
+			input[isRtl ? "before" : "after"](inst.append);
 		}
 
 		input.unbind("focus", this._showDatepicker);
@@ -8235,7 +8235,7 @@ $.extend(Datepicker.prototype, {
 				$("<button type='button'></button>").addClass(this._triggerClass).
 					html(!buttonImage ? buttonText : $("<img/>").attr(
 					{ src:buttonImage, alt:buttonText, title:buttonText })));
-			input[isRTL ? "before" : "after"](inst.trigger);
+			input[isRtl ? "before" : "after"](inst.trigger);
 			inst.trigger.click(function() {
 				if ($.datepicker._datepickerShowing && $.datepicker._lastInput === input[0]) {
 					$.datepicker._hideDatepicker();
@@ -8323,7 +8323,7 @@ $.extend(Datepicker.prototype, {
 			inst.settings = {};
 			$.data(this._dialogInput[0], "datepicker", inst);
 		}
-		datepicker_extendRemove(inst.settings, settings || {});
+		datepickerExtendRemove(inst.settings, settings || {});
 		date = (date && date.constructor === Date ? this._formatDate(inst, date) : date);
 		this._dialogInput.val(date);
 
@@ -8376,8 +8376,8 @@ $.extend(Datepicker.prototype, {
 			$target.removeClass(this.markerClassName).empty();
 		}
 
-		if ( datepicker_instActive === inst ) {
-			datepicker_instActive = null;
+		if ( datepickerInstActive === inst ) {
+			datepickerInstActive = null;
 		}
 	},
 
@@ -8501,7 +8501,7 @@ $.extend(Datepicker.prototype, {
 			date = this._getDateDatepicker(target, true);
 			minDate = this._getMinMaxDate(inst, "min");
 			maxDate = this._getMinMaxDate(inst, "max");
-			datepicker_extendRemove(inst.settings, settings);
+			datepickerExtendRemove(inst.settings, settings);
 			// reformat the old minDate/maxDate values if dateFormat changes and a new minDate/maxDate isn't provided
 			if (minDate !== null && settings.dateFormat !== undefined && settings.minDate === undefined) {
 				inst.settings.minDate = this._formatDate(inst, minDate);
@@ -8570,7 +8570,7 @@ $.extend(Datepicker.prototype, {
 		var onSelect, dateStr, sel,
 			inst = $.datepicker._getInst(event.target),
 			handled = true,
-			isRTL = inst.dpDiv.is(".ui-datepicker-rtl");
+			isRtl = inst.dpDiv.is(".ui-datepicker-rtl");
 
 		inst._keyEvent = true;
 		if ($.datepicker._datepickerShowing) {
@@ -8616,7 +8616,7 @@ $.extend(Datepicker.prototype, {
 						handled = event.ctrlKey || event.metaKey;
 						break; // current on ctrl or command +home
 				case 37: if (event.ctrlKey || event.metaKey) {
-							$.datepicker._adjustDate(event.target, (isRTL ? +1 : -1), "D");
+							$.datepicker._adjustDate(event.target, (isRtl ? +1 : -1), "D");
 						}
 						handled = event.ctrlKey || event.metaKey;
 						// -1 day on ctrl or command +left
@@ -8633,7 +8633,7 @@ $.extend(Datepicker.prototype, {
 						handled = event.ctrlKey || event.metaKey;
 						break; // -1 week on ctrl or command +up
 				case 39: if (event.ctrlKey || event.metaKey) {
-							$.datepicker._adjustDate(event.target, (isRTL ? -1 : +1), "D");
+							$.datepicker._adjustDate(event.target, (isRtl ? -1 : +1), "D");
 						}
 						handled = event.ctrlKey || event.metaKey;
 						// +1 day on ctrl or command +right
@@ -8729,7 +8729,7 @@ $.extend(Datepicker.prototype, {
 		if(beforeShowSettings === false){
 			return;
 		}
-		datepicker_extendRemove(inst.settings, beforeShowSettings);
+		datepickerExtendRemove(inst.settings, beforeShowSettings);
 
 		inst.lastVal = null;
 		$.datepicker._lastInput = input;
@@ -8766,7 +8766,7 @@ $.extend(Datepicker.prototype, {
 		if (!inst.inline) {
 			showAnim = $.datepicker._get(inst, "showAnim");
 			duration = $.datepicker._get(inst, "duration");
-			inst.dpDiv.css( "z-index", datepicker_getZindex( $( input ) ) + 1 );
+			inst.dpDiv.css( "z-index", datepickerGetZindex( $( input ) ) + 1 );
 			$.datepicker._datepickerShowing = true;
 
 			if ( $.effects && $.effects.effect[ showAnim ] ) {
@@ -8786,7 +8786,7 @@ $.extend(Datepicker.prototype, {
 	/* Generate the date picker content. */
 	_updateDatepicker: function(inst) {
 		this.maxRows = 4; //Reset the max number of rows being displayed (see #7043)
-		datepicker_instActive = inst; // for delegate hover events
+		datepickerInstActive = inst; // for delegate hover events
 		inst.dpDiv.empty().append(this._generateHTML(inst));
 		this._attachHandlers(inst);
 
@@ -8797,7 +8797,7 @@ $.extend(Datepicker.prototype, {
 			activeCell = inst.dpDiv.find( "." + this._dayOverClass + " a" );
 
 		if ( activeCell.length > 0 ) {
-			datepicker_handleMouseover.apply( activeCell.get( 0 ) );
+			datepickerHandleMouseover.apply( activeCell.get( 0 ) );
 		}
 
 		inst.dpDiv.removeClass("ui-datepicker-multi-2 ui-datepicker-multi-3 ui-datepicker-multi-4").width("");
@@ -8859,10 +8859,10 @@ $.extend(Datepicker.prototype, {
 	_findPos: function(obj) {
 		var position,
 			inst = this._getInst(obj),
-			isRTL = this._get(inst, "isRTL");
+			isRtl = this._get(inst, "isRTL");
 
 		while (obj && (obj.type === "hidden" || obj.nodeType !== 1 || $.expr.filters.hidden(obj))) {
-			obj = obj[isRTL ? "previousSibling" : "nextSibling"];
+			obj = obj[isRtl ? "previousSibling" : "nextSibling"];
 		}
 
 		position = $(obj).offset();
@@ -9617,7 +9617,7 @@ $.extend(Datepicker.prototype, {
 			tempDate = new Date(),
 			today = this._daylightSavingAdjust(
 				new Date(tempDate.getFullYear(), tempDate.getMonth(), tempDate.getDate())), // clear time
-			isRTL = this._get(inst, "isRTL"),
+			isRtl = this._get(inst, "isRTL"),
 			showButtonPanel = this._get(inst, "showButtonPanel"),
 			hideIfNoPrevNext = this._get(inst, "hideIfNoPrevNext"),
 			navigationAsDateFormat = this._get(inst, "navigationAsDateFormat"),
@@ -9658,8 +9658,8 @@ $.extend(Datepicker.prototype, {
 
 		prev = (this._canAdjustMonth(inst, -1, drawYear, drawMonth) ?
 			"<a class='ui-datepicker-prev ui-corner-all' data-handler='prev' data-event='click'" +
-			" title='" + prevText + "'><span class='ui-icon ui-icon-circle-triangle-" + ( isRTL ? "e" : "w") + "'>" + prevText + "</span></a>" :
-			(hideIfNoPrevNext ? "" : "<a class='ui-datepicker-prev ui-corner-all ui-state-disabled' title='"+ prevText +"'><span class='ui-icon ui-icon-circle-triangle-" + ( isRTL ? "e" : "w") + "'>" + prevText + "</span></a>"));
+			" title='" + prevText + "'><span class='ui-icon ui-icon-circle-triangle-" + ( isRtl ? "e" : "w") + "'>" + prevText + "</span></a>" :
+			(hideIfNoPrevNext ? "" : "<a class='ui-datepicker-prev ui-corner-all ui-state-disabled' title='"+ prevText +"'><span class='ui-icon ui-icon-circle-triangle-" + ( isRtl ? "e" : "w") + "'>" + prevText + "</span></a>"));
 
 		nextText = this._get(inst, "nextText");
 		nextText = (!navigationAsDateFormat ? nextText : this.formatDate(nextText,
@@ -9668,8 +9668,8 @@ $.extend(Datepicker.prototype, {
 
 		next = (this._canAdjustMonth(inst, +1, drawYear, drawMonth) ?
 			"<a class='ui-datepicker-next ui-corner-all' data-handler='next' data-event='click'" +
-			" title='" + nextText + "'><span class='ui-icon ui-icon-circle-triangle-" + ( isRTL ? "w" : "e") + "'>" + nextText + "</span></a>" :
-			(hideIfNoPrevNext ? "" : "<a class='ui-datepicker-next ui-corner-all ui-state-disabled' title='"+ nextText + "'><span class='ui-icon ui-icon-circle-triangle-" + ( isRTL ? "w" : "e") + "'>" + nextText + "</span></a>"));
+			" title='" + nextText + "'><span class='ui-icon ui-icon-circle-triangle-" + ( isRtl ? "w" : "e") + "'>" + nextText + "</span></a>" :
+			(hideIfNoPrevNext ? "" : "<a class='ui-datepicker-next ui-corner-all ui-state-disabled' title='"+ nextText + "'><span class='ui-icon ui-icon-circle-triangle-" + ( isRtl ? "w" : "e") + "'>" + nextText + "</span></a>"));
 
 		currentText = this._get(inst, "currentText");
 		gotoDate = (this._get(inst, "gotoCurrent") && inst.currentDay ? currentDate : today);
@@ -9679,9 +9679,9 @@ $.extend(Datepicker.prototype, {
 		controls = (!inst.inline ? "<button type='button' class='ui-datepicker-close ui-state-default ui-priority-primary ui-corner-all' data-handler='hide' data-event='click'>" +
 			this._get(inst, "closeText") + "</button>" : "");
 
-		buttonPanel = (showButtonPanel) ? "<div class='ui-datepicker-buttonpane ui-widget-content'>" + (isRTL ? controls : "") +
+		buttonPanel = (showButtonPanel) ? "<div class='ui-datepicker-buttonpane ui-widget-content'>" + (isRtl ? controls : "") +
 			(this._isInRange(inst, gotoDate) ? "<button type='button' class='ui-datepicker-current ui-state-default ui-priority-secondary ui-corner-all' data-handler='today' data-event='click'" +
-			">" + currentText + "</button>" : "") + (isRTL ? "" : controls) + "</div>" : "";
+			">" + currentText + "</button>" : "") + (isRtl ? "" : controls) + "</div>" : "";
 
 		firstDay = parseInt(this._get(inst, "firstDay"),10);
 		firstDay = (isNaN(firstDay) ? 0 : firstDay);
@@ -9709,17 +9709,17 @@ $.extend(Datepicker.prototype, {
 					if (numMonths[1] > 1) {
 						switch (col) {
 							case 0: calender += " ui-datepicker-group-first";
-								cornerClass = " ui-corner-" + (isRTL ? "right" : "left"); break;
+								cornerClass = " ui-corner-" + (isRtl ? "right" : "left"); break;
 							case numMonths[1]-1: calender += " ui-datepicker-group-last";
-								cornerClass = " ui-corner-" + (isRTL ? "left" : "right"); break;
+								cornerClass = " ui-corner-" + (isRtl ? "left" : "right"); break;
 							default: calender += " ui-datepicker-group-middle"; cornerClass = ""; break;
 						}
 					}
 					calender += "'>";
 				}
 				calender += "<div class='ui-datepicker-header ui-widget-header ui-helper-clearfix" + cornerClass + "'>" +
-					(/all|left/.test(cornerClass) && row === 0 ? (isRTL ? next : prev) : "") +
-					(/all|right/.test(cornerClass) && row === 0 ? (isRTL ? prev : next) : "") +
+					(/all|left/.test(cornerClass) && row === 0 ? (isRtl ? next : prev) : "") +
+					(/all|right/.test(cornerClass) && row === 0 ? (isRtl ? prev : next) : "") +
 					this._generateMonthYearHeader(inst, drawMonth, drawYear, minDate, maxDate,
 					row > 0 || col > 0, monthNames, monthNamesShort) + // draw month headers
 					"</div><table class='ui-datepicker-calendar'><thead>" +
@@ -9983,7 +9983,7 @@ $.extend(Datepicker.prototype, {
  * Done via delegate so the binding only occurs once in the lifetime of the parent div.
  * Global datepicker_instActive, set by _updateDatepicker allows the handlers to find their way back to the active picker.
  */
-function datepicker_bindHover(dpDiv) {
+function datepickerBindHover(dpDiv) {
 	var selector = "button, .ui-datepicker-prev, .ui-datepicker-next, .ui-datepicker-calendar td a";
 	return dpDiv.delegate(selector, "mouseout", function() {
 			$(this).removeClass("ui-state-hover");
@@ -9994,11 +9994,11 @@ function datepicker_bindHover(dpDiv) {
 				$(this).removeClass("ui-datepicker-next-hover");
 			}
 		})
-		.delegate( selector, "mouseover", datepicker_handleMouseover );
+		.delegate( selector, "mouseover", datepickerHandleMouseover );
 }
 
-function datepicker_handleMouseover() {
-	if (!$.datepicker._isDisabledDatepicker( datepicker_instActive.inline? datepicker_instActive.dpDiv.parent()[0] : datepicker_instActive.input[0])) {
+function datepickerHandleMouseover() {
+	if (!$.datepicker._isDisabledDatepicker( datepickerInstActive.inline? datepickerInstActive.dpDiv.parent()[0] : datepickerInstActive.input[0])) {
 		$(this).parents(".ui-datepicker-calendar").find("a").removeClass("ui-state-hover");
 		$(this).addClass("ui-state-hover");
 		if (this.className.indexOf("ui-datepicker-prev") !== -1) {
@@ -10011,7 +10011,7 @@ function datepicker_handleMouseover() {
 }
 
 /* jQuery extend now ignores nulls! */
-function datepicker_extendRemove(target, props) {
+function datepickerExtendRemove(target, props) {
 	$.extend(target, props);
 	for (var name in props) {
 		if (props[name] == null) {
@@ -12238,13 +12238,13 @@ var slider = $.widget( "ui.slider", $.ui.mouse, {
 			o = this.options,
 			that = this,
 			animate = ( !this._animateOff ) ? o.animate : false,
-			_set = {};
+			set = {};
 
 		if ( this.options.values && this.options.values.length ) {
 			this.handles.each(function( i ) {
 				valPercent = ( that.values(i) - that._valueMin() ) / ( that._valueMax() - that._valueMin() ) * 100;
-				_set[ that.orientation === "horizontal" ? "left" : "bottom" ] = valPercent + "%";
-				$( this ).stop( 1, 1 )[ animate ? "animate" : "css" ]( _set, o.animate );
+				set[ that.orientation === "horizontal" ? "left" : "bottom" ] = valPercent + "%";
+				$( this ).stop( 1, 1 )[ animate ? "animate" : "css" ]( set, o.animate );
 				if ( that.options.range === true ) {
 					if ( that.orientation === "horizontal" ) {
 						if ( i === 0 ) {
@@ -12271,8 +12271,8 @@ var slider = $.widget( "ui.slider", $.ui.mouse, {
 			valPercent = ( valueMax !== valueMin ) ?
 					( value - valueMin ) / ( valueMax - valueMin ) * 100 :
 					0;
-			_set[ this.orientation === "horizontal" ? "left" : "bottom" ] = valPercent + "%";
-			this.handle.stop( 1, 1 )[ animate ? "animate" : "css" ]( _set, o.animate );
+			set[ this.orientation === "horizontal" ? "left" : "bottom" ] = valPercent + "%";
+			this.handle.stop( 1, 1 )[ animate ? "animate" : "css" ]( set, o.animate );
 
 			if ( oRange === "min" && this.orientation === "horizontal" ) {
 				this.range.stop( 1, 1 )[ animate ? "animate" : "css" ]( { width: valPercent + "%" }, o.animate );
@@ -12382,7 +12382,7 @@ var slider = $.widget( "ui.slider", $.ui.mouse, {
  */
 
 
-function spinner_modifier( fn ) {
+function spinnerModifier( fn ) {
 	return function() {
 		var previous = this.element.val();
 		fn.apply( this, arguments );
@@ -12758,7 +12758,7 @@ var spinner = $.widget( "ui.spinner", {
 		}
 	},
 
-	_setOptions: spinner_modifier(function( options ) {
+	_setOptions: spinnerModifier(function( options ) {
 		this._super( options );
 	}),
 
@@ -12828,7 +12828,7 @@ var spinner = $.widget( "ui.spinner", {
 		this.uiSpinner.replaceWith( this.element );
 	},
 
-	stepUp: spinner_modifier(function( steps ) {
+	stepUp: spinnerModifier(function( steps ) {
 		this._stepUp( steps );
 	}),
 	_stepUp: function( steps ) {
@@ -12838,7 +12838,7 @@ var spinner = $.widget( "ui.spinner", {
 		}
 	},
 
-	stepDown: spinner_modifier(function( steps ) {
+	stepDown: spinnerModifier(function( steps ) {
 		this._stepDown( steps );
 	}),
 	_stepDown: function( steps ) {
@@ -12848,11 +12848,11 @@ var spinner = $.widget( "ui.spinner", {
 		}
 	},
 
-	pageUp: spinner_modifier(function( pages ) {
+	pageUp: spinnerModifier(function( pages ) {
 		this._stepUp( (pages || 1) * this.options.page );
 	}),
 
-	pageDown: spinner_modifier(function( pages ) {
+	pageDown: spinnerModifier(function( pages ) {
 		this._stepDown( (pages || 1) * this.options.page );
 	}),
 
@@ -12860,7 +12860,7 @@ var spinner = $.widget( "ui.spinner", {
 		if ( !arguments.length ) {
 			return this._parse( this.element.val() );
 		}
-		spinner_modifier( this._value ).call( this, newVal );
+		spinnerModifier( this._value ).call( this, newVal );
 	},
 
 	widget: function() {
@@ -13699,7 +13699,7 @@ var tabs = $.widget( "ui.tabs", {
 						that._trigger( "load", event, eventData );
 					}, 1 );
 				})
-				.complete(function( jqXHR, status ) {
+				.complete(function( jqXhr, status ) {
 					// support: jQuery <1.8
 					// http://bugs.jquery.com/ticket/11778
 					setTimeout(function() {
@@ -13710,7 +13710,7 @@ var tabs = $.widget( "ui.tabs", {
 						tab.removeClass( "ui-tabs-loading" );
 						panel.removeAttr( "aria-busy" );
 
-						if ( jqXHR === that.xhr ) {
+						if ( jqXhr === that.xhr ) {
 							delete that.xhr;
 						}
 					}, 1 );
@@ -13722,9 +13722,9 @@ var tabs = $.widget( "ui.tabs", {
 		var that = this;
 		return {
 			url: anchor.attr( "href" ),
-			beforeSend: function( jqXHR, settings ) {
+			beforeSend: function( jqXhr, settings ) {
 				return that._trigger( "beforeLoad", event,
-					$.extend( { jqXHR: jqXHR, ajaxSettings: settings }, eventData ) );
+					$.extend( { jqXHR: jqXhr, ajaxSettings: settings }, eventData ) );
 			}
 		};
 	},
@@ -13955,7 +13955,7 @@ var tooltip = $.widget( "ui.tooltip", {
 	},
 
 	_open: function( event, target, content ) {
-		var tooltipData, tooltip, events, delayedShow, a11yContent,
+		var tooltipData, tooltip, events, delayedShow, a11YContent,
 			positionOption = $.extend( {}, this.options.position );
 
 		if ( !content ) {
@@ -13995,12 +13995,12 @@ var tooltip = $.widget( "ui.tooltip", {
 		// Voiceover will sometimes re-read the entire log region's contents from the beginning
 		this.liveRegion.children().hide();
 		if ( content.clone ) {
-			a11yContent = content.clone();
-			a11yContent.removeAttr( "id" ).find( "[id]" ).removeAttr( "id" );
+			a11YContent = content.clone();
+			a11YContent.removeAttr( "id" ).find( "[id]" ).removeAttr( "id" );
 		} else {
-			a11yContent = content;
+			a11YContent = content;
 		}
-		$( "<div>" ).html( a11yContent ).appendTo( this.liveRegion );
+		$( "<div>" ).html( a11YContent ).appendTo( this.liveRegion );
 
 		function position( event ) {
 			positionOption.of = event;
@@ -14628,7 +14628,7 @@ color.fn.parse.prototype = color.fn;
 // hsla conversions adapted from:
 // https://code.google.com/p/maashaack/source/browse/packages/graphics/trunk/src/graphics/colors/HUE2RGB.as?r=5021
 
-function hue2rgb( p, q, h ) {
+function hue2Rgb( p, q, h ) {
 	h = ( h + 1 ) % 1;
 	if ( h * 6 < 1 ) {
 		return p + ( q - p ) * h * 6;
@@ -14691,9 +14691,9 @@ spaces.hsla.from = function( hsla ) {
 		p = 2 * l - q;
 
 	return [
-		Math.round( hue2rgb( p, q, h + ( 1 / 3 ) ) * 255 ),
-		Math.round( hue2rgb( p, q, h ) * 255 ),
-		Math.round( hue2rgb( p, q, h - ( 1 / 3 ) ) * 255 ),
+		Math.round( hue2Rgb( p, q, h + ( 1 / 3 ) ) * 255 ),
+		Math.round( hue2Rgb( p, q, h ) * 255 ),
+		Math.round( hue2Rgb( p, q, h - ( 1 / 3 ) ) * 255 ),
 		a
 	];
 };
@@ -15241,7 +15241,7 @@ $.extend( $.effects, {
 });
 
 // return an effect options object for the given parameters:
-function _normalizeArguments( effect, options, speed, callback ) {
+function normalizeArguments( effect, options, speed, callback ) {
 
 	// allow passing all options as the first parameter
 	if ( $.isPlainObject( effect ) ) {
@@ -15320,7 +15320,7 @@ function standardAnimationOption( option ) {
 
 $.fn.extend({
 	effect: function( /* effect, options, speed, callback */ ) {
-		var args = _normalizeArguments.apply( this, arguments ),
+		var args = normalizeArguments.apply( this, arguments ),
 			mode = args.mode,
 			queue = args.queue,
 			effectMethod = $.effects.effect[ args.effect ];
@@ -15370,7 +15370,7 @@ $.fn.extend({
 			if ( standardAnimationOption( option ) ) {
 				return orig.apply( this, arguments );
 			} else {
-				var args = _normalizeArguments.apply( this, arguments );
+				var args = normalizeArguments.apply( this, arguments );
 				args.mode = "show";
 				return this.effect.call( this, args );
 			}
@@ -15382,7 +15382,7 @@ $.fn.extend({
 			if ( standardAnimationOption( option ) ) {
 				return orig.apply( this, arguments );
 			} else {
-				var args = _normalizeArguments.apply( this, arguments );
+				var args = normalizeArguments.apply( this, arguments );
 				args.mode = "hide";
 				return this.effect.call( this, args );
 			}
@@ -15394,7 +15394,7 @@ $.fn.extend({
 			if ( standardAnimationOption( option ) || typeof option === "boolean" ) {
 				return orig.apply( this, arguments );
 			} else {
-				var args = _normalizeArguments.apply( this, arguments );
+				var args = normalizeArguments.apply( this, arguments );
 				args.mode = "toggle";
 				return this.effect.call( this, args );
 			}
@@ -16153,7 +16153,7 @@ var effectSize = $.effects.effect.size = function( o, done ) {
 
 		el.find( "*[width]" ).each( function() {
 			var child = $( this ),
-				c_original = {
+				cOriginal = {
 					height: child.height(),
 					width: child.width(),
 					outerHeight: child.outerHeight(),
@@ -16164,16 +16164,16 @@ var effectSize = $.effects.effect.size = function( o, done ) {
 			}
 
 			child.from = {
-				height: c_original.height * factor.from.y,
-				width: c_original.width * factor.from.x,
-				outerHeight: c_original.outerHeight * factor.from.y,
-				outerWidth: c_original.outerWidth * factor.from.x
+				height: cOriginal.height * factor.from.y,
+				width: cOriginal.width * factor.from.x,
+				outerHeight: cOriginal.outerHeight * factor.from.y,
+				outerWidth: cOriginal.outerWidth * factor.from.x
 			};
 			child.to = {
-				height: c_original.height * factor.to.y,
-				width: c_original.width * factor.to.x,
-				outerHeight: c_original.height * factor.to.y,
-				outerWidth: c_original.width * factor.to.x
+				height: cOriginal.height * factor.to.y,
+				width: cOriginal.width * factor.to.x,
+				outerHeight: cOriginal.height * factor.to.y,
+				outerWidth: cOriginal.width * factor.to.x
 			};
 
 			// Vertical props scaling

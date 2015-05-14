@@ -26,15 +26,15 @@
    * ========================= */
 
   var toggle = '[data-toggle=bfh-datepicker]',
-      BFHDatePicker = function (element, options) {
+      bfhDatePicker = function (element, options) {
         this.options = $.extend({}, $.fn.bfhdatepicker.defaults, options);
         this.$element = $(element);
         this.initCalendar();
       };
 
-  BFHDatePicker.prototype = {
+  bfhDatePicker.prototype = {
 
-    constructor: BFHDatePicker,
+    constructor: bfhDatePicker,
 
     daysInMonth: function(month, year) {
       return new Date(year, month, 0).getDate();
@@ -427,7 +427,7 @@
       options = typeof option === 'object' && option;
         
       if (!data) {
-        $this.data('bfhdatepicker', (data = new BFHDatePicker(this, options)));
+        $this.data('bfhdatepicker', (data = new bfhDatePicker(this, options)));
       }
       if (typeof option === 'string') {
         data[option]();
@@ -435,7 +435,7 @@
     });
   };
 
-  $.fn.bfhdatepicker.Constructor = BFHDatePicker;
+  $.fn.bfhdatepicker.Constructor = bfhDatePicker;
 
   $.fn.bfhdatepicker.defaults = {
     format: 'm/d/y',
@@ -467,12 +467,12 @@
     $('html')
       .on('click.bfhdatepicker.data-api', clearMenus);
     $('body')
-      .on('click.bfhdatepicker.data-api focus.bfhdatepicker.data-api touchstart.bfhdatepicker.data-api', toggle, BFHDatePicker.prototype.toggle)
-      .on('click.bfhdatepicker.data-api touchstart.bfhdatepicker.data-api', '.bfh-datepicker-calendar > table.calendar .month > .previous', BFHDatePicker.prototype.previousMonth)
-      .on('click.bfhdatepicker.data-api touchstart.bfhdatepicker.data-api', '.bfh-datepicker-calendar > table.calendar .month > .next', BFHDatePicker.prototype.nextMonth)
-      .on('click.bfhdatepicker.data-api touchstart.bfhdatepicker.data-api', '.bfh-datepicker-calendar > table.calendar .year > .previous', BFHDatePicker.prototype.previousYear)
-      .on('click.bfhdatepicker.data-api touchstart.bfhdatepicker.data-api', '.bfh-datepicker-calendar > table.calendar .year > .next', BFHDatePicker.prototype.nextYear)
-      .on('click.bfhdatepicker.data-api touchstart.bfhdatepicker.data-api', '.bfh-datepicker-calendar > table.calendar td:not(.off)', BFHDatePicker.prototype.select)
+      .on('click.bfhdatepicker.data-api focus.bfhdatepicker.data-api touchstart.bfhdatepicker.data-api', toggle, bfhDatePicker.prototype.toggle)
+      .on('click.bfhdatepicker.data-api touchstart.bfhdatepicker.data-api', '.bfh-datepicker-calendar > table.calendar .month > .previous', bfhDatePicker.prototype.previousMonth)
+      .on('click.bfhdatepicker.data-api touchstart.bfhdatepicker.data-api', '.bfh-datepicker-calendar > table.calendar .month > .next', bfhDatePicker.prototype.nextMonth)
+      .on('click.bfhdatepicker.data-api touchstart.bfhdatepicker.data-api', '.bfh-datepicker-calendar > table.calendar .year > .previous', bfhDatePicker.prototype.previousYear)
+      .on('click.bfhdatepicker.data-api touchstart.bfhdatepicker.data-api', '.bfh-datepicker-calendar > table.calendar .year > .next', bfhDatePicker.prototype.nextYear)
+      .on('click.bfhdatepicker.data-api touchstart.bfhdatepicker.data-api', '.bfh-datepicker-calendar > table.calendar td:not(.off)', bfhDatePicker.prototype.select)
       .on('click.bfhdatepicker.data-api touchstart.bfhdatepicker.data-api', '.bfh-datepicker-calendar > table.calendar', function() { return false; });
   });
 

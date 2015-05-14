@@ -1,14 +1,14 @@
 ﻿Namespace Wine.Common
 
-    Public Class SQLFunctions
+    Public Class SqlFunctions
 
-        Public Shared Function SelectDistinct(ByVal TableName As String, _
-                                       ByVal SourceTable As DataTable, _
-                                       ByVal FieldName As String) As DataTable
+        Public Shared Function SelectDistinct(ByVal tableName As String, _
+                                       ByVal sourceTable As DataTable, _
+                                       ByVal fieldName As String) As DataTable
             Dim dt As New DataTable(TableName)
             dt.Columns.Add(FieldName, SourceTable.Columns(FieldName).DataType)
             Dim dr As DataRow
-            Dim LastValue As Object = Nothing
+            Dim lastValue As Object = Nothing
             For Each dr In SourceTable.Select("", FieldName)
                 If LastValue Is Nothing OrElse Not ColumnEqual(LastValue, dr(FieldName)) Then
                     LastValue = dr(FieldName)
@@ -18,7 +18,7 @@
             Return dt
         End Function
 
-        Private Shared Function ColumnEqual(ByVal A As Object, ByVal B As Object) As Boolean
+        Private Shared Function ColumnEqual(ByVal a As Object, ByVal b As Object) As Boolean
             '
             ' Compares two values to determine if they are equal. Also compares DBNULL.Value.
             '

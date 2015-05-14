@@ -15,14 +15,14 @@ Namespace Wine.Common
         Private Shared _instance As XmlConfig
         Private Shared _configHash As Hashtable
         Private Shared _configError As String
-        Public Const CONFIG_ERR_STR As String = "CONFIGURATION ERROR: "
+        Public Const ConfigErrStr As String = "CONFIGURATION ERROR: "
 
         Private Sub New()
             ' This prevents .Net from creating a default Public constructor and also prevents any caller from creating their
             ' own instance of the object. 
         End Sub
 
-        Private Shared Function initSingleton() As XmlConfig
+        Private Shared Function InitSingleton() As XmlConfig
             '
             ' initialize object if it hasn't already been done
             '
@@ -34,7 +34,7 @@ Namespace Wine.Common
                 If File.Exists(configFileLoc) Then
                     FillConfigHash(configFileLoc)
                 Else
-                    _configError = CONFIG_ERR_STR + "File not found at required config file location of: " + configFileLoc
+                    _configError = ConfigErrStr + "File not found at required config file location of: " + configFileLoc
                 End If
             End If
             '
@@ -50,7 +50,7 @@ Namespace Wine.Common
                     If reader.IsStartElement() Then
                         If Not reader.Name.Equals("configuration") Then
                             If _configHash.ContainsKey(reader.Name) Then
-                                _configError = CONFIG_ERR_STR + "Duplicate Key found in WineConfig.xml file. Key Name = " + reader.Name
+                                _configError = ConfigErrStr + "Duplicate Key found in WineConfig.xml file. Key Name = " + reader.Name
                             Else
                                 Dim key As String = reader.Name
                                 reader.Read()
@@ -71,7 +71,7 @@ Namespace Wine.Common
                 If _configHash.ContainsKey(key) Then
                     result = _configHash(key)
                 Else
-                    result = CONFIG_ERR_STR + "ConfigVal for key " + key + " not found in WineConfig.xml file."
+                    result = ConfigErrStr + "ConfigVal for key " + key + " not found in WineConfig.xml file."
                 End If
             End If
             Return result
@@ -84,7 +84,7 @@ Namespace Wine.Common
                 result = _configError
             Else
                 If _configHash.ContainsKey(key) Then
-                    result = CONFIG_ERR_STR + "ConfigVal for key " + key + " already exists in WineConfig.xml file."
+                    result = ConfigErrStr + "ConfigVal for key " + key + " already exists in WineConfig.xml file."
                 Else
                     _configHash.Add(key, value)
                     result = value
@@ -106,7 +106,7 @@ Namespace Wine.Common
                 myXml.Save(configFileLoc)
                 result = "Success"
             Else
-                result = CONFIG_ERR_STR + "ConfigVal for key " + key + " not found in WineConfig.xml file."
+                result = ConfigErrStr + "ConfigVal for key " + key + " not found in WineConfig.xml file."
             End If
 
             Return result

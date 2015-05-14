@@ -3,9 +3,9 @@ Imports System.Text
 
 Namespace Wine.Common
 
-    Public Class HTML
+    Public Class Html
 
-        Public Shared Function CleanURL(ByVal thisStr As String, Optional ByVal KeepURLPath As Boolean = False) As String
+        Public Shared Function CleanUrl(ByVal thisStr As String, Optional ByVal keepUrlPath As Boolean = False) As String
 
             Dim str As New System.Text.StringBuilder
 
@@ -46,7 +46,7 @@ Namespace Wine.Common
         End Function
 
 
-        Public Shared Function changeMimeType(ByVal MimeType As String)
+        Public Shared Function ChangeMimeType(ByVal mimeType As String)
 
             Dim fileNameString As String
             Dim newFileNameString As String
@@ -101,7 +101,7 @@ Namespace Wine.Common
         End Function
 
 
-        Public Shared Function stripHTML(ByVal strHTML)
+        Public Shared Function StripHtml(ByVal strHtml)
             'Strips the HTML tags from strHTML using split and join
 
             'Ensure that strHTML contains something
@@ -145,7 +145,7 @@ Namespace Wine.Common
         End Function
 
 
-        Public Shared Function convertBytes(ByVal byteCount)
+        Public Shared Function ConvertBytes(ByVal byteCount)
             Dim convertedBytes As String
             convertedBytes = byteCount
             If Not byteCount Is Nothing Then
@@ -155,7 +155,7 @@ Namespace Wine.Common
         End Function
 
 
-        Public Shared Function convertBytesMB(ByVal byteCount)
+        Public Shared Function ConvertBytesMb(ByVal byteCount)
             Dim convertedBytes As String
             convertedBytes = byteCount
             If Not byteCount Is Nothing Then
@@ -460,7 +460,7 @@ Namespace Wine.Common
 
 
 
-        Public Shared Function getColumnIndexByHeaderText(gridView As GridView, ByVal headerText As String) As Integer
+        Public Shared Function GetColumnIndexByHeaderText(gridView As GridView, ByVal headerText As String) As Integer
             Dim result As Integer = -1
 
             For Each column As DataControlField In gridView.Columns

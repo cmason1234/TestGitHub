@@ -15,10 +15,10 @@
  */
 (function ($) {
 	//Shortcut for fancyBox object
-	var F = $.fancybox;
+	var f = $.fancybox;
 
 	//Add helper object
-	F.helpers.buttons = {
+	f.helpers.buttons = {
 		defaults : {
 			skipSingle : false, // disables if gallery contains single image
 			position   : 'top', // 'top' or 'bottom'
@@ -61,11 +61,11 @@
 				this.list = $(opts.tpl).addClass(opts.position).appendTo('body');
 
 				buttons = {
-					prev   : this.list.find('.btnPrev').click( F.prev ),
-					next   : this.list.find('.btnNext').click( F.next ),
-					play   : this.list.find('.btnPlay').click( F.play ),
-					toggle : this.list.find('.btnToggle').click( F.toggle ),
-					close  : this.list.find('.btnClose').click( F.close )
+					prev   : this.list.find('.btnPrev').click( f.prev ),
+					next   : this.list.find('.btnNext').click( f.next ),
+					play   : this.list.find('.btnPlay').click( f.play ),
+					toggle : this.list.find('.btnToggle').click( f.toggle ),
+					close  : this.list.find('.btnClose').click( f.close )
 				}
 			}
 

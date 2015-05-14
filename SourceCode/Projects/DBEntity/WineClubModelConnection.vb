@@ -3,10 +3,10 @@ Imports System.Data.Objects
 Imports System.Data.Entity.Infrastructure
 
 
-Partial Public Class mywinecompetitionEntities
+Partial Public Class MywinecompetitionEntities
     Inherits DbContext
 
-    Public Sub New(ConnectionString As String)
+    Public Sub New(connectionString As String)
         MyBase.New(nameOrConnectionString:=Wine.Common.XmlConfig.ConfigVal("WineCompetition_ConnectionString"))
     End Sub
 

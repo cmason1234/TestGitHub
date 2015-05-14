@@ -25,7 +25,7 @@
  /* STATES CLASS DEFINITION
   * ====================== */
 
-  var BFHStates = function (element, options) {
+  var bfhStates = function (element, options) {
     this.options = $.extend({}, $.fn.bfhstates.defaults, options)
     this.$element = $(element)
     
@@ -42,9 +42,9 @@
     }
   }
 
-  BFHStates.prototype = {
+  bfhStates.prototype = {
 
-    constructor: BFHStates
+    constructor: bfhStates
 
     , addStates: function () {
       var country = this.options.country
@@ -155,12 +155,12 @@
         , data = $this.data('bfhstates')
         , options = typeof option == 'object' && option
         
-      if (!data) $this.data('bfhstates', (data = new BFHStates(this, options)))
+      if (!data) $this.data('bfhstates', (data = new bfhStates(this, options)))
       if (typeof option == 'string') data[option]()
     })
   }
 
-  $.fn.bfhstates.Constructor = BFHStates
+  $.fn.bfhstates.Constructor = bfhStates
 
   $.fn.bfhstates.defaults = {
     country: "",

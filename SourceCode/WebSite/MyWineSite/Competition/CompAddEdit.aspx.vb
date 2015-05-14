@@ -4,13 +4,13 @@ Namespace Wine.Web
     Public Class CompAddEdit
         Inherits WebMaster
 
-        Dim userMessage As String = ""
+        Dim _userMessage As String = ""
 
         Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
             Master.AppTitle = "Competition Add/Edit"
             If Not IsPostBack Then
-                Dim sCompID As String = Request.Params("CompetitionID")
-                Dim competitionID As Integer = 0
+                Dim sCompId As String = Request.Params("CompetitionID")
+                Dim competitionId As Integer = 0
                 divMontlyList.Visible = False
                 divYearlyList.Visible = False
                 If Request.Params("CompetitionID") IsNot Nothing Then
@@ -27,13 +27,13 @@ Namespace Wine.Web
 
         Protected Sub Page_LoadComplete(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.LoadComplete
             ucErrorMessages.Visible = False
-            If userMessage.Trim.Length > 0 Then
+            If _userMessage.Trim.Length > 0 Then
                 ucErrorMessages.Visible = True
-                ucErrorMessages.SetDescription(userMessage)
+                ucErrorMessages.SetDescription(_userMessage)
             End If
         End Sub
 
-        Private Sub LoadFromDB(competitionID As Integer)
+        Private Sub LoadFromDb(competitionId As Integer)
             divMontlyList.Visible = False
             divYearlyList.Visible = False
 
@@ -66,7 +66,7 @@ Namespace Wine.Web
             End If
         End Sub
 
-        Private Sub ShowMonthlyCompResults(competitionID As Integer, bind As Boolean)
+        Private Sub ShowMonthlyCompResults(competitionId As Integer, bind As Boolean)
             divMontlyList.Visible = True
 
             Dim sql As String
@@ -75,7 +75,7 @@ Namespace Wine.Web
                 "from WineEntry where CompetitionID = " & competitionID.ToString & "   order by  AvgScore desc, EntryID asc"
 
             Dim pds As New System.Data.DataSet
-            Wine.Common.SQL.FillDataSet(pds, sql, "WineEntry")
+            Wine.Common.Sql.FillDataSet(pds, sql, "WineEntry")
             If pds.Tables(0).Rows.Count > 0 Then
                 litMontlyCount.Text = "(" & pds.Tables(0).Rows.Count & ")"
             End If
@@ -92,7 +92,7 @@ Namespace Wine.Web
         End Sub
 
 
-        Private Sub ShowYearlyCompResults(competitionID As Integer, bind As Boolean)
+        Private Sub ShowYearlyCompResults(competitionId As Integer, bind As Boolean)
             divYearlyList.Visible = True
 
             Dim sql As String
@@ -115,7 +115,7 @@ Namespace Wine.Web
                 "from WineEntry where CompetitionID = " & competitionID.ToString & " and medalcolor is null " &
                 "order by MedalOrder"
             Dim mds As New System.Data.DataSet
-            Wine.Common.SQL.FillDataSet(mds, sql, "WineColors")
+            Wine.Common.Sql.FillDataSet(mds, sql, "WineColors")
 
             sql = "select WineEntryID, CompetitionID, EntryID, WineName, " &
                      "TableNum, FlightNum, SeqNum, AvgScore, CatNum, " &
@@ -131,7 +131,7 @@ Namespace Wine.Web
                 " order by  MedalOrder, catnum, AvgScore desc"
 
             Dim pds As New System.Data.DataSet
-            Wine.Common.SQL.FillDataSet(pds, sql, "WineEntry")
+            Wine.Common.Sql.FillDataSet(pds, sql, "WineEntry")
             If pds.Tables(0).Rows.Count > 0 Then
                 litYearlyCount.Text = "(" & pds.Tables(0).Rows.Count & ")"
             End If
@@ -171,8 +171,8 @@ Namespace Wine.Web
         End Sub
 
         Private Sub SaveCompetition()
-            Dim sCompID As String = hfCompetitionID.Value
-            Dim competitionID As Integer = 0
+            Dim sCompId As String = hfCompetitionID.Value
+            Dim competitionId As Integer = 0
 
             Dim db As New DBEntity.mywinecompetitionEntities(Wine.Common.XmlConfig.ConfigVal("WineCompetition_ConnectionString"))
             Dim competition As DBEntity.Competition = Nothing
@@ -207,7 +207,7 @@ Namespace Wine.Web
             hfCompetitionID.Value = competition.CompetitionId.ToString
             LoadFromDB(competition.CompetitionId)
             delArea.Visible = True
-            userMessage = "Competition successfully saved"
+            _userMessage = "Competition successfully saved"
         End Sub
 
 
@@ -220,8 +220,8 @@ Namespace Wine.Web
         End Sub
 
         Private Sub DeleteCompetition()
-            Dim sCompID As String = hfCompetitionID.Value
-            Dim competitionID As Integer = 0
+            Dim sCompId As String = hfCompetitionID.Value
+            Dim competitionId As Integer = 0
 
             Dim db As New DBEntity.mywinecompetitionEntities(Wine.Common.XmlConfig.ConfigVal("WineCompetition_ConnectionString"))
             Dim competition As DBEntity.Competition = Nothing
@@ -241,8 +241,8 @@ Namespace Wine.Web
             Dim sWineNum As String = ""
 
             Dim wineNum As Integer = 0
-            Dim sCompID As String = hfCompetitionID.Value
-            Dim competitionID As Integer = 0
+            Dim sCompId As String = hfCompetitionID.Value
+            Dim competitionId As Integer = 0
 
             If sender.ID = "btnSwitch1" Then
                 sWineNum = tbWineSwitch1.Value
@@ -257,15 +257,15 @@ Namespace Wine.Web
                     Dim db As New DBEntity.mywinecompetitionEntities(Wine.Common.XmlConfig.ConfigVal("WineCompetition_ConnectionString"))
                     Dim wineScoringList = (From s In db.WineEntries Where s.EntryID = wineNum And s.CompetitionID = competitionID).ToList
                     If wineScoringList.Count > 0 Then
-                        Dim wineEntryID As Integer = wineScoringList.FirstOrDefault.WineEntryID
+                        Dim wineEntryId As Integer = wineScoringList.FirstOrDefault.WineEntryID
                         Response.Redirect("/Competition/WineEntryAddEdit.aspx?CompetitionID=" & hfCompetitionID.Value & "&WineEntryID=" & wineEntryID.ToString)
                     Else
                         ucErrorMessages.MessageClass() = "msgErr"
-                        userMessage = "Unable to find Wine Entry # " + sWineNum + " in this competition"
+                        _userMessage = "Unable to find Wine Entry # " + sWineNum + " in this competition"
                     End If
                 End If
             Else
-                userMessage = "Unable to figure out where to find the wine Number - This should never happen"
+                _userMessage = "Unable to figure out where to find the wine Number - This should never happen"
             End If
         End Sub
 

@@ -3,14 +3,12 @@ Imports System.Data.OleDb
 
 Namespace Wine.Common
 
-    Public Class SQL
+    Public Class Sql
 
-        Public Shared Function ConnStrFromEDMXConnStr(edmxConnStr As String) As String
+        Public Shared Function ConnStrFromEdmxConnStr(edmxConnStr As String) As String
 
-            Dim connStr As String = ""
-
-            Dim quoteStart As Integer = edmxConnStr.IndexOf("""")
-            Dim quoteEnd As Integer = edmxConnStr.IndexOf("""", quoteStart + 1)
+            Dim quoteStart As Integer = edmxConnStr.IndexOf("""", StringComparison.Ordinal)
+            Dim quoteEnd As Integer = edmxConnStr.IndexOf("""", quoteStart + 1, StringComparison.Ordinal)
 
             Dim dsConnStr As String = edmxConnStr.Substring(quoteStart + 1, quoteEnd - quoteStart - 1)
             dsConnStr = dsConnStr.Replace(";user id", ";uid").Replace(";password", ";pwd")
@@ -19,7 +17,7 @@ Namespace Wine.Common
 
         End Function
 
-        Private Shared Function SQLSafe(ByVal instr As String) As String
+        Private Shared Function SqlSafe(ByVal instr As String) As String
             SQLSafe = instr.Replace("'", "''")
         End Function
 
@@ -127,7 +125,7 @@ Namespace Wine.Common
         End Sub
 
 
-        Public Shared Sub ExecuteSQLCommand(ByVal inSql As String, Optional logException As Boolean = True)
+        Public Shared Sub ExecuteSqlCommand(ByVal inSql As String, Optional logException As Boolean = True)
             Try
                 Dim myConnection As New SqlConnection(ConnStrFromEDMXConnStr(Wine.Common.XmlConfig.ConfigVal("WineCompetition_ConnectionString")))
                 Dim myCommand As New SqlCommand(inSql, myConnection)
@@ -141,8 +139,8 @@ Namespace Wine.Common
                 If logException Then
                     Dim sqlStr As String = "INSERT INTO ExceptionLog (ExceptionLogID, PersonID, ErrDateTime, FatalBit, ErrPage, ErrFirstLineNumber, ErrMessage) values (NEWID(), 'D02FE02A-AADD-40DC-8C43-76F772A712D8', GETDATE(), 1, 'SEE DETAILS', 'SEE DETAILS',"
                     inSql = "ERROR ExecuteSQLCommand where inSql = " + inSql
-                    sqlStr += Wine.Common.SQL.Quote(inSql) + ")"
-                    ExecuteSQLCommand(inSql:=sqlStr, logException:=False)
+                    sqlStr += Wine.Common.Sql.Quote(inSql) + ")"
+                    ExecuteSqlCommand(inSql:=sqlStr, logException:=False)
                     Throw ex
                 End If
             End Try
@@ -185,7 +183,7 @@ Namespace Wine.Common
             GetSingleIntegerValue = v
         End Function
 
-        Public Shared Function GetSingleGUIDValue(ByVal inSql As String) As Guid
+        Public Shared Function GetSingleGuidValue(ByVal inSql As String) As Guid
             Dim v As Guid = Guid.Empty
             Dim ds As New System.Data.DataSet
 
@@ -217,7 +215,7 @@ Namespace Wine.Common
             Dim v As Double = 0.0
             Dim ds As New System.Data.DataSet
 
-            Wine.Common.SQL.FillDataSet(ds, inSql, "temp")
+            Wine.Common.Sql.FillDataSet(ds, inSql, "temp")
             If ds.Tables(0).Rows.Count > 0 Then
                 If Not IsDBNull(ds.Tables(0).Rows(0)(0)) Then
                     v = ds.Tables(0).Rows(0)(0)
@@ -230,7 +228,7 @@ Namespace Wine.Common
             Dim v As Double = 0.0
             Dim ds As New System.Data.DataSet
 
-            Wine.Common.SQL.FillDataSet(ds, inSql, "temp", params)
+            Wine.Common.Sql.FillDataSet(ds, inSql, "temp", params)
             If ds.Tables(0).Rows.Count > 0 Then
                 If Not IsDBNull(ds.Tables(0).Rows(0)(0)) Then
                     v = ds.Tables(0).Rows(0)(0)
@@ -241,8 +239,8 @@ Namespace Wine.Common
 
         Public Shared Function UniqueField(ByVal dbColumn As String, ByVal dbValue As String, ByVal dbName As String, ByVal tableName As String, Optional ByVal additionalWhereClause As String = "") As Boolean
             Dim bUnique As Boolean = False
-            Dim SQL As String = "select  count ( distinct " & dbColumn & " ) c from " & dbName & ".." & tableName & " where " & dbColumn & "=" & Quote(dbValue) & additionalWhereClause
-            If GetSingleIntegerValue(SQL) = 0 Then
+            Dim sql As String = "select  count ( distinct " & dbColumn & " ) c from " & dbName & ".." & tableName & " where " & dbColumn & "=" & Quote(dbValue) & additionalWhereClause
+            If GetSingleIntegerValue(sql) = 0 Then
                 bUnique = True
             End If
             Return bUnique
@@ -340,7 +338,7 @@ Namespace Wine.Common
 
 
 
-        Public Shared Sub ExecuteSQLCommandWithConnection(ByVal inSql As String, Optional ByVal connection As String = Nothing, Optional logException As Boolean = True)
+        Public Shared Sub ExecuteSqlCommandWithConnection(ByVal inSql As String, Optional ByVal connection As String = Nothing, Optional logException As Boolean = True)
             Try
                 If IsNothing(connection) Then
                     connection = ConnStrFromEDMXConnStr(Wine.Common.XmlConfig.ConfigVal("WineCompetition_ConnectionString"))
@@ -357,8 +355,8 @@ Namespace Wine.Common
                 If logException Then
                     Dim sqlStr As String = "INSERT INTO ExceptionLog (ExceptionLogID, PersonID, ErrDateTime, FatalBit, ErrPage, ErrFirstLineNumber, ErrMessage) values (NEWID(), 'D02FE02A-AADD-40DC-8C43-76F772A712D8', GETDATE(), 1, 'SEE DETAILS', 'SEE DETAILS',"
                     inSql = "ERROR ExecuteSQLCommand where inSql = " + inSql
-                    sqlStr += Wine.Common.SQL.Quote(inSql) + ")"
-                    ExecuteSQLCommand(inSql:=sqlStr, logException:=False)
+                    sqlStr += Wine.Common.Sql.Quote(inSql) + ")"
+                    ExecuteSqlCommand(inSql:=sqlStr, logException:=False)
                     Throw ex
                 End If
             End Try
@@ -388,7 +386,7 @@ Namespace Wine.Common
 
 #Region "ExecuteSQLCommand"
 
-        Public Shared Sub ExecuteSQLCommand(ByVal inSql As SqlCommand)
+        Public Shared Sub ExecuteSqlCommand(ByVal inSql As SqlCommand)
             Dim myConnection As New SqlConnection(ConnStrFromEDMXConnStr(Wine.Common.XmlConfig.ConfigVal("WineCompetition_ConnectionString")))
 
             inSql.Connection = myConnection

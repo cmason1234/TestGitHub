@@ -1,7 +1,7 @@
 ﻿
 Namespace Rheem.Web.Partners
 
-    Public Class ctlErrorMessages
+    Public Class CtlErrorMessages
         Inherits System.Web.UI.UserControl
 
         Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
@@ -26,7 +26,7 @@ Namespace Rheem.Web.Partners
             End Set
         End Property
 
-        Public Sub SetDescription(ByVal Description As String)
+        Public Sub SetDescription(ByVal description As String)
             messageLabel.Text = Description
         End Sub
 

@@ -12,7 +12,7 @@ Option Explicit On
 
 Namespace Rheem.Web.Partners
 
-    Partial Public Class ctlErrorMessages
+    Partial Public Class CtlErrorMessages
 
         '''<summary>
         '''msgContainer control.

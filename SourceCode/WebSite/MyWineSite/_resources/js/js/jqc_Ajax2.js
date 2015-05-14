@@ -118,7 +118,7 @@ RWPJS.Ajax2.publicGetData = function (webMethod, handlerCallBackFunc) {
     });
 };
 
-RWPJS.Ajax2.getData = function (bearerToken, clientID, webMethod, handlerCallBackFunc) {
+RWPJS.Ajax2.getData = function (bearerToken, clientId, webMethod, handlerCallBackFunc) {
     "use strict";
     var authStr;
     authStr = 'Bearer: ' + bearerToken;
@@ -130,7 +130,7 @@ RWPJS.Ajax2.getData = function (bearerToken, clientID, webMethod, handlerCallBac
         crossDomain: true,
         contentType: "application/json; charset=utf-8",
         dataType: "json",
-        headers: { 'Authorization': authStr, 'X-ClientID': clientID },
+        headers: { 'Authorization': authStr, 'X-ClientID': clientId },
         success: function (msg) {
             handlerCallBackFunc(msg);
         },
@@ -141,7 +141,7 @@ RWPJS.Ajax2.getData = function (bearerToken, clientID, webMethod, handlerCallBac
 
 };
 
-RWPJS.Ajax2.postData = function (bearerToken, clientID, webMethod, dataObj, handlerCallBackFunc) {
+RWPJS.Ajax2.postData = function (bearerToken, clientId, webMethod, dataObj, handlerCallBackFunc) {
     var authStr, timestamp, tsString;
     timestamp = new Date();
     tsString = timestamp.getTime();
@@ -154,8 +154,8 @@ RWPJS.Ajax2.postData = function (bearerToken, clientID, webMethod, dataObj, hand
         type: 'POST',
         async: true,
         contentType: 'application/json; charset=utf-8',
-        headers: { 'Authorization': authStr, 'X-ClientID': clientID, 'X-Timestamp': tsString },
-        success: function (jsondata, textStatus, jqXHR) {
+        headers: { 'Authorization': authStr, 'X-ClientID': clientId, 'X-Timestamp': tsString },
+        success: function (jsondata, textStatus, jqXhr) {
             // TODO add some stuff to handle a bad return by checking textStatus and jqXHR
             handlerCallBackFunc(jsondata);
         },
@@ -165,7 +165,7 @@ RWPJS.Ajax2.postData = function (bearerToken, clientID, webMethod, dataObj, hand
     })
 };
 
-RWPJS.Ajax2.putData = function (bearerToken, clientID, webMethod, dataObj, handlerCallBackFunc) {
+RWPJS.Ajax2.putData = function (bearerToken, clientId, webMethod, dataObj, handlerCallBackFunc) {
     var authStr, timestamp, tsString;
     timestamp = new Date();
     tsString = timestamp.getTime();
@@ -178,8 +178,8 @@ RWPJS.Ajax2.putData = function (bearerToken, clientID, webMethod, dataObj, handl
         type: 'PUT',
         async: true,
         contentType: 'application/json; charset=utf-8',
-        headers: { 'Authorization': authStr, 'X-ClientID': clientID, 'X-Timestamp': tsString },
-        success: function (jsondata, textStatus, jqXHR) {
+        headers: { 'Authorization': authStr, 'X-ClientID': clientId, 'X-Timestamp': tsString },
+        success: function (jsondata, textStatus, jqXhr) {
             // TODO add some stuff to handle a bad return by checking textStatus and jqXHR
             handlerCallBackFunc(jsondata);
         },
@@ -189,7 +189,7 @@ RWPJS.Ajax2.putData = function (bearerToken, clientID, webMethod, dataObj, handl
     })
 };
 
-RWPJS.Ajax2.deleteObject = function (bearerToken, clientID, webMethod, handlerCallBackFunc) {
+RWPJS.Ajax2.deleteObject = function (bearerToken, clientId, webMethod, handlerCallBackFunc) {
     var authStr;
     authStr = 'Bearer: ' + bearerToken;
     $.ajax({
@@ -199,8 +199,8 @@ RWPJS.Ajax2.deleteObject = function (bearerToken, clientID, webMethod, handlerCa
         type: 'DELETE',
         async: true,
         contentType: 'application/json; charset=utf-8',
-        headers: { 'Authorization': authStr, 'X-ClientID': clientID },
-        success: function (jsondata, textStatus, jqXHR) {
+        headers: { 'Authorization': authStr, 'X-ClientID': clientId },
+        success: function (jsondata, textStatus, jqXhr) {
             // TODO add some stuff to handle a bad return by checking textStatus and jqXHR
             handlerCallBackFunc(jsondata);
         },
@@ -325,15 +325,15 @@ RWPJS.Ajax2.currentPersonId = function () {
 };
 
 RWPJS.Ajax2.readCookie = function (name) {
-    var nameEQ, ca, i, c, result;
-    nameEQ = name + "=";
+    var nameEq, ca, i, c, result;
+    nameEq = name + "=";
     ca = document.cookie.split(';');
     result = null;
     for (i = 0; i < ca.length; i++) {
         c = ca[i];
         while (c.charAt(0) == ' ') c = c.substring(1, c.length);
-        if (c.indexOf(nameEQ) == 0) {
-            result = c.substring(nameEQ.length, c.length);
+        if (c.indexOf(nameEq) == 0) {
+            result = c.substring(nameEq.length, c.length);
             break;
         }
     }

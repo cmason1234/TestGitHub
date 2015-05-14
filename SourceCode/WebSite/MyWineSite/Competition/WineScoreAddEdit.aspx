@@ -20,28 +20,28 @@
                 var finish = $find('<%=tbFinish.ClientID%>').get_value();
                 var quality = $find('<%=tbQuality.ClientID%>').get_value();
                 var total = clarity + color + aroma + ta + body + flavor + bitterness + finish + quality;
-                var calcScoreID = $find('<%=tbCalcScore.ClientID%>');
-                var judgeTotalID = $find('<%=tbJudgeScore.ClientID%>');
-                var judgeTotal = judgeTotalID.get_value();
+                var calcScoreId = $find('<%=tbCalcScore.ClientID%>');
+                var judgeTotalId = $find('<%=tbJudgeScore.ClientID%>');
+                var judgeTotal = judgeTotalId.get_value();
                 var save1 = $find('<%=btnSave.ClientID%>');
                 var save2 = $find('<%=btnSave2.ClientID%>');
 
-                calcScoreID.set_value(total);
-                total = calcScoreID.get_value();  // Go get the rounded value from Telerik.
+                calcScoreId.set_value(total);
+                total = calcScoreId.get_value();  // Go get the rounded value from Telerik.
                 if (total != judgeTotal) {
                     save1.set_enabled(false);
                     save2.set_enabled(false);
-                    judgeTotalID.get_styles().EnabledStyle[0] += "background-color: red;";
-                    judgeTotalID.updateCssClass();
-                    calcScoreID.get_styles().ReadOnlyStyle[0] += "background-color: red;";
-                    calcScoreID.updateCssClass();
+                    judgeTotalId.get_styles().EnabledStyle[0] += "background-color: red;";
+                    judgeTotalId.updateCssClass();
+                    calcScoreId.get_styles().ReadOnlyStyle[0] += "background-color: red;";
+                    calcScoreId.updateCssClass();
                 } else {
                     save1.set_enabled(true);
                     save2.set_enabled(true);
-                    judgeTotalID.get_styles().EnabledStyle[0] += "background-color: white;";
-                    judgeTotalID.updateCssClass();
-                    calcScoreID.get_styles().ReadOnlyStyle[0] += "background-color: LightGray;";
-                    calcScoreID.updateCssClass();
+                    judgeTotalId.get_styles().EnabledStyle[0] += "background-color: white;";
+                    judgeTotalId.updateCssClass();
+                    calcScoreId.get_styles().ReadOnlyStyle[0] += "background-color: LightGray;";
+                    calcScoreId.updateCssClass();
                 }
             }
         };

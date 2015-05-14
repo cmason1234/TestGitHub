@@ -16,10 +16,10 @@
  */
 (function ($) {
 	//Shortcut for fancyBox object
-	var F = $.fancybox;
+	var f = $.fancybox;
 
 	//Add helper object
-	F.helpers.thumbs = {
+	f.helpers.thumbs = {
 		defaults : {
 			width    : 50,       // thumbnail width
 			height   : 50,       // thumbnail height

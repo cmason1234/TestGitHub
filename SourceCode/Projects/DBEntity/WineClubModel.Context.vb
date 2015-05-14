@@ -11,7 +11,7 @@ Imports System
 Imports System.Data.Entity
 Imports System.Data.Entity.Infrastructure
 
-Partial Public Class mywinecompetitionEntities
+Partial Public Class MywinecompetitionEntities
     Inherits DbContext
 
     Public Sub New()

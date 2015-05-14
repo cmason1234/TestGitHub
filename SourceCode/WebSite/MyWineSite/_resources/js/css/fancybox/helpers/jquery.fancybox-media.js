@@ -66,7 +66,7 @@
 	"use strict";
 
 	//Shortcut for fancyBox object
-	var F = $.fancybox,
+	var f = $.fancybox,
 		format = function( url, rez, params ) {
 			params = params || '';
 
@@ -86,7 +86,7 @@
 		};
 
 	//Add helper object
-	F.helpers.media = {
+	f.helpers.media = {
 		defaults : {
 			youtube : {
 				matcher : /(youtube\.com|youtu\.be|youtube-nocookie\.com)\/(watch\?v=|v\/|u\/|embed\/?)?(videoseries\?list=(.*)|[\w-]{11}|\?listType=(.*)&list=(.*)).*/i,

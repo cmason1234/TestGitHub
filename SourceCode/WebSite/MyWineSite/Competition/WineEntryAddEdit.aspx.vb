@@ -4,7 +4,7 @@ Namespace Wine.Web
     Public Class WineEntryAddEdit
         Inherits WebMaster
 
-        Dim userMessage As String = ""
+        Dim _userMessage As String = ""
 
         Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
             Master.AppTitle = "Wine Entries Add/Edit"
@@ -20,33 +20,33 @@ Namespace Wine.Web
 
         Protected Sub Page_LoadComplete(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.LoadComplete
             ucErrorMessages.Visible = False
-            If userMessage.Trim.Length > 0 Then
+            If _userMessage.Trim.Length > 0 Then
                 ucErrorMessages.Visible = True
-                ucErrorMessages.SetDescription(userMessage)
+                ucErrorMessages.SetDescription(_userMessage)
             End If
         End Sub
 
 
-        Private Sub LoadFromDB()
-            Dim sCompID As String = Request.Params("CompetitionID")
-            Dim competitionID As Integer = 0
-            Dim sWineEntryID As String = Request.Params("WineEntryId")
-            Dim wineEntryID As Integer = 0
+        Private Sub LoadFromDb()
+            Dim sCompId As String = Request.Params("CompetitionID")
+            Dim competitionId As Integer = 0
+            Dim sWineEntryId As String = Request.Params("WineEntryId")
+            Dim wineEntryId As Integer = 0
 
             Dim db As New DBEntity.mywinecompetitionEntities(Wine.Common.XmlConfig.ConfigVal("WineCompetition_ConnectionString"))
 
             If Not IsNothing(Request.Params("CompetitionID")) AndAlso
-                Integer.TryParse(sCompID, competitionID) AndAlso
-                competitionID > 0 Then
+                Integer.TryParse(sCompId, competitionId) AndAlso
+                competitionId > 0 Then
 
-                Dim comp As DBEntity.Competition = db.Competitions.Find(competitionID)
+                Dim comp As DBEntity.Competition = db.Competitions.Find(competitionId)
                 tbCompNameTextBox.Text = comp.CompetitionName
 
                 If Not IsNothing(Request.Params("WineEntryID")) AndAlso
-                   Integer.TryParse(sWineEntryID, wineEntryID) AndAlso
-                   wineEntryID > 0 Then
+                   Integer.TryParse(sWineEntryId, wineEntryId) AndAlso
+                   wineEntryId > 0 Then
 
-                    Dim wineEntry As DBEntity.WineEntry = db.WineEntries.Find(wineEntryID)
+                    Dim wineEntry As DBEntity.WineEntry = db.WineEntries.Find(wineEntryId)
                     With wineEntry
                         tbEntryNumTextBox.Text = .EntryID.ToString
                         tbWineName.Text = .WineName
@@ -83,16 +83,16 @@ Namespace Wine.Web
                     btnUnLock2.Visible = wineEntry.Locked
                     btnNewScore.Enabled = Not wineEntry.Locked
                     btnNewScore2.Enabled = Not wineEntry.Locked
-                    GetScoringEntries(wineEntryID, competitionID, True)
+                    GetScoringEntries(wineEntryId, competitionId, True)
                 Else
                     divScoreList.Visible = False
                 End If
             End If
-            hfCompetitionID.Value = competitionID.ToString
-            hfWineEntryId.Value = wineEntryID.ToString
+            hfCompetitionID.Value = competitionId.ToString
+            hfWineEntryId.Value = wineEntryId.ToString
         End Sub
 
-        Private Sub GetScoringEntries(wineEntryID As Integer, competitionID As Integer, bind As Boolean)
+        Private Sub GetScoringEntries(wineEntryId As Integer, competitionId As Integer, bind As Boolean)
 
             Dim sql As String
             sql = "select WineScoringID, wineEntryID, EnteredPersonID, " &
@@ -106,7 +106,7 @@ Namespace Wine.Web
                 "where wineEntryID = " & wineEntryID.ToString & " Order by Score"
 
             Dim pds As New System.Data.DataSet
-            Wine.Common.SQL.FillDataSet(pds, sql, "WineEntry")
+            Wine.Common.Sql.FillDataSet(pds, sql, "WineEntry")
             If pds.Tables(0).Rows.Count > 0 Then
                 dgGridScoreComp.Visible = True
                 btnValidate.Visible = True
@@ -129,24 +129,24 @@ Namespace Wine.Web
         End Sub
 
         Private Sub SaveWineEntry()
-            Dim sCompID As String = hfCompetitionID.Value
-            Dim competitionID As Integer = 0
-            Dim sWineEntryID As String = hfWineEntryId.Value
-            Dim wineEntryID As Integer = 0
+            Dim sCompId As String = hfCompetitionID.Value
+            Dim competitionId As Integer = 0
+            Dim sWineEntryId As String = hfWineEntryId.Value
+            Dim wineEntryId As Integer = 0
 
-            Integer.TryParse(sCompID, competitionID)
+            Integer.TryParse(sCompId, competitionId)
 
             Dim db As New DBEntity.mywinecompetitionEntities(Wine.Common.XmlConfig.ConfigVal("WineCompetition_ConnectionString"))
 
             Dim wineEntry As DBEntity.WineEntry = Nothing
 
-            If Integer.TryParse(sWineEntryID, wineEntryID) AndAlso wineEntryID > 0 Then
-                wineEntry = db.WineEntries.Find(wineEntryID)
+            If Integer.TryParse(sWineEntryId, wineEntryId) AndAlso wineEntryId > 0 Then
+                wineEntry = db.WineEntries.Find(wineEntryId)
             Else
                 wineEntry = New DBEntity.WineEntry
             End If
             With wineEntry
-                .CompetitionID = competitionID
+                .CompetitionID = competitionId
                 .EntryID = Convert.ToInt64(tbEntryNumTextBox.Text)
                 .WineName = tbWineName.Text
                 .EntrantName = tbEntrantName.Text
@@ -169,13 +169,13 @@ Namespace Wine.Web
                     .MedalColor = tbMedalColor.Text
                 End If
             End With
-            If wineEntryID = 0 Then
+            If wineEntryId = 0 Then
                 db.WineEntries.Add(wineEntry)
             End If
             db.SaveChanges()
             hfWineEntryId.Value = wineEntry.WineEntryID.ToString
             GetScoringEntries(wineEntry.WineEntryID, wineEntry.CompetitionID, True)
-            userMessage = "Wine successfully saved"
+            _userMessage = "Wine successfully saved"
         End Sub
 
         Private Sub btnCancel_Click(sender As Object, e As EventArgs) Handles btnCancel.Click
@@ -184,12 +184,12 @@ Namespace Wine.Web
 
 
         Private Sub btnDel_Click(sender As Object, e As EventArgs) Handles btnDel.Click
-            Dim sWineEntryID As String = hfWineEntryId.Value
-            Dim wineEntryID As Integer = 0
+            Dim sWineEntryId As String = hfWineEntryId.Value
+            Dim wineEntryId As Integer = 0
 
             Dim db As New DBEntity.mywinecompetitionEntities(Wine.Common.XmlConfig.ConfigVal("WineCompetition_ConnectionString"))
-            If Integer.TryParse(sWineEntryID, wineEntryID) AndAlso wineEntryID > 0 Then
-                Dim wineEntry As DBEntity.WineEntry = db.WineEntries.Find(wineEntryID)
+            If Integer.TryParse(sWineEntryId, wineEntryId) AndAlso wineEntryId > 0 Then
+                Dim wineEntry As DBEntity.WineEntry = db.WineEntries.Find(wineEntryId)
                 db.WineEntries.Remove(wineEntry)
                 db.SaveChanges()
                 Response.Redirect("/Competition/CompAddEdit.aspx?CompetitionID=" & hfCompetitionID.Value)
@@ -205,20 +205,20 @@ Namespace Wine.Web
         End Sub
 
         Private Sub btnAddScore_Click(sender As Object, e As EventArgs) Handles btnAddScore.Click
-            Dim sCompID As String = hfCompetitionID.Value
-            Dim competitionID As Integer = 0
-            Dim sWineEntryID As String = hfWineEntryId.Value
-            Dim wineEntryID As Integer = 0
+            Dim sCompId As String = hfCompetitionID.Value
+            Dim competitionId As Integer = 0
+            Dim sWineEntryId As String = hfWineEntryId.Value
+            Dim wineEntryId As Integer = 0
 
-            Integer.TryParse(sCompID, competitionID)
-            Integer.TryParse(sWineEntryID, wineEntryID)
+            Integer.TryParse(sCompId, competitionId)
+            Integer.TryParse(sWineEntryId, wineEntryId)
 
             Dim db As New DBEntity.mywinecompetitionEntities(Wine.Common.XmlConfig.ConfigVal("WineCompetition_ConnectionString"))
             Dim wineScoring As DBEntity.WineScoring = Nothing
 
             wineScoring = New DBEntity.WineScoring
             With wineScoring
-                .WineEntryId = wineEntryID
+                .WineEntryId = wineEntryId
                 .EnteredPersonID = currentPerson.PersonID
                 .JudgeNum = tbJudgeNum2.Text
                 '.JudgeInitials = tbJudgeName.Text
@@ -239,14 +239,14 @@ Namespace Wine.Web
 
             db.SaveChanges()
 
-            UpdateAvgScore(wineEntryID, db)
+            UpdateAvgScore(wineEntryId, db)
             btnValidate.Visible = True
-            userMessage = "Wine Score successfully saved"
+            _userMessage = "Wine Score successfully saved"
             LoadFromDB()
         End Sub
 
-        Private Sub UpdateAvgScore(wineEntryID As Integer, db As DBEntity.mywinecompetitionEntities)
-            Dim wineEntry As DBEntity.WineEntry = db.WineEntries.Find(wineEntryID)
+        Private Sub UpdateAvgScore(wineEntryId As Integer, db As DBEntity.mywinecompetitionEntities)
+            Dim wineEntry As DBEntity.WineEntry = db.WineEntries.Find(wineEntryId)
             Dim wineScoringList = wineEntry.WineScorings
 
             If wineScoringList.Count > 0 Then
@@ -288,15 +288,15 @@ Namespace Wine.Web
 
 
         Private Sub dgGridScoreComp_NeedDataSource(sender As Object, e As Telerik.Web.UI.GridNeedDataSourceEventArgs) Handles dgGridScoreComp.NeedDataSource
-            Dim sCompID As String = hfCompetitionID.Value
-            Dim competitionID As Integer = 0
-            Dim sWineEntryID As String = hfWineEntryId.Value
-            Dim wineEntryID As Integer = 0
+            Dim sCompId As String = hfCompetitionID.Value
+            Dim competitionId As Integer = 0
+            Dim sWineEntryId As String = hfWineEntryId.Value
+            Dim wineEntryId As Integer = 0
 
-            Integer.TryParse(sCompID, competitionID)
-            Integer.TryParse(sWineEntryID, wineEntryID)
+            Integer.TryParse(sCompId, competitionId)
+            Integer.TryParse(sWineEntryId, wineEntryId)
 
-            GetScoringEntries(wineEntryID:=wineEntryID, competitionID:=competitionID, bind:=False)
+            GetScoringEntries(wineEntryID:=wineEntryId, competitionID:=competitionId, bind:=False)
         End Sub
 
 
@@ -306,36 +306,36 @@ Namespace Wine.Web
             Dim wineScoring As DBEntity.WineScoring = Nothing
             For Each item As GridDataItem In selectedItems
                 ' Get the checkbox value for the row 
-                Dim sWineScoringID = item("WineScoringID").Text.ToString()
-                Dim intWineScoringID As Integer = 0
-                Integer.TryParse(sWineScoringID, intWineScoringID)
+                Dim sWineScoringId = item("WineScoringID").Text.ToString()
+                Dim intWineScoringId As Integer = 0
+                Integer.TryParse(sWineScoringId, intWineScoringId)
 
-                wineScoring = db.WineScorings.Find(intWineScoringID)
+                wineScoring = db.WineScorings.Find(intWineScoringId)
                 wineScoring.ValidatedPersonID = currentPerson.PersonID
             Next
             db.SaveChanges()
 
-            Dim sCompID As String = hfCompetitionID.Value
-            Dim competitionID As Integer = 0
-            Dim sWineEntryID As String = hfWineEntryId.Value
-            Dim wineEntryID As Integer = 0
+            Dim sCompId As String = hfCompetitionID.Value
+            Dim competitionId As Integer = 0
+            Dim sWineEntryId As String = hfWineEntryId.Value
+            Dim wineEntryId As Integer = 0
 
-            Integer.TryParse(sCompID, competitionID)
-            Integer.TryParse(sWineEntryID, wineEntryID)
+            Integer.TryParse(sCompId, competitionId)
+            Integer.TryParse(sWineEntryId, wineEntryId)
 
-            GetScoringEntries(wineEntryID:=wineEntryID, competitionID:=competitionID, bind:=True)
-            userMessage = "Scores successfully validated"
+            GetScoringEntries(wineEntryID:=wineEntryId, competitionID:=competitionId, bind:=True)
+            _userMessage = "Scores successfully validated"
         End Sub
 
         Public Sub btnChangeLock_Click(sender As Object, e As EventArgs)
             Dim db As New DBEntity.mywinecompetitionEntities(Wine.Common.XmlConfig.ConfigVal("WineCompetition_ConnectionString"))
 
-            Dim sWineEntryID As String = hfWineEntryId.Value
-            Dim wineEntryID As Integer = 0
+            Dim sWineEntryId As String = hfWineEntryId.Value
+            Dim wineEntryId As Integer = 0
 
-            If Integer.TryParse(sWineEntryID, wineEntryID) AndAlso wineEntryID > 0 Then
+            If Integer.TryParse(sWineEntryId, wineEntryId) AndAlso wineEntryId > 0 Then
 
-                Dim wineEntry As DBEntity.WineEntry = db.WineEntries.Find(wineEntryID)
+                Dim wineEntry As DBEntity.WineEntry = db.WineEntries.Find(wineEntryId)
                 wineEntry.Locked = Not wineEntry.Locked
 
                 btnLock.Visible = Not wineEntry.Locked

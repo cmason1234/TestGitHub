@@ -2,7 +2,7 @@
     Public Class WebMaster
         Inherits System.Web.UI.Page
 
-        Public currentPerson As DBEntity.Person
+        Public CurrentPerson As DBEntity.Person
 
         Public Overloads Sub Page_PreInit(ByVal sender As Object, ByVal e As EventArgs) Handles Me.PreInit
 
@@ -24,7 +24,7 @@
 
 
         Private Sub Page_Init(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Init
-            Dim sPersonID As String = Session("PersonID").ToString    ' We check the Session value, not the cookie for impersonation
+            Dim sPersonId As String = Session("PersonID").ToString    ' We check the Session value, not the cookie for impersonation
             Dim intPersonId As Integer
 
             If sPersonID.Trim.Length <> 0 AndAlso Integer.TryParse(sPersonID, intPersonId) Then

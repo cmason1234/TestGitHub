@@ -27,12 +27,12 @@
   * ========================= */
 
   var toggle = '[data-toggle=bfh-selectbox]'
-    , BFHSelectBox = function (element) {
+    , bfhSelectBox = function (element) {
       }
 
-  BFHSelectBox.prototype = {
+  bfhSelectBox.prototype = {
 
-    constructor: BFHSelectBox
+    constructor: bfhSelectBox
 
   , toggle: function (e) {
       var $this = $(this)
@@ -99,7 +99,7 @@
 
       if (!$items.length) return
 
-      $('body').off('mouseenter.bfh-selectbox.data-api', '[role=option] > li > a', BFHSelectBox.prototype.mouseenter)
+      $('body').off('mouseenter.bfh-selectbox.data-api', '[role=option] > li > a', bfhSelectBox.prototype.mouseenter)
       
       index = $items.index($items.filter(':focus'))
 
@@ -118,7 +118,7 @@
         .eq(index)
         .focus()
         
-      $('body').on('mouseenter.bfh-selectbox.data-api', '[role=option] > li > a', BFHSelectBox.prototype.mouseenter)
+      $('body').on('mouseenter.bfh-selectbox.data-api', '[role=option] > li > a', bfhSelectBox.prototype.mouseenter)
     }
     
     , mouseenter: function (e) {
@@ -192,12 +192,12 @@
       var $this = $(this)
         , data = $this.data('bfhselectbox')
       this.type = 'bfhselectbox';
-      if (!data) $this.data('bfhselectbox', (data = new BFHSelectBox(this)))
+      if (!data) $this.data('bfhselectbox', (data = new bfhSelectBox(this)))
       if (typeof option == 'string') data[option].call($this)
     })
   }
 
-  $.fn.bfhselectbox.Constructor = BFHSelectBox
+  $.fn.bfhselectbox.Constructor = bfhSelectBox
 
   var origHook
   // There might already be valhooks for the "text" type
@@ -233,12 +233,12 @@
     $('html')
       .on('click.bfhselectbox.data-api', clearMenus)
     $('body')
-      .on('click.bfhselectbox.data-api touchstart.bfhselectbox.data-api'  , toggle, BFHSelectBox.prototype.toggle)
-      .on('keydown.bfhselectbox.data-api', toggle + ', [role=option]' , BFHSelectBox.prototype.keydown)
-      .on('mouseenter.bfhselectbox.data-api', '[role=option] > li > a', BFHSelectBox.prototype.mouseenter)
-      .on('click.bfhselectbox.data-api', '[role=option] > li > a', BFHSelectBox.prototype.select)  
+      .on('click.bfhselectbox.data-api touchstart.bfhselectbox.data-api'  , toggle, bfhSelectBox.prototype.toggle)
+      .on('keydown.bfhselectbox.data-api', toggle + ', [role=option]' , bfhSelectBox.prototype.keydown)
+      .on('mouseenter.bfhselectbox.data-api', '[role=option] > li > a', bfhSelectBox.prototype.mouseenter)
+      .on('click.bfhselectbox.data-api', '[role=option] > li > a', bfhSelectBox.prototype.select)  
       .on('click.bfhselectbox.data-api', '.bfh-selectbox-filter', function (e) { return false })
-      .on('propertychange.bfhselectbox.data-api change.bfhselectbox.data-api input.bfhselectbox.data-api paste.bfhselectbox.data-api', '.bfh-selectbox-filter', BFHSelectBox.prototype.filter)
+      .on('propertychange.bfhselectbox.data-api change.bfhselectbox.data-api input.bfhselectbox.data-api paste.bfhselectbox.data-api', '.bfh-selectbox-filter', bfhSelectBox.prototype.filter)
   })
 
 }(window.jQuery);

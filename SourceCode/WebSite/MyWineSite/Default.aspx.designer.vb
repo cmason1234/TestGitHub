@@ -12,6 +12,6 @@ Option Explicit On
 
 Namespace Wine.Web
 
-    Partial Public Class _Default
+    Partial Public Class [Default]
     End Class
 End Namespace

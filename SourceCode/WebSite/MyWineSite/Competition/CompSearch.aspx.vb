@@ -21,18 +21,18 @@
 
         Private Function GetCompDataSet() As System.Data.DataSet
 
-            Dim addSQL As String = ""
+            Dim addSql As String = ""
 
             If tbName.Text.Trim.Length > 0 Then
-                addSQL = addSQL & " and CompetitionName like " & Wine.Common.SQL.Quote(tbName.Text.Trim & "%") & " "
+                addSQL = addSQL & " and CompetitionName like " & Wine.Common.Sql.Quote(tbName.Text.Trim & "%") & " "
             End If
 
             If Not IsNothing(ddlYear.SelectedItem) AndAlso ddlYear.SelectedItem.Value.Trim.Length > 0 Then
-                addSQL = addSQL & " AND Year = " & Wine.Common.SQL.Quote(ddlYear.SelectedItem.Value.Trim)
+                addSQL = addSQL & " AND Year = " & Wine.Common.Sql.Quote(ddlYear.SelectedItem.Value.Trim)
             End If
 
             If Not IsNothing(ddlMonth.SelectedItem) AndAlso ddlMonth.SelectedItem.Value.Trim.Length > 0 Then
-                addSQL = addSQL & " AND Month = " & Wine.Common.SQL.Quote(ddlMonth.SelectedItem.Value.Trim)
+                addSQL = addSQL & " AND Month = " & Wine.Common.Sql.Quote(ddlMonth.SelectedItem.Value.Trim)
             End If
 
 
@@ -42,7 +42,7 @@
                 "from competition where 1=1 " & addSQL & "   order by  CompetitionName, Year, Month"
 
             Dim pds As New System.Data.DataSet
-            Wine.Common.SQL.FillDataSet(pds, sql, "Competition")
+            Wine.Common.Sql.FillDataSet(pds, sql, "Competition")
             If pds.Tables(0).Rows.Count > 0 Then
                 litCompetitionCount.Text = "(" & pds.Tables(0).Rows.Count & ")"
             Else

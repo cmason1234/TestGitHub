@@ -6,7 +6,7 @@ Namespace Wine.Web
     Public Class LoginPub
         Inherits System.Web.UI.Page
 
-        Dim userMessage As String = ""
+        Dim _userMessage As String = ""
 
         Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
 
@@ -49,11 +49,11 @@ Namespace Wine.Web
 
         Private Sub Page_LoadComplete(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.LoadComplete
             msgContainer.Visible = False
-            If userMessage.Trim.Length > 0 Then
+            If _userMessage.Trim.Length > 0 Then
                 litMsg.Visible = False
                 msgContainer.Visible = True
                 msgContainer.Attributes.Item("class") = "msgErr"
-                messageLabel.Text = userMessage
+                messageLabel.Text = _userMessage
             End If
         End Sub
 

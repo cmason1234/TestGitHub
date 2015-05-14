@@ -3,7 +3,7 @@ Namespace Wine.Common
 
     Public Class Logging
 
-        Public Sub WriteToEventLog(ByVal Entry As String)
+        Public Sub WriteToEventLog(ByVal entry As String)
 
             '//go to registry editor (regedit), 
             '//locate key HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Eventlog\Application
@@ -33,7 +33,7 @@ Namespace Wine.Common
 
 
 
-            Catch Ex As Exception
+            Catch ex As Exception
                 '//Do Nothing
             End Try
 

@@ -9,9 +9,9 @@
             End If
         End Sub
 
-        Private Sub LoadFromDB()
-            Dim sPersID As String = Request.Params("PersonID")
-            Dim personID As Integer = 0
+        Private Sub LoadFromDb()
+            Dim sPersId As String = Request.Params("PersonID")
+            Dim personId As Integer = 0
             If Request.Params("PersonID") IsNot Nothing Then
                 If Integer.TryParse(sPersID, personID) AndAlso personID > 0 Then
                     Dim db As New DBEntity.mywinecompetitionEntities(Wine.Common.XmlConfig.ConfigVal("WineCompetition_ConnectionString"))
@@ -33,8 +33,8 @@
 
 
         Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
-            Dim sPersID As String = hfPersonID.Value
-            Dim personID As Integer = 0
+            Dim sPersId As String = hfPersonID.Value
+            Dim personId As Integer = 0
 
             Dim db As New DBEntity.mywinecompetitionEntities(Wine.Common.XmlConfig.ConfigVal("WineCompetition_ConnectionString"))
             Dim person As DBEntity.Person = Nothing
@@ -52,7 +52,7 @@
                 ' Encryopt password
                 Dim pt As New Wine.Common.PasswordEncryption
                 Dim newSeed As String = ""
-                Dim EncryptedPassword As String = pt.CryptPassword(newSeed, tbPasswordTextBox.Text.Trim)
+                Dim encryptedPassword As String = pt.CryptPassword(newSeed, tbPasswordTextBox.Text.Trim)
 
                 person.PasswordSeed = newSeed
                 person.EncryptedPassword = EncryptedPassword
@@ -72,8 +72,8 @@
         End Sub
 
         Private Sub btnDel_Click(sender As Object, e As EventArgs) Handles btnDel.Click
-            Dim sPersID As String = hfPersonID.Value
-            Dim personID As Integer = 0
+            Dim sPersId As String = hfPersonID.Value
+            Dim personId As Integer = 0
 
             Dim db As New DBEntity.mywinecompetitionEntities(Wine.Common.XmlConfig.ConfigVal("WineCompetition_ConnectionString"))
             Dim person As DBEntity.Person = Nothing
@@ -88,8 +88,8 @@
 
 
         Private Sub btnChangePassword_Click(sender As Object, e As EventArgs) Handles btnChangePassword.Click
-            Dim sPersID As String = hfPersonID.Value
-            Dim personID As Integer = 0
+            Dim sPersId As String = hfPersonID.Value
+            Dim personId As Integer = 0
 
             Dim db As New DBEntity.mywinecompetitionEntities(Wine.Common.XmlConfig.ConfigVal("WineCompetition_ConnectionString"))
             Dim person As DBEntity.Person = Nothing
@@ -99,7 +99,7 @@
                 ' Encryopt password
                 Dim pt As New Wine.Common.PasswordEncryption
                 Dim newSeed As String = ""
-                Dim EncryptedPassword As String = pt.CryptPassword(newSeed, tbPasswordTextBox.Text.Trim)
+                Dim encryptedPassword As String = pt.CryptPassword(newSeed, tbPasswordTextBox.Text.Trim)
 
                 person.PasswordSeed = newSeed
                 person.EncryptedPassword = EncryptedPassword

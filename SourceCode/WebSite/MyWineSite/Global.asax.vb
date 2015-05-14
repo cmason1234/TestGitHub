@@ -1,6 +1,6 @@
 ﻿Imports System.Web.Optimization
 
-Public Class Global_asax
+Public Class GlobalAsax
     Inherits HttpApplication
 
     Sub Application_Start(sender As Object, e As EventArgs)

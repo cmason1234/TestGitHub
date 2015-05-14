@@ -45,7 +45,7 @@ Namespace Wine.Common
 
         End Function
 
-        Public Shared Function validState(ByVal state As String, ByVal country As String) As Boolean
+        Public Shared Function ValidState(ByVal state As String, ByVal country As String) As Boolean
             Dim result = False
             Dim trimmedState As String = state.Trim.ToUpper
             Dim trimmedCountry As String = country.Trim.ToUpper
@@ -69,7 +69,7 @@ Namespace Wine.Common
             Return result
         End Function
 
-        Public Shared Function returnDate(ByVal thisDate As DateTime) As Object
+        Public Shared Function ReturnDate(ByVal thisDate As DateTime) As Object
             If thisDate.ToString = "1/1/0001 12:00:00 AM" Then
                 Return DBNull.Value
             Else
@@ -344,7 +344,7 @@ Namespace Wine.Common
         Public Shared Function ValidPostalCode(ByVal tstPostalCode As String) As Boolean
             Dim rts As Boolean = False
 
-            If (Wine.Common.SQL.GetSingleValue("SELECT COUNT(1) from rheemdb..PostalCode WHERE PostalCode=" & Wine.Common.SQL.Quote(tstPostalCode)) <> 0) Then
+            If (Wine.Common.Sql.GetSingleValue("SELECT COUNT(1) from rheemdb..PostalCode WHERE PostalCode=" & Wine.Common.Sql.Quote(tstPostalCode)) <> 0) Then
                 rts = True
             End If
             Return rts
@@ -491,7 +491,7 @@ Namespace Wine.Common
             Return d.ToString()
         End Function
 
-        Public Shared Function intQuestionToString(ByVal intQin As Integer?) As String
+        Public Shared Function IntQuestionToString(ByVal intQin As Integer?) As String
             Dim rts As String = ""
             If intQin Is Nothing Then
                 rts = ""
@@ -513,7 +513,7 @@ Namespace Wine.Common
             PixelsToPoints = CInt(pixels * 72 / 96)
         End Function
 
-        Public Shared Function BTUPerHrToKw(ByVal btuPerHour As Integer) As Double
+        Public Shared Function BtuPerHrToKw(ByVal btuPerHour As Integer) As Double
             BTUPerHrToKw = btuPerHour * 2.931 * 10 ^ -4
         End Function
 

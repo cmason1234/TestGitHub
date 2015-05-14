@@ -4,14 +4,14 @@ Namespace Wine.Web
     Public Class Blank
         Inherits System.Web.UI.MasterPage
 
-        Dim _AppTitle As String
+        Dim _appTitle As String
 
         Public Property AppTitle() As String
             Get
                 Return _AppTitle
             End Get
 
-            Set(ByVal Value As String)
+            Set(ByVal value As String)
                 _AppTitle = Value
             End Set
         End Property
