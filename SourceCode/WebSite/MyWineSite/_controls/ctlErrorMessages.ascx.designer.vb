@@ -10,9 +10,9 @@
 Option Strict On
 Option Explicit On
 
-Namespace Rheem.Web.Partners
+Namespace Wine.Web
 
-    Partial Public Class CtlErrorMessages
+    Partial Public Class ctlErrorMessages
 
         '''<summary>
         '''msgContainer control.

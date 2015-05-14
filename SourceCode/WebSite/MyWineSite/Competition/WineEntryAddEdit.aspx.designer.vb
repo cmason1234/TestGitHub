@@ -75,7 +75,7 @@ Namespace Wine.Web
         '''Auto-generated field.
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
-        Protected WithEvents ucErrorMessages As Global.Rheem.Web.Partners.ctlErrorMessages
+        Protected WithEvents ucErrorMessages As Global.Wine.Web.ctlErrorMessages
 
         '''<summary>
         '''hfWineEntryId control.

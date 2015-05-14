@@ -1,5 +1,5 @@
 ﻿
-Namespace Rheem.Web.Partners
+Namespace Wine.Web
 
     Public Class CtlErrorMessages
         Inherits System.Web.UI.UserControl
@@ -27,7 +27,7 @@ Namespace Rheem.Web.Partners
         End Property
 
         Public Sub SetDescription(ByVal description As String)
-            messageLabel.Text = Description
+            messageLabel.Text = description
         End Sub
 
     End Class
