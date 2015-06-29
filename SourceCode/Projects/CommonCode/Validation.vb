@@ -197,7 +197,7 @@ Namespace Wine.Common
             If inString.Length = 0 Then
                 result = ""
             Else
-                result = inString.Substring(0, inString.LastIndexOf(trailingString))
+                result = inString.Substring(0, inString.LastIndexOf(trailingString, StringComparison.Ordinal))
             End If
             Return result
         End Function
@@ -514,67 +514,11 @@ Namespace Wine.Common
         End Function
 
         Public Shared Function BtuPerHrToKw(ByVal btuPerHour As Integer) As Double
-            BTUPerHrToKw = btuPerHour * 2.931 * 10 ^ -4
+            BtuPerHrToKw = btuPerHour * 2.931 * 10 ^ -4
         End Function
 
         Public Shared Function PoundsToKilograms(ByVal pounds As Integer) As Double
             PoundsToKilograms = pounds * 0.45359237
-        End Function
-
-        Public Shared Function InchesAsStringToMilliMetters(ByVal inches As String) As Integer
-            ' this routine takes in a string in the format of 
-            ' 32 - 1/4 and returns millimeters
-            'x = InchesAsStringToMilliMetters("33 - 1/4")
-            'x = InchesAsStringToMilliMetters("33-1/4")
-            'x = InchesAsStringToMilliMetters("33")
-            'x = InchesAsStringToMilliMetters("33 1/4")
-            'x = InchesAsStringToMilliMetters("1/4")
-
-
-            inches = inches.Trim
-            Dim firstSpace As Integer = inches.IndexOf(" ")
-            Dim dashLocation As Integer = inches.IndexOf("-")
-            Dim slashLocation As Integer = inches.IndexOf("/")
-            Dim wholenumber As Integer = 0
-
-            Dim inchesAsDouble As Double = 0
-            Dim numerator As Integer = 0
-            Dim denominator As Integer = 0
-
-            ' Is there a dash
-            If dashLocation > 0 And slashLocation > dashLocation Then
-                ' handle "33 - 1/4" and "33-1/4"
-                wholenumber = CInt(inches.Substring(0, dashLocation - 1))
-                numerator = inches.Substring(dashLocation + 1, slashLocation - dashLocation - 1)
-                denominator = inches.Substring(slashLocation + 1)
-                inchesAsDouble = wholenumber + (numerator / denominator)
-
-            ElseIf firstSpace > 0 And slashLocation > 0 Then
-                ' handle "33 1/4"
-                wholenumber = CInt(inches.Substring(0, firstSpace))
-                numerator = inches.Substring(firstSpace + 1, slashLocation - firstSpace - 1)
-                denominator = inches.Substring(slashLocation + 1)
-                inchesAsDouble = wholenumber + (numerator / denominator)
-
-            ElseIf firstSpace <= 0 And slashLocation <= 0 Then
-                ' handle "33"
-                wholenumber = CInt(inches)
-                inchesAsDouble = wholenumber
-            ElseIf firstSpace <= 0 And slashLocation > 0 Then
-                ' handle "3/4"
-                wholenumber = 0
-                numerator = inches.Substring(0, slashLocation)
-                denominator = inches.Substring(slashLocation + 1)
-                inchesAsDouble = wholenumber + (numerator / denominator)
-            ElseIf dashLocation > 0 And slashLocation < 0 Then
-                ' handle "34 -"
-                wholenumber = CInt(inches.Replace("-", ""))
-                inchesAsDouble = wholenumber
-
-            End If
-
-            Return CInt(inchesAsDouble * 25.4)
-
         End Function
 
     End Class

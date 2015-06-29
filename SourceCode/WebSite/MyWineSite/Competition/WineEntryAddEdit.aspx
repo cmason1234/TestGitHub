@@ -5,11 +5,11 @@
 <%@ MasterType TypeName="Wine.Web.Blank" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link rel="stylesheet" href="/_resources/js/jQuery/jquery-ui-1.11.3.css">
-    <script src="/_resources/js/jQuery/jquery-1.11.min.js"></script>
+    <script src="/_resources/js/jQuery/jquery-1.11.0.min.js"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cphMain" runat="server">
     <div class="fake-toolbar">
-        <table border="1">
+        <table >
             <tr>
                 <td style="border-right-width: 1px; border-right-style: solid; border-right-color: #939393;">
                     <telerik:RadButton ID="btnSave" runat="server" Icon-PrimaryIconUrl="/_resources/images/ico/Save-16x16.png" Text="Save" ToolTip="Save" Width="100" ButtonType="StandardButton" />
@@ -436,7 +436,7 @@
 
                 calcScoreId.set_value(total);
                 total = calcScoreId.get_value();  // Go get the rounded value from Telerik.
-                if (total != judgeTotal) {
+                if (total !== judgeTotal) {
                     bDisableSave = true;
                     judgeTotalId.get_styles().EnabledStyle[0] += "background-color: red;";
                     judgeTotalId.updateCssClass();
@@ -448,7 +448,7 @@
                     calcScoreId.get_styles().ReadOnlyStyle[0] += "background-color: LightGray;";
                     calcScoreId.updateCssClass();
                 }
-                if (judgeNumval.length == 0) {
+                if (judgeNumval.length === 0) {
                     bDisableSave = true;
                     jQuery('#spnJudgeNum').show();
                 } else {
