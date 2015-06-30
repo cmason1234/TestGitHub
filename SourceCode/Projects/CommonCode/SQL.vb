@@ -141,7 +141,7 @@ Namespace Wine.Common
                     inSql = "ERROR ExecuteSQLCommand where inSql = " + inSql
                     sqlStr += Wine.Common.Sql.Quote(inSql) + ")"
                     ExecuteSqlCommand(inSql:=sqlStr, logException:=False)
-                    Throw ex
+                    Throw
                 End If
             End Try
 
@@ -357,7 +357,7 @@ Namespace Wine.Common
                     inSql = "ERROR ExecuteSQLCommand where inSql = " + inSql
                     sqlStr += Wine.Common.Sql.Quote(inSql) + ")"
                     ExecuteSqlCommand(inSql:=sqlStr, logException:=False)
-                    Throw ex
+                    Throw
                 End If
             End Try
 

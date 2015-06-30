@@ -22,7 +22,7 @@ Namespace Wine.Common
             ' own instance of the object. 
         End Sub
 
-        Private Shared Function InitSingleton() As XmlConfig
+        Private Shared Sub InitSingleton()
             '
             ' initialize object if it hasn't already been done
             '
@@ -40,8 +40,8 @@ Namespace Wine.Common
             '
             ' return the initialized instance
             '
-            Return _instance
-        End Function
+            Return
+        End Sub
 
         Private Shared Sub FillConfigHash(configFileLoc As String)
             Using reader As XmlReader = XmlReader.Create(configFileLoc)

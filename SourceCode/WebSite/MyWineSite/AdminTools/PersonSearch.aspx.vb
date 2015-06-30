@@ -26,8 +26,8 @@
 
             If tbName.Text.Trim.Length > 0 Then
                 Dim lName As String
-                If tbName.Text.Trim.IndexOf(" -") > 3 Then
-                    lName = tbName.Text.Trim.Substring(0, tbName.Text.Trim.IndexOf(" -"))
+                If tbName.Text.Trim.IndexOf(" -", StringComparison.Ordinal) > 3 Then
+                    lName = tbName.Text.Trim.Substring(0, tbName.Text.Trim.IndexOf(" -", StringComparison.Ordinal))
                 Else
                     lName = tbName.Text.Trim
                 End If

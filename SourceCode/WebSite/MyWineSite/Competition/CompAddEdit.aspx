@@ -8,7 +8,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="cphMain" runat="server">
 
     <div class="fake-toolbar">
-        <table border="1">
+        <table>
             <tr>
                 <td style="border-right-width: 1px; border-right-style: solid; border-right-color: #939393;">
                     <telerik:RadButton ID="btnSave" runat="server" Icon-PrimaryIconUrl="/_resources/images/ico/Save-16x16.png" Text="Save" ToolTip="Save" Width="100" ButtonType="StandardButton" />
@@ -131,6 +131,7 @@
                                         <telerik:GridSortExpression FieldName="EntryID" SortOrder="Ascending" />
                                     </SortExpressions>
                                     <Columns>
+                                        <%-- ReSharper disable once Asp.Entity --%>
                                         <telerik:GridHyperLinkColumn HeaderText="Entry" FooterText="Entry" DataTextField="EntryID" DataNavigateUrlFields="CompetitionID, WineEntryID" DataNavigateUrlFormatString="/Competition/WineEntryAddEdit.aspx?CompetitionID={0}&WineEntryID={1}" SortExpression="EntryID" />
                                         <telerik:GridBoundColumn HeaderText="Wine Name" FooterText="Wine Name" DataField="WineName" />
                                         <telerik:GridBoundColumn HeaderText="Category" FooterText="Category" DataField="CatNum" />
@@ -192,6 +193,7 @@
                         <telerik:GridSortExpression FieldName="EntryID" SortOrder="Ascending" />
                     </SortExpressions>
                     <Columns>
+                        <%-- ReSharper disable once Asp.Entity --%>
                         <telerik:GridHyperLinkColumn HeaderText="Entry" FooterText="Entry" DataTextField="EntryID" DataNavigateUrlFields="CompetitionID, WineEntryID" DataNavigateUrlFormatString="/Competition/WineEntryAddEdit.aspx?CompetitionID={0}&WineEntryID={1}" SortExpression="EntryID" />
                         <telerik:GridBoundColumn HeaderText="Wine Name" FooterText="Wine Name" DataField="WineName" />
                         <telerik:GridBoundColumn HeaderText="Entrant Name" FooterText="Entrant Name" DataField="EntrantName" />

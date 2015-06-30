@@ -250,10 +250,7 @@ Namespace Wine.Web
             Dim wineScoringList = wineEntry.WineScorings
 
             If wineScoringList.Count > 0 Then
-                Dim total As Double = 0
-                For Each winescoring As DBEntity.WineScoring In wineScoringList
-                    total += winescoring.Score
-                Next
+                Dim total As Double = wineScoringList.Sum(Function(winescoring) winescoring.Score)
                 Dim avg As Double = total / wineScoringList.Count
                 wineEntry.AvgScore = avg
                 Dim medalColor As String = Nothing

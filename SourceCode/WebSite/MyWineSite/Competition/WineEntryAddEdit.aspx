@@ -179,6 +179,8 @@
                                 <Columns>
                                     <telerik:GridClientSelectColumn UniqueName="ClientSelectColumn" HeaderStyle-Width="25px"
                                         ItemStyle-Width="25px" />
+                                    <%-- ReSharper disable once Asp.Entity --%>
+                                    <%-- ReSharper disable once Asp.Entity --%>
                                     <telerik:GridHyperLinkColumn HeaderText="Judge" DataTextField="JudgeNum" DataNavigateUrlFields="WineEntryID, WineScoringID, CompetitionID"
                                         DataNavigateUrlFormatString="/Competition/WineScoreAddEdit.aspx?WineEntryID={0}&WineScoringID={1}&CompetitionID={2}"
                                         ItemStyle-Wrap="true" SortExpression="JudgeNum" />
@@ -415,7 +417,6 @@
 
         function updateTotalScore(sender, eventArgs) {
             "use strict";
-            var newScore = 0;
             if (!sender._invalid) {
                 var judgeNumval = $find('<%=tbJudgeNum.ClientID%>').get_value();
                 var clarity = $find('<%=tbClarity.ClientID%>').get_value();

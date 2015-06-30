@@ -6,13 +6,14 @@ Namespace Wine.Web
 
         Dim _appTitle As String
 
+        ' ReSharper disable once ConvertToVbAutoProperty
         Public Property AppTitle() As String
             Get
-                Return _AppTitle
+                Return _appTitle
             End Get
 
             Set(ByVal value As String)
-                _AppTitle = Value
+                _appTitle = value
             End Set
         End Property
 

@@ -148,7 +148,7 @@ Namespace Wine.Web
         End Sub
 
         Private Sub dgGridYearlyComp_DetailTableDataBind(sender As Object, e As Telerik.Web.UI.GridDetailTableDataBindEventArgs) Handles dgGridYearlyComp.DetailTableDataBind
-            Dim parentItem As GridDataItem = CType(e.DetailTableView.ParentItem, GridDataItem)
+            Dim parentItem As GridDataItem = e.DetailTableView.ParentItem
             If parentItem.Edit Then
                 Return
             End If

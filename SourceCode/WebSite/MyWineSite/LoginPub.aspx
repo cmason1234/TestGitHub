@@ -33,7 +33,7 @@
         .widget 
         {
 	        background						: transparent; 
-	        margin							: 0px;
+	        margin							: 0;
         }
 
         /*--change this for color update (This is the top and bottom background areas)*/
@@ -204,7 +204,7 @@
         {
             border: solid 1px #cecece; 
             padding: 5px 5px 5px 45px;
-            background: #ffffcc url(/_resources/images/ico/msgRedInfo-16x16.png) no-repeat;
+            background: #ffffcc url(/_resources/images/ico/msgErr-16x16.png) no-repeat;
             background-position: 5px 5px;
              font-size: 10pt;
             font-weight: normal;
@@ -223,8 +223,8 @@
             <div class="widgetContent">
                 <table>
                     <tr>
-                        <td valign="top" width="48%">
-                            <table border="0" cellpadding="0" cellspacing="0">
+                        <td width="48%">
+                            <table >
                                 <tr>
                                     <td class="login_box_form_names">
                                         Username:
@@ -251,7 +251,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td align="center"><br />&nbsp;<asp:Button ID="btnLogin" runat="server" CssClass="btn2" Text="Login" />
+                        <td><br />&nbsp;<asp:Button ID="btnLogin" runat="server" CssClass="btn2" Text="Login" />
                             <br /><br />
                         </td>
                     </tr>

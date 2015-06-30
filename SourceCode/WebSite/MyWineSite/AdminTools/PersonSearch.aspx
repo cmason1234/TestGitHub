@@ -6,7 +6,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cphMain" runat="server">
     <div class="fake-toolbar">
-        <table border="1">
+        <table>
             <tr>
                 <td style="white-space: nowrap; border-right-width: 1px; border-right-style: solid; border-right-color: #939393;">
                     <b>LastName</b>&nbsp;<asp:TextBox ID="tbName" runat="server" Width="200" />

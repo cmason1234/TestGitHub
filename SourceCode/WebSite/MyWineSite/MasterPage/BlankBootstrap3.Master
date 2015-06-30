@@ -7,7 +7,7 @@
     <style type="text/css">
         #ajaxBusy {
             display: none;
-            margin: 0px 0px 0px -50px; /* left margin is half width of the div, to centre it */
+            margin: 0 0 0 -50px; /* left margin is half width of the div, to centre it */
             padding: 30px 10px 10px 10px;
             position: absolute;
             left: 30%;
@@ -32,12 +32,9 @@
     <link rel="stylesheet" type="text/css" href="/_resources/js/css/wine-admaker.css" media="screen" />
 
     <!-- custom styles -->
-    <script type="text/javascript" src="/_resources/js/jquery/jquery_1.10.2.min.js"></script>
-    <script type="text/javascript" src="/_resources/js/jquery/jquery.textCounter-min.js"></script>
-    <script type="text/javascript" src="/_resources/js/jquery/jquery-ui_1.10.3.min.js"></script>
+    <script type="text/javascript" src="/_resources/js/jquery/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="/_resources/js/jquery/jquery-ui.min-1.11.3.js"></script>
     <script type="text/javascript" src="/_resources/js/bootstrap/3.0/dist/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="/_resources/js/jquery/jquery.dataTables.min.js"></script>
-    <script type="text/javascript" src="/_resources/js/jquery/bootstrap-formhelpers-selectbox.js"></script>
 
     <script type="text/javascript" src="/_resources/js/js/jqc_Ajax2.js"></script>
 

@@ -225,6 +225,7 @@
     <Content Include="_resources\images\ico\user_man_enable_16x16.png" />
     <Content Include="_resources\images\ico\widgets-16x16.png" />
     <Content Include="_resources\images\ico\word-16x16.png" />
+    <Content Include="_resources\images\loading-wide.gif" />
     <Content Include="_resources\images\measurement-lines.png" />
     <Content Include="_resources\images\measurement-lines_small.png" />
     <Content Include="_resources\images\menuarrow.gif" />

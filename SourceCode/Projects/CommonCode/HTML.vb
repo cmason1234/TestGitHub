@@ -1,5 +1,4 @@
 ﻿Imports System.Web.UI.WebControls
-Imports System.Text
 
 Namespace Wine.Common
 
@@ -208,19 +207,6 @@ Namespace Wine.Common
         End Function
 
 
-        Public Shared Function CanSetDropDownText(ByVal ddl As DropDownList, ByVal textValue As String) As Boolean
-            Dim status As Boolean = False
-
-            For Each item As ListItem In ddl.Items
-                If item.Text = textValue Then
-                    status = True
-                    Exit For
-                End If
-            Next
-
-            Return status
-
-        End Function
 
         Public Shared Sub FillCheckBoxList(ByVal cbl As CheckBoxList, _
                             ByVal ds As System.Data.DataSet, _
@@ -296,7 +282,6 @@ Namespace Wine.Common
                                 dt.Rows(0)(valueFieldColumn) = 0
                             Case "System.String", "System.DBNull"
                                 dt.Rows(0)(valueFieldColumn) = ""
-                            Case Else
                         End Select
                     End If
                 End If
@@ -310,6 +295,7 @@ Namespace Wine.Common
                     For Each item As ListItem In ddl.Items
                         Select Case vt
                             Case "System.Guid"
+                                ' ReSharper disable once SuspiciousTypeConversion.Global
                                 If Not item.Value.Equals(Guid.Empty) Then
                                     item.Text = item.Text & " (" & item.Value & ")"
                                 End If
@@ -363,7 +349,8 @@ Namespace Wine.Common
 
                 For Each row As Data.DataRow In ds.Tables(0).Rows
                     Dim textField As String = ""
-                    For Each field As String In tf
+                    For i As Integer = 0 To tf.Count - 1
+                        Dim field As String = tf(i)
                         textField += row.Item(field) & " - "
                     Next
                     textField = textField.Substring(0, textField.Length - 3)
@@ -383,7 +370,8 @@ Namespace Wine.Common
 
             For Each row As Data.DataRow In ds.Tables(0).Rows
                 Dim textField As String = ""
-                For Each field As String In tf
+                For i As Integer = 0 To tf.Count - 1
+                    Dim field As String = tf(i)
                     textField += row.Item(field) & " - "
                 Next
                 textField = textField.Substring(0, textField.Length - 3)
@@ -412,7 +400,6 @@ Namespace Wine.Common
                                 dt.Rows(0)(valueFieldColumn) = 0
                             Case "System.String", "System.DBNull"
                                 dt.Rows(0)(valueFieldColumn) = ""
-                            Case Else
                         End Select
                     End If
                 End If
@@ -426,6 +413,7 @@ Namespace Wine.Common
                     For Each item As ListItem In ddl.Items
                         Select Case vt
                             Case "System.Guid"
+                                ' ReSharper disable once SuspiciousTypeConversion.Global
                                 If Not item.Value.Equals(Guid.Empty) Then
                                     item.Text = item.Text & " (" & item.Value & ")"
                                 End If

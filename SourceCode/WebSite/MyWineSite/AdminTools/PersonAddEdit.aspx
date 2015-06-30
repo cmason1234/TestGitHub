@@ -6,7 +6,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cphMain" runat="server">
     <div class="fake-toolbar">
-        <table border="1">
+        <table>
             <tr>
                 <td style="border-right-width: 1px; border-right-style: solid; border-right-color: #939393;">
                     <telerik:RadButton ID="btnSave" runat="server" Icon-PrimaryIconUrl="/_resources/images/ico/Save-16x16.png" Text="Save" ToolTip="Save" Width="100" ButtonType="StandardButton" />
@@ -73,7 +73,7 @@
                         Password&nbsp;<asp:RequiredFieldValidator ID="passwordRequiredFieldValidator" runat="server" ControlToValidate="tbPasswordTextBox" ErrorMessage="Password is Required">*</asp:RequiredFieldValidator>
                     </td>
                     <td>
-                        <asp:TextBox CssClass="textBox" ID="tbPasswordTextBox" runat="server" Style="left: 0px; position: relative" TextMode="Password" />
+                        <asp:TextBox CssClass="textBox" ID="tbPasswordTextBox" runat="server" Style="left: 0; position: relative" TextMode="Password" />
                     </td>
                 </tr>
                 <tr>

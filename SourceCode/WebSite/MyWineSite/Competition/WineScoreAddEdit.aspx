@@ -6,9 +6,10 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     
     <script type="text/javascript">
+        /*global $, jQuery, $find */
+
         function updateTotalScore(sender, eventArgs) {
             "use strict";
-            var newScore = 0;
             if (!sender._invalid) {
                 var clarity = $find('<%=tbClarity.ClientID%>').get_value();
                 var color = $find('<%=tbColor.ClientID%>').get_value();
@@ -28,7 +29,7 @@
 
                 calcScoreId.set_value(total);
                 total = calcScoreId.get_value();  // Go get the rounded value from Telerik.
-                if (total != judgeTotal) {
+                if (total !== judgeTotal) {
                     save1.set_enabled(false);
                     save2.set_enabled(false);
                     judgeTotalId.get_styles().EnabledStyle[0] += "background-color: red;";
@@ -52,7 +53,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="cphMain" runat="server">
 
     <div class="fake-toolbar">
-        <table border="1">
+        <table >
             <tr>
                 <td style="border-right-width: 1px; border-right-style: solid; border-right-color: #939393;">
                     <telerik:RadButton ID="btnSave" runat="server" Icon-PrimaryIconUrl="/_resources/images/ico/Save-16x16.png" Text="Save" ToolTip="Save" Width="100" ButtonType="StandardButton" />

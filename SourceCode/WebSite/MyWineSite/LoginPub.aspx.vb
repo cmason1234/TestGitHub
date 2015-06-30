@@ -1,6 +1,4 @@
-﻿Imports System.DirectoryServices
-Imports System.Net.Mail
-
+﻿
 Namespace Wine.Web
 
     Public Class LoginPub
@@ -58,21 +56,21 @@ Namespace Wine.Web
         End Sub
 
 
-        Private Function Authenticate(ByVal UserName As String, ByVal Password As String) As Boolean
+        Private Function Authenticate(ByVal uName As String, ByVal pWord As String) As Boolean
 
             Dim status As Boolean = False
 
-            If UserName.Trim.Length > 0 AndAlso Password.Trim.Length > 0 Then
+            If uName.Trim.Length > 0 AndAlso pWord.Trim.Length > 0 Then
                 Dim db As New DBEntity.mywinecompetitionEntities(Wine.Common.XmlConfig.ConfigVal("WineCompetition_ConnectionString"))
 
-                Dim peopleList = (From s In db.People Where s.Username = UserName).ToList
+                Dim peopleList = (From s In db.People Where s.Username = uName).ToList
 
                 If peopleList.Count > 0 Then
                     Dim objP = peopleList(0)
 
                     Dim pt As New Wine.Common.PasswordEncryption
 
-                    status = pt.ValidatePassword(Password, objP.EncryptedPassword, objP.PasswordSeed)
+                    status = pt.ValidatePassword(pWord, objP.EncryptedPassword, objP.PasswordSeed)
                     If status Then
 
                         Dim expDate As Date = Now.AddDays(1.0)

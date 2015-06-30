@@ -10,7 +10,7 @@
     <form id="form1" runat="server">
         <div id="loader">
             logging you out...<br />
-            <img src="_images/loading-wide.gif" />
+            <img src="/_resources/images/loading-wide.gif" />
         </div>
     </form>
 </body>

@@ -84,7 +84,6 @@
     <Compile Include="PasswordCrypt.vb" />
     <Compile Include="SQL.vb" />
     <Compile Include="SQLFunctions.vb" />
-    <Compile Include="Validation.vb" />
     <Compile Include="XmlConfig.vb" />
   </ItemGroup>
   <ItemGroup>

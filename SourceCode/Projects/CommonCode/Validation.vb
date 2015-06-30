@@ -341,15 +341,6 @@ Namespace Wine.Common
             Return result
         End Function
 
-        Public Shared Function ValidPostalCode(ByVal tstPostalCode As String) As Boolean
-            Dim rts As Boolean = False
-
-            If (Wine.Common.Sql.GetSingleValue("SELECT COUNT(1) from rheemdb..PostalCode WHERE PostalCode=" & Wine.Common.Sql.Quote(tstPostalCode)) <> 0) Then
-                rts = True
-            End If
-            Return rts
-        End Function
-
 
         Public Shared Function IsValidGuid(ByVal inpGuid As String, ByVal paramName As String, ByRef outStr As String) As Boolean
             Dim rts As Boolean = True  '  Assume success
