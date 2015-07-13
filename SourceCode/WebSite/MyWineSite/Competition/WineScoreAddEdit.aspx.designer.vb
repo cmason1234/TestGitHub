@@ -105,6 +105,15 @@ Namespace Wine.Web
         Protected WithEvents hfWineScoringID As Global.System.Web.UI.WebControls.HiddenField
 
         '''<summary>
+        '''hfIsMonthlyComp control.
+        '''</summary>
+        '''<remarks>
+        '''Auto-generated field.
+        '''To modify move field declaration from designer file to code-behind file.
+        '''</remarks>
+        Protected WithEvents hfIsMonthlyComp As Global.System.Web.UI.WebControls.HiddenField
+
+        '''<summary>
         '''tbCompNameTextBox control.
         '''</summary>
         '''<remarks>
@@ -256,6 +265,15 @@ Namespace Wine.Web
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
         Protected WithEvents tbJudgeName As Global.Telerik.Web.UI.RadTextBox
+
+        '''<summary>
+        '''divEnterScores control.
+        '''</summary>
+        '''<remarks>
+        '''Auto-generated field.
+        '''To modify move field declaration from designer file to code-behind file.
+        '''</remarks>
+        Protected WithEvents divEnterScores As Global.System.Web.UI.HtmlControls.HtmlGenericControl
 
         '''<summary>
         '''tbClarity control.

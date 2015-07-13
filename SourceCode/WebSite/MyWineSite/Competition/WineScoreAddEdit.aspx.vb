@@ -40,6 +40,10 @@
                 Integer.TryParse(sCompId, competitionId) AndAlso competitionId > 0 Then
                 Dim comp As DBEntity.Competition = db.Competitions.Find(competitionId)
                 tbCompNameTextBox.Text = comp.CompetitionName
+                hfIsMonthlyComp.Value = comp.MonthlyCompetition
+                If comp.MonthlyCompetition Then
+                    divEnterScores.Visible = False
+                End If
 
                 If Not IsNothing(Request.Params("WineEntryId")) AndAlso
                     Integer.TryParse(sWineEntryId, wineEntryId) AndAlso wineEntryId > 0 Then
@@ -174,18 +178,31 @@
                 .EnteredPersonID = currentPerson.PersonID
                 .JudgeNum = tbJudgeNum.Value
                 .JudgeInitials = tbJudgeName.Text
-                .Clarity = tbClarity.Value
-                .Color = tbColor.Value
-                .Aroma = tbAroma.Value
-                .Ta = tbAcidity.Value
-                .Texture = tbBody.Value
-                .Flavor = tbFlavor.Value
-                .Bitterness = tbBitterness.Value
-                .Finish = tbFinish.Value
-                .Quality = tbQuality.Value
                 .JudgeTotal = tbJudgeScore.Value
                 .Score = tbCalcScore.Value
                 .ValidatedPersonID = Nothing
+
+                If Not hfIsMonthlyComp.Value.Equals("True") Then
+                    .Clarity = tbClarity.Value
+                    .Color = tbColor.Value
+                    .Aroma = tbAroma.Value
+                    .Ta = tbAcidity.Value
+                    .Texture = tbBody.Value
+                    .Flavor = tbFlavor.Value
+                    .Bitterness = tbBitterness.Value
+                    .Finish = tbFinish.Value
+                    .Quality = tbQuality.Value
+                Else
+                    .Clarity = 0
+                    .Color = 0
+                    .Aroma = 0
+                    .Ta = 0
+                    .Texture = 0
+                    .Flavor = 0
+                    .Bitterness = 0
+                    .Finish = 0
+                    .Quality = 0
+                End If
             End With
             If wineScoringId = 0 Then
                 db.WineScorings.Add(wineScoring)

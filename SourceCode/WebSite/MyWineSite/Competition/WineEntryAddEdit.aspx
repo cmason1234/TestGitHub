@@ -9,7 +9,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cphMain" runat="server">
     <div class="fake-toolbar">
-        <table >
+        <table>
             <tr>
                 <td style="border-right-width: 1px; border-right-style: solid; border-right-color: #939393;">
                     <telerik:RadButton ID="btnSave" runat="server" Icon-PrimaryIconUrl="/_resources/images/ico/Save-16x16.png" Text="Save" ToolTip="Save" Width="100" ButtonType="StandardButton" />
@@ -31,6 +31,7 @@
         <ucErrorMessages:ErrorMessages ID="ucErrorMessages" runat="server" />
         <asp:HiddenField ID="hfWineEntryId" runat="server" Visible="false" />
         <asp:HiddenField ID="hfCompetitionID" runat="server" Visible="false" />
+        <asp:HiddenField ID="hfIsMonthlyComp" runat="server" />
         <fieldset class="fieldset100Percent box_round box_shadow">
             <legend>General Info</legend>
             <table>
@@ -234,18 +235,18 @@
 
     </div>
 
-    <telerik:RadTextBox ID="tbJudgeNum2" runat="server" style="display: none;" />
-    <telerik:RadNumericTextBox ID="tbClarity2" runat="server" style="display: none;" />
-    <telerik:RadNumericTextBox ID="tbColor2" runat="server" style="display: none;" />
-    <telerik:RadNumericTextBox ID="tbAroma2" runat="server" style="display: none;" />
-    <telerik:RadNumericTextBox ID="tbAcidity2" runat="server" style="display: none;" />
-    <telerik:RadNumericTextBox ID="tbBody2" runat="server" style="display: none;" />
-    <telerik:RadNumericTextBox ID="tbFlavor2" runat="server" style="display: none;" />
-    <telerik:RadNumericTextBox ID="tbBitterness2" runat="server" style="display: none;" />
-    <telerik:RadNumericTextBox ID="tbFinish2" runat="server" style="display: none;" />
-    <telerik:RadNumericTextBox ID="tbQuality2" runat="server" style="display: none;" />
-    <telerik:RadNumericTextBox ID="tbJudgeScore2" runat="server" style="display: none;" />
-    <telerik:RadNumericTextBox ID="tbCalcScore2" runat="server" style="display: none;" />
+    <telerik:RadTextBox ID="tbJudgeNum2" runat="server" Style="display: none;" />
+    <telerik:RadNumericTextBox ID="tbClarity2" runat="server" Style="display: none;" />
+    <telerik:RadNumericTextBox ID="tbColor2" runat="server" Style="display: none;" />
+    <telerik:RadNumericTextBox ID="tbAroma2" runat="server" Style="display: none;" />
+    <telerik:RadNumericTextBox ID="tbAcidity2" runat="server" Style="display: none;" />
+    <telerik:RadNumericTextBox ID="tbBody2" runat="server" Style="display: none;" />
+    <telerik:RadNumericTextBox ID="tbFlavor2" runat="server" Style="display: none;" />
+    <telerik:RadNumericTextBox ID="tbBitterness2" runat="server" Style="display: none;" />
+    <telerik:RadNumericTextBox ID="tbFinish2" runat="server" Style="display: none;" />
+    <telerik:RadNumericTextBox ID="tbQuality2" runat="server" Style="display: none;" />
+    <telerik:RadNumericTextBox ID="tbJudgeScore2" runat="server" Style="display: none;" />
+    <telerik:RadNumericTextBox ID="tbCalcScore2" runat="server" Style="display: none;" />
 
     <div style="display: none;">
         <div id="dialog-form" title="Add New Score">
@@ -261,78 +262,80 @@
                             <span style="display: none; color: red;" id="spnJudgeNum">* Judge # is Required</span>
                         </td>
                     </tr>
-                    <tr>
-                        <td style="width: 140px;">Clarity (1)</td>
-                        <td style="width: 140px;">Color (2)</td>
-                        <td style="width: 155px;">Aroma (4)</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <telerik:RadNumericTextBox Width="50" ID="tbClarity" runat="server"
-                                MinValue="0" MaxValue="1" NumberFormat-GroupSeparator="" NumberFormat-DecimalDigits="4"
-                                EnabledStyle-HorizontalAlign="Right" ClientEvents-OnBlur="updateTotalScore" />
-                        </td>
-                        <td>
-                            <telerik:RadNumericTextBox Width="50" ID="tbColor" runat="server"
-                                MinValue="0" MaxValue="2" NumberFormat-GroupSeparator="" NumberFormat-DecimalDigits="4"
-                                EnabledStyle-HorizontalAlign="Right" ClientEvents-OnBlur="updateTotalScore" />
-                        </td>
-                        <td>
-                            <telerik:RadNumericTextBox Width="50" ID="tbAroma" runat="server"
-                                MinValue="0" MaxValue="4" NumberFormat-GroupSeparator="" NumberFormat-DecimalDigits="4"
-                                EnabledStyle-HorizontalAlign="Right" ClientEvents-OnBlur="updateTotalScore" />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>Acidity (1)</td>
-                        <td>Body (2)</td>
-                        <td>Flavor (4)</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <telerik:RadNumericTextBox Width="50" ID="tbAcidity" runat="server"
-                                MinValue="0" MaxValue="1" NumberFormat-GroupSeparator="" NumberFormat-DecimalDigits="4"
-                                EnabledStyle-HorizontalAlign="Right" ClientEvents-OnBlur="updateTotalScore" />
-                        </td>
-                        <td>
-                            <telerik:RadNumericTextBox Width="50" ID="tbBody" runat="server"
-                                MinValue="0" MaxValue="2" NumberFormat-GroupSeparator="" NumberFormat-DecimalDigits="4"
-                                EnabledStyle-HorizontalAlign="Right" ClientEvents-OnBlur="updateTotalScore" />
-                        </td>
-                        <td>
-                            <telerik:RadNumericTextBox Width="50" ID="tbFlavor" runat="server"
-                                MinValue="0" MaxValue="4" NumberFormat-GroupSeparator="" NumberFormat-DecimalDigits="4"
-                                EnabledStyle-HorizontalAlign="Right" ClientEvents-OnBlur="updateTotalScore" />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>Bitterness (1)</td>
-                        <td>Finish (1)</td>
-                        <td>Quality (4)</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <telerik:RadNumericTextBox Width="50" ID="tbBitterness" runat="server"
-                                MinValue="0" MaxValue="1" NumberFormat-GroupSeparator="" NumberFormat-DecimalDigits="4"
-                                EnabledStyle-HorizontalAlign="Right" ClientEvents-OnBlur="updateTotalScore" />
-                        </td>
-                        <td>
-                            <telerik:RadNumericTextBox Width="50" ID="tbFinish" runat="server"
-                                MinValue="0" MaxValue="1" NumberFormat-GroupSeparator="" NumberFormat-DecimalDigits="4"
-                                EnabledStyle-HorizontalAlign="Right" ClientEvents-OnBlur="updateTotalScore" />
-                        </td>
-                        <td>
-                            <telerik:RadNumericTextBox Width="50" ID="tbQuality" runat="server"
-                                MinValue="0" MaxValue="4" NumberFormat-GroupSeparator="" NumberFormat-DecimalDigits="4"
-                                EnabledStyle-HorizontalAlign="Right" ClientEvents-OnBlur="updateTotalScore" />
-                        </td>
-                    </tr>
+                    <div id="divEnterScores" runat="server">
+                        <tr>
+                            <td style="width: 140px;">Clarity (1)</td>
+                            <td style="width: 140px;">Color (2)</td>
+                            <td style="width: 155px;">Aroma (4)</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <telerik:RadNumericTextBox Width="50" ID="tbClarity" runat="server"
+                                    MinValue="0" MaxValue="1" NumberFormat-GroupSeparator="" NumberFormat-DecimalDigits="4"
+                                    EnabledStyle-HorizontalAlign="Right" ClientEvents-OnBlur="updateTotalScore" />
+                            </td>
+                            <td>
+                                <telerik:RadNumericTextBox Width="50" ID="tbColor" runat="server"
+                                    MinValue="0" MaxValue="2" NumberFormat-GroupSeparator="" NumberFormat-DecimalDigits="4"
+                                    EnabledStyle-HorizontalAlign="Right" ClientEvents-OnBlur="updateTotalScore" />
+                            </td>
+                            <td>
+                                <telerik:RadNumericTextBox Width="50" ID="tbAroma" runat="server"
+                                    MinValue="0" MaxValue="4" NumberFormat-GroupSeparator="" NumberFormat-DecimalDigits="4"
+                                    EnabledStyle-HorizontalAlign="Right" ClientEvents-OnBlur="updateTotalScore" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Acidity (1)</td>
+                            <td>Body (2)</td>
+                            <td>Flavor (4)</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <telerik:RadNumericTextBox Width="50" ID="tbAcidity" runat="server"
+                                    MinValue="0" MaxValue="1" NumberFormat-GroupSeparator="" NumberFormat-DecimalDigits="4"
+                                    EnabledStyle-HorizontalAlign="Right" ClientEvents-OnBlur="updateTotalScore" />
+                            </td>
+                            <td>
+                                <telerik:RadNumericTextBox Width="50" ID="tbBody" runat="server"
+                                    MinValue="0" MaxValue="2" NumberFormat-GroupSeparator="" NumberFormat-DecimalDigits="4"
+                                    EnabledStyle-HorizontalAlign="Right" ClientEvents-OnBlur="updateTotalScore" />
+                            </td>
+                            <td>
+                                <telerik:RadNumericTextBox Width="50" ID="tbFlavor" runat="server"
+                                    MinValue="0" MaxValue="4" NumberFormat-GroupSeparator="" NumberFormat-DecimalDigits="4"
+                                    EnabledStyle-HorizontalAlign="Right" ClientEvents-OnBlur="updateTotalScore" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Bitterness (1)</td>
+                            <td>Finish (1)</td>
+                            <td>Quality (4)</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <telerik:RadNumericTextBox Width="50" ID="tbBitterness" runat="server"
+                                    MinValue="0" MaxValue="1" NumberFormat-GroupSeparator="" NumberFormat-DecimalDigits="4"
+                                    EnabledStyle-HorizontalAlign="Right" ClientEvents-OnBlur="updateTotalScore" />
+                            </td>
+                            <td>
+                                <telerik:RadNumericTextBox Width="50" ID="tbFinish" runat="server"
+                                    MinValue="0" MaxValue="1" NumberFormat-GroupSeparator="" NumberFormat-DecimalDigits="4"
+                                    EnabledStyle-HorizontalAlign="Right" ClientEvents-OnBlur="updateTotalScore" />
+                            </td>
+                            <td>
+                                <telerik:RadNumericTextBox Width="50" ID="tbQuality" runat="server"
+                                    MinValue="0" MaxValue="4" NumberFormat-GroupSeparator="" NumberFormat-DecimalDigits="4"
+                                    EnabledStyle-HorizontalAlign="Right" ClientEvents-OnBlur="updateTotalScore" />
+                            </td>
+                        </tr>
+                    </div>
                     <tr>
                         <td>Judge Score</td>
                         <td></td>
@@ -357,6 +360,7 @@
     </div>
 
     <script src="/_resources/js/jQuery/jquery-ui-1.11.3.js"></script>
+    <%-- ReSharper disable UseOfImplicitGlobalInFunctionScope --%>
     <script>
         var WINE = WINE || {};
         WINE.EntryAddEdit = {};
@@ -394,20 +398,23 @@
         };
 
         WINE.EntryAddEdit.saveWineScore = function () {
-            "use strict";
+            var monthly = jQuery('#<%=hfIsMonthlyComp.ClientID%>').val();
+
+            if (!monthly) {
+                $find('<%= tbClarity2.ClientID%>').set_value($find('<%= tbClarity.ClientID%>').get_value());
+                $find('<%= tbColor2.ClientID%>').set_value($find('<%=tbColor.ClientID%>').get_value());
+                $find('<%= tbAroma2.ClientID%>').set_value($find('<%=tbAroma.ClientID%>').get_value());
+
+                $find('<%= tbAcidity2.ClientID%>').set_value($find('<%=tbAcidity.ClientID%>').get_value());
+                $find('<%= tbBody2.ClientID%>').set_value($find('<%=tbBody.ClientID%>').get_value());
+                $find('<%= tbFlavor2.ClientID%>').set_value($find('<%=tbFlavor.ClientID%>').get_value());
+
+                $find('<%= tbBitterness2.ClientID%>').set_value($find('<%=tbBitterness.ClientID%>').get_value());
+                $find('<%= tbFinish2.ClientID%>').set_value($find('<%=tbFinish.ClientID%>').get_value());
+                $find('<%= tbQuality2.ClientID%>').set_value($find('<%=tbQuality.ClientID%>').get_value());
+            }
+
             $find('<%= tbJudgeNum2.ClientID%>').set_value($find('<%=tbJudgeNum.ClientID%>').get_value());
-            $find('<%= tbClarity2.ClientID%>').set_value($find('<%= tbClarity.ClientID%>').get_value());
-            $find('<%= tbColor2.ClientID%>').set_value($find('<%=tbColor.ClientID%>').get_value());
-            $find('<%= tbAroma2.ClientID%>').set_value($find('<%=tbAroma.ClientID%>').get_value());
-
-            $find('<%= tbAcidity2.ClientID%>').set_value($find('<%=tbAcidity.ClientID%>').get_value());
-            $find('<%= tbBody2.ClientID%>').set_value($find('<%=tbBody.ClientID%>').get_value());
-            $find('<%= tbFlavor2.ClientID%>').set_value($find('<%=tbFlavor.ClientID%>').get_value());
-
-            $find('<%= tbBitterness2.ClientID%>').set_value($find('<%=tbBitterness.ClientID%>').get_value());
-            $find('<%= tbFinish2.ClientID%>').set_value($find('<%=tbFinish.ClientID%>').get_value());
-            $find('<%= tbQuality2.ClientID%>').set_value($find('<%=tbQuality.ClientID%>').get_value());
-            
             $find('<%= tbCalcScore2.ClientID%>').set_value($find('<%=tbCalcScore.ClientID%>').get_value());
             $find('<%= tbJudgeScore2.ClientID%>').set_value($find('<%=tbJudgeScore.ClientID%>').get_value());
 
@@ -415,27 +422,33 @@
             clickButton.click();
         };
 
-        function updateTotalScore(sender, eventArgs) {
-            "use strict";
+        updateTotalScore = function(sender) {
+
             if (!sender._invalid) {
                 var judgeNumval = $find('<%=tbJudgeNum.ClientID%>').get_value();
-                var clarity = $find('<%=tbClarity.ClientID%>').get_value();
-                var color = $find('<%=tbColor.ClientID%>').get_value();
-                var aroma = $find('<%=tbAroma.ClientID%>').get_value();
-                var ta = $find('<%=tbAcidity.ClientID%>').get_value();
-                var body = $find('<%=tbBody.ClientID%>').get_value();
-                var flavor = $find('<%=tbFlavor.ClientID%>').get_value();
-                var bitterness = $find('<%=tbBitterness.ClientID%>').get_value();
-                var finish = $find('<%=tbFinish.ClientID%>').get_value();
-                var quality = $find('<%=tbQuality.ClientID%>').get_value();
-                var total = clarity + color + aroma + ta + body + flavor + bitterness + finish + quality;
                 var calcScoreId = $find('<%=tbCalcScore.ClientID%>');
                 var judgeTotalId = $find('<%=tbJudgeScore.ClientID%>');
                 var judgeTotal = judgeTotalId.get_value();
                 var save1 = jQuery('#btn-save');
                 var bDisableSave = false;
+                var monthly = jQuery('#<%=hfIsMonthlyComp.ClientID%>').val();
+                var total;
 
-                calcScoreId.set_value(total);
+                if (monthly) {
+                    calcScoreId.set_value(judgeTotal);
+                } else {
+                    var clarity = $find('<%=tbClarity.ClientID%>').get_value();
+                    var color = $find('<%=tbColor.ClientID%>').get_value();
+                    var aroma = $find('<%=tbAroma.ClientID%>').get_value();
+                    var ta = $find('<%=tbAcidity.ClientID%>').get_value();
+                    var body = $find('<%=tbBody.ClientID%>').get_value();
+                    var flavor = $find('<%=tbFlavor.ClientID%>').get_value();
+                    var bitterness = $find('<%=tbBitterness.ClientID%>').get_value();
+                    var finish = $find('<%=tbFinish.ClientID%>').get_value();
+                    var quality = $find('<%=tbQuality.ClientID%>').get_value();
+                    total = clarity + color + aroma + ta + body + flavor + bitterness + finish + quality;
+                    calcScoreId.set_value(total);
+                }
                 total = calcScoreId.get_value();  // Go get the rounded value from Telerik.
                 if (total !== judgeTotal) {
                     bDisableSave = true;
@@ -462,4 +475,5 @@
         };
 
     </script>
+    <%-- ReSharper restore UseOfImplicitGlobalInFunctionScope --%>
 </asp:Content>
