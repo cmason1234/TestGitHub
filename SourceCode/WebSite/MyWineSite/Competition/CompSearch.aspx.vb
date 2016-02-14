@@ -39,7 +39,7 @@
             Dim sql As String
             sql = "select CompetitionId, CompetitionName, Year, Month, " &
                 " CASE MonthlyCompetition When 1 then 'Monthly' Else 'Yearly' END as CompType " &
-                "from competition where 1=1 " & addSQL & "   order by  CompetitionName, Year, Month"
+                "from competition where 1=1 " & addSql & "   order by  CompetitionName desc, Year desc, Month"
 
             Dim pds As New System.Data.DataSet
             Wine.Common.Sql.FillDataSet(pds, sql, "Competition")

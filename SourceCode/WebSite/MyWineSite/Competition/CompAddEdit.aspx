@@ -112,7 +112,7 @@
             </tr>
             <tr>
                 <td colspan="2">
-                    <telerik:RadGrid ID="dgGridYearlyComp" AllowPaging="false" PageSize="10" AllowSorting="false" runat="server"
+                    <telerik:RadGrid ID="dgGridYearlyComp" AllowPaging="false" PageSize="15" AllowSorting="false" runat="server"
                         AllowCustomPaging="false" AutoGenerateColumns="false" ShowFooter="True" GridLines="Both" Width="80%">
                         <PagerStyle Mode="NumericPages" Position="Bottom" />
                         <MasterTableView DataMember="WineColors" DataKeyNames="MedalColor" Width="100%" Name="MedalColor" HierarchyLoadMode="Client" GroupLoadMode="Server">
@@ -185,7 +185,7 @@
         <div style="margin-left: 4px;">
 
             <telerik:RadGrid ItemStyle-Wrap="false" ID="dgGridMonthlyComp" Width="80%" AllowPaging="true"
-                PageSize="10" AllowCustomPaging="false" AllowSorting="true" runat="server" AutoGenerateColumns="false" ShowFooter="true">
+                PageSize="15" AllowCustomPaging="false" AllowSorting="true" runat="server" AutoGenerateColumns="false" ShowFooter="true">
                 <PagerStyle Mode="NumericPages" Position="TopAndBottom" AlwaysVisible="false" />
                 <ExportSettings IgnorePaging="true" />
                 <MasterTableView TableLayout="Fixed" EnableViewState="true">
@@ -196,9 +196,9 @@
                         <%-- ReSharper disable once Asp.Entity --%>
                         <telerik:GridHyperLinkColumn HeaderText="Entry" FooterText="Entry" DataTextField="EntryID" DataNavigateUrlFields="CompetitionID, WineEntryID" DataNavigateUrlFormatString="/Competition/WineEntryAddEdit.aspx?CompetitionID={0}&WineEntryID={1}" SortExpression="EntryID" />
                         <telerik:GridBoundColumn HeaderText="Wine Name" FooterText="Wine Name" DataField="WineName" />
-                        <telerik:GridBoundColumn HeaderText="Entrant Name" FooterText="Entrant Name" DataField="EntrantName" />
                         <telerik:GridBoundColumn HeaderText="AvgScore" FooterText="AvgScore" DataField="AvgScore" />
                         <telerik:GridBoundColumn HeaderText="MedalColor" FooterText="MedalColor" DataField="MedalColor" />
+                        <telerik:GridBoundColumn HeaderText="Entrant Name" FooterText="Entrant Name" DataField="EntrantName" />
                     </Columns>
                 </MasterTableView>
                 <HeaderStyle HorizontalAlign="Left" />

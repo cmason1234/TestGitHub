@@ -61,7 +61,8 @@ Namespace Wine.Web
             Dim status As Boolean = False
 
             If uName.Trim.Length > 0 AndAlso pWord.Trim.Length > 0 Then
-                Dim db As New DBEntity.mywinecompetitionEntities(Wine.Common.XmlConfig.ConfigVal("WineCompetition_ConnectionString"))
+                Dim connstr As String = Wine.Common.XmlConfig.ConfigVal("WineCompetition_ConnectionString")
+                Dim db As New DBEntity.MywinecompetitionEntities(connstr)
 
                 Dim peopleList = (From s In db.People Where s.Username = uName).ToList
 

@@ -59,7 +59,7 @@
                 <ExportSettings IgnorePaging="true" />
                 <MasterTableView TableLayout="Fixed" EnableViewState="false" >
                     <SortExpressions>
-                        <telerik:GridSortExpression FieldName="CompetitionName" SortOrder="Ascending" />
+                        <telerik:GridSortExpression FieldName="CompetitionName" SortOrder="Descending" />
                     </SortExpressions>
                     <Columns>
                         <telerik:GridHyperLinkColumn HeaderText="Name" HeaderStyle-Width="300" DataTextField="CompetitionName" DataNavigateUrlFields="CompetitionId" DataNavigateUrlFormatString="/Competition/CompAddEdit.aspx?CompetitionID={0}" SortExpression="CompetitionName"/>
