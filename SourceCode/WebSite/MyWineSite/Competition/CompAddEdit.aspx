@@ -59,6 +59,8 @@
                             <asp:ListItem>2014</asp:ListItem>
                             <asp:ListItem>2015</asp:ListItem>
                             <asp:ListItem>2016</asp:ListItem>
+                            <asp:ListItem>2017</asp:ListItem>
+                            <asp:ListItem>2018</asp:ListItem>
                         </asp:DropDownList>
                     </td>
                     <td>
@@ -135,7 +137,7 @@
                                         <telerik:GridHyperLinkColumn HeaderText="Entry" FooterText="Entry" DataTextField="EntryID" DataNavigateUrlFields="CompetitionID, WineEntryID" DataNavigateUrlFormatString="/Competition/WineEntryAddEdit.aspx?CompetitionID={0}&WineEntryID={1}" SortExpression="EntryID" />
                                         <telerik:GridBoundColumn HeaderText="Wine Name" FooterText="Wine Name" DataField="WineName" />
                                         <telerik:GridBoundColumn HeaderText="Category" FooterText="Category" DataField="CatNum" />
-                                        <telerik:GridBoundColumn HeaderText="AvgScore" FooterText="AvgScore" DataField="AvgScore" />
+                                        <telerik:GridNumericColumn HeaderText="AvgScore" FooterText="AvgScore" DataField="AvgScore" DecimalDigits="3" />
                                         <telerik:GridBoundColumn HeaderText="MedalColor" FooterText="MedalColor" DataField="MedalColor" />
                                     </Columns>
                                 </telerik:GridTableView>
@@ -196,7 +198,7 @@
                         <%-- ReSharper disable once Asp.Entity --%>
                         <telerik:GridHyperLinkColumn HeaderText="Entry" FooterText="Entry" DataTextField="EntryID" DataNavigateUrlFields="CompetitionID, WineEntryID" DataNavigateUrlFormatString="/Competition/WineEntryAddEdit.aspx?CompetitionID={0}&WineEntryID={1}" SortExpression="EntryID" />
                         <telerik:GridBoundColumn HeaderText="Wine Name" FooterText="Wine Name" DataField="WineName" />
-                        <telerik:GridBoundColumn HeaderText="AvgScore" FooterText="AvgScore" DataField="AvgScore" />
+                        <telerik:GridNumericColumn DataField="AvgScore" HeaderText="AvgScore" DataFormatString="{0:### ##0.00}" />
                         <telerik:GridBoundColumn HeaderText="MedalColor" FooterText="MedalColor" DataField="MedalColor" />
                         <telerik:GridBoundColumn HeaderText="Entrant Name" FooterText="Entrant Name" DataField="EntrantName" />
                     </Columns>

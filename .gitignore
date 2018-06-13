@@ -214,3 +214,9 @@ pip-log.txt
 #Mr Developer
 .mr.developer.cfg
 /SourceCode/Projects/DBEntity/*.diagram
+/SourceCode/Solutions/MyWineSite/.vs/MyWineSite/v15/Server/sqlite3/db.lock
+/SourceCode/Solutions/MyWineSite/.vs/MyWineSite/v15/Server/sqlite3/storage.ide
+/SourceCode/Solutions/MyWineSite/.vs/MyWineSite/v15/Server/sqlite3/storage.ide-shm
+/SourceCode/Solutions/MyWineSite/.vs/MyWineSite/v15/Server/sqlite3/storage.ide-wal
+/SourceCode/Solutions/MyWineSite/.vs/MyWineSite/v15/sqlite3/db.lock
+/SourceCode/Solutions/MyWineSite/.vs/MyWineSite/v15/sqlite3/storage.ide
